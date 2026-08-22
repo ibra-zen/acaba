@@ -95,4 +95,50 @@ router.get('/daily', authenticateToken, (req: AuthRequest, res: Response) => {
   }
 });
 
+// 10'lu grup seviye paketi sorularını getir (On-Demand Pack Fetching)
+router.get('/pack/:packId', (req: express.Request, res: Response) => {
+  const packId = parseInt(req.params.packId, 10) || 1;
+  const startLevel = (packId - 1) * 10 + 1;
+  const endLevel = packId * 10;
+
+  try {
+    const questions = queryAll(`
+      SELECT q.id, q.priority as level_num, qt.question_text, qt.explanation
+      FROM questions q
+      JOIN question_translations qt ON q.id = qt.question_id
+      WHERE q.priority >= ? AND q.priority <= ? AND qt.language_code = 'tr'
+      ORDER BY q.priority ASC, q.id ASC
+    `, [startLevel, endLevel]);
+
+    const result = questions.map(q => {
+      const options = queryAll(
+        'SELECT option_text, is_correct FROM question_options WHERE question_id = ? AND language_code = ? ORDER BY id ASC',
+        [q.id, 'tr']
+      );
+      const opts = options.map(o => o.option_text);
+      const correctIndex = options.findIndex(o => o.is_correct === 1);
+      return {
+        id: q.id,
+        level: q.level_num || startLevel,
+        tag: `Level ${q.level_num || startLevel}`,
+        q: q.question_text,
+        opts: opts.length ? opts : ['A', 'B', 'C', 'D'],
+        correct: correctIndex >= 0 ? correctIndex : 0,
+        exp: q.explanation || 'Harika çözüm!'
+      };
+    });
+
+    res.json({
+      packId,
+      startLevel,
+      endLevel,
+      questionsCount: result.length,
+      questions: result
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Paket soruları yüklenirken hata oluştu.' });
+  }
+});
+
 export default router;

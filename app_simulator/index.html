@@ -1018,11 +1018,76 @@
       }
     }
 
+    // 📦 10'LU GRUP İSTEĞE BAĞLI PAKET YÖNETİCİSİ (ON-DEMAND PACK LOADER)
+    let packCache = {};
+    try {
+      packCache = JSON.parse(localStorage.getItem('bsm_cached_packs') || '{}');
+    } catch (e) { packCache = {}; }
+
+    async function getQuestionForLevel(levelNum, qIndex) {
+      const packId = Math.ceil(levelNum / 10);
+      const lvlOffsetInPack = (levelNum - 1) % 10;
+
+      // 1. Önbellekte var mı kontrol et
+      if (packCache[packId] && packCache[packId][lvlOffsetInPack] && packCache[packId][lvlOffsetInPack][qIndex]) {
+        return packCache[packId][lvlOffsetInPack][qIndex];
+      }
+
+      // 2. Önbellekte yoksa paketi indir / yükle
+      await fetchOrBuildPack(packId);
+
+      if (packCache[packId] && packCache[packId][lvlOffsetInPack] && packCache[packId][lvlOffsetInPack][qIndex]) {
+        return packCache[packId][lvlOffsetInPack][qIndex];
+      }
+
+      // 3. Fallback: Yerel soru üreteç motorundan üret
+      return generateQuestionForLevel(levelNum, qIndex);
+    }
+
+    async function fetchOrBuildPack(packId) {
+      const API_URL = 'http://localhost:3001/api/questions/pack/' + packId;
+      try {
+        const controller = new AbortController();
+        const tid = setTimeout(() => controller.abort(), 1500);
+        const res = await fetch(API_URL, { signal: controller.signal });
+        clearTimeout(tid);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.questions && data.questions.length > 0) {
+            packCache[packId] = data.questions;
+            savePackCache();
+            showToast(`📥 Pack ${packId} (Level ${(packId-1)*10+1}-${packId*10}) soruları yüklendi!`);
+            return;
+          }
+        }
+      } catch (e) {}
+
+      // Sunucu erişilemez ise yerel motor ile bu 10'lu paketi oluştur ve önbelleğe al
+      const localPack = [];
+      const startLvl = (packId - 1) * 10 + 1;
+      const endLvl = packId * 10;
+      for (let l = startLvl; l <= endLvl; l++) {
+        const lvlQuestions = [];
+        for (let q = 0; q < 10; q++) {
+          lvlQuestions.push(generateQuestionForLevel(l, q));
+        }
+        localPack.push(lvlQuestions);
+      }
+      packCache[packId] = localPack;
+      savePackCache();
+    }
+
+    function savePackCache() {
+      try {
+        localStorage.setItem('bsm_cached_packs', JSON.stringify(packCache));
+      } catch (e) {}
+    }
+
     function showHome() { showScreen('home'); }
 
-    function renderQuestion() {
+    async function renderQuestion() {
       document.getElementById('fb-modal').classList.remove('active');
-      const q = generateQuestionForLevel(state.currentLevel, state.idx);
+      const q = await getQuestionForLevel(state.currentLevel, state.idx);
 
       document.getElementById('q-tag').textContent = `${q.tag} (LEVEL ${state.currentLevel})`;
       document.getElementById('q-text').textContent = q.q;
