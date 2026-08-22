@@ -71,13 +71,13 @@ export const api = {
   },
 
   getQuestions: async () => {
-    // Kullanıcı tüm soruları sildiyse boş dizi dön
-    if (localStorage.getItem('bsm_all_questions_cleared') === 'true') {
+    // Kullanıcı kendi özgün sorularını tanımladıysa veya tümünü sildiyse bunu kalıcı kabul et
+    if (localStorage.getItem('bsm_custom_questions_overridden') === 'true') {
       const custom = localStorage.getItem('bsm_custom_questions');
       if (custom) {
         try {
           const parsed = JSON.parse(custom);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          if (Array.isArray(parsed)) return parsed;
         } catch (e) {}
       }
       return [];
@@ -361,14 +361,20 @@ export const api = {
   },
 
   clearAllQuestions: async () => {
-    localStorage.setItem('bsm_all_questions_cleared', 'true');
-    localStorage.removeItem('bsm_custom_questions');
+    localStorage.setItem('bsm_custom_questions_overridden', 'true');
+    localStorage.setItem('bsm_custom_questions', JSON.stringify([]));
     try {
       await fetchWithTimeout(`${BASE_URL}/admin/questions/all`, {
         method: 'DELETE',
         headers: getHeaders()
       });
     } catch (e) {}
+    return true;
+  },
+
+  restoreDemoQuestions: async () => {
+    localStorage.removeItem('bsm_custom_questions_overridden');
+    localStorage.removeItem('bsm_custom_questions');
     return true;
   },
 

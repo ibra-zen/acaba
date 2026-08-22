@@ -76,7 +76,10 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
   const handleDelete = async (id: string, title: string) => {
     if (window.confirm(`"#${id}: ${title}" sorusunu silmek istediğinize emin misiniz?`)) {
       await api.deleteQuestion(id);
-      setQuestions(prev => prev.filter(q => q.id !== id));
+      localStorage.setItem('bsm_custom_questions_overridden', 'true');
+      const filtered = questions.filter(q => q.id !== id);
+      localStorage.setItem('bsm_custom_questions', JSON.stringify(filtered));
+      setQuestions(filtered);
     }
   };
 
@@ -144,9 +147,10 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
         };
       });
 
-      localStorage.removeItem('bsm_all_questions_cleared');
-      localStorage.setItem('bsm_custom_questions', JSON.stringify([...questions, ...newItems]));
-      setQuestions(prev => [...prev, ...newItems]);
+      localStorage.setItem('bsm_custom_questions_overridden', 'true');
+      const updatedList = [...questions, ...newItems];
+      localStorage.setItem('bsm_custom_questions', JSON.stringify(updatedList));
+      setQuestions(updatedList);
       setImportStatus(`✅ Başarılı! ${addedCount} adet yeni soru sisteme aktarıldı.`);
       setTimeout(() => {
         setShowImportModal(false);
@@ -162,6 +166,13 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
     if (window.confirm("⚠️ TÜM SORULARI SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ?\n\nBu işlem geri alınamaz ve soru bankasındaki tüm sorular sıfırlanacaktır.")) {
       await api.clearAllQuestions();
       setQuestions([]);
+    }
+  };
+
+  const handleRestoreDemo = async () => {
+    if (window.confirm("🔄 Orjinal 1000 demo soruyu geri yüklemek istediğinize emin misiniz?")) {
+      await api.restoreDemoQuestions();
+      loadQuestions();
     }
   };
 

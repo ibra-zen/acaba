@@ -1094,6 +1094,33 @@
 
     async function fetchOrBuildPack(packId) {
       const lang = state.language || 'tr';
+
+      // 0. Özel soru bankası override edilmiş mi kontrol et
+      if (localStorage.getItem('bsm_custom_questions_overridden') === 'true') {
+        try {
+          const rawCustom = localStorage.getItem('bsm_custom_questions') || '[]';
+          const customList = JSON.parse(rawCustom);
+          if (Array.isArray(customList)) {
+            const startIdx = (packId - 1) * 100;
+            const packQuestions = customList.slice(startIdx, startIdx + 100);
+            if (packQuestions.length > 0) {
+              packCache[packId] = packQuestions.map(q => {
+                const trContent = q.translations?.[lang] || q.translations?.tr || {};
+                return {
+                  tag: `Level ${q.priority || 1}`,
+                  q: trContent.text || q.title_tr || q.q || 'Soru',
+                  opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
+                  correct: trContent.correctIndex ?? q.correctIndex ?? 0,
+                  exp: trContent.explanation || q.explanation || ''
+                };
+              });
+              savePackCache();
+              return;
+            }
+          }
+        } catch (e) {}
+      }
+
       const API_URL = `http://localhost:3001/api/questions/pack/${packId}?lang=${lang}`;
       try {
         const controller = new AbortController();
