@@ -1070,23 +1070,45 @@
 
     async function getQuestionForLevel(levelNum, qIndex) {
       try {
+        const lang = state.language || 'tr';
+        const globalIndex = (levelNum - 1) * 10 + qIndex;
+
+        // 1. Cihaz içi / Admin panelinden eklenen özel sorular var mı?
+        if (localStorage.getItem('bsm_custom_questions_overridden') === 'true') {
+          try {
+            const rawCustom = localStorage.getItem('bsm_custom_questions') || '[]';
+            const customList = JSON.parse(rawCustom);
+            if (Array.isArray(customList) && customList[globalIndex]) {
+              const q = customList[globalIndex];
+              const trContent = q.translations?.[lang] || q.translations?.tr || {};
+              return {
+                tag: `Level ${levelNum}`,
+                q: trContent.text || q.title_tr || q.q || `Soru #${globalIndex + 1}`,
+                opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
+                correct: trContent.correctIndex ?? q.correctIndex ?? 0,
+                exp: trContent.explanation || q.explanation || ''
+              };
+            }
+          } catch (e) {}
+        }
+
         const packId = Math.ceil(levelNum / 10);
         const itemIndex = ((levelNum - 1) % 10) * 10 + qIndex;
 
-        // 1. Önbellekte var mı kontrol et
+        // 2. Önbellek kontrolü
         if (packCache[packId] && packCache[packId][itemIndex] && packCache[packId][itemIndex].opts) {
           return packCache[packId][itemIndex];
         }
 
-        // 2. Önbellekte yoksa paketi yükle/üret
+        // 3. Paket yükleyici çalıştır
         await fetchOrBuildPack(packId);
 
         if (packCache[packId] && packCache[packId][itemIndex] && packCache[packId][itemIndex].opts) {
           return packCache[packId][itemIndex];
         }
 
-        // 3. Doğrudan motor fallback'i
-        return generateQuestionForLevel(levelNum, qIndex, state.language || 'tr');
+        // 4. Dinamik yerel motor
+        return generateQuestionForLevel(levelNum, qIndex, lang);
       } catch (err) {
         console.error('getQuestionForLevel hatası:', err);
         return generateQuestionForLevel(levelNum, qIndex, state.language || 'tr');
@@ -1096,41 +1118,15 @@
     async function fetchOrBuildPack(packId) {
       const lang = state.language || 'tr';
 
-      // 0. Özel soru bankası override edilmiş mi kontrol et
-      if (localStorage.getItem('bsm_custom_questions_overridden') === 'true') {
-        try {
-          const rawCustom = localStorage.getItem('bsm_custom_questions') || '[]';
-          const customList = JSON.parse(rawCustom);
-          if (Array.isArray(customList)) {
-            const startIdx = (packId - 1) * 100;
-            const packQuestions = customList.slice(startIdx, startIdx + 100);
-            if (packQuestions.length > 0) {
-              packCache[packId] = packQuestions.map(q => {
-                const trContent = q.translations?.[lang] || q.translations?.tr || {};
-                return {
-                  tag: `Level ${q.priority || 1}`,
-                  q: trContent.text || q.title_tr || q.q || 'Soru',
-                  opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
-                  correct: trContent.correctIndex ?? q.correctIndex ?? 0,
-                  exp: trContent.explanation || q.explanation || ''
-                };
-              });
-              savePackCache();
-              return;
-            }
-          }
-        } catch (e) {}
-      }
-
-      const VERCEL_API = 'https://acaba-deceo48ky-ibrazen-s-projects.vercel.app/api/questions';
-
-      // 1. CANLI VERCEL SUNUCUSUNDAN SORULARI ÇEK (Vercel Admin Panel Senkronizasyonu)
+      // 1. CANLI VERCEL SUNUCUSUNDAN SORULARI ÇEK (Statik JSON - Deployment Koruması Yok)
+      const VERCEL_API = 'https://acaba-deceo48ky-ibrazen-s-projects.vercel.app/questions.json';
       try {
         const controller = new AbortController();
         const tid = setTimeout(() => controller.abort(), 2200);
         const res = await fetch(VERCEL_API, { signal: controller.signal });
         clearTimeout(tid);
-        if (res.ok) {
+        const contentType = res.headers.get('content-type') || '';
+        if (res.ok && !contentType.includes('text/html')) {
           const customList = await res.json();
           if (Array.isArray(customList) && customList.length > 0) {
             const startIdx = (packId - 1) * 100;
@@ -1157,29 +1153,32 @@
       try {
         const res = await fetch('./questions_data.json');
         if (res.ok) {
-          const customList = await res.json();
-          if (Array.isArray(customList) && customList.length > 0) {
-            const startIdx = (packId - 1) * 100;
-            const packQuestions = customList.slice(startIdx, startIdx + 100);
-            if (packQuestions.length > 0) {
-              packCache[packId] = packQuestions.map(q => {
-                const trContent = q.translations?.[lang] || q.translations?.tr || {};
-                return {
-                  tag: `Level ${q.priority || 1}`,
-                  q: trContent.text || q.title_tr || q.q || 'Soru',
-                  opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
-                  correct: trContent.correctIndex ?? q.correctIndex ?? 0,
-                  exp: trContent.explanation || q.explanation || ''
-                };
-              });
-              savePackCache();
-              return;
+          const contentType = res.headers.get('content-type') || '';
+          if (!contentType.includes('text/html')) {
+            const customList = await res.json();
+            if (Array.isArray(customList) && customList.length > 0) {
+              const startIdx = (packId - 1) * 100;
+              const packQuestions = customList.slice(startIdx, startIdx + 100);
+              if (packQuestions.length > 0) {
+                packCache[packId] = packQuestions.map(q => {
+                  const trContent = q.translations?.[lang] || q.translations?.tr || {};
+                  return {
+                    tag: `Level ${q.priority || 1}`,
+                    q: trContent.text || q.title_tr || q.q || 'Soru',
+                    opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
+                    correct: trContent.correctIndex ?? q.correctIndex ?? 0,
+                    exp: trContent.explanation || q.explanation || ''
+                  };
+                });
+                savePackCache();
+                return;
+              }
             }
           }
         }
       } catch (e) {}
 
-      // API erişilemez ise 100 soruluk düz (flat) diziyi yerel motordan üret
+      // 3. FALLBACK: Otomatik motor
       const flatPackQuestions = [];
       const startLvl = (packId - 1) * 10 + 1;
       const endLvl = packId * 10;
