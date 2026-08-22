@@ -197,11 +197,12 @@ export const api = {
         exp = `${valB} sayısı ${valA} sayısından büyüktür.`;
       } else if (category === 7) {
         const edgeCount = (n % 4) + 3;
-        const shapes = { 3: 'Üçgen', 4: 'Kare', 5: 'Beşgen', 6: 'Altıgen' };
-        title = `Level ${lvl} - Soru ${qIdx}: Bir Düzgün ${shapes[edgeCount]} şeklinin toplam kaç kenarı vardır?`;
+        const shapes: Record<number, string> = { 3: 'Üçgen', 4: 'Kare', 5: 'Beşgen', 6: 'Altıgen' };
+        const shapeName = shapes[edgeCount] || 'Şekil';
+        title = `Level ${lvl} - Soru ${qIdx}: Bir Düzgün ${shapeName} şeklinin toplam kaç kenarı vardır?`;
         opts = [`${edgeCount - 1}`, `${edgeCount}`, `${edgeCount + 1}`, `${edgeCount + 2}`];
         cIdx = 1;
-        exp = `${shapes[edgeCount]} şeklinin tam ${edgeCount} kenarı bulunur.`;
+        exp = `${shapeName} şeklinin tam ${edgeCount} kenarı bulunur.`;
       } else if (category === 8) {
         const targetWord = colorNamesPool[n % colorNamesPool.length];
         const writtenInColor = colorNamesPool[(n + 3) % colorNamesPool.length];
