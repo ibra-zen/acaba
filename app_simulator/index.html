@@ -1063,34 +1063,41 @@
     // 📦 10'LU GRUP İSTEĞE BAĞLI PAKET YÖNETİCİSİ (ON-DEMAND PACK LOADER)
     let packCache = {};
     try {
-      packCache = JSON.parse(localStorage.getItem('bsm_cached_packs') || '{}');
+      const raw = localStorage.getItem('bsm_cached_packs');
+      if (raw) packCache = JSON.parse(raw);
     } catch (e) { packCache = {}; }
 
     async function getQuestionForLevel(levelNum, qIndex) {
-      const packId = Math.ceil(levelNum / 10);
-      const lvlOffsetInPack = (levelNum - 1) % 10;
+      try {
+        const packId = Math.ceil(levelNum / 10);
+        const itemIndex = ((levelNum - 1) % 10) * 10 + qIndex;
 
-      // 1. Önbellekte var mı kontrol et
-      if (packCache[packId] && packCache[packId][lvlOffsetInPack] && packCache[packId][lvlOffsetInPack][qIndex]) {
-        return packCache[packId][lvlOffsetInPack][qIndex];
+        // 1. Önbellekte var mı kontrol et
+        if (packCache[packId] && packCache[packId][itemIndex] && packCache[packId][itemIndex].opts) {
+          return packCache[packId][itemIndex];
+        }
+
+        // 2. Önbellekte yoksa paketi yükle/üret
+        await fetchOrBuildPack(packId);
+
+        if (packCache[packId] && packCache[packId][itemIndex] && packCache[packId][itemIndex].opts) {
+          return packCache[packId][itemIndex];
+        }
+
+        // 3. Doğrudan motor fallback'i
+        return generateQuestionForLevel(levelNum, qIndex, state.language || 'tr');
+      } catch (err) {
+        console.error('getQuestionForLevel hatası:', err);
+        return generateQuestionForLevel(levelNum, qIndex, state.language || 'tr');
       }
-
-      // 2. Önbellekte yoksa paketi indir / yükle
-      await fetchOrBuildPack(packId);
-
-      if (packCache[packId] && packCache[packId][lvlOffsetInPack] && packCache[packId][lvlOffsetInPack][qIndex]) {
-        return packCache[packId][lvlOffsetInPack][qIndex];
-      }
-
-      // 3. Fallback: Yerel soru üreteç motorundan üret
-      return generateQuestionForLevel(levelNum, qIndex);
     }
 
     async function fetchOrBuildPack(packId) {
-      const API_URL = 'http://localhost:3001/api/questions/pack/' + packId;
+      const lang = state.language || 'tr';
+      const API_URL = `http://localhost:3001/api/questions/pack/${packId}?lang=${lang}`;
       try {
         const controller = new AbortController();
-        const tid = setTimeout(() => controller.abort(), 1500);
+        const tid = setTimeout(() => controller.abort(), 1200);
         const res = await fetch(API_URL, { signal: controller.signal });
         clearTimeout(tid);
         if (res.ok) {
@@ -1098,24 +1105,21 @@
           if (data && data.questions && data.questions.length > 0) {
             packCache[packId] = data.questions;
             savePackCache();
-            showToast(`📥 Pack ${packId} (Level ${(packId-1)*10+1}-${packId*10}) soruları yüklendi!`);
             return;
           }
         }
       } catch (e) {}
 
-      // Sunucu erişilemez ise yerel motor ile bu 10'lu paketi oluştur ve önbelleğe al
-      const localPack = [];
+      // API erişilemez ise 100 soruluk düz (flat) diziyi yerel motordan üret
+      const flatPackQuestions = [];
       const startLvl = (packId - 1) * 10 + 1;
       const endLvl = packId * 10;
       for (let l = startLvl; l <= endLvl; l++) {
-        const lvlQuestions = [];
         for (let q = 0; q < 10; q++) {
-          lvlQuestions.push(generateQuestionForLevel(l, q, state.language || 'tr'));
+          flatPackQuestions.push(generateQuestionForLevel(l, q, lang));
         }
-        localPack.push(lvlQuestions);
       }
-      packCache[packId] = localPack;
+      packCache[packId] = flatPackQuestions;
       savePackCache();
     }
 
@@ -1128,23 +1132,32 @@
     function showHome() { showScreen('home'); }
 
     async function renderQuestion() {
-      document.getElementById('fb-modal').classList.remove('active');
-      const q = await getQuestionForLevel(state.currentLevel, state.idx);
+      try {
+        document.getElementById('fb-modal').classList.remove('active');
+        const q = await getQuestionForLevel(state.currentLevel, state.idx);
 
-      document.getElementById('q-tag').textContent = `${q.tag} (LEVEL ${state.currentLevel})`;
-      document.getElementById('q-text').textContent = q.q;
-      document.getElementById('footer-counter').textContent = `${state.idx + 1}/${state.total}`;
+        if (!q || !q.q || !q.opts) {
+          console.error('Soru bulunamadı:', q);
+          return;
+        }
 
-      const container = document.getElementById('opts-container');
-      container.innerHTML = '';
+        document.getElementById('q-tag').textContent = `${q.tag || 'Soru'} (LEVEL ${state.currentLevel})`;
+        document.getElementById('q-text').textContent = q.q;
+        document.getElementById('footer-counter').textContent = `${state.idx + 1}/${state.total}`;
 
-      q.opts.forEach((optText, i) => {
-        const btn = document.createElement('button');
-        btn.className = `opt-strip color-${i}`;
-        btn.textContent = optText;
-        btn.onclick = () => selectOption(i, q.correct, q.exp);
-        container.appendChild(btn);
-      });
+        const container = document.getElementById('opts-container');
+        container.innerHTML = '';
+
+        q.opts.forEach((optText, i) => {
+          const btn = document.createElement('button');
+          btn.className = `opt-strip color-${i}`;
+          btn.textContent = optText;
+          btn.onclick = () => selectOption(i, q.correct, q.exp);
+          container.appendChild(btn);
+        });
+      } catch (e) {
+        console.error('renderQuestion hatası:', e);
+      }
     }
 
     function selectOption(chosenIdx, correctIdx, expText) {
