@@ -1,5 +1,18 @@
 const BASE_URL = 'http://localhost:3001/api';
 
+const fetchWithTimeout = async (url: string, options: any = {}, timeoutMs = 1500) => {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    clearTimeout(id);
+    return response;
+  } catch (error) {
+    clearTimeout(id);
+    throw error;
+  }
+};
+
 const getHeaders = () => {
   const token = localStorage.getItem('admin_token');
   return {
@@ -11,7 +24,7 @@ const getHeaders = () => {
 export const api = {
   login: async (email: string, password: string) => {
     try {
-      const res = await fetch(`${BASE_URL}/admin/login`, {
+      const res = await fetchWithTimeout(`${BASE_URL}/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -38,7 +51,7 @@ export const api = {
 
   getDashboard: async () => {
     try {
-      const res = await fetch(`${BASE_URL}/admin/dashboard`, { headers: getHeaders() });
+      const res = await fetchWithTimeout(`${BASE_URL}/admin/dashboard`, { headers: getHeaders() });
       if (res.ok) {
         const data = await res.json();
         return {
@@ -59,7 +72,7 @@ export const api = {
 
   getQuestions: async () => {
     try {
-      const res = await fetch(`${BASE_URL}/admin/questions`, { headers: getHeaders() });
+      const res = await fetchWithTimeout(`${BASE_URL}/admin/questions`, { headers: getHeaders() });
       if (res.ok) {
         const data = await res.json();
         return data.map((q: any) => ({
@@ -245,7 +258,7 @@ export const api = {
 
   getFeedback: async () => {
     try {
-      const res = await fetch(`${BASE_URL}/admin/feedback`, { headers: getHeaders() });
+      const res = await fetchWithTimeout(`${BASE_URL}/admin/feedback`, { headers: getHeaders() });
       if (res.ok) {
         const data = await res.json();
         return data.map((f: any) => ({
@@ -268,7 +281,7 @@ export const api = {
 
   getLogs: async () => {
     try {
-      const res = await fetch(`${BASE_URL}/admin/logs`, { headers: getHeaders() });
+      const res = await fetchWithTimeout(`${BASE_URL}/admin/logs`, { headers: getHeaders() });
       if (res.ok) {
         const data = await res.json();
         return data.map((l: any) => ({
@@ -289,7 +302,7 @@ export const api = {
 
   deleteQuestion: async (id: string) => {
     try {
-      const res = await fetch(`${BASE_URL}/admin/questions/${id}`, {
+      const res = await fetchWithTimeout(`${BASE_URL}/admin/questions/${id}`, {
         method: 'DELETE',
         headers: getHeaders()
       });
@@ -301,7 +314,7 @@ export const api = {
 
   getUsers: async () => {
     try {
-      const res = await fetch(`${BASE_URL}/admin/users`, { headers: getHeaders() });
+      const res = await fetchWithTimeout(`${BASE_URL}/admin/users`, { headers: getHeaders() });
       if (res.ok) {
         const data = await res.json();
         return data;
