@@ -36,7 +36,7 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
   };
 
   const getLangIcon = (lang: string) => {
-    const icons: Record<string, string> = { tr: '🇹🇷', en: '🇺🇸', de: '🇩🇪', fr: '🇫🇷', es: '🇪🇸', zh: '🇨🇳', ru: '🇷🇺' };
+    const icons: Record<string, string> = { tr: '🇹🇷', en: '🇺🇸', ar: '🇸🇦', de: '🇩🇪', fr: '🇫🇷', es: '🇪🇸', zh: '🇨🇳', ru: '🇷🇺' };
     return icons[lang] || lang;
   };
 
@@ -152,7 +152,7 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
                         </td>
                         <td>
                           <div style={{ display: 'flex', gap: '6px', fontSize: '13px' }}>
-                            {['tr', 'en', 'de', 'fr', 'es', 'zh', 'ru'].map(lang => {
+                            {['tr', 'en', 'ar', 'de', 'fr', 'es', 'zh', 'ru'].map(lang => {
                               const st = q.translations[lang]?.status || 'missing';
                               return (
                                 <span key={lang} title={`${lang.toUpperCase()}: ${st}`}>

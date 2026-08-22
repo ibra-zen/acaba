@@ -69,6 +69,7 @@ const SCHEMA = `
     name_es TEXT,
     name_zh TEXT,
     name_ru TEXT,
+    name_ar TEXT,
     icon TEXT,
     is_active INTEGER DEFAULT 1
   );

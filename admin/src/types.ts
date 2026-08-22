@@ -5,7 +5,7 @@ export interface QuestionOption {
 }
 
 export interface QuestionTranslation {
-  language: string; // tr, en, de, fr, es, zh, ru
+  language: string; // tr, en, de, fr, es, zh, ru, ar
   text: string;
   options: QuestionOption[];
   explanation: string;

@@ -90,6 +90,7 @@ export const api = {
           translations: q.translations || {
             tr: { status: q.lang_status?.tr || 'active', text: q.title_tr, options: q.options || ['Seçenek 1', 'Seçenek 2', 'Seçenek 3', 'Seçenek 4'], correctIndex: q.correctIndex ?? 0 },
             en: { status: q.lang_status?.en || 'draft', options: ['', '', '', ''] },
+            ar: { status: q.lang_status?.ar || 'missing', options: ['', '', '', ''] },
             de: { status: 'missing', options: ['', '', '', ''] },
             fr: { status: 'missing', options: ['', '', '', ''] },
             es: { status: 'missing', options: ['', '', '', ''] },
@@ -244,6 +245,7 @@ export const api = {
         translations: {
           tr: { status: 'active', text: title, options: opts, correctIndex: cIdx },
           en: { status: 'active', text: `${title} (EN)`, options: opts, correctIndex: cIdx },
+          ar: { status: 'missing', options: ['', '', '', ''] },
           de: { status: 'missing', options: ['', '', '', ''] },
           fr: { status: 'missing', options: ['', '', '', ''] },
           es: { status: 'missing', options: ['', '', '', ''] },

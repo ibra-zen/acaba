@@ -36,11 +36,13 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ questionToEdit, onSave, onC
     es: { text: '', explanation: '', wrongMessage: '', options: ['', '', '', ''], correctIndex: 0, status: 'missing' },
     zh: { text: '', explanation: '', wrongMessage: '', options: ['', '', '', ''], correctIndex: 0, status: 'missing' },
     ru: { text: '', explanation: '', wrongMessage: '', options: ['', '', '', ''], correctIndex: 0, status: 'missing' },
+    ar: { text: '', explanation: '', wrongMessage: '', options: ['', '', '', ''], correctIndex: 0, status: 'missing' },
   });
 
   const languages = [
     { code: 'tr', label: 'Türkçe', flag: '🇹🇷' },
     { code: 'en', label: 'English', flag: '🇺🇸' },
+    { code: 'ar', label: 'العربية', flag: '🇸🇦' },
     { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
     { code: 'fr', label: 'Français', flag: '🇫🇷' },
     { code: 'es', label: 'Español', flag: '🇪🇸' },

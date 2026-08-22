@@ -501,13 +501,16 @@
 
     <!-- ===== ANA EKRAN (HOME) ===== -->
     <div id="screen-home" class="screen active">
-      <!-- User Profile Header (Nickname, Score & Leaderboard) -->
+      <!-- User Profile Header (Nickname, Score, Language & Leaderboard) -->
       <div class="user-profile-bar">
         <div class="user-nick-box" onclick="openNickModal()">
           <span>👤</span>
           <span id="user-display-name">Oyuncu</span>
           <span style="font-size: 11px; color: #757575;">✏️</span>
         </div>
+        <button class="leaderboard-icon-btn" onclick="openLangModal()" style="background: #EFF6FF; color: #1D4ED8;">
+          🌐 <span id="current-lang-flag">🇹🇷 TR</span>
+        </button>
         <div class="user-score-box" id="user-score-display">0 Puan</div>
         <button class="leaderboard-icon-btn" onclick="openLeaderboardModal()">
           🏆 Sıralama
@@ -557,6 +560,27 @@
         <p style="font-size: 13px; color: #64748B; margin-top: 4px;">Sıralamada görünecek adını seç:</p>
         <input type="text" id="nick-input" class="nick-input" placeholder="Örn: ZekaKralı" maxlength="15" />
         <button class="modal-btn" onclick="saveNickname()">KAYDET VE BAŞLA 🚀</button>
+      </div>
+    </div>
+
+    <!-- ===== DİL SEÇİM MODALI ===== -->
+    <div class="custom-modal" id="lang-modal">
+      <div class="modal-card">
+        <div style="font-size: 20px; font-weight: 900; color: #1E293B; margin-bottom: 6px;">🌐 Oyun Dilini Seç</div>
+        <p style="font-size: 13px; color: #64748B; margin-bottom: 14px;">Select Game Language / اختر لغة اللعبة:</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px;">
+          <button class="opt-strip" style="padding: 10px; font-size: 14px;" onclick="changeAppLang('tr', '🇹🇷 TR')">🇹🇷 Türkçe</button>
+          <button class="opt-strip" style="padding: 10px; font-size: 14px; background: #FFF7ED; border-color: #F97316; font-weight: 800;" onclick="changeAppLang('ar', '🇸🇦 AR')">🇸🇦 العربية</button>
+          <button class="opt-strip" style="padding: 10px; font-size: 14px;" onclick="changeAppLang('en', '🇺🇸 EN')">🇺🇸 English</button>
+          <button class="opt-strip" style="padding: 10px; font-size: 14px;" onclick="changeAppLang('de', '🇩🇪 DE')">🇩🇪 Deutsch</button>
+          <button class="opt-strip" style="padding: 10px; font-size: 14px;" onclick="changeAppLang('fr', '🇫🇷 FR')">🇫🇷 Français</button>
+          <button class="opt-strip" style="padding: 10px; font-size: 14px;" onclick="changeAppLang('es', '🇪🇸 ES')">🇪🇸 Español</button>
+          <button class="opt-strip" style="padding: 10px; font-size: 14px;" onclick="changeAppLang('zh', '🇨🇳 ZH')">🇨🇳 中文</button>
+          <button class="opt-strip" style="padding: 10px; font-size: 14px;" onclick="changeAppLang('ru', '🇷🇺 RU')">🇷🇺 Русский</button>
+        </div>
+
+        <button class="modal-btn" style="background: #64748B;" onclick="closeLangModal()">KAPAT / CLOSE</button>
       </div>
     </div>
 
@@ -881,6 +905,23 @@
         document.getElementById('nick-modal').classList.remove('active');
         showToast('👤 Rumuz kaydedildi: ' + val);
       }
+    }
+
+    function openLangModal() {
+      document.getElementById('lang-modal').classList.add('active');
+    }
+
+    function closeLangModal() {
+      document.getElementById('lang-modal').classList.remove('active');
+    }
+
+    function changeAppLang(code, label) {
+      state.language = code;
+      localStorage.setItem('bsm_lang', code);
+      const flagEl = document.getElementById('current-lang-flag');
+      if (flagEl) flagEl.textContent = label;
+      closeLangModal();
+      showToast(`🌐 Oyun dili değiştirildi: ${label}`);
     }
 
     function openReportModal() {
