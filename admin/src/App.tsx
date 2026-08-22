@@ -5,7 +5,6 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Questions from './pages/Questions';
 import QuestionForm from './pages/QuestionForm';
-import Categories from './pages/Categories';
 import Users from './pages/Users';
 import Feedback from './pages/Feedback';
 import Logs from './pages/Logs';
@@ -67,8 +66,6 @@ function App() {
             onCancel={() => setActivePage('questions')}
           />
         );
-      case 'categories':
-        return <Categories />;
       case 'users':
         return <Users />;
       case 'feedback':

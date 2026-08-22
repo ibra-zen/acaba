@@ -17,16 +17,9 @@ export interface Question {
   id: string;
   type: string;
   difficulty: 'easy' | 'medium' | 'hard';
-  categoryId: string;
   status: 'active' | 'passive';
   priority: number;
   translations: Record<string, QuestionTranslation>;
-}
-
-export interface Category {
-  id: string;
-  name: string;
-  icon: string;
 }
 
 export interface DashboardStats {

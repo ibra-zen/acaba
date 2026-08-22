@@ -22,7 +22,6 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ questionToEdit, onSave, onC
 
   // Form Temel Bilgileri
   const [questionType, setQuestionType] = useState('multiple_choice');
-  const [categoryId, setCategoryId] = useState('1');
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard'>('medium');
   const [status, setStatus] = useState<'active' | 'passive'>('active');
   const [priority, setPriority] = useState<number>(10);
@@ -54,7 +53,6 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ questionToEdit, onSave, onC
   useEffect(() => {
     if (questionToEdit) {
       setQuestionType(questionToEdit.type || 'multiple_choice');
-      setCategoryId(String(questionToEdit.categoryId || '1'));
       setDifficulty(questionToEdit.difficulty || 'medium');
       setStatus(questionToEdit.status === 'active' ? 'active' : 'passive');
       setPriority(questionToEdit.priority || 10);

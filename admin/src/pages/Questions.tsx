@@ -5,7 +5,6 @@ interface QuestionItem {
   id: string;
   type: string;
   difficulty: 'easy' | 'medium' | 'hard';
-  categoryId: string;
   status: 'active' | 'draft' | 'archive';
   priority: number;
   title_tr?: string;
@@ -136,7 +135,6 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
           id: newId,
           type: item.type || 'multiple_choice',
           difficulty: (item.difficulty || 'medium') as 'easy' | 'medium' | 'hard',
-          categoryId: '1',
           status: (item.status === 'draft' ? 'draft' : 'active') as 'active' | 'draft' | 'archive',
           priority: item.priority || 1,
           title_tr: item.translations?.tr?.text || item.text || `Soru #${newId}`,

@@ -11,7 +11,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage, setActivePage, onLogout }
     { id: 'dashboard', icon: '📊', label: 'Dashboard' },
     { id: 'questions', icon: '❓', label: 'Sorular' },
     { id: 'question-form', icon: '➕', label: 'Soru Ekle' },
-    { id: 'categories', icon: '🏷️', label: 'Kategoriler' },
     { id: 'users', icon: '👥', label: 'Kullanıcılar' },
     { id: 'feedback', icon: '💬', label: 'Geri Bildirimler' },
     { id: 'logs', icon: '📋', label: 'İşlem Logları' },

@@ -92,7 +92,6 @@ export const api = {
             id: String(q.id),
             type: q.question_type || q.type || 'multiple_choice',
             difficulty: q.difficulty || 'medium',
-            categoryId: String(q.category_id || q.categoryId || 1),
             status: q.status === 'active' ? 'active' : 'draft',
             priority: 1,
             title_tr: q.title_tr || q.text || '—',
