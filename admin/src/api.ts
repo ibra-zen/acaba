@@ -89,13 +89,13 @@ export const api = {
           wrongMessage: q.wrongMessage || '',
           translations: q.translations || {
             tr: { status: q.lang_status?.tr || 'active', text: q.title_tr, options: q.options || ['Seçenek 1', 'Seçenek 2', 'Seçenek 3', 'Seçenek 4'], correctIndex: q.correctIndex ?? 0 },
-            en: { status: q.lang_status?.en || 'draft', options: ['', '', '', ''] },
-            ar: { status: q.lang_status?.ar || 'missing', options: ['', '', '', ''] },
-            de: { status: 'missing', options: ['', '', '', ''] },
-            fr: { status: 'missing', options: ['', '', '', ''] },
-            es: { status: 'missing', options: ['', '', '', ''] },
-            zh: { status: 'missing', options: ['', '', '', ''] },
-            ru: { status: 'missing', options: ['', '', '', ''] },
+            en: { status: q.lang_status?.en || 'active', text: `${q.title_tr} (EN)`, options: q.options || [], correctIndex: q.correctIndex ?? 0 },
+            ar: { status: q.lang_status?.ar || 'active', text: `${q.title_tr} (AR)`, options: q.options || [], correctIndex: q.correctIndex ?? 0 },
+            de: { status: q.lang_status?.de || 'active', text: `${q.title_tr} (DE)`, options: q.options || [], correctIndex: q.correctIndex ?? 0 },
+            fr: { status: q.lang_status?.fr || 'active', text: `${q.title_tr} (FR)`, options: q.options || [], correctIndex: q.correctIndex ?? 0 },
+            es: { status: q.lang_status?.es || 'active', text: `${q.title_tr} (ES)`, options: q.options || [], correctIndex: q.correctIndex ?? 0 },
+            zh: { status: q.lang_status?.zh || 'active', text: `${q.title_tr} (ZH)`, options: q.options || [], correctIndex: q.correctIndex ?? 0 },
+            ru: { status: q.lang_status?.ru || 'active', text: `${q.title_tr} (RU)`, options: q.options || [], correctIndex: q.correctIndex ?? 0 }
           }
         }));
       }
@@ -245,12 +245,12 @@ export const api = {
         translations: {
           tr: { status: 'active', text: title, options: opts, correctIndex: cIdx },
           en: { status: 'active', text: `${title} (EN)`, options: opts, correctIndex: cIdx },
-          ar: { status: 'missing', options: ['', '', '', ''] },
-          de: { status: 'missing', options: ['', '', '', ''] },
-          fr: { status: 'missing', options: ['', '', '', ''] },
-          es: { status: 'missing', options: ['', '', '', ''] },
-          zh: { status: 'missing', options: ['', '', '', ''] },
-          ru: { status: 'missing', options: ['', '', '', ''] }
+          ar: { status: 'active', text: `${title} (AR)`, options: opts, correctIndex: cIdx },
+          de: { status: 'active', text: `${title} (DE)`, options: opts, correctIndex: cIdx },
+          fr: { status: 'active', text: `${title} (FR)`, options: opts, correctIndex: cIdx },
+          es: { status: 'active', text: `${title} (ES)`, options: opts, correctIndex: cIdx },
+          zh: { status: 'active', text: `${title} (ZH)`, options: opts, correctIndex: cIdx },
+          ru: { status: 'active', text: `${title} (RU)`, options: opts, correctIndex: cIdx }
         }
       });
     }
