@@ -693,7 +693,8 @@
     // 1000 ADET BENZERSİZ SORU ÜRETEÇ MOTORU (8 DİL DESTEKLİ: TR, EN, AR, DE, FR, ES, ZH, RU)
     function generateQuestionForLevel(levelNum, qIndex, langCode) {
       const lang = ['tr', 'en', 'ar', 'de', 'fr', 'es', 'zh', 'ru'].includes(langCode) ? langCode : (state.language || 'tr');
-      const n = (levelNum - 1) * 10 + qIndex;
+      const qNum1Based = typeof qIndex === 'number' ? (qIndex >= 0 ? qIndex + 1 : 1) : 1;
+      const n = (levelNum - 1) * 10 + qNum1Based;
 
       // KATEGORİ ETİKETLERİ (8 DİL)
       const TAGS = {
