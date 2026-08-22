@@ -146,6 +146,8 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
         };
       });
 
+      localStorage.removeItem('bsm_all_questions_cleared');
+      localStorage.setItem('bsm_custom_questions', JSON.stringify([...questions, ...newItems]));
       setQuestions(prev => [...prev, ...newItems]);
       setImportStatus(`✅ Başarılı! ${addedCount} adet yeni soru sisteme aktarıldı.`);
       setTimeout(() => {
@@ -155,6 +157,13 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
       }, 1800);
     } catch (e) {
       setImportStatus('❌ Geçersiz JSON formatı! Lütfen verinin doğru kopyalandığından emin olun.');
+    }
+  };
+
+  const handleClearAll = async () => {
+    if (window.confirm("⚠️ TÜM SORULARI SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ?\n\nBu işlem geri alınamaz ve soru bankasındaki tüm sorular sıfırlanacaktır.")) {
+      await api.clearAllQuestions();
+      setQuestions([]);
     }
   };
 
@@ -189,6 +198,9 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
           </p>
         </div>
         <div style={{ display: 'flex', gap: '8px' }}>
+          <button className="btn btn-danger" onClick={handleClearAll}>
+            🗑️ Tüm Soruları Sil
+          </button>
           <button className="btn btn-secondary" style={{ background: '#7C3AED', color: 'white' }} onClick={() => setShowAiModal(true)}>
             🤖 AI Prompt Al
           </button>
