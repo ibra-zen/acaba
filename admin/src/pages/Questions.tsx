@@ -81,18 +81,122 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
     }
   };
 
+  const [showAiModal, setShowAiModal] = useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
+  const [jsonInputText, setJsonInputText] = useState('');
+  const [copySuccess, setCopySuccess] = useState(false);
+  const [importStatus, setImportStatus] = useState('');
+
+  const aiPromptText = `Sen profesyonel bir Mobil Oyun Soru Tasarımcısısın. "Acaba Salak mıyım?" isimli eğlenceli, tuzaklı, şaşırtmacalı ve kafa karıştıran zeka oyunu için 20 adet TAMAMEN ÖZGÜN VE BİRBİRİNDEN FARKLI soru üret.
+
+ÖNEMLİ KURALLAR:
+1. Sorular kesinlikle matematik işlemi veya saat açısı gibi monoton tekrarlar İÇERMEMELİDİR.
+2. Görsel illüzyonlar, atasözü tuzakları, dikkat dağıtıcı kelime oyunları, komik mantık paradoksları kullanılmalıdır.
+3. Sorular Türkçe (tr), İngilizce (en) ve Arapça (ar) dillerinde hazırlanmalıdır.
+4. Tam olarak aşağıdaki JSON array formatında yanıt ver (başka metin yazma):
+
+[
+  {
+    "type": "attention",
+    "difficulty": "medium",
+    "priority": 1,
+    "translations": {
+      "tr": { "text": "KIRMIZI kelimesi MAVİ renkle yazılırsa ne okutulur?", "options": ["Kırmızı", "Mavi", "Yeşil", "Sarı"], "correctIndex": 0, "explanation": "Yazı rengine bakma! Kelime KIRMIZI okutulur." },
+      "en": { "text": "If the word RED is written in BLUE ink, what does it read?", "options": ["Red", "Blue", "Green", "Yellow"], "correctIndex": 0, "explanation": "Don't look at ink color! The word reads RED." },
+      "ar": { "text": "إذا كُتبت كلمة أحمر باللون الأزرق، فماذا تُقرأ؟", "options": ["أحمر", "أزرق", "أخضر", "أصفر"], "correctIndex": 0, "explanation": "لا تنظر للون! الكلمة تُقرأ أحمر." }
+    }
+  }
+]`;
+
+  const copyPromptToClipboard = () => {
+    navigator.clipboard.writeText(aiPromptText);
+    setCopySuccess(true);
+    setTimeout(() => setCopySuccess(false), 2500);
+  };
+
+  const handleJsonImport = () => {
+    try {
+      setImportStatus('');
+      const parsed = JSON.parse(jsonInputText);
+      if (!Array.isArray(parsed)) {
+        setImportStatus('❌ Hata: Girdiğiniz veri bir JSON dizisi (Array [...]) olmalıdır.');
+        return;
+      }
+
+      let addedCount = 0;
+      const newItems = parsed.map((item, index) => {
+        addedCount++;
+        const newId = String(questions.length + index + 1);
+        return {
+          id: newId,
+          type: item.type || 'multiple_choice',
+          difficulty: (item.difficulty || 'medium') as 'easy' | 'medium' | 'hard',
+          categoryId: '1',
+          status: (item.status === 'draft' ? 'draft' : 'active') as 'active' | 'draft' | 'archive',
+          priority: item.priority || 1,
+          title_tr: item.translations?.tr?.text || item.text || `Soru #${newId}`,
+          translations: item.translations || {
+            tr: { status: 'active', text: item.text || '', options: item.options || [], correctIndex: item.correctIndex || 0 }
+          }
+        };
+      });
+
+      setQuestions(prev => [...prev, ...newItems]);
+      setImportStatus(`✅ Başarılı! ${addedCount} adet yeni soru sisteme aktarıldı.`);
+      setTimeout(() => {
+        setShowImportModal(false);
+        setJsonInputText('');
+        setImportStatus('');
+      }, 1800);
+    } catch (e) {
+      setImportStatus('❌ Geçersiz JSON formatı! Lütfen verinin doğru kopyalandığından emin olun.');
+    }
+  };
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setJsonInputText(event.target?.result as string || '');
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  const exportToJson = () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(questions, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", `acaba_salak_miyim_sorular_${new Date().toISOString().split('T')[0]}.json`);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  };
+
   return (
     <div className="questions-page">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
         <div>
           <h1 style={{ fontSize: '24px', fontWeight: 800 }}>❓ Soru Bankası ({questions.length} Soru)</h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '14px', marginTop: '4px' }}>
-            Oyun içindeki tüm demo ve aktif soruları yönetin, çok dilli çevirilerini inceleyin.
+            Oyun içindeki tüm özgün soruları yönetin, AI prompt oluşturun veya toplu yükleyin.
           </p>
         </div>
-        <button className="btn btn-primary" onClick={onAddNew}>
-          ➕ Yeni Soru Ekle
-        </button>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button className="btn btn-secondary" style={{ background: '#7C3AED', color: 'white' }} onClick={() => setShowAiModal(true)}>
+            🤖 AI Prompt Al
+          </button>
+          <button className="btn btn-secondary" style={{ background: '#059669', color: 'white' }} onClick={() => setShowImportModal(true)}>
+            📥 JSON İçe Aktar
+          </button>
+          <button className="btn btn-secondary" onClick={exportToJson}>
+            📤 JSON Dışa Aktar
+          </button>
+          <button className="btn btn-primary" onClick={onAddNew}>
+            ➕ Yeni Soru Ekle
+          </button>
+        </div>
       </div>
 
       {/* Arama Çubuğu */}
@@ -189,6 +293,54 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
           </div>
         )}
       </div>
+
+      {/* 🤖 AI PROMPT MODALI */}
+      {showAiModal && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
+          <div className="card" style={{ width: '600px', maxWidth: '90%', padding: '24px', background: '#1E293B', color: 'white' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '8px' }}>🤖 Yapay Zeka (ChatGPT / Claude) Soru Üreteci</h2>
+            <p style={{ fontSize: '13px', color: '#94A3B8', marginBottom: '14px' }}>
+              Aşağıdaki prompt'u kopyalayıp ChatGPT veya Claude'a yapıştırın. Yapay zeka size saniyeler içinde 20 adet özgün soru üretecektir. Sonra gelen çıktıyı "JSON İçe Aktar" alanına yapıştırın.
+            </p>
+            <textarea
+              readOnly
+              style={{ width: '100%', height: '220px', background: '#0F172A', color: '#38BDF8', padding: '12px', borderRadius: '8px', border: '1px solid #334155', fontFamily: 'monospace', fontSize: '12px', marginBottom: '16px' }}
+              value={aiPromptText}
+            />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '13px', color: '#10B981', fontWeight: 700 }}>{copySuccess ? '✅ Prompt kopyalandı! Şimdi ChatGPT\'ye yapıştırın.' : ''}</span>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button className="btn btn-secondary" onClick={() => setShowAiModal(false)}>Kapat</button>
+                <button className="btn btn-primary" style={{ background: '#7C3AED' }} onClick={copyPromptToClipboard}>📋 Prompt'u Kopyala</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 📥 TOPLU JSON İÇE AKTAR MODALI */}
+      {showImportModal && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
+          <div className="card" style={{ width: '640px', maxWidth: '90%', padding: '24px', background: '#1E293B', color: 'white' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '8px' }}>📥 Toplu Soru İçe Aktar (JSON / Dosya)</h2>
+            <p style={{ fontSize: '13px', color: '#94A3B8', marginBottom: '12px' }}>
+              ChatGPT'den aldığınız JSON verisini buraya yapıştırın veya `.json` dosyanızı seçin:
+            </p>
+            <input type="file" accept=".json" onChange={handleFileUpload} style={{ marginBottom: '12px', fontSize: '13px', color: '#CBD5E1' }} />
+            <textarea
+              placeholder="[{ &quot;type&quot;: &quot;attention&quot;, &quot;translations&quot;: { &quot;tr&quot;: { &quot;text&quot;: &quot;Örnek soru?&quot;, &quot;options&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;], &quot;correctIndex&quot;: 0 } } }]"
+              style={{ width: '100%', height: '180px', background: '#0F172A', color: '#F8FAFC', padding: '12px', borderRadius: '8px', border: '1px solid #334155', fontFamily: 'monospace', fontSize: '12px', marginBottom: '12px' }}
+              value={jsonInputText}
+              onChange={e => setJsonInputText(e.target.value)}
+            />
+            {importStatus && <div style={{ fontSize: '13px', marginBottom: '12px', fontWeight: 700 }}>{importStatus}</div>}
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px' }}>
+              <button className="btn btn-secondary" onClick={() => setShowImportModal(false)}>İptal</button>
+              <button className="btn btn-primary" style={{ background: '#059669' }} onClick={handleJsonImport}>📥 İçe Aktar ve Kaydet</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
