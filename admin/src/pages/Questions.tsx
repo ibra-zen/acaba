@@ -87,23 +87,28 @@ const Questions: React.FC<QuestionsProps> = ({ onEditQuestion, onAddNew }) => {
   const [copySuccess, setCopySuccess] = useState(false);
   const [importStatus, setImportStatus] = useState('');
 
-  const aiPromptText = `Sen profesyonel bir Mobil Oyun Soru Tasarımcısısın. "Acaba Salak mıyım?" isimli eğlenceli, tuzaklı, şaşırtmacalı ve kafa karıştıran zeka oyunu için 20 adet TAMAMEN ÖZGÜN VE BİRBİRİNDEN FARKLI soru üret.
+  const aiPromptText = `Sen profesyonel bir Mobil Zeka Oyunu Soru Tasarımcısısın. "Acaba Salak mıyım?" isimli eğlenceli, dikkat tuzaklı, kafa karıştıran ve komik zeka oyunu için 1000 ADET TAMAMEN ÖZGÜN, TEKRARSIZ VE BİRBİRİNDEN FARKLI soru üret.
 
-ÖNEMLİ KURALLAR:
-1. Sorular kesinlikle matematik işlemi veya saat açısı gibi monoton tekrarlar İÇERMEMELİDİR.
-2. Görsel illüzyonlar, atasözü tuzakları, dikkat dağıtıcı kelime oyunları, komik mantık paradoksları kullanılmalıdır.
-3. Sorular Türkçe (tr), İngilizce (en) ve Arapça (ar) dillerinde hazırlanmalıdır.
-4. Tam olarak aşağıdaki JSON array formatında yanıt ver (başka metin yazma):
+ÖNEMLİ KURALLAR VE ŞARTLAR:
+1. Kesinlikle matematik işlemi veya saat açısı gibi monoton formül tekrarları İÇERMEMELİDİR.
+2. Görsel illüzyonlar, dikkat tuzakları, atasözü & deyim şaşırtmacaları, komik mantık paradoksları ve güncel hayat bilmeceleri kullanılmalıdır.
+3. Her bir soru 8 DİLDE (tr: Türkçe, en: İngilizce, ar: Arapça, de: Almanca, fr: Fransızca, es: İspanyolca, zh: Çince, ru: Rusça) tam çevirisi ve seçenekleri ile hazırlanmalıdır.
+4. Çıktı kesinlikle geçerli bir JSON array formatında olmalıdır (JSON dışında hiçbir açıklama metni yazma):
 
 [
   {
+    "priority": 1,
     "type": "attention",
     "difficulty": "medium",
-    "priority": 1,
     "translations": {
       "tr": { "text": "KIRMIZI kelimesi MAVİ renkle yazılırsa ne okutulur?", "options": ["Kırmızı", "Mavi", "Yeşil", "Sarı"], "correctIndex": 0, "explanation": "Yazı rengine bakma! Kelime KIRMIZI okutulur." },
       "en": { "text": "If the word RED is written in BLUE ink, what does it read?", "options": ["Red", "Blue", "Green", "Yellow"], "correctIndex": 0, "explanation": "Don't look at ink color! The word reads RED." },
-      "ar": { "text": "إذا كُتبت كلمة أحمر باللون الأزرق، فماذا تُقرأ؟", "options": ["أحمر", "أزرق", "أخضر", "أصفر"], "correctIndex": 0, "explanation": "لا تنظر للون! الكلمة تُقرأ أحمر." }
+      "ar": { "text": "إذا كُتبت كلمة أحمر باللون الأزرق، فماذا تُقرأ؟", "options": ["أحمر", "أزرق", "أخضر", "أصفر"], "correctIndex": 0, "explanation": "لا تنظر للون! الكلمة تُقرأ أحمر." },
+      "de": { "text": "Wenn das Wort ROT in BLAUER Farbe steht, wie wird es gelesen?", "options": ["Rot", "Blau", "Grün", "Gelb"], "correctIndex": 0, "explanation": "Lies das Wort, nicht die Farbe! Es heißt ROT." },
+      "fr": { "text": "Si le mot ROUGE est écrit en BLEU, comment se lit-il ?", "options": ["Rouge", "Bleu", "Vert", "Jaune"], "correctIndex": 0, "explanation": "Le mot se lit ROUGE !" },
+      "es": { "text": "Si la palabra ROJO se escribe en AZUL, ¿cómo se lee?", "options": ["Rojo", "Azul", "Verde", "Amarillo"], "correctIndex": 0, "explanation": "¡La palabra se lee ROJO!" },
+      "zh": { "text": "如果用蓝色书写“红色”这个词，它读作什么？", "options": ["红色", "蓝色", "绿色", "黄色"], "correctIndex": 0, "explanation": "不要看颜色！这个词读作“红色”。" },
+      "ru": { "text": "Если слово КРАСНЫЙ написано СИНИМ цветом, как оно читается?", "options": ["Красный", "Синий", "Зеленый", "Желтый"], "correctIndex": 0, "explanation": "Не смотрите на цвет! Слово читается КРАСНЫЙ." }
     }
   }
 ]`;
