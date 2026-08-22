@@ -6,6 +6,7 @@
   <title>Acaba Salak mıyım?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <script src="questions_data.js"></script>
   <style>
     /* ==================================================
        TASARIM SİSTEMİ – 100 Level (10 Gruplu), Nickname & Sıralama
@@ -1092,22 +1093,35 @@
           } catch (e) {}
         }
 
+        // 2. Dahili Gömülü Soru Bankası (window.BUILTIN_QUESTIONS_DATA)
+        if (window.BUILTIN_QUESTIONS_DATA && Array.isArray(window.BUILTIN_QUESTIONS_DATA) && window.BUILTIN_QUESTIONS_DATA[globalIndex]) {
+          const q = window.BUILTIN_QUESTIONS_DATA[globalIndex];
+          const trContent = q.translations?.[lang] || q.translations?.tr || {};
+          return {
+            tag: `Level ${levelNum}`,
+            q: trContent.text || q.title_tr || q.q || `Soru #${globalIndex + 1}`,
+            opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
+            correct: trContent.correctIndex ?? q.correctIndex ?? 0,
+            exp: trContent.explanation || q.explanation || ''
+          };
+        }
+
         const packId = Math.ceil(levelNum / 10);
         const itemIndex = ((levelNum - 1) % 10) * 10 + qIndex;
 
-        // 2. Önbellek kontrolü
+        // 3. Önbellek kontrolü
         if (packCache[packId] && packCache[packId][itemIndex] && packCache[packId][itemIndex].opts) {
           return packCache[packId][itemIndex];
         }
 
-        // 3. Paket yükleyici çalıştır
+        // 4. Paket yükleyici çalıştır
         await fetchOrBuildPack(packId);
 
         if (packCache[packId] && packCache[packId][itemIndex] && packCache[packId][itemIndex].opts) {
           return packCache[packId][itemIndex];
         }
 
-        // 4. Dinamik yerel motor
+        // 5. Dinamik yerel motor
         return generateQuestionForLevel(levelNum, qIndex, lang);
       } catch (err) {
         console.error('getQuestionForLevel hatası:', err);
