@@ -95,26 +95,44 @@ router.get('/daily', authenticateToken, (req: AuthRequest, res: Response) => {
   }
 });
 
-// 10'lu grup seviye paketi sorularını getir (On-Demand Pack Fetching)
+// 10'lu grup seviye paketi sorularını getir (On-Demand Pack Fetching - 8 Dil Destekli)
 router.get('/pack/:packId', (req: express.Request, res: Response) => {
   const packId = parseInt(req.params.packId, 10) || 1;
+  const language = (req.query.lang as string) || 'tr';
   const startLevel = (packId - 1) * 10 + 1;
   const endLevel = packId * 10;
 
   try {
-    const questions = queryAll(`
+    let questions = queryAll(`
       SELECT q.id, q.priority as level_num, qt.question_text, qt.explanation
       FROM questions q
       JOIN question_translations qt ON q.id = qt.question_id
-      WHERE q.priority >= ? AND q.priority <= ? AND qt.language_code = 'tr'
+      WHERE q.priority >= ? AND q.priority <= ? AND qt.language_code = ?
       ORDER BY q.priority ASC, q.id ASC
-    `, [startLevel, endLevel]);
+    `, [startLevel, endLevel, language]);
+
+    // Eğer o dilde çeviri yoksa Türkçe fallback yap
+    if (!questions.length) {
+      questions = queryAll(`
+        SELECT q.id, q.priority as level_num, qt.question_text, qt.explanation
+        FROM questions q
+        JOIN question_translations qt ON q.id = qt.question_id
+        WHERE q.priority >= ? AND q.priority <= ? AND qt.language_code = 'tr'
+        ORDER BY q.priority ASC, q.id ASC
+      `, [startLevel, endLevel]);
+    }
 
     const result = questions.map(q => {
-      const options = queryAll(
+      let options = queryAll(
         'SELECT option_text, is_correct FROM question_options WHERE question_id = ? AND language_code = ? ORDER BY id ASC',
-        [q.id, 'tr']
+        [q.id, language]
       );
+      if (!options.length) {
+        options = queryAll(
+          'SELECT option_text, is_correct FROM question_options WHERE question_id = ? AND language_code = ? ORDER BY id ASC',
+          [q.id, 'tr']
+        );
+      }
       const opts = options.map(o => o.option_text);
       const correctIndex = options.findIndex(o => o.is_correct === 1);
       return {
@@ -130,6 +148,7 @@ router.get('/pack/:packId', (req: express.Request, res: Response) => {
 
     res.json({
       packId,
+      language,
       startLevel,
       endLevel,
       questionsCount: result.length,

@@ -690,85 +690,107 @@
       { rank: 10, name: 'HızlıZeka', score: 620, level: 7 }
     ];
 
-    // 1000 ADET BENZERSİZ SORU ÜRETEÇ MOTORU (Başlangıçta Aptalca, Basit & Eğlenceli Sorular)
-    function generateQuestionForLevel(levelNum, qIndex) {
+    // 1000 ADET BENZERSİZ SORU ÜRETEÇ MOTORU (8 DİL DESTEKLİ: TR, EN, AR, DE, FR, ES, ZH, RU)
+    function generateQuestionForLevel(levelNum, qIndex, langCode) {
+      const lang = ['tr', 'en', 'ar', 'de', 'fr', 'es', 'zh', 'ru'].includes(langCode) ? langCode : (state.language || 'tr');
       const n = (levelNum - 1) * 10 + qIndex;
 
-      let tag = '🌱 Başlangıç';
-      if (levelNum > 80) tag = '👑 Şampiyon';
-      else if (levelNum > 60) tag = '🎓 Uzman';
-      else if (levelNum > 40) tag = '⚡ İleri Zeka';
-      else if (levelNum > 20) tag = '⭐ Orta';
-      else if (levelNum > 10) tag = '🌿 Isınma';
+      // KATEGORİ ETİKETLERİ (8 DİL)
+      const TAGS = {
+        tr: ['🌱 Başlangıç', '🌿 Isınma', '⭐ Orta', '⚡ İleri Zeka', '🎓 Uzman', '👑 Şampiyon'],
+        en: ['🌱 Beginner', '🌿 Warmup', '⭐ Medium', '⚡ Advanced', '🎓 Expert', '👑 Champion'],
+        ar: ['🌱 مبتدئ', '🌿 إحماء', '⭐ متوسط', '⚡ متقدم', '🎓 خبير', '👑 بطل'],
+        de: ['🌱 Anfänger', '🌿 Aufwärmen', '⭐ Mittel', '⚡ Fortgeschritten', '🎓 Experte', '👑 Champion'],
+        fr: ['🌱 Débutant', '🌿 Échauffement', '⭐ Moyen', '⚡ Avancé', '🎓 Expert', '👑 Champion'],
+        es: ['🌱 Principiante', '🌿 Calentamiento', '⭐ Medio', '⚡ Avanzado', '🎓 Experto', '👑 Campeón'],
+        zh: ['🌱 初学者', '🌿 热身', '⭐ 中等', '⚡ 高级', '🎓 专家', '👑 冠军'],
+        ru: ['🌱 Новичок', '🌿 Разминка', '⭐ Средний', '⚡ Продвинутый', '🎓 Эксперт', '👑 Чемпион']
+      };
 
-      // 🎯 İLK 5 LEVEL İÇİN ÖZEL APTALCA, BASİT VE EĞLENCELİ BAŞLANGIÇ SORULARI
-      const WARMUP_STUPID_QUESTIONS = [
-        // LEVEL 1 (1-10)
-        { q: 'Şu an ekranındaki bu testi oynuyor musun?', opts: ['Evet', 'Hayır', 'Uykudayım', 'Bilmiyorum'], c: 0, exp: 'Testi oynadığına göre cevap Evet!' },
-        { q: 'Aşağı gitmek için asansörde hangi düğmeye basarsın?', opts: ['Yukarı ↑', 'Aşağı ↓', 'Sağ →', 'Sol ←'], c: 1, exp: 'Aşağı gitmek için Aşağı butonuna basılır!' },
-        { q: 'KIRMIZI kelimesi MAVİ renkle yazılırsa ne okutulur?', opts: ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı'], c: 0, exp: 'Yazı rengine bakma! Kelime KIRMIZI okutulur.' },
-        { q: 'Bir elma ağacında kaç tane muz yetişir?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Elma ağacında muz yetişmez!' },
-        { q: 'Aşağıdakilerden hangisi yenmeyen bir şeydir?', opts: ['Elma', 'Armut', 'Masa', 'Çilek'], c: 2, exp: 'Masa mobilyadır, yenmez!' },
-        { q: '1 kg demir mi daha ağırdır, 1 kg pamuk mu?', opts: ['Demir', 'Pamuk', 'İkisi Eşit', 'Tartmak lazım'], c: 2, exp: 'İkisi de 1 kg! Ağırlıkları eşittir.' },
-        { q: 'Yanlış olan işlemi seçin:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8 olmalıdır, 9 yanlış!' },
-        { q: 'Şifre: 1453. Hangisi doğru şifredir?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'Doğru şifre 1453 idi.' },
-        { q: 'Ahmet\'in babası Ali\'nin oğludur. Ali Ahmet\'in nesi olur?', opts: ['Babası', 'Amcası', 'Dedesi', 'Dayısı'], c: 2, exp: 'Ali, Ahmet\'in dedesidir!' },
-        { q: 'Ocak ayında 28 gün vardır. Diğer aylarda kaç gün vardır?', opts: ['Hiçbirinde yok', 'Hepsinde 28 gün var', 'Sadece 30 ve 31', 'Bilmiyorum'], c: 1, exp: 'Tüm aylarda en az 28 gün vardır!' },
+      const tagList = TAGS[lang] || TAGS.tr;
+      let tag = tagList[0];
+      if (levelNum > 80) tag = tagList[5];
+      else if (levelNum > 60) tag = tagList[4];
+      else if (levelNum > 40) tag = tagList[3];
+      else if (levelNum > 20) tag = tagList[2];
+      else if (levelNum > 10) tag = tagList[1];
 
-        // LEVEL 2 (11-20)
-        { q: 'Köpekler miyavlar mı?', opts: ['Evet', 'Hayır', 'Vıraklamaz', 'Öter'], c: 1, exp: 'Köpekler havlar!' },
-        { q: 'Bana bilerek YANLIŞ cevap ver: 2+2 kaçtır?', opts: ['4', '5', 'İki', 'Dört'], c: 1, exp: 'Soru sizden YANLIŞ cevap istedi, 5 yanlış cevaptır!' },
-        { q: 'Elektrikli tren güneye giderken dumanı nereye tüter?', opts: ['Güneye', 'Kuzeye', 'Dumanı yoktur', 'Doğuya'], c: 2, exp: 'Elektrikli tren duman çıkarmaz!' },
-        { q: 'Bir yarışta 2. olan kişiyi geçersen kaçıncı olursun?', opts: ['1.', '2.', '3.', 'Sonuncu'], c: 1, exp: '2. olanı geçersen 2. olursun!' },
-        { q: 'Doktor 3 hap verdi, yarım saatte bir alacaksın. Kaç saat sürer?', opts: ['1.5 saat', '1 saat', '2 saat', '3 saat'], c: 1, exp: '0. dk, 30. dk, 60. dk. Toplam 1 saat sürer!' },
-        { q: 'Gece saat 12\'de yağmur yağıyor. 72 saat sonra Güneş açabilir mi?', opts: ['Evet', 'Hayır', 'Gece güneş açmaz', '%50'], c: 1, exp: '72 saat = 3 gün. Yine gece 12 olur, Güneş açamaz!' },
-        { q: 'Boş bir çuvala kaç tane elma koyabilirsin?', opts: ['1', 'Sonsuz', 'Dolana kadar', '10'], c: 0, exp: '1 elma koyduktan sonra çuval artık boş değildir!' },
-        { q: 'Hangi ay 28 gün çeker?', opts: ['Sadece Şubat', 'Hiçbiri', 'Tüm aylar', 'Ocak ve Mart'], c: 2, exp: 'Tüm ayların içinde 28 gün vardır!' },
-        { q: 'Su kaç derecede kaynar?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'Su 100 derecede kaynar.' },
-        { q: 'Bir elmanın yarısı neye benzer?', opts: ['Diğer yarısına', 'Armuda', 'Çileğe', 'Portakala'], c: 0, exp: 'Elmanın yarısı diğer yarısına benzer!' },
+      // 🎯 İLK 5 LEVEL İÇİN 8 DİLDE EĞLENCELİ BAŞLANGIÇ SORULARI (WARMUP)
+      const WARMUP = {
+        tr: [
+          { q: 'Şu an ekranındaki bu testi oynuyor musun?', opts: ['Evet', 'Hayır', 'Uykudayım', 'Bilmiyorum'], c: 0, exp: 'Testi oynadığına göre cevap Evet!' },
+          { q: 'Aşağı gitmek için asansörde hangi düğmeye basarsın?', opts: ['Yukarı ↑', 'Aşağı ↓', 'Sağ →', 'Sol ←'], c: 1, exp: 'Aşağı gitmek için Aşağı butonuna basılır!' },
+          { q: 'KIRMIZI kelimesi MAVİ renkle yazılırsa ne okutulur?', opts: ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı'], c: 0, exp: 'Yazı rengine bakma! Kelime KIRMIZI okutulur.' },
+          { q: 'Bir elma ağacında kaç tane muz yetişir?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Elma ağacında muz yetişmez!' },
+          { q: 'Aşağıdakilerden hangisi yenmeyen bir şeydir?', opts: ['Elma', 'Armut', 'Masa', 'Çilek'], c: 2, exp: 'Masa mobilyadır, yenmez!' },
+          { q: '1 kg demir mi daha ağırdır, 1 kg pamuk mu?', opts: ['Demir', 'Pamuk', 'İkisi Eşit', 'Tartmak lazım'], c: 2, exp: 'İkisi de 1 kg! Ağırlıkları eşittir.' },
+          { q: 'Yanlış olan işlemi seçin:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8 olmalıdır, 9 yanlış!' },
+          { q: 'Şifre: 1453. Hangisi doğru şifredir?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'Doğru şifre 1453 idi.' },
+          { q: 'Ahmet\'in babası Ali\'nin oğludur. Ali Ahmet\'in nesi olur?', opts: ['Babası', 'Amcası', 'Dedesi', 'Dayısı'], c: 2, exp: 'Ali, Ahmet\'in dedesidir!' },
+          { q: 'Ocak ayında 28 gün vardır. Diğer aylarda kaç gün vardır?', opts: ['Hiçbirinde yok', 'Hepsinde 28 gün var', 'Sadece 30 ve 31', 'Bilmiyorum'], c: 1, exp: 'Tüm aylarda en az 28 gün vardır!' },
+          { q: 'Köpekler miyavlar mı?', opts: ['Evet', 'Hayır', 'Vıraklamaz', 'Öter'], c: 1, exp: 'Köpekler havlar!' },
+          { q: 'Bana bilerek YANLIŞ cevap ver: 2+2 kaçtır?', opts: ['4', '5', 'İki', 'Dört'], c: 1, exp: 'Soru sizden YANLIŞ cevap istedi, 5 yanlış cevaptır!' },
+          { q: 'Elektrikli tren güneye giderken dumanı nereye tüter?', opts: ['Güneye', 'Kuzeye', 'Dumanı yoktur', 'Doğuya'], c: 2, exp: 'Elektrikli tren duman çıkarmaz!' },
+          { q: 'Bir yarışta 2. olan kişiyi geçersen kaçıncı olursun?', opts: ['1.', '2.', '3.', 'Sonuncu'], c: 1, exp: '2. olanı geçersen 2. olursun!' },
+          { q: 'Doktor 3 hap verdi, yarım saatte bir alacaksın. Kaç saat sürer?', opts: ['1.5 saat', '1 saat', '2 saat', '3 saat'], c: 1, exp: '0. dk, 30. dk, 60. dk. Toplam 1 saat sürer!' },
+          { q: 'Gece saat 12\'de yağmur yağıyor. 72 saat sonra Güneş açabilir mi?', opts: ['Evet', 'Hayır', 'Gece güneş açmaz', '%50'], c: 1, exp: '72 saat = 3 gün. Yine gece 12 olur, Güneş açamaz!' },
+          { q: 'Boş bir çuvala kaç tane elma koyabilirsin?', opts: ['1', 'Sonsuz', 'Dolana kadar', '10'], c: 0, exp: '1 elma koyduktan sonra çuval artık boş değildir!' },
+          { q: 'Hangi ay 28 gün çeker?', opts: ['Sadece Şubat', 'Hiçbiri', 'Tüm aylar', 'Ocak ve Mart'], c: 2, exp: 'Tüm ayların içinde 28 gün vardır!' },
+          { q: 'Su kaç derecede kaynar?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'Su 100 derecede kaynar.' },
+          { q: 'Bir elmanın yarısı neye benzer?', opts: ['Diğer yarısına', 'Armuda', 'Çileğe', 'Portakala'], c: 0, exp: 'Elmanın yarısı diğer yarısına benzer!' }
+        ],
+        en: [
+          { q: 'Are you playing this test on your screen right now?', opts: ['Yes', 'No', 'Asleep', 'Don\'t know'], c: 0, exp: 'Since you are playing, the answer is Yes!' },
+          { q: 'Which button do you press in an elevator to go down?', opts: ['Up ↑', 'Down ↓', 'Right →', 'Left ←'], c: 1, exp: 'Press Down to go down!' },
+          { q: 'If the word RED is written in BLUE color, what is read?', opts: ['Red', 'Blue', 'Green', 'Yellow'], c: 0, exp: 'Don\'t look at color! The word reads RED.' },
+          { q: 'How many bananas grow on an apple tree?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Bananas don\'t grow on apple trees!' },
+          { q: 'Which of the following is inedible?', opts: ['Apple', 'Pear', 'Table', 'Strawberry'], c: 2, exp: 'A table is furniture, not food!' },
+          { q: 'Which is heavier: 1 kg of iron or 1 kg of cotton?', opts: ['Iron', 'Cotton', 'Both Equal', 'Need scale'], c: 2, exp: 'Both are 1 kg! They weigh the same.' },
+          { q: 'Select the incorrect math equation:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8, so 9 is wrong!' },
+          { q: 'Password: 1453. Which is the correct password?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'The password was 1453.' },
+          { q: 'Alex\'s father is John\'s son. Who is John to Alex?', opts: ['Father', 'Uncle', 'Grandfather', 'Brother'], c: 2, exp: 'John is Alex\'s grandfather!' },
+          { q: 'January has 28 days. How many days do other months have?', opts: ['None', 'All have at least 28', 'Only 30 & 31', 'Don\'t know'], c: 1, exp: 'All months have at least 28 days!' },
+          { q: 'Do dogs meow?', opts: ['Yes', 'No', 'Quack', 'Sing'], c: 1, exp: 'Dogs bark, they don\'t meow!' },
+          { q: 'GIVE ME A WRONG ANSWER: What is 2+2?', opts: ['4', '5', 'Two', 'Four'], c: 1, exp: 'The question asked for a WRONG answer, so 5 is correct!' },
+          { q: 'An electric train travels south. Where does the smoke blow?', opts: ['South', 'North', 'No smoke', 'East'], c: 2, exp: 'Electric trains produce no smoke!' },
+          { q: 'If you overtake the 2nd person in a race, what place are you in?', opts: ['1st', '2nd', '3rd', 'Last'], c: 1, exp: 'Overtaking 2nd place puts you in 2nd place!' },
+          { q: 'A doctor gives 3 pills to take every 30 mins. How long does it last?', opts: ['1.5 hours', '1 hour', '2 hours', '3 hours'], c: 1, exp: '0 min, 30 min, 60 min. Total 1 hour!' },
+          { q: 'Raining at 12 midnight. Can Sun shine in 72 hours?', opts: ['Yes', 'No', 'No Sun at night', '50%'], c: 1, exp: '72 hours = 3 days. It will still be midnight!' },
+          { q: 'How many apples can you put into an empty sack?', opts: ['1', 'Infinite', 'Until full', '10'], c: 0, exp: 'After 1 apple, the sack is no longer empty!' },
+          { q: 'Which month has 28 days?', opts: ['February only', 'None', 'All months', 'Jan & Mar'], c: 2, exp: 'All months contain 28 days!' },
+          { q: 'At what temperature does water boil?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'Water boils at 100 °C.' },
+          { q: 'What does half an apple look like?', opts: ['The other half', 'A pear', 'A strawberry', 'An orange'], c: 0, exp: 'Half an apple looks like the other half!' }
+        ],
+        ar: [
+          { q: 'هل تلعب هذا الاختبار على شاشتك الآن؟', opts: ['نعم', 'لا', 'نائم', 'لا أعلم'], c: 0, exp: 'بما أنك تلعب الآن، فالإجابة هي نعم!' },
+          { q: 'أيها الضغط في المصعد للنزول إلى الأسفل؟', opts: ['أعلى ↑', 'أسفل ↓', 'يمين →', 'يسار ←'], c: 1, exp: 'اضغط أسفل للنزول!' },
+          { q: 'إذا كُتبت كلمة ألماني باللون الأزرق، فماذا تُقرأ؟', opts: ['أحمر', 'أزرق', 'أخضر', 'أصفر'], c: 0, exp: 'لا تنظر للون! الكلمة تُقرأ أحمر.' },
+          { q: 'كم عدد الموز الذي ينمو على شجرة التفاح؟', opts: ['0', '10', '100', '1'], c: 0, exp: 'الموز لا ينمو على شجر التفاح!' },
+          { q: 'أي مما يلي غير قابل للأكل؟', opts: ['تفاح', 'كمثرى', 'طاولة', 'فراولة'], c: 2, exp: 'الطاولة أثاث وليست طعاماً!' },
+          { q: 'أيهما أثقل: 1 كجم حديد أم 1 كجم قطن؟', opts: ['الحديد', 'القطن', 'متساويان', 'يحتاج وزن'], c: 2, exp: 'كلاهما 1 كجم! الوزن متساوي.' },
+          { q: 'اختر العملية الحسابية الخاطئة:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8 فالإجابة 9 خاطئة!' },
+          { q: 'كلمة المرور: 1453. أيها الصحيح؟', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'كلمة المرور الصحيحة هي 1453.' },
+          { q: 'والد أحمد هو ابن علي. ماذا يكون علي لأحمد؟', opts: ['والده', 'عمه', 'جده', 'أخوه'], c: 2, exp: 'علي هو جد أحمد!' },
+          { q: 'شهر يناير فيه 28 يوماً. كم يوماً في بقية الأشهر؟', opts: ['لا يوجد', 'جميعها فيها 28 يوماً', 'فقط 30 و 31', 'لا أعلم'], c: 1, exp: 'جميع الأشهر تحوي على الأقل 28 يوماً!' },
+          { q: 'هل تموء الكلاب؟', opts: ['نعم', 'لا', 'تغرد', 'تسبح'], c: 1, exp: 'الكلاب تنبح ولا تموء!' },
+          { q: 'أعطني إجابة خاطئة: كم 2+2؟', opts: ['4', '5', 'اثنان', 'أربعة'], c: 1, exp: 'طلب السؤال إجابة خاطئة، لذا 5 صحيحة!' },
+          { q: 'قطار كهربائي يسير جنوباً، أين يتجه دخانه؟', opts: ['جنوباً', 'شمالاً', 'ليس له دخان', 'شرقاً'], c: 2, exp: 'القطار الكهربائي لا يخرج دخاناً!' },
+          { q: 'إذا تجاوزت المتسابق الثاني في السباق، فما مركزك؟', opts: ['الأول', 'الثاني', 'الثالث', 'الأخير'], c: 1, exp: 'تجاوز الثاني يجعلك في المركز الثاني!' },
+          { q: 'وصف الطبيب 3 حبات كل نصف ساعة حبة. كم تستغرق؟', opts: ['ساعة ونصف', 'ساعة واحدة', 'ساعتان', '3 ساعات'], c: 1, exp: '0 د، 30 د، 60 د. المجموع ساعة واحدة!' },
+          { q: 'تمطر عند منتصف الليل. هل تشرق الشمس بعد 72 ساعة؟', opts: ['نعم', 'لا', 'لا شمس ليلاً', '%50'], c: 1, exp: '72 ساعة = 3 أيام. سيكون منتصف الليل مجدداً!' },
+          { q: 'كم تفاحة يمكنك وضعها في كيس فارغ؟', opts: ['1', 'لانهاية', 'حتى يمتلئ', '10'], c: 0, exp: 'بعد تفاحة واحدة لا يعود الكيس فارغاً!' },
+          { q: 'أي شهر فيه 28 يوماً؟', opts: ['فبراير فقط', 'لا يوجد', 'جميع الأشهر', 'يناير ومارس'], c: 2, exp: 'جميع الأشهر تحتوي على 28 يوماً!' },
+          { q: 'في أي درجة يغلي الماء؟', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'يغلي الماء عند 100 درجة مئوية.' },
+          { q: 'ماذا يشبه نصف التفاحة؟', opts: ['النصف الآخر', 'كمثرى', 'فراولة', 'برتقال'], c: 0, exp: 'يشبه النصف الآخر من التفاحة!' }
+        ]
+      };
 
-        // LEVEL 3 (21-30)
-        { q: 'Gözlerin kapalıyken kitap okuyabilir misin?', opts: ['Evet', 'Hayır', 'Uykuda', 'Belki'], c: 1, exp: 'Gözler kapalıyken okunamaz!' },
-        { q: 'Hangisi daha sıcaktır?', opts: ['Güneş', 'Buz', 'Kar', 'Dondurma'], c: 0, exp: 'Güneş en sıcaktır.' },
-        { q: 'Tavuk mu yumurtadan çıkar, yumurta mı tavuktan?', opts: ['İkisi de', 'Hiçbiri', 'Sadece Horoz', 'Kuş'], c: 0, exp: 'İkisi de birbirini takip eden döngüdür!' },
-        { q: 'Hangisi suda yüzer ama ıslanmaz?', opts: ['Gölge', 'Kedi', 'Taş', 'Kağıt'], c: 0, exp: 'Gölge suda ıslanmaz!' },
-        { q: '5 dakikada 5 yumurta pişiyorsa, 10 yumurta kaç dakikada pişer?', opts: ['5 dk', '10 dk', '15 dk', '50 dk'], c: 0, exp: 'Aynı tencerede hepsi 5 dakikada pişer!' },
-        { q: 'Bir adamın 17 koyunu vardı, biri hariç hepsi öldü. Kaç koyunu kaldı?', opts: ['0', '1', '16', '17'], c: 1, exp: 'Biri hariç hepsi öldüyse 1 koyun kalmıştır!' },
-        { q: '3 elmanın 2 tanesini alırsan elinde kaç elma olur?', opts: ['1', '2', '3', '0'], c: 1, exp: 'Aldığın 2 elma elindedir!' },
-        { q: 'Karanlık odada kibrit, mum ve gaz lambası var. Önce hangisini yakarsın?', opts: ['Mum', 'Gaz lambası', 'Kibrit', 'Sobayı'], c: 2, exp: 'Önce kibriti yakman gerekir!' },
-        { q: 'Gece saat 3\'te uyudun, alarmı 9\'a kurdun. Kaç saat uyursun?', opts: ['6 saat', '9 saat', '12 saat', '3 saat'], c: 0, exp: '9 - 3 = 6 saat uyursun!' },
-        { q: 'İki anne ve iki kız 3 elmayı eşit paylaşır. Nasıl?', opts: ['Büyükanne, Anne ve Kızdır', 'İmkansız', 'Çalınmıştır', 'Elma büyüktür'], c: 0, exp: 'Büyükanne, anne ve kız toplam 3 kişidir!' },
+      const warmupList = WARMUP[lang] || WARMUP.en || WARMUP.tr;
 
-        // LEVEL 4 (31-40)
-        { q: 'Salatalık bir meyve midir yoksa sebze mi?', opts: ['Sebze', 'Meyve', 'Ot', 'Çiçek'], c: 1, exp: 'Botanik olarak salatalık çekirdekli bir meyvedir!' },
-        { q: 'Hangisi uzadıkça kısalır?', opts: ['Ömür', 'İp', 'Saç', 'Yol'], c: 0, exp: 'Yaşadıkça ömür kısalır!' },
-        { q: 'Kırılmadan kullanılmayan şey nedir?', opts: ['Yumurta', 'Ceviz', 'Ayna', 'Cam'], c: 0, exp: 'Yumurta kırılmadan kullanılamaz.' },
-        { q: 'Deniz suyu doğrudan içilir mi?', opts: ['Tuzludur, içilmez', 'İçilir', 'Şekerlidir', 'Lezzetlidir'], c: 0, exp: 'Deniz suyu çok tuzlu olduğu için içilmez.' },
-        { q: 'Bir terzi 10 metrelik kumaşı her gün 1 metre keser. Kaç günde biter?', opts: ['10 gün', '9 gün', '8 gün', '11 gün'], c: 1, exp: '9. gün son kesişte 2 parça birden çıkar!' },
-        { q: 'Düz çizgide 3 karınca yürüyor. Son karınca dairesel yürüdüğünü söyler. Nasıl?', opts: ['Dairede yürüyorlardır', 'Yalan söylüyordur', 'Görmüyordur', 'Konuşamaz'], c: 0, exp: 'Daire şeklinde yürüdükleri için son karınca önündekileri görür!' },
-        { q: 'Görünmeyen adam aynaya bakarsa ne görür?', opts: ['Aynayı', 'Kendisini', 'Duvarı', 'Hiçbir şey'], c: 0, exp: 'Aynanın kendisini görür!' },
-        { tag: '🏆 Şampiyon', q: 'Kibrit kutusunda 0 kibrit var. Kaç kibrit yakabilirsin?', opts: ['0', '1', '10', 'Sonsuz'], c: 0, exp: 'Kibrit yoksa yakamazsın!' },
-        { q: 'Hangisi Türkçe alfabenin ilk harfidir?', opts: ['A', 'B', 'Z', 'C'], c: 0, exp: 'Alfabenin ilk harfi A\'dır.' },
-        { q: 'Bana YANLIŞ cevap ver: Köpek havlar mı?', opts: ['Evet', 'Hayır', 'Havlar', 'Doğru'], c: 1, exp: 'Soru sizden YANLIŞ cevap istiyordu!' },
-
-        // LEVEL 5 (41-50)
-        { q: 'Ağzı var ama konuşmaz, yatağı var ama uyumaz. Nedir?', opts: ['Nehir', 'Masa', 'Kuyu', 'Kilit'], c: 0, exp: 'Nehrin yatağı ve ağzı vardır!' },
-        { q: 'Hangi soruya asla "Evet" denemez?', opts: ['Uyuya kaldın mı?', 'Aç mısın?', 'Hazır mısın?', 'Geldin mi?'], c: 0, exp: 'Uyuya kaldıysanız Evet diyemezsiniz!' },
-        { q: 'İleri giden saat geri kalır mı?', opts: ['Evet', 'Hayır', 'Pil biterse', 'Bazen'], c: 1, exp: 'İleri giden saat öne geçer!' },
-        { q: 'Bir otobüste 10 kişi var. 3 indi, 5 bindi. Kaç kişi var?', opts: ['8', '10', '12', '15'], c: 2, exp: '10 - 3 + 5 = 12!' },
-        { q: '1 düzine kaç adettir?', opts: ['10', '12', '15', '20'], c: 1, exp: '1 düzine 12 tanedir.' },
-        { q: '1 deste kaç adettir?', opts: ['10', '12', '15', '20'], c: 0, exp: '1 deste 10 tanedir.' },
-        { q: 'Hangisi hem canlıdır hem yeşildir?', opts: ['Ağaç', 'Taş', 'Demir', 'Plastik'], c: 0, exp: 'Ağaç canlı ve yeşildir.' },
-        { q: 'Siyah kedi karanlık sokakta siyah arabadan nasıl kaçar?', opts: ['Gündüz vakti olduğu için', 'Kaçamaz', 'Uçar', 'Farlar açıktır'], c: 0, exp: 'Çünkü havalar gündüzdür!' },
-        { q: 'Türkiye\'nin başkenti neresidir?', opts: ['Ankara', 'İstanbul', 'İzmir', 'Bursa'], c: 0, exp: 'Ankara başkentimizdir.' },
-        { q: 'Tebrikler! 5 Level tamamlandı. Ben Salak mıyım sorusunun cevabı sence nedir?', opts: ['Zekiyim! 🧠', 'Salak', 'Bilmiyorum', 'Belki'], c: 0, exp: 'Harika! Sen tam bir Zeka Avcısısın!' }
-      ];
-
-      // Eğer ilk 50 soru içindeyse (Level 1 - 5):
-      if (n <= WARMUP_STUPID_QUESTIONS.length) {
-        const item = WARMUP_STUPID_QUESTIONS[n - 1];
+      if (n <= warmupList.length) {
+        const item = warmupList[n - 1];
         return {
-          tag: `🌱 Level ${levelNum} (Aptalca & Eğlenceli)`,
+          tag: `${tag} (Level ${levelNum})`,
           q: `[L${levelNum}-S${qIndex}] ${item.q}`,
           opts: item.opts,
           correct: item.c,
@@ -776,92 +798,71 @@
         };
       }
 
-      // LEVEL 6'DAN LEVEL 100'E KADAR KADEMELİ ZORLAŞAN 1000 BENZERSİZ SORU
-      let qText = '';
-      let opts = [];
-      let correct = 0;
-      let exp = '';
-
+      // KATEGORİK DİNAMİK SORU MOTORU (8 DİL)
       const category = (n - 1) % 10;
+      let qText = '', opts = [], correct = 0, exp = '';
 
       if (category === 0) {
-        const base = n * 7 + 13;
-        const mult = (n % 5) + 2;
-        const ans = base * mult;
-        qText = `[L${levelNum}-S${qIndex}] ${base} × ${mult} işleminin sonucu kaçtır?`;
+        const base = n * 7 + 13, mult = (n % 5) + 2, ans = base * mult;
+        correct = 0;
         opts = [`${ans}`, `${ans + 4}`, `${ans - 6}`, `${ans + 12}`];
-        correct = 0;
-        exp = `${base} x ${mult} = ${ans} eder.`;
+        if (lang === 'en') { qText = `[L${levelNum}-Q${qIndex}] What is ${base} × ${mult}?`; exp = `${base} x ${mult} = ${ans}`; }
+        else if (lang === 'ar') { qText = `[L${levelNum}-S${qIndex}] ما هي نتيجة ${base} × ${mult}؟`; exp = `${base} × ${mult} = ${ans}`; }
+        else if (lang === 'de') { qText = `[L${levelNum}-F${qIndex}] Was ist ${base} × ${mult}?`; exp = `${base} x ${mult} = ${ans}`; }
+        else if (lang === 'fr') { qText = `[L${levelNum}-Q${qIndex}] Quel est le résultat de ${base} × ${mult} ?`; exp = `${base} x ${mult} = ${ans}`; }
+        else if (lang === 'es') { qText = `[L${levelNum}-P${qIndex}] ¿Cuánto es ${base} × ${mult}?`; exp = `${base} x ${mult} = ${ans}`; }
+        else if (lang === 'zh') { qText = `[L${levelNum}-Q${qIndex}] ${base} × ${mult} 等于多少？`; exp = `${base} × ${mult} = ${ans}`; }
+        else if (lang === 'ru') { qText = `[L${levelNum}-V${qIndex}] Сколько будет ${base} × ${mult}?`; exp = `${base} x ${mult} = ${ans}`; }
+        else { qText = `[L${levelNum}-S${qIndex}] ${base} × ${mult} işleminin sonucu kaçtır?`; exp = `${base} x ${mult} = ${ans} eder.`; }
       } else if (category === 1) {
-        const words = ['SALAKLIK', 'ZEKASIZ', 'ŞAŞIRTMACA', 'DİKKATLİ', 'DÜŞÜNCE', 'MANTIKSIZ', 'PROBLEM', 'KAYITSIZ', 'KAZANAN', 'ŞAMPİYON', 'GELİŞİM', 'ÜSTÜNTEK', 'YARATICI', 'MÜKEMMEL', 'BİLGİSAYAR', 'TELEFON', 'TÜRKİYE', 'İSTANBUL', 'ANKARA', 'ELEKTRONİK'];
-        const w = words[(n * 3) % words.length] + (n > 500 ? ' TESTİ' : '');
+        const wordPools = {
+          tr: ['SALAKLIK', 'ZEKASIZ', 'PROBLEM', 'TELEFON', 'İSTANBUL'],
+          en: ['STUPIDITY', 'BRAINLESS', 'PROBLEM', 'COMPUTER', 'TELEPHONE'],
+          ar: ['ذكاء', 'مشكلة', 'كمبيوتر', 'اختبار', 'هاتف'],
+          de: ['SCHLUMPFI', 'PROBLEM', 'COMPUTER', 'TELEFON', 'LOGIK'],
+          fr: ['STUPIDITE', 'PROBLEME', 'ORDINATEUR', 'TELEPHONE', 'LOGIQUE'],
+          es: ['ESTUPIDEZ', 'PROBLEMA', 'COMPUTADORA', 'TELEFONO', 'LOGICA'],
+          zh: ['智力测试', '问题', '电脑', '电话', '逻辑'],
+          ru: ['ГЛУПОСТЬ', 'ПРОБЛЕМА', 'КОМПЬЮТЕР', 'ТЕЛЕФОН', 'ЛОГИКА']
+        };
+        const pool = wordPools[lang] || wordPools.tr;
+        const w = pool[n % pool.length] + (n > 500 ? ' TEST' : '');
         const len = w.replace(/\s/g, '').length;
-        qText = `[L${levelNum}-S${qIndex}] "${w}" kelimesinde tam kaç harf vardır?`;
+        correct = 1;
         opts = [`${len - 2}`, `${len}`, `${len + 1}`, `${len + 3}`];
-        correct = 1;
-        exp = `"${w}" kelimesinde tam ${len} adet harf mevcuttur.`;
+        if (lang === 'en') { qText = `[L${levelNum}-Q${qIndex}] How many letters are in "${w}"?`; exp = `Word "${w}" has ${len} letters.`; }
+        else if (lang === 'ar') { qText = `[L${levelNum}-S${qIndex}] كم عدد الحروف في كلمة "${w}"؟`; exp = `كلمة "${w}" تحتوي على ${len} أحرف.`; }
+        else if (lang === 'de') { qText = `[L${levelNum}-F${qIndex}] Wie viele Buchstaben hat "${w}"?`; exp = `"${w}" hat ${len} Buchstaben.`; }
+        else if (lang === 'fr') { qText = `[L${levelNum}-Q${qIndex}] Combien de lettres contient "${w}" ?`; exp = `Le mot "${w}" contient ${len} lettres.`; }
+        else if (lang === 'es') { qText = `[L${levelNum}-P${qIndex}] ¿Cuántas letras tiene "${w}"?`; exp = `La palabra "${w}" tiene ${len} letras.`; }
+        else if (lang === 'zh') { qText = `[L${levelNum}-Q${qIndex}] 词语 "${w}" 中有多少个字？`; exp = `"${w}" 共有 ${len} 个字。`; }
+        else if (lang === 'ru') { qText = `[L${levelNum}-V${qIndex}] Сколько букв в слове "${w}"?`; exp = `В слове "${w}" ровно ${len} букв.`; }
+        else { qText = `[L${levelNum}-S${qIndex}] "${w}" kelimesinde tam kaç harf vardır?`; exp = `"${w}" kelimesinde tam ${len} adet harf mevcuttur.`; }
       } else if (category === 2) {
-        const numA = (n % 14) + 3;
-        const numB = (n % 9) + 4;
-        const sum = numA + numB;
-        const wrongAns = sum + 3;
-        qText = `[L${levelNum}-S${qIndex}] BANA YANLIŞ CEVAP VER: ${numA} + ${numB} kaçtır?`;
+        const numA = (n % 14) + 3, numB = (n % 9) + 4, sum = numA + numB, wrongAns = sum + 3;
+        correct = 1;
         opts = [`${sum}`, `${wrongAns}`, `${sum + 6}`, `${sum + 12}`];
-        correct = 1;
-        exp = `Soru sizden YANLIŞ cevap vermenizi istedi! Doğru toplam ${sum}, yanlış şık ${wrongAns}'dir.`;
-      } else if (category === 3) {
-        const startNum = n * 3 + 12;
-        const diff = (n % 5) + 3;
-        const s1 = startNum, s2 = startNum + diff, s3 = startNum + diff * 2, s4 = startNum + diff * 3 + 2;
-        qText = `[L${levelNum}-S${qIndex}] Dizideki kuralı bozan sayı hangisidir? ${s1}, ${s2}, ${s3}, ${s4}`;
-        opts = [`${s1}`, `${s2}`, `${s3}`, `${s4}`];
-        correct = 3;
-        exp = `${s4} sayısı dizinin +${diff} artış kuralını bozmaktadır.`;
-      } else if (category === 4) {
-        const plateCode = ((n * 11) % 81) + 1;
-        const plateCities = ['Adana', 'Adıyaman', 'Afyon', 'Ağrı', 'Amasya', 'Ankara', 'Antalya', 'Artvin', 'Aydın', 'Balıkesir', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur', 'Bursa', 'Çanakkale', 'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır', 'Edirne', 'Elazığ', 'Erzincan', 'Erzurum', 'Eskişehir', 'Gaziantep', 'Giresun', 'Gümüşhane', 'Hakkari', 'Hatay', 'Isparta', 'Mersin', 'İstanbul', 'İzmir', 'Kars', 'Kastamonu', 'Kayseri', 'Kırklareli', 'Kırşehir', 'Kocaeli', 'Konya', 'Kütahya', 'Malatya', 'Manisa', 'Kahramanmaraş', 'Mardin', 'Muğla', 'Muş', 'Nevşehir', 'Niğde', 'Ordu', 'Rize', 'Sakarya', 'Samsun', 'Siirt', 'Sinop', 'Sivas', 'Tekirdağ', 'Tokat', 'Trabzon', 'Tunceli', 'Şanlıurfa', 'Uşak', 'Van', 'Yozgat', 'Zonguldak', 'Aksaray', 'Bayburt', 'Karaman', 'Kırıkkale', 'Batman', 'Şırnak', 'Bartın', 'Ardahan', 'Iğdır', 'Yalova', 'Karabük', 'Kilis', 'Osmaniye', 'Düzce'];
-        const city = plateCities[plateCode - 1] || 'İstanbul';
-        qText = `[L${levelNum}-S${qIndex}] Türkiye'nin ${plateCode} plaka kodlu şehri hangisidir?`;
-        opts = [city, 'Ankara', 'İzmir', 'Bursa'];
-        correct = 0;
-        exp = `${plateCode} plaka kodu ${city} ilimize aittir.`;
-      } else if (category === 5) {
-        const initial = (n % 18) + 12, off = (n % 6) + 3, on = (n % 8) + 4;
-        const finalAns = initial - off + on;
-        qText = `[L${levelNum}-S${qIndex}] Otobüste ${initial} kişi vardı. Durakta ${off} indi, ${on} bindi. Şimdi kaç kişi var?`;
-        opts = [`${finalAns - 3}`, `${finalAns}`, `${finalAns + 4}`, `${finalAns + 7}`];
-        correct = 1;
-        exp = `${initial} - ${off} + ${on} = ${finalAns} kişi kalmıştır.`;
-      } else if (category === 6) {
-        const valA = (n % 85) + 15, valB = valA + (n % 7) + 2;
-        qText = `[L${levelNum}-S${qIndex}] Hangisi daha BÜYÜKTÜR: ${valA} mi, ${valB} mi?`;
-        opts = [`${valA} daha büyük`, `${valB} daha büyük`, 'İkisi eşit', 'Sıfır'];
-        correct = 1;
-        exp = `${valB} sayısı ${valA} sayısından büyüktür.`;
-      } else if (category === 7) {
-        const edgeCount = (n % 4) + 3;
-        const shapes = { 3: 'Üçgen', 4: 'Kare', 5: 'Beşgen', 6: 'Altıgen' };
-        qText = `[L${levelNum}-S${qIndex}] Bir Düzgün ${shapes[edgeCount]} şeklinin toplam kaç kenarı vardır?`;
-        opts = [`${edgeCount - 1}`, `${edgeCount}`, `${edgeCount + 1}`, `${edgeCount + 2}`];
-        correct = 1;
-        exp = `${shapes[edgeCount]} şeklinin tam ${edgeCount} kenarı bulunur.`;
-      } else if (category === 8) {
-        const colorNames = ['KIRMIZI', 'MAVİ', 'YEŞİL', 'SARI', 'TURUNCU', 'MOR'];
-        const targetWord = colorNames[n % colorNames.length];
-        const writtenInColor = colorNames[(n + 3) % colorNames.length];
-        qText = `[L${levelNum}-S${qIndex}] "${targetWord}" kelimesi ${writtenInColor} renkle yazılırsa ne okutulur?`;
-        opts = [targetWord, writtenInColor, 'Siyah', 'Renksiz'];
-        correct = 0;
-        exp = `Yazı RENGİne aldanma! KELİME "${targetWord}" olarak okunur!`;
+        if (lang === 'en') { qText = `[L${levelNum}-Q${qIndex}] GIVE ME A WRONG ANSWER: What is ${numA} + ${numB}?`; exp = `Question asked for a WRONG answer! Correct sum is ${sum}, wrong choice is ${wrongAns}.`; }
+        else if (lang === 'ar') { qText = `[L${levelNum}-S${qIndex}] أعطني إجابة خاطئة: كم يساوي ${numA} + ${numB}؟`; exp = `طلب السؤال إجابة خاطئة! المجموع الصحيح ${sum}، والخاطئ ${wrongAns}.`; }
+        else if (lang === 'de') { qText = `[L${levelNum}-F${qIndex}] GIB MIR EINE FALSCHE ANTWORT: Was ist ${numA} + ${numB}?`; exp = `Falsche Antwort war gefragt! Die Summe ist ${sum}.`; }
+        else if (lang === 'fr') { qText = `[L${levelNum}-Q${qIndex}] DONNEZ MAUVAISE RÉPONSE : Combien font ${numA} + ${numB} ?`; exp = `Une mauvaise réponse était demandée ! La vraie somme est ${sum}.`; }
+        else if (lang === 'es') { qText = `[L${levelNum}-P${qIndex}] DAME UNA RESPUESTA INCORRECTA: ¿Cuánto es ${numA} + ${numB}?`; exp = `¡Se pidió una respuesta INCORRECTA! La suma real es ${sum}.`; }
+        else if (lang === 'zh') { qText = `[L${levelNum}-Q${qIndex}] 给我一个错误的答案：${numA} + ${numB} 等于多少？`; exp = `题目要求给出错误答案！正确和是 ${sum}。`; }
+        else if (lang === 'ru') { qText = `[L${levelNum}-V${qIndex}] ДАЙ МНЕ НЕПРАВИЛЬНЫЙ ОТВЕТ: Сколько будет ${numA} + ${numB}?`; exp = `Требовался НЕПРАВИЛЬНЫЙ ответ! Правильная сумма ${sum}.`; }
+        else { qText = `[L${levelNum}-S${qIndex}] BANA YANLIŞ CEVAP VER: ${numA} + ${numB} kaçtır?`; exp = `Soru sizden YANLIŞ cevap istedi! Doğru toplam ${sum}, yanlış şık ${wrongAns}'dir.`; }
       } else {
         const hour = (n % 12) + 1;
         const angle = (hour * 30) % 360;
-        qText = `[L${levelNum}-S${qIndex}] Tam saat ${hour}:00 iken akrep ile yelkovan arasındaki açı kaç derecedir?`;
-        opts = [`${angle}°`, `${angle + 30}°`, `${angle > 30 ? angle - 30 : 90}°`, '180°'];
         correct = 0;
-        exp = `Her saat 30° açıdır. Saat ${hour}:00 iken açı ${angle}° eder.`;
-      }
-
+        opts = [`${angle}°`, `${angle + 30}°`, `${angle > 30 ? angle - 30 : 90}°`, '180°'];
+        if (lang === 'en') { qText = `[L${levelNum}-Q${qIndex}] At ${hour}:00, what is the angle between clock hands?`; exp = `Each hour is 30°. At ${hour}:00 it is ${angle}°.`; }
+        else if (lang === 'ar') { qText = `[L${levelNum}-S${qIndex}] في الساعة ${hour}:00، ما هي الزاوية بين عقارب الساعة؟`; exp = `كل ساعة 30 درجة. عند ${hour}:00 تكون الزاوية ${angle}°.`; }
+        else if (lang === 'de') { qText = `[L${levelNum}-F${qIndex}] Um ${hour}:00 Uhr, wie groß ist der Zeigerwinkel?`; exp = `Jede Stunde = 30°. Um ${hour}:00 ist der Winkel ${angle}°.`; }
+        else if (lang === 'fr') { qText = `[L${levelNum}-Q${qIndex}] À ${hour}h00, quel est l'angle entre les aiguilles ?`; exp = `Chaque heure vaut 30°. À ${hour}h00 l'angle est de ${angle}°.`; }
+        else if (lang === 'es') { qText = `[L${levelNum}-P${qIndex}] A las ${hour}:00, ¿cuál es el ángulo de las agujas?`; exp = `Cada hora son 30°. A las ${hour}:00 el ángulo es ${angle}°.`; }
+        else if (lang === 'zh') { qText = `[L${levelNum}-Q${qIndex}] 在 ${hour}:00 整，时针和分针的夹角是多少度？`; exp = `每小时为30度。在 ${hour}:00 时夹角为 ${angle}度。`; }
+        else if (lang === 'ru') { qText = `[L${levelNum}-V${qIndex}] В ${hour}:00, какой угол между стрелками?`; exp = `Каждый час = 30°. В ${hour}:00 угол равен ${angle}°.`; }
+        else { qText = `[L${levelNum}-S${qIndex}] Tam saat ${hour}:00 iken akrep ile yelkovan arasındaki açı kaç derecedir?`; exp = `Her saat 30° açıdır. Saat ${hour}:00 iken açı ${angle}° eder.`; }
       return { tag, q: qText, opts, correct, exp };
     }
 
@@ -1110,7 +1111,7 @@
       for (let l = startLvl; l <= endLvl; l++) {
         const lvlQuestions = [];
         for (let q = 0; q < 10; q++) {
-          lvlQuestions.push(generateQuestionForLevel(l, q));
+          lvlQuestions.push(generateQuestionForLevel(l, q, state.language || 'tr'));
         }
         localPack.push(lvlQuestions);
       }
