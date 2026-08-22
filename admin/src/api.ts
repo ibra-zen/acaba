@@ -36,7 +36,7 @@ export const api = {
       }
       return { success: false, error: data.error || 'Giriş başarısız' };
     } catch (err) {
-      if (email === 'admin@idiot.com' && password === 'Admin123!') {
+      if ((email === 'adminidiot' || email === 'admin@idiot.com') && password === 'ZorBirSifreDegilbu2027!') {
         const mockToken = 'mock_jwt_token_123';
         localStorage.setItem('admin_token', mockToken);
         return { success: true, token: mockToken };

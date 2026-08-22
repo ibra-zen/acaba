@@ -38,13 +38,13 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
         
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-label">E-posta Adresi</label>
+            <label className="form-label">Kullanıcı Adı</label>
             <input 
-              type="email" 
+              type="text" 
               className="input" 
               value={email} 
               onChange={e => setEmail(e.target.value)}
-              placeholder="admin@idiot.com"
+              placeholder="adminidiot"
               required 
             />
           </div>
@@ -56,7 +56,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
               className="input" 
               value={password} 
               onChange={e => setPassword(e.target.value)}
-              placeholder="Admin123!"
+              placeholder="••••••••••••"
               required 
             />
           </div>
@@ -65,10 +65,6 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
             {isLoading ? 'Giriş Yapılıyor...' : 'Giriş Yap'}
           </button>
         </form>
-
-        <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-          Demo için: admin@idiot.com / Admin123!
-        </div>
       </div>
     </div>
   );
