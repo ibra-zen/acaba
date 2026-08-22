@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acaba Salak mıyım?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <style>
+    /* ==================================================
+       TASARIM SİSTEMİ – 100 Level (10 Gruplu), Nickname & Sıralama
+    ================================================== */
+    :root {
+      --bg-home:    #E4E8CE;  /* Soft krem-zeytin zemin */
+      --q-pink:     #FF3366;  /* Soru kutusu pembe */
+      --opt-green:  #7CB342;  /* 1. Seçenek yeşil */
+      --opt-yellow: #FBC02D;  /* 2. Seçenek sarı */
+      --opt-blue:   #29B6F6;  /* 3. Seçenek mavi */
+      --opt-orange: #FF7043;  /* 4. Seçenek turuncu */
+      --footer-red: #FF5252;  /* Alt sayaç barı */
+      --bg-outer:   linear-gradient(135deg, #03A9F4 0%, #0288D1 100%);
+      --white:      #FFFFFF;
+      --font:       'Nunito', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg-outer);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .top-header-title {
+      color: white;
+      font-size: 26px;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* ============================== TELEFON ÇERÇEVE */
+    .phone {
+      width: 380px;
+      height: 760px;
+      background: #000;
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35), 0 0 0 10px #1E293B;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Status bar */
+    .status-bar {
+      height: 36px;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      color: #FFF;
+      font-size: 13px;
+      font-weight: 800;
+      z-index: 10;
+    }
+
+    /* Toast Bildirim */
+    .toast-msg {
+      position: absolute;
+      top: 48px;
+      left: 20px; right: 20px;
+      background: #323232;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 800;
+      text-align: center;
+      z-index: 200;
+      display: none;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      animation: fadeIn 0.2s ease;
+    }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ============================== EKRANLAR */
+    .screen {
+      flex: 1;
+      display: none;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .screen.active { display: flex !important; }
+
+    /* ============================== ANA EKRAN (HOME) ===== */
+    #screen-home {
+      background: #E4E8CE;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 16px 16px 20px;
+      text-align: center;
+      overflow-y: auto;
+    }
+
+    /* Kullanıcı Profil Barı (Rumuz & Puan & Sıralama Butonu) */
+    .user-profile-bar {
+      width: 100%;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 18px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.08);
+      flex-shrink: 0;
+    }
+    .user-nick-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 900;
+      color: #212121;
+      cursor: pointer;
+    }
+    .user-score-box {
+      font-size: 13px;
+      font-weight: 900;
+      color: #E65100;
+      background: #FFE0B2;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+    .leaderboard-icon-btn {
+      background: linear-gradient(135deg, #FFB300 0%, #FF6F00 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: var(--font);
+      box-shadow: 0 3px 8px rgba(255,143,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Üst Maskot İkonu */
+    .mascot-icon-box {
+      width: 68px;
+      height: 68px;
+      background: linear-gradient(180deg, #FFA726 0%, #FF7043 100%);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      box-shadow: 0 6px 16px rgba(255,112,67,0.3);
+      margin-bottom: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Siyah Başlık "ACABA SALAK MIYIM?" */
+    .home-main-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: #111111;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+
+    /* 10'lu Seviye Grubu Kartları (Akordeon Listesi) */
+    .groups-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-bottom: 20px;
+    }
+
+    .group-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 2px solid rgba(0,0,0,0.06);
+      transition: all 0.2s ease;
+    }
+
+    .group-header {
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-weight: 900;
+      color: white;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .group-levels-grid {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      padding: 12px;
+      background: #F5F5F5;
+    }
+    .group-card.open .group-levels-grid {
+      display: grid !important;
+    }
+
+    .level-bar-btn {
+      height: 46px;
+      border: none;
+      border-radius: 12px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 900;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: transform 0.1s ease, filter 0.15s ease;
+    }
+    .level-bar-btn:active { transform: scale(0.97); }
+    .level-bar-btn.locked { opacity: 0.85; filter: brightness(0.9); }
+
+    /* Grup Renk Temaları (10 Grup) */
+    .grp-1 .group-header { background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); } /* 🌱 1-10 Kolay */
+    .grp-2 .group-header { background: linear-gradient(135deg, #8BC34A 0%, #558B2F 100%); } /* 🌿 11-20 Kolay-Orta */
+    .grp-3 .group-header { background: linear-gradient(135deg, #FFC107 0%, #FFA000 100%); } /* ⭐ 21-30 Orta */
+    .grp-4 .group-header { background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%); } /* 🔥 31-40 Orta-İleri */
+    .grp-5 .group-header { background: linear-gradient(135deg, #FF5722 0%, #E64A19 100%); } /* ⚡ 41-50 İleri */
+    .grp-6 .group-header { background: linear-gradient(135deg, #EC407A 0%, #C2185B 100%); } /* 💜 51-60 Zor */
+    .grp-7 .group-header { background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); } /* 🌀 61-70 Çok Zor */
+    .grp-8 .group-header { background: linear-gradient(135deg, #3F51B5 0%, #1A237E 100%); } /* 🎓 71-80 Uzman */
+    .grp-9 .group-header { background: linear-gradient(135deg, #00BCD4 0%, #00838F 100%); } /* 👑 81-90 Üstat */
+    .grp-10 .group-header { background: linear-gradient(135deg, #D32F2F 0%, #880E4F 100%); } /* 🏆 91-100 Efsane */
+
+    /* Level Buton Renkleri */
+    .lvl-btn-color { background: linear-gradient(180deg, #FF7043 0%, #F4511E 100%); }
+
+    /* ============================== OYUN EKRANI ============================== */
+    #screen-game { background: #FF3366; }
+
+    .game-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    .home-back-btn {
+      background: rgba(255,255,255,0.25);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: var(--font);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .report-q-btn {
+      background: rgba(255,255,255,0.25);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: var(--font);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s ease;
+    }
+    .report-q-btn:hover { background: rgba(239,68,68,0.8); }
+
+    .question-box {
+      flex: 1.2;
+      background: #FF3366;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 16px 20px;
+      text-align: center;
+    }
+    .question-text {
+      color: white;
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.35;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    .question-tag {
+      background: rgba(255,255,255,0.25);
+      color: white;
+      padding: 4px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .options-container { display: flex; flex-direction: column; }
+    .opt-strip {
+      height: 76px;
+      border: none;
+      font-family: var(--font);
+      font-size: 21px;
+      font-weight: 900;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0 16px;
+      text-align: center;
+      border-bottom: 2px solid rgba(0,0,0,0.1);
+    }
+    .opt-strip.color-0 { background: #7CB342; }
+    .opt-strip.color-1 { background: #FBC02D; color: #3E2723; text-shadow: none; }
+    .opt-strip.color-2 { background: #29B6F6; }
+    .opt-strip.color-3 { background: #FF7043; }
+    .opt-strip.correct-choice { background: #4CAF50 !important; color: white !important; }
+    .opt-strip.wrong-choice { background: #D32F2F !important; color: white !important; text-decoration: line-through; }
+
+    .footer-counter-bar {
+      height: 60px;
+      background: #FF5252;
+      color: white;
+      font-size: 24px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 2px;
+    }
+
+    /* ============================== MODALLAR (Açıklama, Nickname, Sıralama) */
+    .custom-modal {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 150;
+      text-align: center;
+    }
+    .custom-modal.active { display: flex !important; }
+
+    .modal-card {
+      background: white;
+      border-radius: 24px;
+      padding: 24px 20px;
+      width: 100%;
+      max-width: 330px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.4);
+    }
+
+    /* Nickname Modal */
+    .nick-input {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #E0E0E0;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 800;
+      text-align: center;
+      margin: 16px 0;
+      outline: none;
+      font-family: var(--font);
+    }
+    .nick-input:focus { border-color: #7C3AED; }
+
+    .modal-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      font-family: var(--font);
+    }
+
+    /* Leaderboard (Sıralama) Tab & Liste */
+    .lb-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      background: #F1F5F9;
+      padding: 4px;
+      border-radius: 12px;
+    }
+    .lb-tab {
+      flex: 1;
+      padding: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      background: transparent;
+      cursor: pointer;
+      color: #64748B;
+      font-family: var(--font);
+    }
+    .lb-tab.active { background: white; color: #0F172A; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+
+    .lb-list {
+      max-height: 260px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    .lb-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: #F8FAFC;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .lb-item.user-highlight {
+      background: #FFF7ED;
+      border: 2px solid #FF9800;
+    }
+
+    /* ============================== SONUÇ EKRANI */
+    #screen-result {
+      background: linear-gradient(180deg, #0288D1 0%, #01579B 100%);
+      align-items: center;
+      justify-content: center;
+      padding: 30px 24px;
+      text-align: center;
+    }
+    .res-emoji { font-size: 64px; margin-bottom: 8px; }
+    .res-title { font-size: 26px; font-weight: 900; color: white; margin-bottom: 4px; }
+    .res-sub   { font-size: 16px; font-weight: 800; color: #FFE082; margin-bottom: 20px; }
+    .res-box   { background: white; border-radius: 20px; padding: 16px; width: 100%; margin-bottom: 20px; }
+    .res-pct   { font-size: 48px; font-weight: 900; color: #E91E63; line-height: 1; }
+    .res-lbl   { font-size: 12px; font-weight: 800; color: #757575; text-transform: uppercase; margin-top: 4px; }
+    .res-btn   { width: 100%; padding: 16px; background: #FFCA28; color: #3E2723; border: none; border-radius: 16px; font-size: 18px; font-weight: 900; cursor: pointer; font-family: var(--font); margin-bottom: 10px; }
+    .res-btn-sec { background: rgba(255,255,255,0.2); color: white; }
+  </style>
+</head>
+<body>
+
+  <div class="top-header-title">ACABA SALAK MIYIM?</div>
+
+  <div class="phone">
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <span>18:30</span>
+      <span>🔋 100%</span>
+    </div>
+
+    <!-- Toast Bildirimi -->
+    <div class="toast-msg" id="toast-msg"></div>
+
+    <!-- ===== ANA EKRAN (HOME) ===== -->
+    <div id="screen-home" class="screen active">
+      <!-- User Profile Header (Nickname, Score & Leaderboard) -->
+      <div class="user-profile-bar">
+        <div class="user-nick-box" onclick="openNickModal()">
+          <span>👤</span>
+          <span id="user-display-name">Oyuncu</span>
+          <span style="font-size: 11px; color: #757575;">✏️</span>
+        </div>
+        <div class="user-score-box" id="user-score-display">0 Puan</div>
+        <button class="leaderboard-icon-btn" onclick="openLeaderboardModal()">
+          🏆 Sıralama
+        </button>
+      </div>
+
+      <!-- Üst Maskot İkonu -->
+      <div class="mascot-icon-box">👓</div>
+      
+      <!-- Ana Başlık -->
+      <div class="home-main-title">ACABA SALAK MIYIM?</div>
+      
+      <!-- 10'lu Gruplar halinde 100 Level Listesi -->
+      <div class="groups-container" id="groups-container">
+        <!-- JS ile dolacak -->
+      </div>
+    </div>
+
+    <!-- ===== OYUN EKRANI ===== -->
+    <div id="screen-game" class="screen">
+      <div class="question-box">
+        <div class="game-nav-bar">
+          <button class="home-back-btn" onclick="showHome()">🏠 Ana Sayfa</button>
+          <div class="question-tag" id="q-tag">👀 Dikkat (LEVEL 1)</div>
+          <button class="report-q-btn" onclick="openReportModal()">🚨 Bildir</button>
+        </div>
+        <div class="question-text" id="q-text">Soru yükleniyor...</div>
+      </div>
+
+      <div class="options-container" id="opts-container"></div>
+      <div class="footer-counter-bar" id="footer-counter">1/10</div>
+
+      <!-- Soru Açıklama Modalı -->
+      <div class="custom-modal" id="fb-modal">
+        <div class="modal-card">
+          <div style="font-size: 22px; font-weight: 900; margin-bottom: 10px;" id="fb-title">✅ Doğru!</div>
+          <div style="font-size: 14px; color: #424242; font-weight: 700; margin-bottom: 20px;" id="fb-exp">Açıklama</div>
+          <button class="modal-btn" id="fb-next-btn" onclick="nextQuestion()">DEVAM ET →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== NICKNAME GİRİŞ MODALI ===== -->
+    <div class="custom-modal" id="nick-modal">
+      <div class="modal-card">
+        <div style="font-size: 20px; font-weight: 900; color: #1E293B;">👤 Rumuzunu Gir</div>
+        <p style="font-size: 13px; color: #64748B; margin-top: 4px;">Sıralamada görünecek adını seç:</p>
+        <input type="text" id="nick-input" class="nick-input" placeholder="Örn: ZekaKralı" maxlength="15" />
+        <button class="modal-btn" onclick="saveNickname()">KAYDET VE BAŞLA 🚀</button>
+      </div>
+    </div>
+
+    <!-- ===== HATALI SORU BİLDİR MODALI ===== -->
+    <div class="custom-modal" id="report-modal">
+      <div class="modal-card">
+        <div style="font-size: 20px; font-weight: 900; color: #DC2626; margin-bottom: 6px;">🚨 Hatalı Soru Bildir</div>
+        <p style="font-size: 13px; color: #64748B; margin-bottom: 14px;" id="report-q-summary">Soru #1 için bildirim oluşturuluyor.</p>
+        
+        <label style="font-size: 13px; font-weight: 800; color: #1E293B; display: block; text-align: left; margin-bottom: 6px;">Bildirim Nedeni:</label>
+        <select id="report-reason-select" class="nick-input" style="padding: 10px; text-align: left; font-size: 14px; margin: 0 0 12px 0;">
+          <option value="Hatalı Cevap Şıkkı">❌ Hatalı Cevap Şıkkı</option>
+          <option value="Yazım / İmla Hatası">✍️ Yazım / İmla Hatası</option>
+          <option value="Soru Anlaşılmıyor / Bozuk">❓ Soru Anlaşılmıyor / Bozuk</option>
+          <option value="Diğer">💬 Diğer</option>
+        </select>
+
+        <textarea id="report-comment-input" class="nick-input" rows="3" placeholder="Açıklama (opsiyonel)..." style="text-align: left; font-size: 13px; margin: 0 0 16px 0; resize: none;"></textarea>
+
+        <div style="display: flex; gap: 8px;">
+          <button class="modal-btn" style="background: #94A3B8; flex: 1;" onclick="closeReportModal()">İPTAL</button>
+          <button class="modal-btn" style="background: #DC2626; flex: 1.5;" onclick="submitQuestionReport()">GÖNDER 🚀</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SIRALAMA MODALI (LEADERBOARD) ===== -->
+    <div class="custom-modal" id="lb-modal">
+      <div class="modal-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <div style="font-size: 18px; font-weight: 900; color: #0F172A;">🏆 En İyiler Sıralaması</div>
+          <button onclick="closeLeaderboardModal()" style="background: none; border: none; font-size: 18px; cursor: pointer;">❌</button>
+        </div>
+
+        <div class="lb-tabs">
+          <button class="lb-tab active" id="btn-tab-all" onclick="switchLbTab('all')">🌍 Genel Top 10</button>
+          <button class="lb-tab" id="btn-tab-month" onclick="switchLbTab('month')">📅 Son 30 Gün Top 10</button>
+        </div>
+
+        <div class="lb-list" id="lb-list-container">
+          <!-- JS ile dolacak -->
+        </div>
+
+        <div className="lb-item user-highlight" id="user-rank-highlight" style="display: flex; justify-content: space-between; padding: 10px; background: #FFF7ED; border: 2px solid #FF9800; border-radius: 12px; font-size: 13px; font-weight: 900;">
+          <!-- Kullanıcının kendi sırası -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SONUÇ EKRANI ===== -->
+    <div id="screen-result" class="screen">
+      <div class="res-emoji" id="res-emoji">😎</div>
+      <div class="res-title" id="res-title">LEVEL 1 Tamamlandı!</div>
+      <div class="res-sub" id="res-level">Normal İnsan</div>
+
+      <div class="res-box">
+        <div class="res-pct" id="res-pct">%20</div>
+        <div class="res-lbl">Salaklık Oranınız</div>
+      </div>
+
+      <button class="res-btn" id="btn-next-level" onclick="startNextLevel()">SONRAKİ LEVEL ➡️</button>
+      <button class="res-btn res-btn-sec" onclick="showHome()">ANA MENÜ 🏠</button>
+    </div>
+  </div>
+
+  <script>
+    /* ==================================================
+       10 GRUP (100 LEVEL) VERİ TABANI & OYUN MOTORU
+    ================================================== */
+    const LEVEL_GROUPS = [
+      { id: 1, name: '🌱 1-10: Kolay Başlangıç', start: 1, end: 10 },
+      { id: 2, name: '🌿 11-20: Isınma Turları', start: 11, end: 20 },
+      { id: 3, name: '⭐ 21-30: Orta Zorluk', start: 21, end: 30 },
+      { id: 4, name: '🔥 31-40: Şaşırtmacalar', start: 31, end: 40 },
+      { id: 5, name: '⚡ 41-50: Ters Mantık', start: 41, end: 50 },
+      { id: 6, name: '💜 51-60: İleri Zeka', start: 51, end: 60 },
+      { id: 7, name: '🌀 61-70: Dikkat Avcıları', start: 61, end: 70 },
+      { id: 8, name: '🎓 71-80: Uzman Testi', start: 71, end: 80 },
+      { id: 9, name: '👑 81-90: Üstat Zekası', start: 81, end: 90 },
+      { id: 10, name: '🏆 91-100: Şampiyonlar', start: 91, end: 100 }
+    ];
+
+    // Mock Top 10 Oyuncular (Genel ve Son 30 Gün)
+    const TOP_PLAYERS_ALL = [
+      { rank: 1, name: 'ZekaKralı99', score: 9850, level: 99 },
+      { rank: 2, name: 'EinsteinTR', score: 8720, level: 88 },
+      { rank: 3, name: 'DahiBeyin', score: 7650, level: 77 },
+      { rank: 4, name: 'ŞaşırtmacaUzmanı', score: 6540, level: 66 },
+      { rank: 5, name: 'TuzakAvcısı', score: 5490, level: 55 },
+      { rank: 6, name: 'AkılKüpü34', score: 4380, level: 44 },
+      { rank: 7, name: 'OyuncuMehmet', score: 3250, level: 33 },
+      { rank: 8, name: 'ZekiAyşe', score: 2180, level: 22 },
+      { rank: 9, name: 'TestCanavarı', score: 1120, level: 12 },
+      { rank: 10, name: 'AcemiOyuncu', score: 530, level: 6 }
+    ];
+
+    const TOP_PLAYERS_MONTH = [
+      { rank: 1, name: 'DahiBeyin', score: 7650, level: 77 },
+      { rank: 2, name: 'EinsteinTR', score: 7120, level: 72 },
+      { rank: 3, name: 'TuzakAvcısı', score: 5490, level: 55 },
+      { rank: 4, name: 'OyuncuMehmet', score: 3250, level: 33 },
+      { rank: 5, name: 'SoruBüken', score: 2900, level: 29 },
+      { rank: 6, name: 'ZekiAyşe', score: 2180, level: 22 },
+      { rank: 7, name: 'GeceOyuncusu', score: 1850, level: 19 },
+      { rank: 8, name: 'TestCanavarı', score: 1120, level: 12 },
+      { rank: 9, name: 'Fatih34', score: 890, level: 9 },
+      { rank: 10, name: 'HızlıZeka', score: 620, level: 7 }
+    ];
+
+    // 1000 ADET BENZERSİZ SORU ÜRETEÇ MOTORU (Başlangıçta Aptalca, Basit & Eğlenceli Sorular)
+    function generateQuestionForLevel(levelNum, qIndex) {
+      const n = (levelNum - 1) * 10 + qIndex;
+
+      let tag = '🌱 Başlangıç';
+      if (levelNum > 80) tag = '👑 Şampiyon';
+      else if (levelNum > 60) tag = '🎓 Uzman';
+      else if (levelNum > 40) tag = '⚡ İleri Zeka';
+      else if (levelNum > 20) tag = '⭐ Orta';
+      else if (levelNum > 10) tag = '🌿 Isınma';
+
+      // 🎯 İLK 5 LEVEL İÇİN ÖZEL APTALCA, BASİT VE EĞLENCELİ BAŞLANGIÇ SORULARI
+      const WARMUP_STUPID_QUESTIONS = [
+        // LEVEL 1 (1-10)
+        { q: 'Şu an ekranındaki bu testi oynuyor musun?', opts: ['Evet', 'Hayır', 'Uykudayım', 'Bilmiyorum'], c: 0, exp: 'Testi oynadığına göre cevap Evet!' },
+        { q: 'Aşağı gitmek için asansörde hangi düğmeye basarsın?', opts: ['Yukarı ↑', 'Aşağı ↓', 'Sağ →', 'Sol ←'], c: 1, exp: 'Aşağı gitmek için Aşağı butonuna basılır!' },
+        { q: 'KIRMIZI kelimesi MAVİ renkle yazılırsa ne okutulur?', opts: ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı'], c: 0, exp: 'Yazı rengine bakma! Kelime KIRMIZI okutulur.' },
+        { q: 'Bir elma ağacında kaç tane muz yetişir?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Elma ağacında muz yetişmez!' },
+        { q: 'Aşağıdakilerden hangisi yenmeyen bir şeydir?', opts: ['Elma', 'Armut', 'Masa', 'Çilek'], c: 2, exp: 'Masa mobilyadır, yenmez!' },
+        { q: '1 kg demir mi daha ağırdır, 1 kg pamuk mu?', opts: ['Demir', 'Pamuk', 'İkisi Eşit', 'Tartmak lazım'], c: 2, exp: 'İkisi de 1 kg! Ağırlıkları eşittir.' },
+        { q: 'Yanlış olan işlemi seçin:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8 olmalıdır, 9 yanlış!' },
+        { q: 'Şifre: 1453. Hangisi doğru şifredir?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'Doğru şifre 1453 idi.' },
+        { q: 'Ahmet\'in babası Ali\'nin oğludur. Ali Ahmet\'in nesi olur?', opts: ['Babası', 'Amcası', 'Dedesi', 'Dayısı'], c: 2, exp: 'Ali, Ahmet\'in dedesidir!' },
+        { q: 'Ocak ayında 28 gün vardır. Diğer aylarda kaç gün vardır?', opts: ['Hiçbirinde yok', 'Hepsinde 28 gün var', 'Sadece 30 ve 31', 'Bilmiyorum'], c: 1, exp: 'Tüm aylarda en az 28 gün vardır!' },
+
+        // LEVEL 2 (11-20)
+        { q: 'Köpekler miyavlar mı?', opts: ['Evet', 'Hayır', 'Vıraklamaz', 'Öter'], c: 1, exp: 'Köpekler havlar!' },
+        { q: 'Bana bilerek YANLIŞ cevap ver: 2+2 kaçtır?', opts: ['4', '5', 'İki', 'Dört'], c: 1, exp: 'Soru sizden YANLIŞ cevap istedi, 5 yanlış cevaptır!' },
+        { q: 'Elektrikli tren güneye giderken dumanı nereye tüter?', opts: ['Güneye', 'Kuzeye', 'Dumanı yoktur', 'Doğuya'], c: 2, exp: 'Elektrikli tren duman çıkarmaz!' },
+        { q: 'Bir yarışta 2. olan kişiyi geçersen kaçıncı olursun?', opts: ['1.', '2.', '3.', 'Sonuncu'], c: 1, exp: '2. olanı geçersen 2. olursun!' },
+        { q: 'Doktor 3 hap verdi, yarım saatte bir alacaksın. Kaç saat sürer?', opts: ['1.5 saat', '1 saat', '2 saat', '3 saat'], c: 1, exp: '0. dk, 30. dk, 60. dk. Toplam 1 saat sürer!' },
+        { q: 'Gece saat 12\'de yağmur yağıyor. 72 saat sonra Güneş açabilir mi?', opts: ['Evet', 'Hayır', 'Gece güneş açmaz', '%50'], c: 1, exp: '72 saat = 3 gün. Yine gece 12 olur, Güneş açamaz!' },
+        { q: 'Boş bir çuvala kaç tane elma koyabilirsin?', opts: ['1', 'Sonsuz', 'Dolana kadar', '10'], c: 0, exp: '1 elma koyduktan sonra çuval artık boş değildir!' },
+        { q: 'Hangi ay 28 gün çeker?', opts: ['Sadece Şubat', 'Hiçbiri', 'Tüm aylar', 'Ocak ve Mart'], c: 2, exp: 'Tüm ayların içinde 28 gün vardır!' },
+        { q: 'Su kaç derecede kaynar?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'Su 100 derecede kaynar.' },
+        { q: 'Bir elmanın yarısı neye benzer?', opts: ['Diğer yarısına', 'Armuda', 'Çileğe', 'Portakala'], c: 0, exp: 'Elmanın yarısı diğer yarısına benzer!' },
+
+        // LEVEL 3 (21-30)
+        { q: 'Gözlerin kapalıyken kitap okuyabilir misin?', opts: ['Evet', 'Hayır', 'Uykuda', 'Belki'], c: 1, exp: 'Gözler kapalıyken okunamaz!' },
+        { q: 'Hangisi daha sıcaktır?', opts: ['Güneş', 'Buz', 'Kar', 'Dondurma'], c: 0, exp: 'Güneş en sıcaktır.' },
+        { q: 'Tavuk mu yumurtadan çıkar, yumurta mı tavuktan?', opts: ['İkisi de', 'Hiçbiri', 'Sadece Horoz', 'Kuş'], c: 0, exp: 'İkisi de birbirini takip eden döngüdür!' },
+        { q: 'Hangisi suda yüzer ama ıslanmaz?', opts: ['Gölge', 'Kedi', 'Taş', 'Kağıt'], c: 0, exp: 'Gölge suda ıslanmaz!' },
+        { q: '5 dakikada 5 yumurta pişiyorsa, 10 yumurta kaç dakikada pişer?', opts: ['5 dk', '10 dk', '15 dk', '50 dk'], c: 0, exp: 'Aynı tencerede hepsi 5 dakikada pişer!' },
+        { q: 'Bir adamın 17 koyunu vardı, biri hariç hepsi öldü. Kaç koyunu kaldı?', opts: ['0', '1', '16', '17'], c: 1, exp: 'Biri hariç hepsi öldüyse 1 koyun kalmıştır!' },
+        { q: '3 elmanın 2 tanesini alırsan elinde kaç elma olur?', opts: ['1', '2', '3', '0'], c: 1, exp: 'Aldığın 2 elma elindedir!' },
+        { q: 'Karanlık odada kibrit, mum ve gaz lambası var. Önce hangisini yakarsın?', opts: ['Mum', 'Gaz lambası', 'Kibrit', 'Sobayı'], c: 2, exp: 'Önce kibriti yakman gerekir!' },
+        { q: 'Gece saat 3\'te uyudun, alarmı 9\'a kurdun. Kaç saat uyursun?', opts: ['6 saat', '9 saat', '12 saat', '3 saat'], c: 0, exp: '9 - 3 = 6 saat uyursun!' },
+        { q: 'İki anne ve iki kız 3 elmayı eşit paylaşır. Nasıl?', opts: ['Büyükanne, Anne ve Kızdır', 'İmkansız', 'Çalınmıştır', 'Elma büyüktür'], c: 0, exp: 'Büyükanne, anne ve kız toplam 3 kişidir!' },
+
+        // LEVEL 4 (31-40)
+        { q: 'Salatalık bir meyve midir yoksa sebze mi?', opts: ['Sebze', 'Meyve', 'Ot', 'Çiçek'], c: 1, exp: 'Botanik olarak salatalık çekirdekli bir meyvedir!' },
+        { q: 'Hangisi uzadıkça kısalır?', opts: ['Ömür', 'İp', 'Saç', 'Yol'], c: 0, exp: 'Yaşadıkça ömür kısalır!' },
+        { q: 'Kırılmadan kullanılmayan şey nedir?', opts: ['Yumurta', 'Ceviz', 'Ayna', 'Cam'], c: 0, exp: 'Yumurta kırılmadan kullanılamaz.' },
+        { q: 'Deniz suyu doğrudan içilir mi?', opts: ['Tuzludur, içilmez', 'İçilir', 'Şekerlidir', 'Lezzetlidir'], c: 0, exp: 'Deniz suyu çok tuzlu olduğu için içilmez.' },
+        { q: 'Bir terzi 10 metrelik kumaşı her gün 1 metre keser. Kaç günde biter?', opts: ['10 gün', '9 gün', '8 gün', '11 gün'], c: 1, exp: '9. gün son kesişte 2 parça birden çıkar!' },
+        { q: 'Düz çizgide 3 karınca yürüyor. Son karınca dairesel yürüdüğünü söyler. Nasıl?', opts: ['Dairede yürüyorlardır', 'Yalan söylüyordur', 'Görmüyordur', 'Konuşamaz'], c: 0, exp: 'Daire şeklinde yürüdükleri için son karınca önündekileri görür!' },
+        { q: 'Görünmeyen adam aynaya bakarsa ne görür?', opts: ['Aynayı', 'Kendisini', 'Duvarı', 'Hiçbir şey'], c: 0, exp: 'Aynanın kendisini görür!' },
+        { tag: '🏆 Şampiyon', q: 'Kibrit kutusunda 0 kibrit var. Kaç kibrit yakabilirsin?', opts: ['0', '1', '10', 'Sonsuz'], c: 0, exp: 'Kibrit yoksa yakamazsın!' },
+        { q: 'Hangisi Türkçe alfabenin ilk harfidir?', opts: ['A', 'B', 'Z', 'C'], c: 0, exp: 'Alfabenin ilk harfi A\'dır.' },
+        { q: 'Bana YANLIŞ cevap ver: Köpek havlar mı?', opts: ['Evet', 'Hayır', 'Havlar', 'Doğru'], c: 1, exp: 'Soru sizden YANLIŞ cevap istiyordu!' },
+
+        // LEVEL 5 (41-50)
+        { q: 'Ağzı var ama konuşmaz, yatağı var ama uyumaz. Nedir?', opts: ['Nehir', 'Masa', 'Kuyu', 'Kilit'], c: 0, exp: 'Nehrin yatağı ve ağzı vardır!' },
+        { q: 'Hangi soruya asla "Evet" denemez?', opts: ['Uyuya kaldın mı?', 'Aç mısın?', 'Hazır mısın?', 'Geldin mi?'], c: 0, exp: 'Uyuya kaldıysanız Evet diyemezsiniz!' },
+        { q: 'İleri giden saat geri kalır mı?', opts: ['Evet', 'Hayır', 'Pil biterse', 'Bazen'], c: 1, exp: 'İleri giden saat öne geçer!' },
+        { q: 'Bir otobüste 10 kişi var. 3 indi, 5 bindi. Kaç kişi var?', opts: ['8', '10', '12', '15'], c: 2, exp: '10 - 3 + 5 = 12!' },
+        { q: '1 düzine kaç adettir?', opts: ['10', '12', '15', '20'], c: 1, exp: '1 düzine 12 tanedir.' },
+        { q: '1 deste kaç adettir?', opts: ['10', '12', '15', '20'], c: 0, exp: '1 deste 10 tanedir.' },
+        { q: 'Hangisi hem canlıdır hem yeşildir?', opts: ['Ağaç', 'Taş', 'Demir', 'Plastik'], c: 0, exp: 'Ağaç canlı ve yeşildir.' },
+        { q: 'Siyah kedi karanlık sokakta siyah arabadan nasıl kaçar?', opts: ['Gündüz vakti olduğu için', 'Kaçamaz', 'Uçar', 'Farlar açıktır'], c: 0, exp: 'Çünkü havalar gündüzdür!' },
+        { q: 'Türkiye\'nin başkenti neresidir?', opts: ['Ankara', 'İstanbul', 'İzmir', 'Bursa'], c: 0, exp: 'Ankara başkentimizdir.' },
+        { q: 'Tebrikler! 5 Level tamamlandı. Ben Salak mıyım sorusunun cevabı sence nedir?', opts: ['Zekiyim! 🧠', 'Salak', 'Bilmiyorum', 'Belki'], c: 0, exp: 'Harika! Sen tam bir Zeka Avcısısın!' }
+      ];
+
+      // Eğer ilk 50 soru içindeyse (Level 1 - 5):
+      if (n <= WARMUP_STUPID_QUESTIONS.length) {
+        const item = WARMUP_STUPID_QUESTIONS[n - 1];
+        return {
+          tag: `🌱 Level ${levelNum} (Aptalca & Eğlenceli)`,
+          q: `[L${levelNum}-S${qIndex}] ${item.q}`,
+          opts: item.opts,
+          correct: item.c,
+          exp: item.exp
+        };
+      }
+
+      // LEVEL 6'DAN LEVEL 100'E KADAR KADEMELİ ZORLAŞAN 1000 BENZERSİZ SORU
+      let qText = '';
+      let opts = [];
+      let correct = 0;
+      let exp = '';
+
+      const category = (n - 1) % 10;
+
+      if (category === 0) {
+        const base = n * 7 + 13;
+        const mult = (n % 5) + 2;
+        const ans = base * mult;
+        qText = `[L${levelNum}-S${qIndex}] ${base} × ${mult} işleminin sonucu kaçtır?`;
+        opts = [`${ans}`, `${ans + 4}`, `${ans - 6}`, `${ans + 12}`];
+        correct = 0;
+        exp = `${base} x ${mult} = ${ans} eder.`;
+      } else if (category === 1) {
+        const words = ['SALAKLIK', 'ZEKASIZ', 'ŞAŞIRTMACA', 'DİKKATLİ', 'DÜŞÜNCE', 'MANTIKSIZ', 'PROBLEM', 'KAYITSIZ', 'KAZANAN', 'ŞAMPİYON', 'GELİŞİM', 'ÜSTÜNTEK', 'YARATICI', 'MÜKEMMEL', 'BİLGİSAYAR', 'TELEFON', 'TÜRKİYE', 'İSTANBUL', 'ANKARA', 'ELEKTRONİK'];
+        const w = words[(n * 3) % words.length] + (n > 500 ? ' TESTİ' : '');
+        const len = w.replace(/\s/g, '').length;
+        qText = `[L${levelNum}-S${qIndex}] "${w}" kelimesinde tam kaç harf vardır?`;
+        opts = [`${len - 2}`, `${len}`, `${len + 1}`, `${len + 3}`];
+        correct = 1;
+        exp = `"${w}" kelimesinde tam ${len} adet harf mevcuttur.`;
+      } else if (category === 2) {
+        const numA = (n % 14) + 3;
+        const numB = (n % 9) + 4;
+        const sum = numA + numB;
+        const wrongAns = sum + 3;
+        qText = `[L${levelNum}-S${qIndex}] BANA YANLIŞ CEVAP VER: ${numA} + ${numB} kaçtır?`;
+        opts = [`${sum}`, `${wrongAns}`, `${sum + 6}`, `${sum + 12}`];
+        correct = 1;
+        exp = `Soru sizden YANLIŞ cevap vermenizi istedi! Doğru toplam ${sum}, yanlış şık ${wrongAns}'dir.`;
+      } else if (category === 3) {
+        const startNum = n * 3 + 12;
+        const diff = (n % 5) + 3;
+        const s1 = startNum, s2 = startNum + diff, s3 = startNum + diff * 2, s4 = startNum + diff * 3 + 2;
+        qText = `[L${levelNum}-S${qIndex}] Dizideki kuralı bozan sayı hangisidir? ${s1}, ${s2}, ${s3}, ${s4}`;
+        opts = [`${s1}`, `${s2}`, `${s3}`, `${s4}`];
+        correct = 3;
+        exp = `${s4} sayısı dizinin +${diff} artış kuralını bozmaktadır.`;
+      } else if (category === 4) {
+        const plateCode = ((n * 11) % 81) + 1;
+        const plateCities = ['Adana', 'Adıyaman', 'Afyon', 'Ağrı', 'Amasya', 'Ankara', 'Antalya', 'Artvin', 'Aydın', 'Balıkesir', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur', 'Bursa', 'Çanakkale', 'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır', 'Edirne', 'Elazığ', 'Erzincan', 'Erzurum', 'Eskişehir', 'Gaziantep', 'Giresun', 'Gümüşhane', 'Hakkari', 'Hatay', 'Isparta', 'Mersin', 'İstanbul', 'İzmir', 'Kars', 'Kastamonu', 'Kayseri', 'Kırklareli', 'Kırşehir', 'Kocaeli', 'Konya', 'Kütahya', 'Malatya', 'Manisa', 'Kahramanmaraş', 'Mardin', 'Muğla', 'Muş', 'Nevşehir', 'Niğde', 'Ordu', 'Rize', 'Sakarya', 'Samsun', 'Siirt', 'Sinop', 'Sivas', 'Tekirdağ', 'Tokat', 'Trabzon', 'Tunceli', 'Şanlıurfa', 'Uşak', 'Van', 'Yozgat', 'Zonguldak', 'Aksaray', 'Bayburt', 'Karaman', 'Kırıkkale', 'Batman', 'Şırnak', 'Bartın', 'Ardahan', 'Iğdır', 'Yalova', 'Karabük', 'Kilis', 'Osmaniye', 'Düzce'];
+        const city = plateCities[plateCode - 1] || 'İstanbul';
+        qText = `[L${levelNum}-S${qIndex}] Türkiye'nin ${plateCode} plaka kodlu şehri hangisidir?`;
+        opts = [city, 'Ankara', 'İzmir', 'Bursa'];
+        correct = 0;
+        exp = `${plateCode} plaka kodu ${city} ilimize aittir.`;
+      } else if (category === 5) {
+        const initial = (n % 18) + 12, off = (n % 6) + 3, on = (n % 8) + 4;
+        const finalAns = initial - off + on;
+        qText = `[L${levelNum}-S${qIndex}] Otobüste ${initial} kişi vardı. Durakta ${off} indi, ${on} bindi. Şimdi kaç kişi var?`;
+        opts = [`${finalAns - 3}`, `${finalAns}`, `${finalAns + 4}`, `${finalAns + 7}`];
+        correct = 1;
+        exp = `${initial} - ${off} + ${on} = ${finalAns} kişi kalmıştır.`;
+      } else if (category === 6) {
+        const valA = (n % 85) + 15, valB = valA + (n % 7) + 2;
+        qText = `[L${levelNum}-S${qIndex}] Hangisi daha BÜYÜKTÜR: ${valA} mi, ${valB} mi?`;
+        opts = [`${valA} daha büyük`, `${valB} daha büyük`, 'İkisi eşit', 'Sıfır'];
+        correct = 1;
+        exp = `${valB} sayısı ${valA} sayısından büyüktür.`;
+      } else if (category === 7) {
+        const edgeCount = (n % 4) + 3;
+        const shapes = { 3: 'Üçgen', 4: 'Kare', 5: 'Beşgen', 6: 'Altıgen' };
+        qText = `[L${levelNum}-S${qIndex}] Bir Düzgün ${shapes[edgeCount]} şeklinin toplam kaç kenarı vardır?`;
+        opts = [`${edgeCount - 1}`, `${edgeCount}`, `${edgeCount + 1}`, `${edgeCount + 2}`];
+        correct = 1;
+        exp = `${shapes[edgeCount]} şeklinin tam ${edgeCount} kenarı bulunur.`;
+      } else if (category === 8) {
+        const colorNames = ['KIRMIZI', 'MAVİ', 'YEŞİL', 'SARI', 'TURUNCU', 'MOR'];
+        const targetWord = colorNames[n % colorNames.length];
+        const writtenInColor = colorNames[(n + 3) % colorNames.length];
+        qText = `[L${levelNum}-S${qIndex}] "${targetWord}" kelimesi ${writtenInColor} renkle yazılırsa ne okutulur?`;
+        opts = [targetWord, writtenInColor, 'Siyah', 'Renksiz'];
+        correct = 0;
+        exp = `Yazı RENGİne aldanma! KELİME "${targetWord}" olarak okunur!`;
+      } else {
+        const hour = (n % 12) + 1;
+        const angle = (hour * 30) % 360;
+        qText = `[L${levelNum}-S${qIndex}] Tam saat ${hour}:00 iken akrep ile yelkovan arasındaki açı kaç derecedir?`;
+        opts = [`${angle}°`, `${angle + 30}°`, `${angle > 30 ? angle - 30 : 90}°`, '180°'];
+        correct = 0;
+        exp = `Her saat 30° açıdır. Saat ${hour}:00 iken açı ${angle}° eder.`;
+      }
+
+      return { tag, q: qText, opts, correct, exp };
+    }
+
+    let state = {
+      nickname: localStorage.getItem('bsm_nickname') || '',
+      unlockedLevel: Number(localStorage.getItem('bsm_unlocked_level') || 1),
+      score: Number(localStorage.getItem('bsm_score') || 0),
+      currentLevel: 1,
+      idx: 0,
+      correct: 0,
+      wrong: 0,
+      total: 10,
+      currentLbTab: 'all'
+    };
+
+    function initUser() {
+      if (!state.nickname) {
+        state.nickname = 'Oyuncu_' + Math.floor(1000 + Math.random() * 9000);
+        localStorage.setItem('bsm_nickname', state.nickname);
+      }
+      updateUserHeader();
+    }
+
+    function updateUserHeader() {
+      document.getElementById('user-display-name').textContent = state.nickname;
+      const scoreCalculated = (state.unlockedLevel - 1) * 100 + (state.score || 0);
+      document.getElementById('user-score-display').textContent = `${scoreCalculated} Puan`;
+    }
+
+    function openNickModal() {
+      document.getElementById('nick-input').value = state.nickname;
+      document.getElementById('nick-modal').classList.add('active');
+    }
+
+    function saveNickname() {
+      const val = document.getElementById('nick-input').value.trim();
+      if (val) {
+        state.nickname = val;
+        localStorage.setItem('bsm_nickname', val);
+        updateUserHeader();
+        document.getElementById('nick-modal').classList.remove('active');
+        showToast('👤 Rumuz kaydedildi: ' + val);
+      }
+    }
+
+    function openReportModal() {
+      const qNum = (state.currentLevel - 1) * 10 + state.idx + 1;
+      document.getElementById('report-q-summary').textContent = `Level ${state.currentLevel} - Soru ${state.idx + 1} (#${qNum}) için bildirim oluşturuluyor.`;
+      document.getElementById('report-comment-input').value = '';
+      document.getElementById('report-modal').classList.add('active');
+    }
+
+    function closeReportModal() {
+      document.getElementById('report-modal').classList.remove('active');
+    }
+
+    function submitQuestionReport() {
+      const reason = document.getElementById('report-reason-select').value;
+      const comment = document.getElementById('report-comment-input').value.trim();
+      const qNum = (state.currentLevel - 1) * 10 + state.idx + 1;
+
+      closeReportModal();
+      showToast('🚨 Hatalı soru bildirimi gönderildi. İnceleme için teşekkürler!');
+    }
+
+    function openLeaderboardModal() {
+      switchLbTab('all');
+      document.getElementById('lb-modal').classList.add('active');
+    }
+
+    function closeLeaderboardModal() {
+      document.getElementById('lb-modal').classList.remove('active');
+    }
+
+    function switchLbTab(tab) {
+      state.currentLbTab = tab;
+      document.getElementById('btn-tab-all').className = 'lb-tab ' + (tab === 'all' ? 'active' : '');
+      document.getElementById('btn-tab-month').className = 'lb-tab ' + (tab === 'month' ? 'active' : '');
+
+      const list = tab === 'all' ? TOP_PLAYERS_ALL : TOP_PLAYERS_MONTH;
+      const container = document.getElementById('lb-list-container');
+      container.innerHTML = '';
+
+      list.forEach(p => {
+        const item = document.createElement('div');
+        item.className = 'lb-item';
+        const medal = p.rank === 1 ? '🥇 ' : p.rank === 2 ? '🥈 ' : p.rank === 3 ? '🥉 ' : `#${p.rank} `;
+        item.innerHTML = `
+          <div>${medal} <strong>${p.name}</strong> <span style="font-size: 11px; color: #64748B;">(Level ${p.level})</span></div>
+          <div style="color: #E65100;">${p.score} Puan</div>
+        `;
+        container.appendChild(item);
+      });
+
+      // Kullanıcının kendi sırasını göster
+      const userScore = (state.unlockedLevel - 1) * 100 + (state.score || 0);
+      const userRank = 12;
+      document.getElementById('user-rank-highlight').innerHTML = `
+        <div>📍 <strong>Siz (${state.nickname})</strong> <span style="font-size: 11px; color: #64748B;">(Level ${state.unlockedLevel})</span></div>
+        <div style="color: #E65100;">#${userRank} Sırada — ${userScore} Puan</div>
+      `;
+    }
+
+    function renderHomeGroups() {
+      const container = document.getElementById('groups-container');
+      container.innerHTML = '';
+
+      LEVEL_GROUPS.forEach(grp => {
+        const card = document.createElement('div');
+        card.className = `group-card grp-${grp.id}`;
+
+        const isGroupOpen = state.unlockedLevel >= grp.start;
+
+        const header = document.createElement('div');
+        header.className = 'group-header';
+        header.innerHTML = `
+          <span>${grp.name}</span>
+          <span style="font-size: 12px;">${isGroupOpen ? '▼' : '🔒'}</span>
+        `;
+        header.onclick = () => {
+          card.classList.toggle('open');
+        };
+
+        const grid = document.createElement('div');
+        grid.className = 'group-levels-grid';
+
+        for (let lvl = grp.start; lvl <= grp.end; lvl++) {
+          const isUnlocked = lvl <= state.unlockedLevel;
+          const btn = document.createElement('button');
+          btn.className = `level-bar-btn lvl-btn-color ${isUnlocked ? '' : 'locked'}`;
+          btn.innerHTML = `<span>${isUnlocked ? '' : '🔒 '}L${lvl}</span> <span>${isUnlocked ? '▶' : 'Kilitli'}</span>`;
+          btn.onclick = (e) => {
+            e.stopPropagation();
+            if (isUnlocked) {
+              startSpecificLevel(lvl);
+            } else {
+              showToast(`🔒 Önce LEVEL ${lvl - 1}'i tamamlamalısın!`);
+            }
+          };
+          grid.appendChild(btn);
+        }
+
+        card.appendChild(header);
+        card.appendChild(grid);
+
+        // İlk açık grubu varsayılan açık yap
+        if (state.unlockedLevel >= grp.start && state.unlockedLevel <= grp.end) {
+          card.classList.add('open');
+        }
+
+        container.appendChild(card);
+      });
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast-msg');
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 2200);
+    }
+
+    function startSpecificLevel(lvl) {
+      state.currentLevel = lvl;
+      state.idx = 0;
+      state.correct = 0;
+      state.wrong = 0;
+      showScreen('game');
+      renderQuestion();
+    }
+
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById('screen-' + id);
+      if (target) target.classList.add('active');
+      if (id === 'home') {
+        updateUserHeader();
+        renderHomeGroups();
+      }
+    }
+
+    function showHome() { showScreen('home'); }
+
+    function renderQuestion() {
+      document.getElementById('fb-modal').classList.remove('active');
+      const q = generateQuestionForLevel(state.currentLevel, state.idx);
+
+      document.getElementById('q-tag').textContent = `${q.tag} (LEVEL ${state.currentLevel})`;
+      document.getElementById('q-text').textContent = q.q;
+      document.getElementById('footer-counter').textContent = `${state.idx + 1}/${state.total}`;
+
+      const container = document.getElementById('opts-container');
+      container.innerHTML = '';
+
+      q.opts.forEach((optText, i) => {
+        const btn = document.createElement('button');
+        btn.className = `opt-strip color-${i}`;
+        btn.textContent = optText;
+        btn.onclick = () => selectOption(i, q.correct, q.exp);
+        container.appendChild(btn);
+      });
+    }
+
+    function selectOption(chosenIdx, correctIdx, expText) {
+      const isCorrect = chosenIdx === correctIdx;
+      const buttons = document.querySelectorAll('.opt-strip');
+
+      buttons.forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === correctIdx) btn.classList.add('correct-choice');
+        else if (i === chosenIdx && !isCorrect) btn.classList.add('wrong-choice');
+      });
+
+      if (isCorrect) {
+        state.correct++;
+        state.score += 10;
+        localStorage.setItem('bsm_score', state.score);
+      } else {
+        state.wrong++;
+      }
+
+      setTimeout(() => showFeedback(isCorrect, expText), 400);
+    }
+
+    function showFeedback(isCorrect, expText) {
+      const modal = document.getElementById('fb-modal');
+      const title = document.getElementById('fb-title');
+      const exp = document.getElementById('fb-exp');
+      const nextBtn = document.getElementById('fb-next-btn');
+
+      title.textContent = isCorrect ? '✅ Doğru!' : '❌ Yanlış!';
+      title.style.color = isCorrect ? '#4CAF50' : '#F44336';
+      exp.textContent = expText;
+
+      const isLast = state.idx >= state.total - 1;
+      nextBtn.textContent = isLast ? 'LEVELİ TAMAMLA 🏁' : 'DEVAM ET →';
+
+      modal.classList.add('active');
+    }
+
+    function nextQuestion() {
+      state.idx++;
+      if (state.idx >= state.total) {
+        showResult();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    function showResult() {
+      const wrongPct = Math.round((state.wrong / state.total) * 100);
+      
+      if (state.currentLevel >= state.unlockedLevel && state.currentLevel < 100) {
+        state.unlockedLevel = state.currentLevel + 1;
+        localStorage.setItem('bsm_unlocked_level', state.unlockedLevel);
+      }
+
+      let icon = '😎';
+      let levelName = 'Normal İnsan';
+
+      if (wrongPct <= 10) { icon = '🧠'; levelName = 'Dahi Seviyesi'; }
+      else if (wrongPct <= 30) { icon = '😎'; levelName = 'Normal İnsan'; }
+      else if (wrongPct <= 60) { icon = '🤔'; levelName = 'Bazen Dalıyorsun'; }
+      else if (wrongPct <= 80) { icon = '🥔'; levelName = 'Patates Modu'; }
+      else { icon = '🚨'; levelName = 'Tehlikeli Bölge!'; }
+
+      document.getElementById('res-emoji').textContent = icon;
+      document.getElementById('res-title').textContent = `LEVEL ${state.currentLevel} Tamamlandı!`;
+      document.getElementById('res-level').textContent = levelName;
+      document.getElementById('res-pct').textContent = `%${wrongPct}`;
+
+      const nextLevelBtn = document.getElementById('btn-next-level');
+      if (state.currentLevel < 100) {
+        nextLevelBtn.style.display = 'block';
+        nextLevelBtn.textContent = `LEVEL ${state.currentLevel + 1}'E GEÇ 🔓`;
+      } else {
+        nextLevelBtn.style.display = 'none';
+      }
+
+      showScreen('result');
+    }
+
+    function startNextLevel() {
+      if (state.currentLevel < 100) {
+        startSpecificLevel(state.currentLevel + 1);
+      } else {
+        showHome();
+      }
+    }
+
+    // Başlangıç yüklemeleri
+    initUser();
+    renderHomeGroups();
+  </script>
+</body>
+</html>

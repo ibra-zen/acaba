@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Acaba Salak Mıyım?</string>
+    <string name="title_activity_main">Acaba Salak Mıyım?</string>
+    <string name="package_name">com.dh3games.acabasalakmiyim</string>
+    <string name="custom_url_scheme">com.dh3games.acabasalakmiyim</string>
+</resources>
