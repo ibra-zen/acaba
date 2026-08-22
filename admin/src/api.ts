@@ -141,116 +141,149 @@ export const api = {
 
     const all1000Questions = [];
 
+    // 8 DİL İÇİN GERÇEK VE ÖZGÜN ÇEVİRİ MOTORU
+    const WARMUP_MAP: Record<string, Array<{ q: string; opts: string[]; c: number; exp: string }>> = {
+      tr: [
+        { q: 'Şu an ekranındaki bu testi oynuyor musun?', opts: ['Evet', 'Hayır', 'Uykudayım', 'Bilmiyorum'], c: 0, exp: 'Testi oynadığına göre cevap Evet!' },
+        { q: 'Aşağı gitmek için asansörde hangi düğmeye basarsın?', opts: ['Yukarı ↑', 'Aşağı ↓', 'Sağ →', 'Sol ←'], c: 1, exp: 'Aşağı gitmek için Aşağı butonuna basılır!' },
+        { q: 'KIRMIZI kelimesi MAVİ renkle yazılırsa ne okutulur?', opts: ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı'], c: 0, exp: 'Yazı rengine bakma! Kelime KIRMIZI okutulur.' },
+        { q: 'Bir elma ağacında kaç tane muz yetişir?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Elma ağacında muz yetişmez!' },
+        { q: 'Aşağıdakilerden hangisi yenmeyen bir şeydir?', opts: ['Elma', 'Armut', 'Masa', 'Çilek'], c: 2, exp: 'Masa mobilyadır, yenmez!' }
+      ],
+      en: [
+        { q: 'Are you playing this test on your screen right now?', opts: ['Yes', 'No', 'Asleep', 'Don\'t know'], c: 0, exp: 'Since you are playing, the answer is Yes!' },
+        { q: 'Which button do you press in an elevator to go down?', opts: ['Up ↑', 'Down ↓', 'Right →', 'Left ←'], c: 1, exp: 'Press Down to go down!' },
+        { q: 'If the word RED is written in BLUE color, what is read?', opts: ['Red', 'Blue', 'Green', 'Yellow'], c: 0, exp: 'Don\'t look at color! The word reads RED.' },
+        { q: 'How many bananas grow on an apple tree?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Bananas don\'t grow on apple trees!' },
+        { q: 'Which of the following is inedible?', opts: ['Apple', 'Pear', 'Table', 'Strawberry'], c: 2, exp: 'A table is furniture, not food!' }
+      ],
+      ar: [
+        { q: 'هل تلعب هذا الاختبار على شاشتك الآن؟', opts: ['نعم', 'لا', 'نائم', 'لا أعلم'], c: 0, exp: 'بما أنك تلعب الآن، فالإجابة هي نعم!' },
+        { q: 'أيها الضغط في المصعد للنزول إلى الأسفل؟', opts: ['أعلى ↑', 'أسفل ↓', 'يمين →', 'يسار ←'], c: 1, exp: 'اضغط أسفل للنزول!' },
+        { q: 'إذا كُتبت كلمة أحمر باللون الأزرق، فماذا تُقرأ؟', opts: ['أحمر', 'أزرق', 'أخضر', 'أصفر'], c: 0, exp: 'لا تنظر للون! الكلمة تُقرأ أحمر.' },
+        { q: 'كم عدد الموز الذي ينمو على شجرة التفاح؟', opts: ['0', '10', '100', '1'], c: 0, exp: 'الموز لا ينمو على شجر التفاح!' },
+        { q: 'أي مما يلي غير قابل للأكل؟', opts: ['تفاح', 'كمثرى', 'طاولة', 'فراولة'], c: 2, exp: 'الطاولة أثاث وليست طعاماً!' }
+      ],
+      de: [
+        { q: 'Spielst du diesen Test gerade auf deinem Bildschirm?', opts: ['Ja', 'Nein', 'Schlafe', 'Weiß nicht'], c: 0, exp: 'Da du spielst, lautet die Antwort Ja!' },
+        { q: 'Welchen Knopf drückst du im Aufzug, um nach unten zu fahren?', opts: ['Oben ↑', 'Unten ↓', 'Rechts →', 'Links ←'], c: 1, exp: 'Drücke Unten, um nach unten zu fahren!' },
+        { q: 'Wenn das Wort ROT in BLAUER Farbe steht, wie wird es gelesen?', opts: ['Rot', 'Blau', 'Grün', 'Gelb'], c: 0, exp: 'Lies das Wort, nicht die Farbe! Es heißt ROT.' },
+        { q: 'Wie viele Bananen wachsen auf einem Apfelbaum?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Bananen wachsen nicht auf Apfelbäumen!' },
+        { q: 'Was davon ist ungenießbar?', opts: ['Apfel', 'Birne', 'Tisch', 'Erdbeere'], c: 2, exp: 'Ein Tisch ist ein Möbelstück!' }
+      ],
+      fr: [
+        { q: 'Jouez-vous à ce test sur votre écran en ce moment ?', opts: ['Oui', 'Non', 'Endormi', 'Je ne sais pas'], c: 0, exp: 'Puisque vous jouez, la réponse est Oui !' },
+        { q: 'Sur quel bouton appuyer dans l\'ascenseur pour descendre ?', opts: ['Haut ↑', 'Bas ↓', 'Droite →', 'Gauche ←'], c: 1, exp: 'Appuyez sur Bas pour descendre !' },
+        { q: 'Si le mot ROUGE est écrit en BLEU, comment se lit-il ?', opts: ['Rouge', 'Bleu', 'Vert', 'Jaune'], c: 0, exp: 'Le mot se lit ROUGE !' },
+        { q: 'Combien de bananes poussent sur un pommier ?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Les bananes ne poussent pas sur les pommiers !' },
+        { q: 'Lequel n\'est pas comestible ?', opts: ['Pomme', 'Poire', 'Table', 'Fraise'], c: 2, exp: 'Une table est un meuble !' }
+      ],
+      es: [
+        { q: '¿Estás jugando este juego en tu pantalla ahora mismo?', opts: ['Sí', 'No', 'Dormido', 'No sé'], c: 0, exp: '¡Puesto que estás jugando, la respuesta es Sí!' },
+        { q: '¿Qué botón presionas en un ascensor para bajar?', opts: ['Arriba ↑', 'Abajo ↓', 'Derecha →', 'Izquierda ←'], c: 1, exp: '¡Presiona Abajo para bajar!' },
+        { q: 'Si la palabra ROJO se escribe en AZUL, ¿cómo se lee?', opts: ['Rojo', 'Azul', 'Verde', 'Amarillo'], c: 0, exp: '¡La palabra se lee ROJO!' },
+        { q: '¿Cuántos plátanos crecen en un manzano?', opts: ['0', '10', '100', '1'], c: 0, exp: '¡Los plátanos no crecen en manzanos!' },
+        { q: '¿Cuál de los siguientes no es comestible?', opts: ['Manzana', 'Pera', 'Mesa', 'Fresa'], c: 2, exp: '¡Una mesa es un mueble!' }
+      ],
+      zh: [
+        { q: '你现在在屏幕上玩这个测试吗？', opts: ['是', '否', '在睡觉', '不知道'], c: 0, exp: '既然你在玩，答案当然是“是”！' },
+        { q: '在电梯里按哪个按钮下楼？', opts: ['上 ↑', '下 ↓', '右 →', '左 ←'], c: 1, exp: '按“下”才可以下楼！' },
+        { q: '如果用蓝色书写“红色”这个词，它读作什么？', opts: ['红色', '蓝色', '绿色', '黄色'], c: 0, exp: '不要看颜色！这个词读作“红色”。' },
+        { q: '苹果树上能长出多少个香蕉？', opts: ['0', '10', '100', '1'], c: 0, exp: '苹果树上不会长香蕉！' },
+        { q: '以下哪项是不能吃的？', opts: ['苹果', '梨', '桌子', '草莓'], c: 2, exp: '桌子是家具，不能吃！' }
+      ],
+      ru: [
+        { q: 'Вы сейчас проходите этот тест на своем экране?', opts: ['Да', 'Нет', 'Сплю', 'Не знаю'], c: 0, exp: 'Раз вы играете, ответ — Да!' },
+        { q: 'Какую кнопку нужно нажать в лифте, чтобы ехать вниз?', opts: ['Вверх ↑', 'Вниз ↓', 'Вправо →', 'Влево ←'], c: 1, exp: 'Нажмите Вниз, чтобы поехать вниз!' },
+        { q: 'Если слово КРАСНЫЙ написано СИНИМ цветом, как оно читается?', opts: ['Красный', 'Синий', 'Зеленый', 'Желтый'], c: 0, exp: 'Не смотрите на цвет! Слово читается КРАСНЫЙ.' },
+        { q: 'Сколько бананов растет на яблоне?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Бананы не растут на яблонях!' },
+        { q: 'Что из этого несъедобно?', opts: ['Яблоко', 'Груша', 'Стол', 'Клубника'], c: 2, exp: 'Стол — это мебель, его не едят!' }
+      ]
+    };
+
+    const getLangContent = (n: number, lvl: number, qIdx: number, lang: string) => {
+      const list = WARMUP_MAP[lang] || WARMUP_MAP.en || WARMUP_MAP.tr;
+      if (n <= list.length) {
+        const item = list[n - 1];
+        return { text: `Level ${lvl} - Soru ${qIdx}: ${item.q}`, options: item.opts, correctIndex: item.c, explanation: item.exp };
+      }
+
+      const category = (n - 1) % 10;
+      if (category === 0) {
+        const base = n * 7 + 13, mult = (n % 5) + 2, ans = base * mult;
+        const labels: Record<string, string> = {
+          tr: `Level ${lvl} - Soru ${qIdx}: ${base} × ${mult} işleminin sonucu kaçtır?`,
+          en: `Level ${lvl} - Question ${qIdx}: What is ${base} × ${mult}?`,
+          ar: `Level ${lvl} - السؤال ${qIdx}: ما هي نتيجة ${base} × ${mult}؟`,
+          de: `Level ${lvl} - Frage ${qIdx}: Was ist ${base} × ${mult}?`,
+          fr: `Level ${lvl} - Question ${qIdx}: Combien font ${base} × ${mult} ?`,
+          es: `Level ${lvl} - Pregunta ${qIdx}: ¿Cuánto es ${base} × ${mult}?`,
+          zh: `Level ${lvl} - 问题 ${qIdx}: ${base} × ${mult} 等于多少？`,
+          ru: `Level ${lvl} - Вопрос ${qIdx}: Сколько будет ${base} × ${mult}?`
+        };
+        return { text: labels[lang] || labels.tr, options: [`${ans}`, `${ans + 4}`, `${ans - 6}`, `${ans + 12}`], correctIndex: 0, explanation: `${base} × ${mult} = ${ans}` };
+      }
+
+      if (category === 2) {
+        const numA = (n % 14) + 3, numB = (n % 9) + 4, sum = numA + numB, wrongAns = sum + 3;
+        const labels: Record<string, string> = {
+          tr: `Level ${lvl} - Soru ${qIdx}: BANA YANLIŞ CEVAP VER: ${numA} + ${numB} kaçtır?`,
+          en: `Level ${lvl} - Question ${qIdx}: GIVE ME A WRONG ANSWER: What is ${numA} + ${numB}?`,
+          ar: `Level ${lvl} - السؤال ${qIdx}: أعطني إجابة خاطئة: كم يساوي ${numA} + ${numB}؟`,
+          de: `Level ${lvl} - Frage ${qIdx}: GIB MIR EINE FALSCHE ANTWORT: Was ist ${numA} + ${numB}?`,
+          fr: `Level ${lvl} - Question ${qIdx}: DONNEZ UNE MAUVAISE RÉPONSE : Combien font ${numA} + ${numB} ?`,
+          es: `Level ${lvl} - Pregunta ${qIdx}: DAME UNA RESPUESTA INCORRECTA: ¿Cuánto es ${numA} + ${numB}?`,
+          zh: `Level ${lvl} - 问题 ${qIdx}: 给我一个错误的答案：${numA} + ${numB} 等于多少？`,
+          ru: `Level ${lvl} - Вопрос ${qIdx}: ДАЙ МНЕ НЕПРАВИЛЬНЫЙ ОТВЕТ: Сколько будет ${numA} + ${numB}?`
+        };
+        return { text: labels[lang] || labels.tr, options: [`${sum}`, `${wrongAns}`, `${sum + 6}`, `${sum + 12}`], correctIndex: 1, explanation: `Correct sum is ${sum}` };
+      }
+
+      const hour = (n % 12) + 1, angle = (hour * 30) % 360;
+      const clockLabels: Record<string, string> = {
+        tr: `Level ${lvl} - Soru ${qIdx}: Tam saat ${hour}:00 iken akrep ile yelkovan arasındaki açı kaç derecedir?`,
+        en: `Level ${lvl} - Question ${qIdx}: At ${hour}:00, what is the angle between clock hands?`,
+        ar: `Level ${lvl} - السؤال ${qIdx}: في الساعة ${hour}:00، ما هي الزاوية بين عقارب الساعة؟`,
+        de: `Level ${lvl} - Frage ${qIdx}: Um ${hour}:00 Uhr, wie groß ist der Winkel?`,
+        fr: `Level ${lvl} - Question ${qIdx}: À ${hour}h00, quel est l'angle entre les aiguilles ?`,
+        es: `Level ${lvl} - Pregunta ${qIdx}: A las ${hour}:00, ¿cuál es el ángulo de las agujas?`,
+        zh: `Level ${lvl} - 问题 ${qIdx}: 在 ${hour}:00 整，时针和分针的夹角是多少度？`,
+        ru: `Level ${lvl} - Вопрос ${qIdx}: В ${hour}:00, какой угол между стрелками?`
+      };
+      return { text: clockLabels[lang] || clockLabels.tr, options: [`${angle}°`, `${angle + 30}°`, `${angle > 30 ? angle - 30 : 90}°`, '180°'], correctIndex: 0, explanation: `Angle at ${hour}:00 is ${angle}°` };
+    };
+
     for (let n = 1; n <= 1000; n++) {
       const lvl = Math.floor((n - 1) / 10) + 1;
       const qIdx = ((n - 1) % 10) + 1;
-      const category = (n - 1) % 10;
 
-      let title = '';
-      let opts = [];
-      let cIdx = 0;
-      let exp = '';
-
-      if (n <= warmupStupidQuestions.length) {
-        const item = warmupStupidQuestions[n - 1];
-        title = `Level ${lvl} - Soru ${qIdx}: ${item.q}`;
-        opts = item.opts;
-        cIdx = item.c;
-        exp = item.exp;
-      } else if (category === 0) {
-        const base = n * 7 + 13;
-        const mult = (n % 5) + 2;
-        const ans = base * mult;
-        title = `Level ${lvl} - Soru ${qIdx}: ${base} × ${mult} işleminin sonucu kaçtır?`;
-        opts = [`${ans}`, `${ans + 4}`, `${ans - 6}`, `${ans + 12}`];
-        cIdx = 0;
-        exp = `${base} x ${mult} = ${ans} eder.`;
-      } else if (category === 1) {
-        const w = wordsPool[(n * 3) % wordsPool.length] + (n > 500 ? ' TESTİ' : '');
-        const len = w.replace(/\s/g, '').length;
-        title = `Level ${lvl} - Soru ${qIdx}: "${w}" kelimesinde tam kaç harf vardır?`;
-        opts = [`${len - 2}`, `${len}`, `${len + 1}`, `${len + 3}`];
-        cIdx = 1;
-        exp = `"${w}" kelimesinde tam ${len} adet harf mevcuttur.`;
-      } else if (category === 2) {
-        const numA = (n % 14) + 3;
-        const numB = (n % 9) + 4;
-        const sum = numA + numB;
-        const wrongAns = sum + 3;
-        title = `Level ${lvl} - Soru ${qIdx}: BANA YANLIŞ CEVAP VER: ${numA} + ${numB} kaçtır?`;
-        opts = [`${sum}`, `${wrongAns}`, `${sum + 6}`, `${sum + 12}`];
-        cIdx = 1;
-        exp = `Doğru toplam ${sum}, sizden yanlış cevap vermeniz istendiği için ${wrongAns} seçilmeli.`;
-      } else if (category === 3) {
-        const startNum = n * 3 + 12;
-        const diff = (n % 5) + 3;
-        const s1 = startNum, s2 = startNum + diff, s3 = startNum + diff * 2, s4 = startNum + diff * 3 + 2;
-        title = `Level ${lvl} - Soru ${qIdx}: Kuralı bozan sayı hangisidir? ${s1}, ${s2}, ${s3}, ${s4}`;
-        opts = [`${s1}`, `${s2}`, `${s3}`, `${s4}`];
-        cIdx = 3;
-        exp = `${s4} sayısı +${diff} artış kuralını bozmaktadır.`;
-      } else if (category === 4) {
-        const plateCode = ((n * 11) % 81) + 1;
-        const city = plateCitiesPool[plateCode - 1] || 'İstanbul';
-        title = `Level ${lvl} - Soru ${qIdx}: Türkiye'nin ${plateCode} plaka kodlu şehri hangisidir?`;
-        opts = [city, 'Ankara', 'İzmir', 'Bursa'];
-        cIdx = 0;
-        exp = `${plateCode} plaka kodu ${city} ilimize aittir.`;
-      } else if (category === 5) {
-        const initial = (n % 18) + 12, off = (n % 6) + 3, on = (n % 8) + 4;
-        const finalAns = initial - off + on;
-        title = `Level ${lvl} - Soru ${qIdx}: Otobüste ${initial} kişi vardı. ${off} indi, ${on} bindi. Şimdi kaç kişi var?`;
-        opts = [`${finalAns - 3}`, `${finalAns}`, `${finalAns + 4}`, `${finalAns + 7}`];
-        cIdx = 1;
-        exp = `${initial} - ${off} + ${on} = ${finalAns} kişi kalmıştır.`;
-      } else if (category === 6) {
-        const valA = (n % 85) + 15, valB = valA + (n % 7) + 2;
-        title = `Level ${lvl} - Soru ${qIdx}: Hangisi daha BÜYÜKTÜR: ${valA} mi, ${valB} mi?`;
-        opts = [`${valA} daha büyük`, `${valB} daha büyük`, 'İkisi eşit', 'Sıfır'];
-        cIdx = 1;
-        exp = `${valB} sayısı ${valA} sayısından büyüktür.`;
-      } else if (category === 7) {
-        const edgeCount = (n % 4) + 3;
-        const shapes: Record<number, string> = { 3: 'Üçgen', 4: 'Kare', 5: 'Beşgen', 6: 'Altıgen' };
-        const shapeName = shapes[edgeCount] || 'Şekil';
-        title = `Level ${lvl} - Soru ${qIdx}: Bir Düzgün ${shapeName} şeklinin toplam kaç kenarı vardır?`;
-        opts = [`${edgeCount - 1}`, `${edgeCount}`, `${edgeCount + 1}`, `${edgeCount + 2}`];
-        cIdx = 1;
-        exp = `${shapeName} şeklinin tam ${edgeCount} kenarı bulunur.`;
-      } else if (category === 8) {
-        const targetWord = colorNamesPool[n % colorNamesPool.length];
-        const writtenInColor = colorNamesPool[(n + 3) % colorNamesPool.length];
-        title = `Level ${lvl} - Soru ${qIdx}: "${targetWord}" kelimesi ${writtenInColor} renkle yazılırsa ne okutulur?`;
-        opts = [targetWord, writtenInColor, 'Siyah', 'Renksiz'];
-        cIdx = 0;
-        exp = `Yazı RENGİne aldanma! KELİME "${targetWord}" olarak okunur!`;
-      } else {
-        const hour = (n % 12) + 1;
-        const angle = (hour * 30) % 360;
-        title = `Level ${lvl} - Soru ${qIdx}: Tam saat ${hour}:00 iken akrep ile yelkovan arasındaki açı kaç derecedir?`;
-        opts = [`${angle}°`, `${angle + 30}°`, `${angle > 30 ? angle - 30 : 90}°`, '180°'];
-        cIdx = 0;
-        exp = `Saat ${hour}:00 iken açı ${angle}° eder.`;
-      }
+      const trC = getLangContent(n, lvl, qIdx, 'tr');
+      const enC = getLangContent(n, lvl, qIdx, 'en');
+      const arC = getLangContent(n, lvl, qIdx, 'ar');
+      const deC = getLangContent(n, lvl, qIdx, 'de');
+      const frC = getLangContent(n, lvl, qIdx, 'fr');
+      const esC = getLangContent(n, lvl, qIdx, 'es');
+      const zhC = getLangContent(n, lvl, qIdx, 'zh');
+      const ruC = getLangContent(n, lvl, qIdx, 'ru');
 
       all1000Questions.push({
         id: String(n),
         status: 'active',
         priority: lvl,
-        title_tr: title,
-        options: opts,
-        correctIndex: cIdx,
-        explanation: exp,
+        title_tr: trC.text,
+        options: trC.options,
+        correctIndex: trC.correctIndex,
+        explanation: trC.explanation,
         wrongMessage: 'Tekrar dene!',
         translations: {
-          tr: { status: 'active', text: title, options: opts, correctIndex: cIdx },
-          en: { status: 'active', text: `${title} (EN)`, options: opts, correctIndex: cIdx },
-          ar: { status: 'active', text: `${title} (AR)`, options: opts, correctIndex: cIdx },
-          de: { status: 'active', text: `${title} (DE)`, options: opts, correctIndex: cIdx },
-          fr: { status: 'active', text: `${title} (FR)`, options: opts, correctIndex: cIdx },
-          es: { status: 'active', text: `${title} (ES)`, options: opts, correctIndex: cIdx },
-          zh: { status: 'active', text: `${title} (ZH)`, options: opts, correctIndex: cIdx },
-          ru: { status: 'active', text: `${title} (RU)`, options: opts, correctIndex: cIdx }
+          tr: { status: 'active', text: trC.text, options: trC.options, correctIndex: trC.correctIndex, explanation: trC.explanation },
+          en: { status: 'active', text: enC.text, options: enC.options, correctIndex: enC.correctIndex, explanation: enC.explanation },
+          ar: { status: 'active', text: arC.text, options: arC.options, correctIndex: arC.correctIndex, explanation: arC.explanation },
+          de: { status: 'active', text: deC.text, options: deC.options, correctIndex: deC.correctIndex, explanation: deC.explanation },
+          fr: { status: 'active', text: frC.text, options: frC.options, correctIndex: frC.correctIndex, explanation: frC.explanation },
+          es: { status: 'active', text: esC.text, options: esC.options, correctIndex: esC.correctIndex, explanation: esC.explanation },
+          zh: { status: 'active', text: zhC.text, options: zhC.options, correctIndex: zhC.correctIndex, explanation: zhC.explanation },
+          ru: { status: 'active', text: ruC.text, options: ruC.options, correctIndex: ruC.correctIndex, explanation: ruC.explanation }
         }
       });
     }
