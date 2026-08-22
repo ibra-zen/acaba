@@ -1122,18 +1122,59 @@
         } catch (e) {}
       }
 
-      const API_URL = `http://localhost:3001/api/questions/pack/${packId}?lang=${lang}`;
+      const VERCEL_API = 'https://acaba-deceo48ky-ibrazen-s-projects.vercel.app/api/questions';
+
+      // 1. CANLI VERCEL SUNUCUSUNDAN SORULARI ÇEK (Vercel Admin Panel Senkronizasyonu)
       try {
         const controller = new AbortController();
-        const tid = setTimeout(() => controller.abort(), 1200);
-        const res = await fetch(API_URL, { signal: controller.signal });
+        const tid = setTimeout(() => controller.abort(), 2200);
+        const res = await fetch(VERCEL_API, { signal: controller.signal });
         clearTimeout(tid);
         if (res.ok) {
-          const data = await res.json();
-          if (data && data.questions && data.questions.length > 0) {
-            packCache[packId] = data.questions;
-            savePackCache();
-            return;
+          const customList = await res.json();
+          if (Array.isArray(customList) && customList.length > 0) {
+            const startIdx = (packId - 1) * 100;
+            const packQuestions = customList.slice(startIdx, startIdx + 100);
+            if (packQuestions.length > 0) {
+              packCache[packId] = packQuestions.map(q => {
+                const trContent = q.translations?.[lang] || q.translations?.tr || {};
+                return {
+                  tag: `Level ${q.priority || 1}`,
+                  q: trContent.text || q.title_tr || q.q || 'Soru',
+                  opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
+                  correct: trContent.correctIndex ?? q.correctIndex ?? 0,
+                  exp: trContent.explanation || q.explanation || ''
+                };
+              });
+              savePackCache();
+              return;
+            }
+          }
+        }
+      } catch (e) {}
+
+      // 2. PAKETE GÖMÜLÜ YEDEK SORULARI OKU (Çevrimdışı Koruması)
+      try {
+        const res = await fetch('./questions_data.json');
+        if (res.ok) {
+          const customList = await res.json();
+          if (Array.isArray(customList) && customList.length > 0) {
+            const startIdx = (packId - 1) * 100;
+            const packQuestions = customList.slice(startIdx, startIdx + 100);
+            if (packQuestions.length > 0) {
+              packCache[packId] = packQuestions.map(q => {
+                const trContent = q.translations?.[lang] || q.translations?.tr || {};
+                return {
+                  tag: `Level ${q.priority || 1}`,
+                  q: trContent.text || q.title_tr || q.q || 'Soru',
+                  opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
+                  correct: trContent.correctIndex ?? q.correctIndex ?? 0,
+                  exp: trContent.explanation || q.explanation || ''
+                };
+              });
+              savePackCache();
+              return;
+            }
           }
         }
       } catch (e) {}
