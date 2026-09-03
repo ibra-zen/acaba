@@ -91,22 +91,26 @@
     /* ============================== ANA EKRAN (HOME) ===== */
     #screen-home {
       background: #E4E8CE;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 16px 16px 80px 16px;
-      text-align: center;
-      overflow-y: auto;
+      height: 100%;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       position: relative;
     }
 
+    .home-scroll-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 16px 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      -webkit-overflow-scrolling: touch;
+    }
+
     /* Alt Sabit Bar (Kullanıcı Adı, Dil, Puan, Sıralama) */
     .user-profile-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
       width: 100%;
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(14px);
@@ -117,6 +121,7 @@
       justify-content: space-between;
       box-shadow: 0 -4px 18px rgba(0,0,0,0.12);
       border-top: 1px solid rgba(0,0,0,0.08);
+      flex-shrink: 0;
       z-index: 100;
     }
     .user-nick-box {
@@ -488,24 +493,25 @@
 
     <!-- ===== ANA EKRAN (HOME) ===== -->
     <div id="screen-home" class="screen active">
+      <div class="home-scroll-body">
+        <!-- Üst Maskot İkonu -->
+        <div class="mascot-icon-box">👓</div>
+        
+        <!-- Ana Başlık -->
+        <div class="home-main-title">ACABA SALAK MIYIM?</div>
 
-      <!-- Üst Maskot İkonu -->
-      <div class="mascot-icon-box">👓</div>
-      
-      <!-- Ana Başlık -->
-      <div class="home-main-title">ACABA SALAK MIYIM?</div>
-
-      <!-- Dev Hızlı Başla Butonu -->
-      <button class="modal-btn" style="background: linear-gradient(135deg, #FF3366 0%, #FF6B00 100%); font-size: 20px; font-weight: 900; padding: 18px; margin: 15px 0 25px 0; width: 100%; box-shadow: 0 8px 20px rgba(255, 51, 102, 0.4); border-radius: 18px;" onclick="startSpecificLevel(state.unlockedLevel || 1)">
-        🚀 OYUNA BAŞLA (LEVEL <span id="current-unlocked-btn-lvl">1</span>)
-      </button>
-      
-      <!-- 10'lu Gruplar halinde 100 Level Listesi -->
-      <div class="groups-container" id="groups-container">
-        <!-- JS ile dolacak -->
+        <!-- Dev Hızlı Başla Butonu -->
+        <button class="modal-btn" style="background: linear-gradient(135deg, #FF3366 0%, #FF6B00 100%); font-size: 20px; font-weight: 900; padding: 18px; margin: 15px 0 25px 0; width: 100%; box-shadow: 0 8px 20px rgba(255, 51, 102, 0.4); border-radius: 18px;" onclick="startSpecificLevel(state.unlockedLevel || 1)">
+          🚀 OYUNA BAŞLA (LEVEL <span id="current-unlocked-btn-lvl">1</span>)
+        </button>
+        
+        <!-- 10'lu Gruplar halinde 100 Level Listesi -->
+        <div class="groups-container" id="groups-container">
+          <!-- JS ile dolacak -->
+        </div>
       </div>
 
-      <!-- Alt Bar: Kullanıcı Adı, Dil, Puan, Sıralama -->
+      <!-- Alt Bar: Kullanıcı Adı, Dil, Puan, Sıralama (Ekrana Sabit) -->
       <div class="user-profile-bar">
         <div class="user-nick-box" onclick="openNickModal()">
           <span>👤</span>
@@ -1081,7 +1087,15 @@
           <span style="font-size: 12px;">▼</span>
         `;
         header.onclick = () => {
-          card.classList.toggle('open');
+          const wasOpen = card.classList.contains('open');
+          // Açık olan diğer tüm grupları kapat
+          document.querySelectorAll('.group-card.open').forEach(c => {
+            c.classList.remove('open');
+          });
+          // Tıklanan grup kapalı idiyse aç
+          if (!wasOpen) {
+            card.classList.add('open');
+          }
         };
 
         const grid = document.createElement('div');
