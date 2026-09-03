@@ -6,7 +6,7 @@
   <title>Acaba Salak mıyım?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet" />
-  <script src="questions_data.js"></script>
+
   <style>
     /* ==================================================
        TASARIM SİSTEMİ – 100 Level (10 Gruplu), Nickname & Sıralama
@@ -46,41 +46,19 @@
       overflow: hidden;
     }
 
-    .top-header-title {
-      color: white;
-      font-size: 26px;
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 16px;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
 
-    /* ============================== TELEFON ÇERÇEVE */
+    /* ============================== TELEFON ÇERÇEVE — TAM EKRAN */
     .phone {
-      width: 380px;
-      height: 760px;
+      width: 100%;
+      height: 100%;
+      height: -webkit-fill-available;
       background: #000;
-      border-radius: 40px;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.35), 0 0 0 10px #1E293B;
       display: flex;
       flex-direction: column;
     }
 
-    /* Status bar */
-    .status-bar {
-      height: 36px;
-      background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      color: #FFF;
-      font-size: 13px;
-      font-weight: 800;
-      z-index: 10;
-    }
 
     /* Toast Bildirim */
     .toast-msg {
@@ -497,17 +475,11 @@
 </head>
 <body>
 
-  <div class="top-header-title">ACABA SALAK MIYIM?</div>
-
   <div class="phone">
-    <!-- Status Bar -->
-    <div class="status-bar">
-      <span>18:30</span>
-      <span>🔋 100%</span>
-    </div>
 
     <!-- Toast Bildirimi -->
     <div class="toast-msg" id="toast-msg"></div>
+
 
     <!-- ===== ANA EKRAN (HOME) ===== -->
     <div id="screen-home" class="screen active">
@@ -1077,153 +1049,10 @@
       }
     }
 
-    // 📦 10'LU GRUP İSTEĞE BAĞLI PAKET YÖNETİCİSİ (ON-DEMAND PACK LOADER)
-    let packCache = {};
-    try {
-      const raw = localStorage.getItem('bsm_cached_packs');
-      if (raw) packCache = JSON.parse(raw);
-    } catch (e) { packCache = {}; }
-
+    // Soru getirici — tamamen yerel, ağ bağlantısı gerekmez
     async function getQuestionForLevel(levelNum, qIndex) {
-      try {
-        const lang = state.language || 'tr';
-        const globalIndex = (levelNum - 1) * 10 + qIndex;
-
-        // 1. Cihaz içi / Admin panelinden eklenen özel sorular var mı?
-        if (localStorage.getItem('bsm_custom_questions_overridden') === 'true') {
-          try {
-            const rawCustom = localStorage.getItem('bsm_custom_questions') || '[]';
-            const customList = JSON.parse(rawCustom);
-            if (Array.isArray(customList) && customList[globalIndex]) {
-              const q = customList[globalIndex];
-              const trContent = q.translations?.[lang] || q.translations?.tr || {};
-              return {
-                tag: `Level ${levelNum}`,
-                q: trContent.text || q.title_tr || q.q || `Soru #${globalIndex + 1}`,
-                opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
-                correct: trContent.correctIndex ?? q.correctIndex ?? 0,
-                exp: trContent.explanation || q.explanation || ''
-              };
-            }
-          } catch (e) {}
-        }
-
-        // 2. Dahili Gömülü Soru Bankası (window.BUILTIN_QUESTIONS_DATA)
-        if (window.BUILTIN_QUESTIONS_DATA && Array.isArray(window.BUILTIN_QUESTIONS_DATA) && window.BUILTIN_QUESTIONS_DATA[globalIndex]) {
-          const q = window.BUILTIN_QUESTIONS_DATA[globalIndex];
-          const trContent = q.translations?.[lang] || q.translations?.tr || {};
-          return {
-            tag: `Level ${levelNum}`,
-            q: trContent.text || q.title_tr || q.q || `Soru #${globalIndex + 1}`,
-            opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
-            correct: trContent.correctIndex ?? q.correctIndex ?? 0,
-            exp: trContent.explanation || q.explanation || ''
-          };
-        }
-
-        const packId = Math.ceil(levelNum / 10);
-        const itemIndex = ((levelNum - 1) % 10) * 10 + qIndex;
-
-        // 3. Önbellek kontrolü
-        if (packCache[packId] && packCache[packId][itemIndex] && packCache[packId][itemIndex].opts) {
-          return packCache[packId][itemIndex];
-        }
-
-        // 4. Paket yükleyici çalıştır
-        await fetchOrBuildPack(packId);
-
-        if (packCache[packId] && packCache[packId][itemIndex] && packCache[packId][itemIndex].opts) {
-          return packCache[packId][itemIndex];
-        }
-
-        // 5. Dinamik yerel motor
-        return generateQuestionForLevel(levelNum, qIndex, lang);
-      } catch (err) {
-        console.error('getQuestionForLevel hatası:', err);
-        return generateQuestionForLevel(levelNum, qIndex, state.language || 'tr');
-      }
-    }
-
-    async function fetchOrBuildPack(packId) {
       const lang = state.language || 'tr';
-
-      // 1. CANLI VERCEL SUNUCUSUNDAN SORULARI ÇEK (Statik JSON - Deployment Koruması Yok)
-      const VERCEL_API = 'https://acaba-deceo48ky-ibrazen-s-projects.vercel.app/questions.json';
-      try {
-        const controller = new AbortController();
-        const tid = setTimeout(() => controller.abort(), 2200);
-        const res = await fetch(VERCEL_API, { signal: controller.signal });
-        clearTimeout(tid);
-        const contentType = res.headers.get('content-type') || '';
-        if (res.ok && !contentType.includes('text/html')) {
-          const customList = await res.json();
-          if (Array.isArray(customList) && customList.length > 0) {
-            const startIdx = (packId - 1) * 100;
-            const packQuestions = customList.slice(startIdx, startIdx + 100);
-            if (packQuestions.length > 0) {
-              packCache[packId] = packQuestions.map(q => {
-                const trContent = q.translations?.[lang] || q.translations?.tr || {};
-                return {
-                  tag: `Level ${q.priority || 1}`,
-                  q: trContent.text || q.title_tr || q.q || 'Soru',
-                  opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
-                  correct: trContent.correctIndex ?? q.correctIndex ?? 0,
-                  exp: trContent.explanation || q.explanation || ''
-                };
-              });
-              savePackCache();
-              return;
-            }
-          }
-        }
-      } catch (e) {}
-
-      // 2. PAKETE GÖMÜLÜ YEDEK SORULARI OKU (Çevrimdışı Koruması)
-      try {
-        const res = await fetch('./questions_data.json');
-        if (res.ok) {
-          const contentType = res.headers.get('content-type') || '';
-          if (!contentType.includes('text/html')) {
-            const customList = await res.json();
-            if (Array.isArray(customList) && customList.length > 0) {
-              const startIdx = (packId - 1) * 100;
-              const packQuestions = customList.slice(startIdx, startIdx + 100);
-              if (packQuestions.length > 0) {
-                packCache[packId] = packQuestions.map(q => {
-                  const trContent = q.translations?.[lang] || q.translations?.tr || {};
-                  return {
-                    tag: `Level ${q.priority || 1}`,
-                    q: trContent.text || q.title_tr || q.q || 'Soru',
-                    opts: trContent.options || q.options || q.opts || ['A', 'B', 'C', 'D'],
-                    correct: trContent.correctIndex ?? q.correctIndex ?? 0,
-                    exp: trContent.explanation || q.explanation || ''
-                  };
-                });
-                savePackCache();
-                return;
-              }
-            }
-          }
-        }
-      } catch (e) {}
-
-      // 3. FALLBACK: Otomatik motor
-      const flatPackQuestions = [];
-      const startLvl = (packId - 1) * 10 + 1;
-      const endLvl = packId * 10;
-      for (let l = startLvl; l <= endLvl; l++) {
-        for (let q = 0; q < 10; q++) {
-          flatPackQuestions.push(generateQuestionForLevel(l, q, lang));
-        }
-      }
-      packCache[packId] = flatPackQuestions;
-      savePackCache();
-    }
-
-    function savePackCache() {
-      try {
-        localStorage.setItem('bsm_cached_packs', JSON.stringify(packCache));
-      } catch (e) {}
+      return generateQuestionForLevel(levelNum, qIndex, lang);
     }
 
     function showHome() { showScreen('home'); }
