@@ -523,6 +523,11 @@
       
       <!-- Ana Başlık -->
       <div class="home-main-title">ACABA SALAK MIYIM?</div>
+
+      <!-- Dev Hızlı Başla Butonu -->
+      <button class="modal-btn" style="background: linear-gradient(135deg, #FF3366 0%, #FF6B00 100%); font-size: 20px; font-weight: 900; padding: 18px; margin: 15px 0 25px 0; width: 100%; box-shadow: 0 8px 20px rgba(255, 51, 102, 0.4); border-radius: 18px;" onclick="startSpecificLevel(state.unlockedLevel || 1)">
+        🚀 OYUNA BAŞLA (LEVEL <span id="current-unlocked-btn-lvl">1</span>)
+      </button>
       
       <!-- 10'lu Gruplar halinde 100 Level Listesi -->
       <div class="groups-container" id="groups-container">
@@ -865,6 +870,7 @@
         else if (lang === 'zh') { qText = `[L${levelNum}-Q${qIndex}] 在 ${hour}:00 整，时针和分针的夹角是多少度？`; exp = `每小时为30度。在 ${hour}:00 时夹角为 ${angle}度。`; }
         else if (lang === 'ru') { qText = `[L${levelNum}-V${qIndex}] В ${hour}:00, какой угол между стрелками?`; exp = `Каждый час = 30°. В ${hour}:00 угол равен ${angle}°.`; }
         else { qText = `[L${levelNum}-S${qIndex}] Tam saat ${hour}:00 iken akrep ile yelkovan arasındaki açı kaç derecedir?`; exp = `Her saat 30° açıdır. Saat ${hour}:00 iken açı ${angle}° eder.`; }
+      }
       return { tag, q: qText, opts, correct, exp };
     }
 
