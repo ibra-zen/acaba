@@ -713,11 +713,19 @@
       }
     }
 
+    // Eski 100 level kilit açma testinden kalan veriyi temizle
+    if (!localStorage.getItem('bsm_lock_system_v2')) {
+      localStorage.removeItem('bsm_unlocked_level');
+      localStorage.setItem('bsm_unlocked_level_v2', '1');
+      localStorage.setItem('bsm_score_v2', '0');
+      localStorage.setItem('bsm_lock_system_v2', 'true');
+    }
+
     let state = {
       nickname: localStorage.getItem('bsm_nickname') || '',
       language: detectDeviceLanguage(),
-      unlockedLevel: Math.max(1, parseInt(localStorage.getItem('bsm_unlocked_level') || '1', 10)),
-      score: Number(localStorage.getItem('bsm_score') || 0),
+      unlockedLevel: Math.max(1, parseInt(localStorage.getItem('bsm_unlocked_level_v2') || '1', 10)),
+      score: Number(localStorage.getItem('bsm_score_v2') || 0),
       currentLevel: 1,
       idx: 0,
       correct: 0,
@@ -727,11 +735,18 @@
     };
 
     function initUser() {
+      if (!localStorage.getItem('bsm_lock_system_v2')) {
+        localStorage.removeItem('bsm_unlocked_level');
+        localStorage.setItem('bsm_unlocked_level_v2', '1');
+        localStorage.setItem('bsm_score_v2', '0');
+        localStorage.setItem('bsm_lock_system_v2', 'true');
+      }
+
       if (!state.nickname) {
         state.nickname = 'Oyuncu_' + Math.floor(1000 + Math.random() * 9000);
         localStorage.setItem('bsm_nickname', state.nickname);
       }
-      state.unlockedLevel = Math.max(1, parseInt(localStorage.getItem('bsm_unlocked_level') || '1', 10));
+      state.unlockedLevel = Math.max(1, parseInt(localStorage.getItem('bsm_unlocked_level_v2') || '1', 10));
       state.language = detectDeviceLanguage();
       updateUserHeader();
     }
@@ -965,11 +980,11 @@
       
       if (state.currentLevel >= state.unlockedLevel && state.currentLevel < 100) {
         state.unlockedLevel = state.currentLevel + 1;
-        localStorage.setItem('bsm_unlocked_level', state.unlockedLevel);
+        localStorage.setItem('bsm_unlocked_level_v2', state.unlockedLevel.toString());
       }
 
       state.score = (state.score || 0) + (state.correct * 10);
-      localStorage.setItem('bsm_score', state.score.toString());
+      localStorage.setItem('bsm_score_v2', state.score.toString());
 
       let icon = '😎';
       let levelName = 'Normal İnsan';
