@@ -1,5 +1,13 @@
 {
   "appId": "com.dh3games.acabasalakmiyim",
   "appName": "Acaba Salak Mıyım?",
-  "webDir": "www"
+  "webDir": "www",
+  "plugins": {
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#00000000",
+      "overlaysWebView": true
+    }
+  }
 }
+
