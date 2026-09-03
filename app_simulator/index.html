@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Acaba Salak mıyım?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet" />
-
+  <script src="questions_data.js"></script>
   <style>
     /* ==================================================
        TASARIM SİSTEMİ – 100 Level (10 Gruplu), Nickname & Sıralama
@@ -655,292 +654,41 @@
       { rank: 10, name: 'HızlıZeka', score: 620, level: 7 }
     ];
 
-    // 1000 ADET BENZERSİZ SORU ÜRETEÇ MOTORU (8 DİL DESTEKLİ: TR, EN, AR, DE, FR, ES, ZH, RU)
-    function generateQuestionForLevel(levelNum, qIndex, langCode) {
-      const lang = ['tr', 'en', 'ar', 'de', 'fr', 'es', 'zh', 'ru'].includes(langCode) ? langCode : (state.language || 'tr');
-      const qNum1Based = typeof qIndex === 'number' ? (qIndex >= 0 ? qIndex + 1 : 1) : 1;
-      const n = (levelNum - 1) * 10 + qNum1Based;
+    const TYPE_LABELS = {
+      tr: { attention: '👀 Dikkat', logic: '🧩 Mantık', memory: '🧠 Hafıza', reflex: '⚡ Refleks', patience: '⏳ Sabır', general: '🌟 Genel' },
+      en: { attention: '👀 Attention', logic: '🧩 Logic', memory: '🧠 Memory', reflex: '⚡ Reflex', patience: '⏳ Patience', general: '🌟 General' },
+      ar: { attention: '👀 انتباه', logic: '🧩 منطق', memory: '🧠 ذاكرة', reflex: '⚡ رد فعل', patience: '⏳ صبر', general: '🌟 عام' },
+      de: { attention: '👀 Aufmerksamkeit', logic: '🧩 Logik', memory: '🧠 Gedächtnis', reflex: '⚡ Reflex', patience: '⏳ Geduld', general: '🌟 Allgemein' },
+      fr: { attention: '👀 Attention', logic: '🧩 Logique', memory: '🧠 Mémoire', reflex: '⚡ Réflexe', patience: '⏳ Patience', general: '🌟 Général' },
+      es: { attention: '👀 Atención', logic: '🧩 Lógica', memory: '🧠 Memoria', reflex: '⚡ Reflejo', patience: '⏳ Paciencia', general: '🌟 General' },
+      zh: { attention: '👀 注意力', logic: '🧩 逻辑', memory: '🧠 记忆力', reflex: '⚡ 反应', patience: '⏳ 耐心', general: '🌟 常识' },
+      ru: { attention: '👀 Внимание', logic: '🧩 Логика', memory: '🧠 Память', reflex: '⚡ Реакция', patience: '⏳ Терпение', general: '🌟 Общие' }
+    };
 
-      // KATEGORİ ETİKETLERİ (8 DİL)
-      const TAGS = {
-        tr: ['🌱 Başlangıç', '🌿 Isınma', '⭐ Orta', '⚡ İleri Zeka', '🎓 Uzman', '👑 Şampiyon'],
-        en: ['🌱 Beginner', '🌿 Warmup', '⭐ Medium', '⚡ Advanced', '🎓 Expert', '👑 Champion'],
-        ar: ['🌱 مبتدئ', '🌿 إحماء', '⭐ متوسط', '⚡ متقدم', '🎓 خبير', '👑 بطل'],
-        de: ['🌱 Anfänger', '🌿 Aufwärmen', '⭐ Mittel', '⚡ Fortgeschritten', '🎓 Experte', '👑 Champion'],
-        fr: ['🌱 Débutant', '🌿 Échauffement', '⭐ Moyen', '⚡ Avancé', '🎓 Expert', '👑 Champion'],
-        es: ['🌱 Principiante', '🌿 Calentamiento', '⭐ Medio', '⚡ Avanzado', '🎓 Experto', '👑 Campeón'],
-        zh: ['🌱 初学者', '🌿 热身', '⭐ 中等', '⚡ 高级', '🎓 专家', '👑 冠军'],
-        ru: ['🌱 Новичок', '🌿 Разминка', '⭐ Средний', '⚡ Продвинутый', '🎓 Эксперт', '👑 Чемпион']
-      };
+    function getQuestionForLevel(levelNum, qIndex) {
+      const list = window.ALL_QUESTIONS || [];
+      const lang = state.language || 'en';
+      const globalIndex = (levelNum - 1) * 10 + qIndex;
 
-      const tagList = TAGS[lang] || TAGS.tr;
-      let tag = tagList[0];
-      if (levelNum > 80) tag = tagList[5];
-      else if (levelNum > 60) tag = tagList[4];
-      else if (levelNum > 40) tag = tagList[3];
-      else if (levelNum > 20) tag = tagList[2];
-      else if (levelNum > 10) tag = tagList[1];
-
-      // 🎯 İLK 5 LEVEL İÇİN 8 DİLDE EĞLENCELİ BAŞLANGIÇ SORULARI (WARMUP)
-      const WARMUP = {
-        tr: [
-          { q: 'Şu an ekranındaki bu testi oynuyor musun?', opts: ['Evet', 'Hayır', 'Uykudayım', 'Bilmiyorum'], c: 0, exp: 'Testi oynadığına göre cevap Evet!' },
-          { q: 'Aşağı gitmek için asansörde hangi düğmeye basarsın?', opts: ['Yukarı ↑', 'Aşağı ↓', 'Sağ →', 'Sol ←'], c: 1, exp: 'Aşağı gitmek için Aşağı butonuna basılır!' },
-          { q: 'KIRMIZI kelimesi MAVİ renkle yazılırsa ne okutulur?', opts: ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı'], c: 0, exp: 'Yazı rengine bakma! Kelime KIRMIZI okutulur.' },
-          { q: 'Bir elma ağacında kaç tane muz yetişir?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Elma ağacında muz yetişmez!' },
-          { q: 'Aşağıdakilerden hangisi yenmeyen bir şeydir?', opts: ['Elma', 'Armut', 'Masa', 'Çilek'], c: 2, exp: 'Masa mobilyadır, yenmez!' },
-          { q: '1 kg demir mi daha ağırdır, 1 kg pamuk mu?', opts: ['Demir', 'Pamuk', 'İkisi Eşit', 'Tartmak lazım'], c: 2, exp: 'İkisi de 1 kg! Ağırlıkları eşittir.' },
-          { q: 'Yanlış olan işlemi seçin:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8 olmalıdır, 9 yanlış!' },
-          { q: 'Şifre: 1453. Hangisi doğru şifredir?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'Doğru şifre 1453 idi.' },
-          { q: 'Ahmet\'in babası Ali\'nin oğludur. Ali Ahmet\'in nesi olur?', opts: ['Babası', 'Amcası', 'Dedesi', 'Dayısı'], c: 2, exp: 'Ali, Ahmet\'in dedesidir!' },
-          { q: 'Ocak ayında 28 gün vardır. Diğer aylarda kaç gün vardır?', opts: ['Hiçbirinde yok', 'Hepsinde 28 gün var', 'Sadece 30 ve 31', 'Bilmiyorum'], c: 1, exp: 'Tüm aylarda en az 28 gün vardır!' },
-          { q: 'Köpekler miyavlar mı?', opts: ['Evet', 'Hayır', 'Vıraklamaz', 'Öter'], c: 1, exp: 'Köpekler havlar!' },
-          { q: 'Bana bilerek YANLIŞ cevap ver: 2+2 kaçtır?', opts: ['4', '5', 'İki', 'Dört'], c: 1, exp: 'Soru sizden YANLIŞ cevap istedi, 5 yanlış cevaptır!' },
-          { q: 'Elektrikli tren güneye giderken dumanı nereye tüter?', opts: ['Güneye', 'Kuzeye', 'Dumanı yoktur', 'Doğuya'], c: 2, exp: 'Elektrikli tren duman çıkarmaz!' },
-          { q: 'Bir yarışta 2. olan kişiyi geçersen kaçıncı olursun?', opts: ['1.', '2.', '3.', 'Sonuncu'], c: 1, exp: '2. olanı geçersen 2. olursun!' },
-          { q: 'Doktor 3 hap verdi, yarım saatte bir alacaksın. Kaç saat sürer?', opts: ['1.5 saat', '1 saat', '2 saat', '3 saat'], c: 1, exp: '0. dk, 30. dk, 60. dk. Toplam 1 saat sürer!' },
-          { q: 'Gece saat 12\'de yağmur yağıyor. 72 saat sonra Güneş açabilir mi?', opts: ['Evet', 'Hayır', 'Gece güneş açmaz', '%50'], c: 1, exp: '72 saat = 3 gün. Yine gece 12 olur, Güneş açamaz!' },
-          { q: 'Boş bir çuvala kaç tane elma koyabilirsin?', opts: ['1', 'Sonsuz', 'Dolana kadar', '10'], c: 0, exp: '1 elma koyduktan sonra çuval artık boş değildir!' },
-          { q: 'Hangi ay 28 gün çeker?', opts: ['Sadece Şubat', 'Hiçbiri', 'Tüm aylar', 'Ocak ve Mart'], c: 2, exp: 'Tüm ayların içinde 28 gün vardır!' },
-          { q: 'Su kaç derecede kaynar?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'Su 100 derecede kaynar.' },
-          { q: 'Bir elmanın yarısı neye benzer?', opts: ['Diğer yarısına', 'Armuda', 'Çileğe', 'Portakala'], c: 0, exp: 'Elmanın yarısı diğer yarısına benzer!' }
-        ],
-        en: [
-          { q: 'Are you playing this test on your screen right now?', opts: ['Yes', 'No', 'Asleep', 'Don\'t know'], c: 0, exp: 'Since you are playing, the answer is Yes!' },
-          { q: 'Which button do you press in an elevator to go down?', opts: ['Up ↑', 'Down ↓', 'Right →', 'Left ←'], c: 1, exp: 'Press Down to go down!' },
-          { q: 'If the word RED is written in BLUE color, what is read?', opts: ['Red', 'Blue', 'Green', 'Yellow'], c: 0, exp: 'Don\'t look at color! The word reads RED.' },
-          { q: 'How many bananas grow on an apple tree?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Bananas don\'t grow on apple trees!' },
-          { q: 'Which of the following is inedible?', opts: ['Apple', 'Pear', 'Table', 'Strawberry'], c: 2, exp: 'A table is furniture, not food!' },
-          { q: 'Which is heavier: 1 kg of iron or 1 kg of cotton?', opts: ['Iron', 'Cotton', 'Both Equal', 'Need scale'], c: 2, exp: 'Both are 1 kg! They weigh the same.' },
-          { q: 'Select the incorrect math equation:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8, so 9 is wrong!' },
-          { q: 'Password: 1453. Which is the correct password?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'The password was 1453.' },
-          { q: 'Alex\'s father is John\'s son. Who is John to Alex?', opts: ['Father', 'Uncle', 'Grandfather', 'Brother'], c: 2, exp: 'John is Alex\'s grandfather!' },
-          { q: 'January has 28 days. How many days do other months have?', opts: ['None', 'All have at least 28', 'Only 30 & 31', 'Don\'t know'], c: 1, exp: 'All months have at least 28 days!' },
-          { q: 'Do dogs meow?', opts: ['Yes', 'No', 'Quack', 'Sing'], c: 1, exp: 'Dogs bark, they don\'t meow!' },
-          { q: 'GIVE ME A WRONG ANSWER: What is 2+2?', opts: ['4', '5', 'Two', 'Four'], c: 1, exp: 'The question asked for a WRONG answer, so 5 is correct!' },
-          { q: 'An electric train travels south. Where does the smoke blow?', opts: ['South', 'North', 'No smoke', 'East'], c: 2, exp: 'Electric trains produce no smoke!' },
-          { q: 'If you overtake the 2nd person in a race, what place are you in?', opts: ['1st', '2nd', '3rd', 'Last'], c: 1, exp: 'Overtaking 2nd place puts you in 2nd place!' },
-          { q: 'A doctor gives 3 pills to take every 30 mins. How long does it last?', opts: ['1.5 hours', '1 hour', '2 hours', '3 hours'], c: 1, exp: '0 min, 30 min, 60 min. Total 1 hour!' },
-          { q: 'Raining at 12 midnight. Can Sun shine in 72 hours?', opts: ['Yes', 'No', 'No Sun at night', '50%'], c: 1, exp: '72 hours = 3 days. It will still be midnight!' },
-          { q: 'How many apples can you put into an empty sack?', opts: ['1', 'Infinite', 'Until full', '10'], c: 0, exp: 'After 1 apple, the sack is no longer empty!' },
-          { q: 'Which month has 28 days?', opts: ['February only', 'None', 'All months', 'Jan & Mar'], c: 2, exp: 'All months contain 28 days!' },
-          { q: 'At what temperature does water boil?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'Water boils at 100 °C.' },
-          { q: 'What does half an apple look like?', opts: ['The other half', 'A pear', 'A strawberry', 'An orange'], c: 0, exp: 'Half an apple looks like the other half!' }
-        ],
-        ar: [
-          { q: 'هل تلعب هذا الاختبار على شاشتك الآن؟', opts: ['نعم', 'لا', 'نائم', 'لا أعلم'], c: 0, exp: 'بما أنك تلعب الآن، فالإجابة هي نعم!' },
-          { q: 'أيها الضغط في المصعد للنزول إلى الأسفل؟', opts: ['أعلى ↑', 'أسفل ↓', 'يمين →', 'يسار ←'], c: 1, exp: 'اضغط أسفل للنزول!' },
-          { q: 'إذا كُتبت كلمة ألماني باللون الأزرق، فماذا تُقرأ؟', opts: ['أحمر', 'أزرق', 'أخضر', 'أصفر'], c: 0, exp: 'لا تنظر للون! الكلمة تُقرأ أحمر.' },
-          { q: 'كم عدد الموز الذي ينمو على شجرة التفاح؟', opts: ['0', '10', '100', '1'], c: 0, exp: 'الموز لا ينمو على شجر التفاح!' },
-          { q: 'أي مما يلي غير قابل للأكل؟', opts: ['تفاح', 'كمثرى', 'طاولة', 'فراولة'], c: 2, exp: 'الطاولة أثاث وليست طعاماً!' },
-          { q: 'أيهما أثقل: 1 كجم حديد أم 1 كجم قطن؟', opts: ['الحديد', 'القطن', 'متساويان', 'يحتاج وزن'], c: 2, exp: 'كلاهما 1 كجم! الوزن متساوي.' },
-          { q: 'اختر العملية الحسابية الخاطئة:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8 فالإجابة 9 خاطئة!' },
-          { q: 'كلمة المرور: 1453. أيها الصحيح؟', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'كلمة المرور الصحيحة هي 1453.' },
-          { q: 'والد أحمد هو ابن علي. ماذا يكون علي لأحمد؟', opts: ['والده', 'عمه', 'جده', 'أخوه'], c: 2, exp: 'علي هو جد أحمد!' },
-          { q: 'شهر يناير فيه 28 يوماً. كم يوماً في بقية الأشهر؟', opts: ['لا يوجد', 'جميعها فيها 28 يوماً', 'فقط 30 و 31', 'لا أعلم'], c: 1, exp: 'جميع الأشهر تحوي على الأقل 28 يوماً!' },
-          { q: 'هل تموء الكلاب؟', opts: ['نعم', 'لا', 'تغرد', 'تسبح'], c: 1, exp: 'الكلاب تنبح ولا تموء!' },
-          { q: 'أعطني إجابة خاطئة: كم 2+2؟', opts: ['4', '5', 'اثنان', 'أربعة'], c: 1, exp: 'طلب السؤال إجابة خاطئة، لذا 5 صحيحة!' },
-          { q: 'قطار كهربائي يسير جنوباً، أين يتجه دخانه؟', opts: ['جنوباً', 'شمالاً', 'ليس له دخان', 'شرقاً'], c: 2, exp: 'القطار الكهربائي لا يخرج دخاناً!' },
-          { q: 'إذا تجاوزت المتسابق الثاني في السباق، فما مركزك؟', opts: ['الأول', 'الثاني', 'الثالث', 'الأخير'], c: 1, exp: 'تجاوز الثاني يجعلك في المركز الثاني!' },
-          { q: 'وصف الطبيب 3 حبات كل نصف ساعة حبة. كم تستغرق؟', opts: ['ساعة ونصف', 'ساعة واحدة', 'ساعتان', '3 ساعات'], c: 1, exp: '0 د، 30 د، 60 د. المجموع ساعة واحدة!' },
-          { q: 'تمطر عند منتصف الليل. هل تشرق الشمس بعد 72 ساعة؟', opts: ['نعم', 'لا', 'لا شمس ليلاً', '%50'], c: 1, exp: '72 ساعة = 3 أيام. سيكون منتصف الليل مجدداً!' },
-          { q: 'كم تفاحة يمكنك وضعها في كيس فارغ؟', opts: ['1', 'لانهاية', 'حتى يمتلئ', '10'], c: 0, exp: 'بعد تفاحة واحدة لا يعود الكيس فارغاً!' },
-          { q: 'أي شهر فيه 28 يوماً؟', opts: ['فبراير فقط', 'لا يوجد', 'جميع الأشهر', 'يناير ومارس'], c: 2, exp: 'جميع الأشهر تحتوي على 28 يوماً!' },
-          { q: 'في أي درجة يغلي الماء؟', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'يغلي الماء عند 100 درجة مئوية.' },
-          { q: 'ماذا يشبه نصف التفاحة؟', opts: ['النصف الآخر', 'كمثرى', 'فراولة', 'برتقال'], c: 0, exp: 'يشبه النصف الآخر من التفاحة!' }
-        ],
-        de: [
-          { q: 'Spielst du diesen Test gerade auf deinem Bildschirm?', opts: ['Ja', 'Nein', 'Ich schlafe', 'Weiß nicht'], c: 0, exp: 'Da du spielst, lautet die Antwort Ja!' },
-          { q: 'Welche Taste drückt man im Aufzug, um nach unten zu fahren?', opts: ['Oben ↑', 'Unten ↓', 'Rechts →', 'Links ←'], c: 1, exp: 'Unten drücken, um nach unten zu fahren!' },
-          { q: 'Wenn das Wort ROT in BLAUER Farbe steht, was liest man?', opts: ['Rot', 'Blau', 'Grün', 'Gelb'], c: 0, exp: 'Lies das Wort, nicht die Farbe! Es heißt ROT.' },
-          { q: 'Wie viele Bananen wachsen auf einem Apfelbaum?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Bananen wachsen nicht auf Apfelbäumen!' },
-          { q: 'Was davon kann man nicht essen?', opts: ['Apfel', 'Birne', 'Tisch', 'Erdbeere'], c: 2, exp: 'Ein Tisch ist ein Möbelstück, kein Essen!' },
-          { q: 'Was ist schwerer: 1 kg Eisen oder 1 kg Baumwolle?', opts: ['Eisen', 'Baumwolle', 'Beide gleich', 'Muss wiegen'], c: 2, exp: 'Beide wiegen 1 kg! Das Gewicht ist gleich.' },
-          { q: 'Wähle die falsche Rechnung:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8, 9 ist falsch!' },
-          { q: 'Passwort: 1453. Welches ist das richtige Passwort?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'Das Passwort lautete 1453.' },
-          { q: 'Alex\' Vater ist der Sohn von John. Was ist John für Alex?', opts: ['Vater', 'Onkel', 'Großvater', 'Bruder'], c: 2, exp: 'John ist der Großvater von Alex!' },
-          { q: 'Januar hat 28 Tage. Wie viele Tage haben andere Monate?', opts: ['Keiner', 'Alle mindestens 28', 'Nur 30 & 31', 'Weiß nicht'], c: 1, exp: 'Jeder Monat hat mindestens 28 Tage!' },
-          { q: 'Miauen Hunde?', opts: ['Ja', 'Nein', 'Quaken', 'Singen'], c: 1, exp: 'Hunde bellen, sie miauen nicht!' },
-          { q: 'GIB MIR EINE FALSCHE ANTWORT: Was ist 2+2?', opts: ['4', '5', 'Zwei', 'Vier'], c: 1, exp: 'Eine FALSCHE Antwort war gefragt, 5 ist richtig!' },
-          { q: 'Ein Elektrozug fährt nach Süden. Wohin weht der Rauch?', opts: ['Süden', 'Norden', 'Kein Rauch', 'Osten'], c: 2, exp: 'Ein Elektrozug erzeugt keinen Rauch!' },
-          { q: 'Überholst du den Zweitplatzierten, welcher bist du?', opts: ['1.', '2.', '3.', 'Letzter'], c: 1, exp: 'Du überholst den Zweiten, also bist du Zweiter!' },
-          { q: 'Der Arzt gibt 3 Pillen alle 30 Min. Wie lange dauert es?', opts: ['1.5 Std', '1 Std', '2 Std', '3 Std'], c: 1, exp: '0 min, 30 min, 60 min. Genau 1 Stunde!' },
-          { q: 'Es regnet um Mitternacht. Kann in 72 Std die Sonne scheinen?', opts: ['Ja', 'Nein', 'Nachts keine Sonne', '50%'], c: 1, exp: '72 Stunden = 3 Tage. Es ist wieder Mitternacht!' },
-          { q: 'Wie viele Äpfel passen in einen leeren Sack?', opts: ['1', 'Unendlich', 'Bis er voll ist', '10'], c: 0, exp: 'Nach einem Apfel ist der Sack nicht mehr leer!' },
-          { q: 'Welcher Monat hat 28 Tage?', opts: ['Nur Februar', 'Keiner', 'Alle Monate', 'Jan & Mär'], c: 2, exp: 'Alle Monate haben 28 Tage!' },
-          { q: 'Bei welcher Temperatur kocht Wasser?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'Wasser kocht bei 100 °C.' },
-          { q: 'Wem ähnelt die Hälfte eines Apfels?', opts: ['Der anderen Hälfte', 'Birne', 'Erdbeere', 'Orange'], c: 0, exp: 'Die Apfelhälfte ähnelt der anderen Hälfte!' }
-        ],
-        fr: [
-          { q: 'Jouez-vous à ce test sur votre écran en ce moment ?', opts: ['Oui', 'Non', 'Endormi', 'Je ne sais pas'], c: 0, exp: 'Puisque vous jouez, la réponse est Oui !' },
-          { q: 'Quel bouton appuyez-vous pour descendre en ascenseur ?', opts: ['Haut ↑', 'Bas ↓', 'Droite →', 'Gauche ←'], c: 1, exp: 'Appuyez sur Bas pour descendre !' },
-          { q: 'Si le mot ROUGE est écrit en BLEU, que lit-on ?', opts: ['Rouge', 'Bleu', 'Vert', 'Jaune'], c: 0, exp: 'Ne regardez pas la couleur ! Le mot est ROUGE.' },
-          { q: 'Combien de bananes poussent sur un pommier ?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Les bananes ne poussent pas sur les pommiers !' },
-          { q: 'Lequel de ces éléments n\'est pas comestible ?', opts: ['Pomme', 'Poire', 'Table', 'Fraise'], c: 2, exp: 'Une table est un meuble, pas de la nourriture !' },
-          { q: 'Qu\'est-ce qui est le plus lourd : 1 kg de fer ou 1 kg de coton ?', opts: ['Fer', 'Coton', 'Égaux', 'Faut peser'], c: 2, exp: 'Tous les deux font 1 kg ! Même poids.' },
-          { q: 'Choisissez le calcul faux :', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8, donc 9 est faux !' },
-          { q: 'Mot de passe : 1453. Quel est le bon mot de passe ?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'Le mot de passe était 1453.' },
-          { q: 'Le père d\'Alex est le fils de John. Qui est John pour Alex ?', opts: ['Père', 'Oncle', 'Grand-père', 'Frère'], c: 2, exp: 'John est le grand-père d\'Alex !' },
-          { q: 'Janvier a 28 jours. Combien de jours ont les autres mois ?', opts: ['Aucun', 'Tous ont au moins 28', 'Seulement 30 & 31', 'Je ne sais pas'], c: 1, exp: 'Tous les mois ont au moins 28 jours !' },
-          { q: 'Les chiens miaulent-ils ?', opts: ['Oui', 'Non', 'Coin-coin', 'Chantent'], c: 1, exp: 'Les chiens aboient, ils ne miaulent pas !' },
-          { q: 'DONNEZ UNE MAUVAISE RÉPONSE : Combien font 2+2 ?', opts: ['4', '5', 'Deux', 'Quatre'], c: 1, exp: 'La question demandait une MAUVAISE réponse, 5 est correct !' },
-          { q: 'Un train électrique va au sud. Où va la fumée ?', opts: ['Sud', 'Nord', 'Pas de fumée', 'Est'], c: 2, exp: 'Un train électrique ne produit pas de fumée !' },
-          { q: 'Si vous doublez le 2ème dans une course, à quelle place êtes-vous ?', opts: ['1er', '2ème', '3ème', 'Dernier'], c: 1, exp: 'Doubler le 2ème vous place à la 2ème place !' },
-          { q: 'Un médecin prescrit 3 pilules toutes les 30 min. Combien de temps ?', opts: ['1.5 heure', '1 heure', '2 heures', '3 heures'], c: 1, exp: '0 min, 30 min, 60 min. Total 1 heure !' },
-          { q: 'Il pleut à minuit. Le soleil peut-il briller dans 72h ?', opts: ['Oui', 'Non', 'Pas de soleil la nuit', '50%'], c: 1, exp: '72 heures = 3 jours. Ce sera encore minuit !' },
-          { q: 'Combien de pommes peut-on mettre dans un sac vide ?', opts: ['1', 'Infini', 'Jusqu\'à ce qu\'il soit plein', '10'], c: 0, exp: 'Après 1 pomme, le sac n\'est plus vide !' },
-          { q: 'Quel mois compte 28 jours ?', opts: ['Février seulement', 'Aucun', 'Tous les mois', 'Jan & Mar'], c: 2, exp: 'Tous les mois contiennent au moins 28 jours !' },
-          { q: 'À quelle température l\'eau bout-elle ?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'L\'eau bout à 100 °C.' },
-          { q: 'À quoi ressemble une demi-pomme ?', opts: ['À l\'autre moitié', 'À une poire', 'À une fraise', 'À une orange'], c: 0, exp: 'Une demi-pomme ressemble à son autre moitié !' }
-        ],
-        es: [
-          { q: '¿Estás jugando a este test en tu pantalla ahora mismo?', opts: ['Sí', 'No', 'Dormido', 'No sé'], c: 0, exp: '¡Como estás jugando, la respuesta es Sí!' },
-          { q: '¿Qué botón pulsas en el ascensor para bajar?', opts: ['Arriba ↑', 'Abajo ↓', 'Derecha →', 'Izquierda ←'], c: 1, exp: '¡Pulsa Abajo para bajar!' },
-          { q: 'Si la palabra ROJO está escrita en color AZUL, ¿qué se lee?', opts: ['Rojo', 'Azul', 'Verde', 'Amarillo'], c: 0, exp: '¡No mires el color! La palabra dice ROJO.' },
-          { q: '¿Cuántos plátanos crecen en un manzano?', opts: ['0', '10', '100', '1'], c: 0, exp: '¡Los plátanos no crecen en manzanos!' },
-          { q: '¿Cuál de los siguientes no es comestible?', opts: ['Manzana', 'Pera', 'Mesa', 'Fresa'], c: 2, exp: '¡Una mesa es un mueble, no comida!' },
-          { q: '¿Qué pesa más: 1 kg de hierro o 1 kg de algodón?', opts: ['Hierro', 'Algodón', 'Ambos igual', 'Hay que pesar'], c: 2, exp: '¡Ambos pesan 1 kg! El peso es igual.' },
-          { q: 'Elige la operación matemática incorrecta:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8, ¡el 9 es incorrecto!' },
-          { q: 'Contraseña: 1453. ¿Cuál es la contraseña correcta?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'La contraseña era 1453.' },
-          { q: 'El padre de Alex es hijo de John. ¿Qué es John de Alex?', opts: ['Padre', 'Tío', 'Abuelo', 'Hermano'], c: 2, exp: '¡John es el abuelo de Alex!' },
-          { q: 'Enero tiene 28 días. ¿Cuántos días tienen los demás meses?', opts: ['Ninguno', 'Todos tienen al menos 28', 'Solo 30 y 31', 'No sé'], c: 1, exp: '¡Todos los meses tienen al menos 28 días!' },
-          { q: '¿Los perros maúllan?', opts: ['Sí', 'No', 'Graznan', 'Cantan'], c: 1, exp: '¡Los perros ladran, no maúllan!' },
-          { q: 'DAME UNA RESPUESTA INCORRECTA: ¿Cuánto es 2+2?', opts: ['4', '5', 'Dos', 'Cuatro'], c: 1, exp: '¡Se pidió una respuesta INCORRECTA, por tanto 5 es la adecuada!' },
-          { q: 'Un tren eléctrico va hacia el sur. ¿Hacia dónde va el humo?', opts: ['Sur', 'Norte', 'Sin humo', 'Este'], c: 2, exp: '¡Un tren eléctrico no produce humo!' },
-          { q: 'Si adelantas al 2.º en una carrera, ¿en qué puesto quedas?', opts: ['1.º', '2.º', '3.º', 'Último'], c: 1, exp: '¡Adelantas al 2.º, así que quedas 2.º!' },
-          { q: 'Un médico receta 3 pastillas, una cada 30 min. ¿Cuánto dura?', opts: ['1.5 horas', '1 hora', '2 horas', '3 horas'], c: 1, exp: '0 min, 30 min, 60 min. ¡Total 1 hora!' },
-          { q: 'Llueve a medianoche. ¿Puede brillar el sol en 72 horas?', opts: ['Sí', 'No', 'No hay sol de noche', '50%'], c: 1, exp: '72 horas = 3 días. ¡Volverá a ser medianoche!' },
-          { q: '¿Cuántas manzanas caben en un saco vacío?', opts: ['1', 'Infinito', 'Hasta llenarlo', '10'], c: 0, exp: '¡Tras poner 1 manzana el saco ya no está vacío!' },
-          { q: '¿Qué mes tiene 28 días?', opts: ['Solo febrero', 'Ninguno', 'Todos los meses', 'Ene y Mar'], c: 2, exp: '¡Todos los meses tienen 28 días!' },
-          { q: '¿A qué temperatura hierve el agua?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'El agua hierve a 100 °C.' },
-          { q: '¿A qué se parece media manzana?', opts: ['A la otra mitad', 'A una pera', 'A una fresa', 'A una naranja'], c: 0, exp: '¡Media manzana se parece a la otra mitad!' }
-        ],
-        zh: [
-          { q: '你现在是否正在屏幕上玩这个测试？', opts: ['是', '否', '我在睡觉', '不知道'], c: 0, exp: '既然你正在玩，答案当然是“是”！' },
-          { q: '乘电梯下楼应该按哪个按钮？', opts: ['向上 ↑', '向下 ↓', '向右 →', '向左 ←'], c: 1, exp: '按向下按钮下楼！' },
-          { q: '如果用蓝色书写“红色”二字，读作什么？', opts: ['红色', '蓝色', '绿色', '黄色'], c: 0, exp: '不要看颜色！文字读作“红色”。' },
-          { q: '一棵苹果树上能长出多少根香蕉？', opts: ['0', '10', '100', '1'], c: 0, exp: '苹果树上不长香蕉！' },
-          { q: '以下哪项是不可食用的？', opts: ['苹果', '梨', '桌子', '草莓'], c: 2, exp: '桌子是家具，不能吃！' },
-          { q: '1公斤铁和1公斤棉花哪个更重？', opts: ['铁', '棉花', '一样重', '需要称量'], c: 2, exp: '两者都是1公斤，重量完全一样！' },
-          { q: '找出错误的算式：', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8，所以9是错的！' },
-          { q: '密码是1453。哪一个是正确密码？', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: '正确密码就是1453。' },
-          { q: '阿历克斯的父亲是约翰的儿子。约翰是阿历克斯的什么人？', opts: ['父亲', '叔叔', '爷爷', '兄弟'], c: 2, exp: '约翰是阿历克斯的爷爷！' },
-          { q: '一月份有28天。其他月份有多少天？', opts: ['没有', '都有至少28天', '只有30和31', '不知道'], c: 1, exp: '所有月份都有至少28天！' },
-          { q: '狗会喵喵叫吗？', opts: ['会', '不会', '嘎嘎叫', '唱歌'], c: 1, exp: '狗汪汪叫，不会喵喵叫！' },
-          { q: '故意给我一个错误答案：2+2等于几？', opts: ['4', '5', '二', '四'], c: 1, exp: '题目要求给错误答案，所以5正确！' },
-          { q: '一列电力火车向南行驶，烟往哪边飘？', opts: ['南', '北', '没有烟', '东'], c: 2, exp: '电力火车不产生烟！' },
-          { q: '在赛跑中你超过了第二名，你现在是第几名？', opts: ['第一', '第二', '第三', '最后'], c: 1, exp: '超过第二名，你就是第二名！' },
-          { q: '医生给了3片药，每半小时吃一片。一共需要多久？', opts: ['1.5小时', '1小时', '2小时', '3小时'], c: 1, exp: '0分钟、30分钟、60分钟。刚好1小时！' },
-          { q: '午夜12点下雨。72小时后太阳会出来吗？', opts: ['会', '不会', '晚上没有太阳', '50%'], c: 1, exp: '72小时=3天。到时候又是半夜！' },
-          { q: '一个空袋子里能放多少个苹果？', opts: ['1个', '无数个', '直到装满', '10个'], c: 0, exp: '放进1个后，袋子就不再是空的了！' },
-          { q: '哪个月份有28天？', opts: ['只有二月', '没有', '所有月份', '一月和三月'], c: 2, exp: '每个月份都包含28天！' },
-          { q: '水在多少摄氏度沸腾？', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: '水在100摄氏度沸腾。' },
-          { q: '半个苹果看起来像什么？', opts: ['另一半苹果', '梨', '草莓', '橘子'], c: 0, exp: '半个苹果最像它的另一半！' }
-        ],
-        ru: [
-          { q: 'Вы сейчас играете в этот тест на своем экране?', opts: ['Да', 'Нет', 'Я сплю', 'Не знаю'], c: 0, exp: 'Раз вы играете, ответ: Да!' },
-          { q: 'Какую кнопку нажать в лифте, чтобы спуститься вниз?', opts: ['Вверх ↑', 'Вниз ↓', 'Вправо →', 'Влево ←'], c: 1, exp: 'Нажмите кнопку Вниз!' },
-          { q: 'Если слово КРАСНЫЙ написано СИНИМ цветом, что читается?', opts: ['Красный', 'Синий', 'Зеленый', 'Желтый'], c: 0, exp: 'Не смотрите на цвет! Слово читается КРАСНЫЙ.' },
-          { q: 'Сколько бананов растет на яблоне?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Бананы не растут на яблонях!' },
-          { q: 'Что из этого несъедобно?', opts: ['Яблоко', 'Груша', 'Стол', 'Клубника'], c: 2, exp: 'Стол — это мебель, а не еда!' },
-          { q: 'Что тяжелее: 1 кг железа или 1 кг ваты?', opts: ['Железо', 'Вата', 'Одинаково', 'Надо взвесить'], c: 2, exp: 'Оба весят 1 кг! Вес одинаков.' },
-          { q: 'Выберите неверное математическое выражение:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8, значит 9 — ошибка!' },
-          { q: 'Пароль: 1453. Какой пароль верный?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'Правильный пароль был 1453.' },
-          { q: 'Отец Алекса — сын Джона. Кем Джон приходится Алексу?', opts: ['Отец', 'Дядя', 'Дедушка', 'Брат'], c: 2, exp: 'Джон — дедушка Алекса!' },
-          { q: 'В январе 28 дней. Сколько дней в остальных месяцах?', opts: ['Ни одного', 'Во всех есть 28', 'Только 30 и 31', 'Не знаю'], c: 1, exp: 'В каждом месяце есть как минимум 28 дней!' },
-          { q: 'Собаки мяукают?', opts: ['Да', 'Нет', 'Крякают', 'Поют'], c: 1, exp: 'Собаки лают, а не мяукают!' },
-          { q: 'ДАЙ МНЕ НЕПРАВИЛЬНЫЙ ОТВЕТ: Сколько будет 2+2?', opts: ['4', '5', 'Два', 'Четыре'], c: 1, exp: 'Вопрос требовал НЕВЕРНЫЙ ответ, поэтому 5 верно!' },
-          { q: 'Электропоезд едет на юг. Куда дует дым?', opts: ['На юг', 'На север', 'Нет дыма', 'На восток'], c: 2, exp: 'У электропоезда нет дыма!' },
-          { q: 'Если вы обогнали 2-го бегуна, на каком вы месте?', opts: ['1-е', '2-е', '3-е', 'Последнее'], c: 1, exp: 'Вы заняли место второго, значит вы 2-й!' },
-          { q: 'Врач дал 3 таблетки, пить каждые 30 минут. На сколько хватит?', opts: ['1.5 часа', '1 час', '2 часа', '3 часа'], c: 1, exp: '0 мин, 30 мин, 60 мин. Ровно 1 час!' },
-          { q: 'В полночь идет дождь. Может ли светить солнце через 72 часа?', opts: ['Да', 'Нет', 'Ночью нет солнца', '50%'], c: 1, exp: '72 часа = 3 суток. Снова будет полночь!' },
-          { q: 'Сколько яблок можно положить в пустой мешок?', opts: ['1', 'Бесконечно', 'Пока не наполнится', '10'], c: 0, exp: 'После 1 яблока мешок уже не пустой!' },
-          { q: 'В каком месяце 28 дней?', opts: ['Только февраль', 'Ни в каком', 'Во всех месяцах', 'Янв и Мар'], c: 2, exp: 'Во всех месяцах есть 28 дней!' },
-          { q: 'При какой температуре закипает вода?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'Вода кипит при 100 °C.' },
-          { q: 'На что похожа половина яблока?', opts: ['На вторую половину', 'На грушу', 'На клубнику', 'На апельсин'], c: 0, exp: 'Половина яблока похожа на вторую половину!' }
-        ]
-      };
-
-      const warmupList = WARMUP[lang] || WARMUP.en || WARMUP.tr;
-
-      if (n <= warmupList.length) {
-        const item = warmupList[n - 1];
-        return {
-          tag: `${tag} (Level ${levelNum})`,
-          q: `[L${levelNum}-S${qIndex}] ${item.q}`,
-          opts: item.opts,
-          correct: item.c,
-          exp: item.exp
-        };
+      if (!list.length) {
+        return { tag: `Level ${levelNum}`, q: 'Soru yüklenemedi', opts: ['A', 'B', 'C', 'D'], correct: 0, exp: '' };
       }
 
-      // KATEGORİK DİNAMİK SORU MOTORU (8 DİL)
-      const category = (n - 1) % 10;
-      let qText = '', opts = [], correct = 0, exp = '';
+      // 150 soruluk bankadan sırayla al (priority sırasına göre)
+      const qData = list[globalIndex % list.length];
+      const trMap = qData.translations || {};
+      const t = trMap[lang] || trMap.en || trMap.tr || {};
 
-      if (category === 0) {
-        const base = n * 7 + 13, mult = (n % 5) + 2, ans = base * mult;
-        correct = 0;
-        opts = [`${ans}`, `${ans + 4}`, `${ans - 6}`, `${ans + 12}`];
-        if (lang === 'en') { qText = `[L${levelNum}-Q${qIndex}] What is ${base} × ${mult}?`; exp = `${base} x ${mult} = ${ans}`; }
-        else if (lang === 'ar') { qText = `[L${levelNum}-S${qIndex}] ما هي نتيجة ${base} × ${mult}؟`; exp = `${base} × ${mult} = ${ans}`; }
-        else if (lang === 'de') { qText = `[L${levelNum}-F${qIndex}] Was ist ${base} × ${mult}?`; exp = `${base} x ${mult} = ${ans}`; }
-        else if (lang === 'fr') { qText = `[L${levelNum}-Q${qIndex}] Quel est le résultat de ${base} × ${mult} ?`; exp = `${base} x ${mult} = ${ans}`; }
-        else if (lang === 'es') { qText = `[L${levelNum}-P${qIndex}] ¿Cuánto es ${base} × ${mult}?`; exp = `${base} x ${mult} = ${ans}`; }
-        else if (lang === 'zh') { qText = `[L${levelNum}-Q${qIndex}] ${base} × ${mult} 等于多少？`; exp = `${base} × ${mult} = ${ans}`; }
-        else if (lang === 'ru') { qText = `[L${levelNum}-V${qIndex}] Сколько будет ${base} × ${mult}?`; exp = `${base} x ${mult} = ${ans}`; }
-        else { qText = `[L${levelNum}-S${qIndex}] ${base} × ${mult} işleminin sonucu kaçtır?`; exp = `${base} x ${mult} = ${ans} eder.`; }
-      } else if (category === 1) {
-        const wordPools = {
-          tr: ['SALAKLIK', 'ZEKASIZ', 'PROBLEM', 'TELEFON', 'İSTANBUL'],
-          en: ['STUPIDITY', 'BRAINLESS', 'PROBLEM', 'COMPUTER', 'TELEPHONE'],
-          ar: ['ذكاء', 'مشكلة', 'كمبيوتر', 'اختبار', 'هاتف'],
-          de: ['SCHLUMPFI', 'PROBLEM', 'COMPUTER', 'TELEFON', 'LOGIK'],
-          fr: ['STUPIDITE', 'PROBLEME', 'ORDINATEUR', 'TELEPHONE', 'LOGIQUE'],
-          es: ['ESTUPIDEZ', 'PROBLEMA', 'COMPUTADORA', 'TELEFONO', 'LOGICA'],
-          zh: ['智力测试', '问题', '电脑', '电话', '逻辑'],
-          ru: ['ГЛУПОСТЬ', 'ПРОБЛЕМА', 'КОМПЬЮТЕР', 'ТЕЛЕФОН', 'ЛОГИКА']
-        };
-        const pool = wordPools[lang] || wordPools.tr;
-        const w = pool[n % pool.length] + (n > 500 ? ' TEST' : '');
-        const len = w.replace(/\s/g, '').length;
-        correct = 1;
-        opts = [`${len - 2}`, `${len}`, `${len + 1}`, `${len + 3}`];
-        if (lang === 'en') { qText = `[L${levelNum}-Q${qIndex}] How many letters are in "${w}"?`; exp = `Word "${w}" has ${len} letters.`; }
-        else if (lang === 'ar') { qText = `[L${levelNum}-S${qIndex}] كم عدد الحروف في كلمة "${w}"؟`; exp = `كلمة "${w}" تحتوي على ${len} أحرف.`; }
-        else if (lang === 'de') { qText = `[L${levelNum}-F${qIndex}] Wie viele Buchstaben hat "${w}"?`; exp = `"${w}" hat ${len} Buchstaben.`; }
-        else if (lang === 'fr') { qText = `[L${levelNum}-Q${qIndex}] Combien de lettres contient "${w}" ?`; exp = `Le mot "${w}" contient ${len} lettres.`; }
-        else if (lang === 'es') { qText = `[L${levelNum}-P${qIndex}] ¿Cuántas letras tiene "${w}"?`; exp = `La palabra "${w}" tiene ${len} letras.`; }
-        else if (lang === 'zh') { qText = `[L${levelNum}-Q${qIndex}] 词语 "${w}" 中有多少个字？`; exp = `"${w}" 共有 ${len} 个字。`; }
-        else if (lang === 'ru') { qText = `[L${levelNum}-V${qIndex}] Сколько букв в слове "${w}"?`; exp = `В слове "${w}" ровно ${len} букв.`; }
-        else { qText = `[L${levelNum}-S${qIndex}] "${w}" kelimesinde tam kaç harf vardır?`; exp = `"${w}" kelimesinde tam ${len} adet harf mevcuttur.`; }
-      } else if (category === 2) {
-        const numA = (n % 14) + 3, numB = (n % 9) + 4, sum = numA + numB, wrongAns = sum + 3;
-        correct = 1;
-        opts = [`${sum}`, `${wrongAns}`, `${sum + 6}`, `${sum + 12}`];
-        if (lang === 'en') { qText = `[L${levelNum}-Q${qIndex}] GIVE ME A WRONG ANSWER: What is ${numA} + ${numB}?`; exp = `Question asked for a WRONG answer! Correct sum is ${sum}, wrong choice is ${wrongAns}.`; }
-        else if (lang === 'ar') { qText = `[L${levelNum}-S${qIndex}] أعطني إجابة خاطئة: كم يساوي ${numA} + ${numB}؟`; exp = `طلب السؤال إجابة خاطئة! المجموع الصحيح ${sum}، والخاطئ ${wrongAns}.`; }
-        else if (lang === 'de') { qText = `[L${levelNum}-F${qIndex}] GIB MIR EINE FALSCHE ANTWORT: Was ist ${numA} + ${numB}?`; exp = `Falsche Antwort war gefragt! Die Summe ist ${sum}.`; }
-        else if (lang === 'fr') { qText = `[L${levelNum}-Q${qIndex}] DONNEZ MAUVAISE RÉPONSE : Combien font ${numA} + ${numB} ?`; exp = `Une mauvaise réponse était demandée ! La vraie somme est ${sum}.`; }
-        else if (lang === 'es') { qText = `[L${levelNum}-P${qIndex}] DAME UNA RESPUESTA INCORRECTA: ¿Cuánto es ${numA} + ${numB}?`; exp = `¡Se pidió una respuesta INCORRECTA! La suma real es ${sum}.`; }
-        else if (lang === 'zh') { qText = `[L${levelNum}-Q${qIndex}] 给我一个错误的答案：${numA} + ${numB} 等于多少？`; exp = `题目要求给出错误答案！正确和是 ${sum}。`; }
-        else if (lang === 'ru') { qText = `[L${levelNum}-V${qIndex}] ДАЙ МНЕ НЕПРАВИЛЬНЫЙ ОТВЕТ: Сколько будет ${numA} + ${numB}?`; exp = `Требовался НЕПРАВИЛЬНЫЙ ответ! Правильная сумма ${sum}.`; }
-        else { qText = `[L${levelNum}-S${qIndex}] BANA YANLIŞ CEVAP VER: ${numA} + ${numB} kaçtır?`; exp = `Soru sizden YANLIŞ cevap istedi! Doğru toplam ${sum}, yanlış şık ${wrongAns}'dir.`; }
-      } else {
-        const hour = (n % 12) + 1;
-        const angle = (hour * 30) % 360;
-        correct = 0;
-        opts = [`${angle}°`, `${angle + 30}°`, `${angle > 30 ? angle - 30 : 90}°`, '180°'];
-        if (lang === 'en') { qText = `[L${levelNum}-Q${qIndex}] At ${hour}:00, what is the angle between clock hands?`; exp = `Each hour is 30°. At ${hour}:00 it is ${angle}°.`; }
-        else if (lang === 'ar') { qText = `[L${levelNum}-S${qIndex}] في الساعة ${hour}:00، ما هي الزاوية بين عقارب الساعة؟`; exp = `كل ساعة 30 درجة. عند ${hour}:00 تكون الزاوية ${angle}°.`; }
-        else if (lang === 'de') { qText = `[L${levelNum}-F${qIndex}] Um ${hour}:00 Uhr, wie groß ist der Zeigerwinkel?`; exp = `Jede Stunde = 30°. Um ${hour}:00 ist der Winkel ${angle}°.`; }
-        else if (lang === 'fr') { qText = `[L${levelNum}-Q${qIndex}] À ${hour}h00, quel est l'angle entre les aiguilles ?`; exp = `Chaque heure vaut 30°. À ${hour}h00 l'angle est de ${angle}°.`; }
-        else if (lang === 'es') { qText = `[L${levelNum}-P${qIndex}] A las ${hour}:00, ¿cuál es el ángulo de las agujas?`; exp = `Cada hora son 30°. A las ${hour}:00 el ángulo es ${angle}°.`; }
-        else if (lang === 'zh') { qText = `[L${levelNum}-Q${qIndex}] 在 ${hour}:00 整，时针和分针的夹角是多少度？`; exp = `每小时为30度。在 ${hour}:00 时夹角为 ${angle}度。`; }
-        else if (lang === 'ru') { qText = `[L${levelNum}-V${qIndex}] В ${hour}:00, какой угол между стрелками?`; exp = `Каждый час = 30°. В ${hour}:00 угол равен ${angle}°.`; }
-        else { qText = `[L${levelNum}-S${qIndex}] Tam saat ${hour}:00 iken akrep ile yelkovan arasındaki açı kaç derecedir?`; exp = `Her saat 30° açıdır. Saat ${hour}:00 iken açı ${angle}° eder.`; }
-      }
-      return { tag, q: qText, opts, correct, exp };
+      const typeMap = TYPE_LABELS[lang] || TYPE_LABELS.en || TYPE_LABELS.tr;
+      const typeName = typeMap[qData.type] || qData.type || 'Soru';
+
+      return {
+        tag: `${typeName} (Level ${levelNum})`,
+        q: t.text || `Soru #${globalIndex + 1}`,
+        opts: t.options || ['A', 'B', 'C', 'D'],
+        correct: t.correctIndex ?? 0,
+        exp: t.explanation || ''
+      };
     }
 
     // Telefonun sistem dilini otomatik tespit et (Desteklenmeyen dillerde varsayılan İngilizce 'en')
@@ -1115,12 +863,6 @@
         updateUserHeader();
         renderHomeGroups();
       }
-    }
-
-    // Soru getirici — tamamen yerel, ağ bağlantısı gerekmez
-    async function getQuestionForLevel(levelNum, qIndex) {
-      const lang = state.language || 'tr';
-      return generateQuestionForLevel(levelNum, qIndex, lang);
     }
 
     function showHome() { showScreen('home'); }

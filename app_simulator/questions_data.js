@@ -1,0 +1,2252 @@
+window.ALL_QUESTIONS = [
+  {
+    "priority": 1,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "YEŞİL kelimesi TURUNCU renkle yazılırsa ne okutulur?", "options": ["Yeşil", "Turuncu", "Kırmızı", "Mavi"], "correctIndex": 0, "explanation": "Yazı rengine değil, kelimenin kendisine bakın! Kelime YEŞİL okutulur." },
+      "en": { "text": "If the word GREEN is written in ORANGE ink, what does it read?", "options": ["Green", "Orange", "Red", "Blue"], "correctIndex": 0, "explanation": "Don't look at the ink color, read the word itself! It reads GREEN." },
+      "ar": { "text": "إذا كُتبت كلمة أخضر باللون البرتقالي، فماذا تُقرأ؟", "options": ["أخضر", "برتقالي", "أحمر", "أزرق"], "correctIndex": 0, "explanation": "لا تنظر إلى لون الحبر، بل اقرأ الكلمة نفسها! الكلمة تُقرأ أخضر." },
+      "de": { "text": "Wenn das Wort GRÜN in ORANGER Farbe geschrieben ist, wie liest man es?", "options": ["Grün", "Orange", "Rot", "Blau"], "correctIndex": 0, "explanation": "Achte nicht auf die Tintenfarbe, sondern auf das Wort selbst! Es steht dort GRÜN." },
+      "fr": { "text": "Si le mot VERT est écrit en ORANGE, comment se lit-il ?", "options": ["Vert", "Orange", "Rouge", "Bleu"], "correctIndex": 0, "explanation": "Ne regardez pas la couleur de l'encre, lisez le mot lui-même ! Il se lit VERT." },
+      "es": { "text": "Si la palabra VERDE está escrita en color NARANJA, ¿cómo se lee?", "options": ["Verde", "Naranja", "Rojo", "Azul"], "correctIndex": 0, "explanation": "¡No mires el color de la tinta, lee la palabra! Se lee VERDE." },
+      "zh": { "text": "如果“绿色”这个词用橙色写成，它读作什么？", "options": ["绿色", "橙色", "红色", "蓝色"], "correctIndex": 0, "explanation": "不要看墨水颜色，要读文字本身！它读作“绿色”。" },
+      "ru": { "text": "Если слово ЗЕЛЁНЫЙ написано ОРАНЖЕВЫМ цветом, как оно читается?", "options": ["Зелёный", "Оранжевый", "Красный", "Синий"], "correctIndex": 0, "explanation": "Не смотрите на цвет чернил, читайте само слово! Оно читается ЗЕЛЁНЫЙ." }
+    }
+  },
+  {
+    "priority": 2,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "5 kedi, 5 dakikada 5 fare yakalıyorsa, 100 kedi 100 fareyi kaç dakikada yakalar?", "options": ["100 dakika", "20 dakika", "5 dakika", "1 dakika"], "correctIndex": 2, "explanation": "Her kedi kendi faresini aynı sürede yakalar; kedi sayısı artsa da süre değişmez." },
+      "en": { "text": "If 5 cats catch 5 mice in 5 minutes, how many minutes do 100 cats need to catch 100 mice?", "options": ["100 minutes", "20 minutes", "5 minutes", "1 minute"], "correctIndex": 2, "explanation": "Each cat catches its own mouse in the same time; more cats doesn't change the duration." },
+      "ar": { "text": "إذا كانت 5 قطط تصطاد 5 فئران في 5 دقائق، فكم دقيقة تحتاج 100 قطة لاصطياد 100 فأر؟", "options": ["100 دقيقة", "20 دقيقة", "5 دقائق", "دقيقة واحدة"], "correctIndex": 2, "explanation": "كل قطة تصطاد فأرها الخاص في نفس الوقت؛ زيادة عدد القطط لا تغيّر المدة." },
+      "de": { "text": "Wenn 5 Katzen in 5 Minuten 5 Mäuse fangen, wie viele Minuten brauchen 100 Katzen für 100 Mäuse?", "options": ["100 Minuten", "20 Minuten", "5 Minuten", "1 Minute"], "correctIndex": 2, "explanation": "Jede Katze fängt in derselben Zeit ihre eigene Maus; mehr Katzen ändern die Dauer nicht." },
+      "fr": { "text": "Si 5 chats attrapent 5 souris en 5 minutes, combien de minutes faut-il à 100 chats pour attraper 100 souris ?", "options": ["100 minutes", "20 minutes", "5 minutes", "1 minute"], "correctIndex": 2, "explanation": "Chaque chat attrape sa propre souris dans le même temps ; plus de chats ne change pas la durée." },
+      "es": { "text": "Si 5 gatos atrapan 5 ratones en 5 minutos, ¿cuántos minutos necesitan 100 gatos para atrapar 100 ratones?", "options": ["100 minutos", "20 minutos", "5 minutos", "1 minuto"], "correctIndex": 2, "explanation": "Cada gato atrapa su propio ratón en el mismo tiempo; más gatos no cambia la duración." },
+      "zh": { "text": "如果5只猫在5分钟内抓到5只老鼠，那么100只猫抓到100只老鼠需要多少分钟？", "options": ["100分钟", "20分钟", "5分钟", "1分钟"], "correctIndex": 2, "explanation": "每只猫在同样的时间内抓自己的老鼠，猫再多时间也不变。" },
+      "ru": { "text": "Если 5 кошек ловят 5 мышей за 5 минут, сколько минут потребуется 100 кошкам, чтобы поймать 100 мышей?", "options": ["100 минут", "20 минут", "5 минут", "1 минута"], "correctIndex": 2, "explanation": "Каждая кошка ловит свою мышь за то же время; больше кошек не меняет время." }
+    }
+  },
+  {
+    "priority": 3,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir uçak tam olarak iki ülke arasındaki sınıra düşerse, hayatta kalanlar hangi ülkeye gömülür?", "options": ["Ülke A'ya", "Ülke B'ye", "Sınırın tam ortasına", "Hayatta kalanlar gömülmez"], "correctIndex": 3, "explanation": "Hayatta kalanlar ölmediği için gömülmezler; soru tuzağı tam da burada." },
+      "en": { "text": "If a plane crashes exactly on the border between two countries, in which country are the survivors buried?", "options": ["Country A", "Country B", "Right on the border", "Survivors aren't buried"], "correctIndex": 3, "explanation": "Survivors are alive, so nobody buries them — that's the trick." },
+      "ar": { "text": "إذا تحطمت طائرة تمامًا على الحدود بين دولتين، ففي أي دولة يُدفن الناجون؟", "options": ["الدولة أ", "الدولة ب", "على الحدود تمامًا", "لا يُدفن الناجون"], "correctIndex": 3, "explanation": "الناجون أحياء، لذلك لا أحد يدفنهم — هذه هي الخدعة." },
+      "de": { "text": "Wenn ein Flugzeug genau auf der Grenze zwischen zwei Ländern abstürzt, in welchem Land werden die Überlebenden begraben?", "options": ["Land A", "Land B", "Genau auf der Grenze", "Überlebende werden nicht begraben"], "correctIndex": 3, "explanation": "Überlebende sind am Leben, also begräbt sie niemand — das ist der Trick." },
+      "fr": { "text": "Si un avion s'écrase exactement sur la frontière entre deux pays, dans quel pays enterre-t-on les survivants ?", "options": ["Pays A", "Pays B", "Juste sur la frontière", "On n'enterre pas les survivants"], "correctIndex": 3, "explanation": "Les survivants sont vivants, donc personne ne les enterre — c'est le piège." },
+      "es": { "text": "Si un avión se estrella exactamente en la frontera entre dos países, ¿en qué país se entierra a los sobrevivientes?", "options": ["País A", "País B", "Justo en la frontera", "A los sobrevivientes no se les entierra"], "correctIndex": 3, "explanation": "Los sobrevivientes están vivos, así que nadie los entierra — esa es la trampa." },
+      "zh": { "text": "如果一架飞机正好坠毁在两国边境线上，幸存者会被埋葬在哪个国家？", "options": ["A国", "B国", "正好在边境上", "幸存者不会被埋葬"], "correctIndex": 3, "explanation": "幸存者还活着，所以没有人会埋葬他们——这就是陷阱所在。" },
+      "ru": { "text": "Если самолёт разбивается точно на границе между двумя странами, в какой стране хоронят выживших?", "options": ["В стране А", "В стране Б", "Прямо на границе", "Выживших не хоронят"], "correctIndex": 3, "explanation": "Выжившие живы, поэтому их никто не хоронит — в этом и подвох." }
+    }
+  },
+  {
+    "priority": 4,
+    "type": "logic",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir odada 3 elma var. Siz bu elmalardan 2 tanesini alıyorsunuz. Kaç elmanız var?", "options": ["1 elma", "2 elma", "3 elma", "0 elma"], "correctIndex": 1, "explanation": "Soru odada kaç elma kaldığını değil, sizin kaç elmanız olduğunu sorar: 2 elma sizde." },
+      "en": { "text": "A room has 3 apples. You take 2 of them. How many apples do you have?", "options": ["1 apple", "2 apples", "3 apples", "0 apples"], "correctIndex": 1, "explanation": "The question asks how many apples YOU have, not how many are left in the room: you have 2." },
+      "ar": { "text": "توجد 3 تفاحات في غرفة. أخذت 2 منها. كم تفاحة لديك؟", "options": ["تفاحة واحدة", "تفاحتان", "3 تفاحات", "لا شيء"], "correctIndex": 1, "explanation": "السؤال يسأل كم تفاحة لديك أنت وليس كم بقي في الغرفة: لديك تفاحتان." },
+      "de": { "text": "In einem Zimmer liegen 3 Äpfel. Du nimmst 2 davon. Wie viele Äpfel hast du?", "options": ["1 Apfel", "2 Äpfel", "3 Äpfel", "0 Äpfel"], "correctIndex": 1, "explanation": "Die Frage ist, wie viele Äpfel DU hast, nicht wie viele im Zimmer bleiben: du hast 2." },
+      "fr": { "text": "Une pièce contient 3 pommes. Vous en prenez 2. Combien de pommes avez-vous ?", "options": ["1 pomme", "2 pommes", "3 pommes", "0 pomme"], "correctIndex": 1, "explanation": "La question demande combien de pommes VOUS avez, pas combien il en reste dans la pièce : vous en avez 2." },
+      "es": { "text": "Una habitación tiene 3 manzanas. Tomas 2 de ellas. ¿Cuántas manzanas tienes?", "options": ["1 manzana", "2 manzanas", "3 manzanas", "0 manzanas"], "correctIndex": 1, "explanation": "La pregunta es cuántas manzanas TIENES tú, no cuántas quedan en la habitación: tienes 2." },
+      "zh": { "text": "一个房间里有3个苹果，你拿走了其中2个。你现在有几个苹果？", "options": ["1个", "2个", "3个", "0个"], "correctIndex": 1, "explanation": "问题问的是你手里有几个苹果，不是房间里还剩几个：你有2个。" },
+      "ru": { "text": "В комнате 3 яблока. Вы берёте 2 из них. Сколько яблок у вас?", "options": ["1 яблоко", "2 яблока", "3 яблока", "0 яблок"], "correctIndex": 1, "explanation": "Вопрос о том, сколько яблок у ВАС, а не сколько осталось в комнате: у вас 2." }
+    }
+  },
+  {
+    "priority": 5,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Kaç ay 28 gün çeker?", "options": ["1 ay", "2 ay", "6 ay", "12 ay"], "correctIndex": 3, "explanation": "Her ayın en az 28 günü vardır, dolayısıyla cevap 12 aydır." },
+      "en": { "text": "How many months have 28 days?", "options": ["1 month", "2 months", "6 months", "12 months"], "correctIndex": 3, "explanation": "Every month has at least 28 days, so the answer is all 12." },
+      "ar": { "text": "كم عدد الأشهر التي تحتوي على 28 يومًا؟", "options": ["شهر واحد", "شهران", "6 أشهر", "12 شهرًا"], "correctIndex": 3, "explanation": "كل شهر يحتوي على 28 يومًا على الأقل، لذا الإجابة هي كل الأشهر الـ12." },
+      "de": { "text": "Wie viele Monate haben 28 Tage?", "options": ["1 Monat", "2 Monate", "6 Monate", "12 Monate"], "correctIndex": 3, "explanation": "Jeder Monat hat mindestens 28 Tage, also lautet die Antwort: alle 12." },
+      "fr": { "text": "Combien de mois ont 28 jours ?", "options": ["1 mois", "2 mois", "6 mois", "12 mois"], "correctIndex": 3, "explanation": "Chaque mois compte au moins 28 jours, donc la réponse est les 12 mois." },
+      "es": { "text": "¿Cuántos meses tienen 28 días?", "options": ["1 mes", "2 meses", "6 meses", "12 meses"], "correctIndex": 3, "explanation": "Todos los meses tienen al menos 28 días, así que la respuesta son los 12." },
+      "zh": { "text": "有多少个月份有28天？", "options": ["1个月", "2个月", "6个月", "12个月"], "correctIndex": 3, "explanation": "每个月至少都有28天，所以答案是全部12个月。" },
+      "ru": { "text": "Сколько месяцев содержат 28 дней?", "options": ["1 месяц", "2 месяца", "6 месяцев", "12 месяцев"], "correctIndex": 3, "explanation": "В каждом месяце есть как минимум 28 дней, поэтому ответ — все 12." }
+    }
+  },
+  {
+    "priority": 6,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Tek katlı bir evde kaç basamak merdiven vardır?", "options": ["10 basamak", "5 basamak", "0 basamak", "3 basamak"], "correctIndex": 2, "explanation": "Tek katlı bir evde ikinci kata çıkmak gerekmediği için merdivene ihtiyaç yoktur." },
+      "en": { "text": "How many stairs does a one-story house have?", "options": ["10 stairs", "5 stairs", "0 stairs", "3 stairs"], "correctIndex": 2, "explanation": "A one-story house has no upper floor to climb to, so it needs no stairs." },
+      "ar": { "text": "كم عدد الدرجات في منزل من طابق واحد؟", "options": ["10 درجات", "5 درجات", "0 درجات", "3 درجات"], "correctIndex": 2, "explanation": "منزل الطابق الواحد لا يحتاج إلى درج لأنه لا يوجد طابق آخر للصعود إليه." },
+      "de": { "text": "Wie viele Treppenstufen hat ein einstöckiges Haus?", "options": ["10 Stufen", "5 Stufen", "0 Stufen", "3 Stufen"], "correctIndex": 2, "explanation": "Ein einstöckiges Haus hat kein oberes Stockwerk, daher braucht es keine Treppe." },
+      "fr": { "text": "Combien de marches y a-t-il dans une maison de plain-pied ?", "options": ["10 marches", "5 marches", "0 marche", "3 marches"], "correctIndex": 2, "explanation": "Une maison de plain-pied n'a pas d'étage à atteindre, donc pas besoin d'escalier." },
+      "es": { "text": "¿Cuántos escalones tiene una casa de un solo piso?", "options": ["10 escalones", "5 escalones", "0 escalones", "3 escalones"], "correctIndex": 2, "explanation": "Una casa de un solo piso no tiene planta superior a la que subir, así que no necesita escaleras." },
+      "zh": { "text": "一栋单层平房有几级楼梯？", "options": ["10级", "5级", "0级", "3级"], "correctIndex": 2, "explanation": "单层平房没有楼上可去，所以根本不需要楼梯。" },
+      "ru": { "text": "Сколько ступенек в одноэтажном доме?", "options": ["10 ступенек", "5 ступенек", "0 ступенек", "3 ступеньки"], "correctIndex": 2, "explanation": "В одноэтажном доме нет второго этажа, поэтому лестница не нужна." }
+    }
+  },
+  {
+    "priority": 7,
+    "type": "attention",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir çiftçinin 17 koyunu vardı. Biri hariç hepsi öldü. Çiftçinin kaç koyunu kaldı?", "options": ["0 koyun", "16 koyun", "17 koyun", "1 koyun"], "correctIndex": 3, "explanation": "'Biri hariç hepsi öldü' demek, sadece 1 tanesi hayatta kaldı demektir." },
+      "en": { "text": "A farmer had 17 sheep. All but one died. How many sheep does the farmer have left?", "options": ["0 sheep", "16 sheep", "17 sheep", "1 sheep"], "correctIndex": 3, "explanation": "'All but one died' means only 1 sheep survived." },
+      "ar": { "text": "كان لدى مزارع 17 خروفًا. ماتت كلها ما عدا واحدًا. كم خروفًا تبقى لدى المزارع؟", "options": ["0 خروف", "16 خروفًا", "17 خروفًا", "خروف واحد"], "correctIndex": 3, "explanation": "'ماتت كلها ما عدا واحدًا' تعني أن خروفًا واحدًا فقط بقي حيًا." },
+      "de": { "text": "Ein Bauer hatte 17 Schafe. Alle bis auf eines starben. Wie viele Schafe hat der Bauer noch?", "options": ["0 Schafe", "16 Schafe", "17 Schafe", "1 Schaf"], "correctIndex": 3, "explanation": "'Alle bis auf eines starben' bedeutet, dass nur 1 Schaf überlebt hat." },
+      "fr": { "text": "Un fermier avait 17 moutons. Tous sauf un sont morts. Combien de moutons reste-t-il au fermier ?", "options": ["0 mouton", "16 moutons", "17 moutons", "1 mouton"], "correctIndex": 3, "explanation": "'Tous sauf un sont morts' signifie qu'un seul mouton a survécu." },
+      "es": { "text": "Un granjero tenía 17 ovejas. Todas menos una murieron. ¿Cuántas ovejas le quedan al granjero?", "options": ["0 ovejas", "16 ovejas", "17 ovejas", "1 oveja"], "correctIndex": 3, "explanation": "'Todas menos una murieron' significa que solo sobrevivió 1 oveja." },
+      "zh": { "text": "一个农民有17只羊，除了一只以外全都死了。农民还剩几只羊？", "options": ["0只", "16只", "17只", "1只"], "correctIndex": 3, "explanation": "“除了一只以外全都死了”意味着只有1只羊活了下来。" },
+      "ru": { "text": "У фермера было 17 овец. Все, кроме одной, умерли. Сколько овец осталось у фермера?", "options": ["0 овец", "16 овец", "17 овец", "1 овца"], "correctIndex": 3, "explanation": "«Все, кроме одной, умерли» означает, что выжила только 1 овца." }
+    }
+  },
+  {
+    "priority": 8,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kum saatindeki kum bittiğinde, zaman durur mu?", "options": ["Evet, zaman durur", "Hayır, zaman akmaya devam eder", "Sadece geceleri durur", "Kum saati patlar"], "correctIndex": 1, "explanation": "Kum saati sadece zamanı ölçen bir araçtır; zamanın kendisini asla durduramaz." },
+      "en": { "text": "When the sand in an hourglass runs out, does time stop?", "options": ["Yes, time stops", "No, time keeps flowing", "Only at night", "The hourglass explodes"], "correctIndex": 1, "explanation": "An hourglass only measures time; it can never actually stop time itself." },
+      "ar": { "text": "عندما ينفد الرمل في الساعة الرملية، هل يتوقف الزمن؟", "options": ["نعم، يتوقف الزمن", "لا، يستمر الزمن بالتدفق", "فقط في الليل", "تنفجر الساعة الرملية"], "correctIndex": 1, "explanation": "الساعة الرملية أداة لقياس الزمن فقط، ولا يمكنها إيقاف الزمن نفسه أبدًا." },
+      "de": { "text": "Wenn der Sand in einer Sanduhr aufgebraucht ist, bleibt dann die Zeit stehen?", "options": ["Ja, die Zeit bleibt stehen", "Nein, die Zeit fließt weiter", "Nur nachts", "Die Sanduhr explodiert"], "correctIndex": 1, "explanation": "Eine Sanduhr misst nur die Zeit; sie kann die Zeit selbst nie anhalten." },
+      "fr": { "text": "Quand le sable d'un sablier est écoulé, le temps s'arrête-t-il ?", "options": ["Oui, le temps s'arrête", "Non, le temps continue de s'écouler", "Seulement la nuit", "Le sablier explose"], "correctIndex": 1, "explanation": "Un sablier ne fait que mesurer le temps ; il ne peut jamais arrêter le temps lui-même." },
+      "es": { "text": "Cuando se acaba la arena de un reloj de arena, ¿se detiene el tiempo?", "options": ["Sí, el tiempo se detiene", "No, el tiempo sigue fluyendo", "Solo de noche", "El reloj de arena explota"], "correctIndex": 1, "explanation": "Un reloj de arena solo mide el tiempo; nunca puede detener el tiempo en sí." },
+      "zh": { "text": "沙漏里的沙子漏完后，时间会停止吗？", "options": ["会，时间会停止", "不会，时间继续流逝", "只在夜里停止", "沙漏会爆炸"], "correctIndex": 1, "explanation": "沙漏只是用来测量时间的工具，它永远无法真正让时间停止。" },
+      "ru": { "text": "Когда песок в песочных часах заканчивается, останавливается ли время?", "options": ["Да, время останавливается", "Нет, время продолжает идти", "Только ночью", "Песочные часы взрываются"], "correctIndex": 1, "explanation": "Песочные часы лишь измеряют время; они никогда не могут остановить само время." }
+    }
+  },
+  {
+    "priority": 9,
+    "type": "math",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir tuğla, 1 kilogram artı yarım tuğla ağırlığındadır. Tuğla kaç kilogramdır?", "options": ["1 kg", "1.5 kg", "2 kg", "3 kg"], "correctIndex": 2, "explanation": "x = 1 + x/2 denklemini çözersek x = 2 kg bulunur." },
+      "en": { "text": "A brick weighs 1 kilogram plus half a brick. How much does the brick weigh?", "options": ["1 kg", "1.5 kg", "2 kg", "3 kg"], "correctIndex": 2, "explanation": "Solving x = 1 + x/2 gives x = 2 kg." },
+      "ar": { "text": "وزن الطوبة يساوي 1 كيلوغرام زائد نصف طوبة. كم يبلغ وزن الطوبة؟", "options": ["1 كغ", "1.5 كغ", "2 كغ", "3 كغ"], "correctIndex": 2, "explanation": "بحل المعادلة x = 1 + x/2 نحصل على x = 2 كغ." },
+      "de": { "text": "Ein Ziegelstein wiegt 1 Kilogramm plus einen halben Ziegelstein. Wie schwer ist der Ziegelstein?", "options": ["1 kg", "1,5 kg", "2 kg", "3 kg"], "correctIndex": 2, "explanation": "Löst man x = 1 + x/2, erhält man x = 2 kg." },
+      "fr": { "text": "Une brique pèse 1 kilogramme plus une demi-brique. Combien pèse la brique ?", "options": ["1 kg", "1,5 kg", "2 kg", "3 kg"], "correctIndex": 2, "explanation": "En résolvant x = 1 + x/2, on obtient x = 2 kg." },
+      "es": { "text": "Un ladrillo pesa 1 kilogramo más medio ladrillo. ¿Cuánto pesa el ladrillo?", "options": ["1 kg", "1.5 kg", "2 kg", "3 kg"], "correctIndex": 2, "explanation": "Resolviendo x = 1 + x/2 obtenemos x = 2 kg." },
+      "zh": { "text": "一块砖的重量等于1千克加上半块砖的重量。这块砖有多重？", "options": ["1千克", "1.5千克", "2千克", "3千克"], "correctIndex": 2, "explanation": "解方程 x = 1 + x/2，得出 x = 2千克。" },
+      "ru": { "text": "Кирпич весит 1 килограмм плюс половина кирпича. Сколько весит кирпич?", "options": ["1 кг", "1,5 кг", "2 кг", "3 кг"], "correctIndex": 2, "explanation": "Решив уравнение x = 1 + x/2, получаем x = 2 кг." }
+    }
+  },
+  {
+    "priority": 10,
+    "type": "math",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "İki madeni paranın toplamı 30 kuruş. Biri 5 kuruş DEĞİL. Diğer para kaç kuruştur?", "options": ["5 kuruş", "10 kuruş", "25 kuruş", "15 kuruş"], "correctIndex": 2, "explanation": "'Biri 5 kuruş değil' demek, diğerinin 5 kuruş olabileceği anlamına gelir: 25 + 5 = 30." },
+      "en": { "text": "Two coins add up to 30 cents. One of them is NOT a 5-cent coin. What is the other coin?", "options": ["5 cents", "10 cents", "25 cents", "15 cents"], "correctIndex": 2, "explanation": "'One is not 5 cents' just means the OTHER one can be: 25 + 5 = 30." },
+      "ar": { "text": "قيمة عملتين معًا 30 قرشًا. إحداهما ليست 5 قروش. فما قيمة العملة الأخرى؟", "options": ["5 قروش", "10 قروش", "25 قرشًا", "15 قرشًا"], "correctIndex": 2, "explanation": "'إحداهما ليست 5 قروش' يعني أن الأخرى قد تكون 5: 25 + 5 = 30." },
+      "de": { "text": "Zwei Münzen ergeben zusammen 30 Cent. Eine davon ist KEINE 5-Cent-Münze. Wie viel ist die andere Münze wert?", "options": ["5 Cent", "10 Cent", "25 Cent", "15 Cent"], "correctIndex": 2, "explanation": "'Eine ist keine 5-Cent-Münze' heißt nur, dass die ANDERE es sein kann: 25 + 5 = 30." },
+      "fr": { "text": "Deux pièces totalisent 30 centimes. L'une n'est PAS une pièce de 5 centimes. Combien vaut l'autre pièce ?", "options": ["5 centimes", "10 centimes", "25 centimes", "15 centimes"], "correctIndex": 2, "explanation": "'L'une n'est pas de 5 centimes' signifie juste que l'AUTRE peut l'être : 25 + 5 = 30." },
+      "es": { "text": "Dos monedas suman 30 centavos. Una de ellas NO es de 5 centavos. ¿Cuánto vale la otra moneda?", "options": ["5 centavos", "10 centavos", "25 centavos", "15 centavos"], "correctIndex": 2, "explanation": "'Una no es de 5 centavos' solo significa que la OTRA sí puede serlo: 25 + 5 = 30." },
+      "zh": { "text": "两枚硬币加起来是30分。其中一枚不是5分硬币。另一枚是多少？", "options": ["5分", "10分", "25分", "15分"], "correctIndex": 2, "explanation": "“其中一枚不是5分”只是说明另一枚可以是5分：25+5=30。" },
+      "ru": { "text": "Две монеты в сумме дают 30 копеек. Одна из них НЕ 5 копеек. Сколько стоит другая монета?", "options": ["5 копеек", "10 копеек", "25 копеек", "15 копеек"], "correctIndex": 2, "explanation": "«Одна не 5 копеек» означает лишь, что ДРУГАЯ может быть: 25 + 5 = 30." }
+    }
+  },
+  {
+    "priority": 11,
+    "type": "humor",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir yılda kaç kişi doğum günü kutlar?", "options": ["Sadece o gün doğanlar", "Herkes", "Nüfusun yarısı", "Hiç kimse"], "correctIndex": 1, "explanation": "Herkesin bir doğum günü vardır ve her yıl bunu kutlayabilir." },
+      "en": { "text": "How many people celebrate a birthday each year?", "options": ["Only people born that day", "Everyone", "Half the population", "No one"], "correctIndex": 1, "explanation": "Everyone has a birthday and can celebrate it every year." },
+      "ar": { "text": "كم عدد الأشخاص الذين يحتفلون بعيد ميلادهم كل عام؟", "options": ["فقط من وُلدوا في ذلك اليوم", "الجميع", "نصف السكان", "لا أحد"], "correctIndex": 1, "explanation": "لكل شخص عيد ميلاد يمكنه الاحتفال به كل عام." },
+      "de": { "text": "Wie viele Menschen feiern jedes Jahr Geburtstag?", "options": ["Nur die, die an diesem Tag geboren sind", "Alle", "Die Hälfte der Bevölkerung", "Niemand"], "correctIndex": 1, "explanation": "Jeder hat einen Geburtstag und kann ihn jedes Jahr feiern." },
+      "fr": { "text": "Combien de personnes fêtent leur anniversaire chaque année ?", "options": ["Seulement celles nées ce jour-là", "Tout le monde", "La moitié de la population", "Personne"], "correctIndex": 1, "explanation": "Tout le monde a un anniversaire et peut le fêter chaque année." },
+      "es": { "text": "¿Cuántas personas celebran un cumpleaños cada año?", "options": ["Solo quienes nacieron ese día", "Todos", "La mitad de la población", "Nadie"], "correctIndex": 1, "explanation": "Todos tienen un cumpleaños y pueden celebrarlo cada año." },
+      "zh": { "text": "每年有多少人庆祝生日？", "options": ["只有那天出生的人", "所有人", "一半人口", "没有人"], "correctIndex": 1, "explanation": "每个人都有生日，每年都可以庆祝。" },
+      "ru": { "text": "Сколько людей отмечают день рождения каждый год?", "options": ["Только рождённые в этот день", "Все", "Половина населения", "Никто"], "correctIndex": 1, "explanation": "У каждого есть день рождения, и его можно отмечать каждый год." }
+    }
+  },
+  {
+    "priority": 12,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir adam tamamen karanlık bir odada, hiç ışık olmadan bir kitap okuyor. Bu nasıl mümkün olur?", "options": ["Gözleri çok güçlü", "Kitap Braille alfabesiyle yazılmış", "Ezberden okuyor", "Rüya görüyor"], "correctIndex": 1, "explanation": "Braille alfabesi parmak uçlarıyla dokunularak okunur, ışığa ihtiyaç duymaz." },
+      "en": { "text": "A man reads a book in a completely dark room with no light at all. How is this possible?", "options": ["He has amazing eyesight", "The book is written in Braille", "He's reading from memory", "He's dreaming"], "correctIndex": 1, "explanation": "Braille is read by touch with the fingertips and needs no light at all." },
+      "ar": { "text": "يقرأ رجل كتابًا في غرفة مظلمة تمامًا بدون أي ضوء. كيف يكون هذا ممكنًا؟", "options": ["بصره قوي جدًا", "الكتاب مكتوب بطريقة برايل", "يقرأ عن ظهر قلب", "إنه يحلم"], "correctIndex": 1, "explanation": "تُقرأ طريقة برايل باللمس بأطراف الأصابع ولا تحتاج إلى ضوء إطلاقًا." },
+      "de": { "text": "Ein Mann liest ein Buch in einem völlig dunklen Raum ohne jegliches Licht. Wie ist das möglich?", "options": ["Er hat außergewöhnliche Augen", "Das Buch ist in Blindenschrift geschrieben", "Er liest aus dem Gedächtnis", "Er träumt"], "correctIndex": 1, "explanation": "Blindenschrift wird mit den Fingerspitzen ertastet und braucht kein Licht." },
+      "fr": { "text": "Un homme lit un livre dans une pièce totalement sombre, sans aucune lumière. Comment est-ce possible ?", "options": ["Il a une vue exceptionnelle", "Le livre est écrit en braille", "Il lit de mémoire", "Il rêve"], "correctIndex": 1, "explanation": "Le braille se lit du bout des doigts et ne nécessite aucune lumière." },
+      "es": { "text": "Un hombre lee un libro en una habitación completamente oscura, sin ninguna luz. ¿Cómo es posible?", "options": ["Tiene una vista increíble", "El libro está escrito en braille", "Lo lee de memoria", "Está soñando"], "correctIndex": 1, "explanation": "El braille se lee con la yema de los dedos y no necesita luz alguna." },
+      "zh": { "text": "一个男人在完全没有光线的漆黑房间里读书，这怎么可能？", "options": ["他的视力超强", "这本书是用盲文写的", "他在凭记忆背诵", "他在做梦"], "correctIndex": 1, "explanation": "盲文是用指尖触摸阅读的，完全不需要光线。" },
+      "ru": { "text": "Мужчина читает книгу в абсолютно тёмной комнате без единого источника света. Как это возможно?", "options": ["У него невероятное зрение", "Книга написана шрифтом Брайля", "Он читает по памяти", "Ему это снится"], "correctIndex": 1, "explanation": "Шрифт Брайля читается кончиками пальцев на ощупь и не требует света." }
+    }
+  },
+  {
+    "priority": 13,
+    "type": "illusion",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Aynaya baktığınızda, sağ eliniz hangi el gibi görünür?", "options": ["Sağ el gibi", "Sol el gibi görünür", "Her ikisi de aynı anda", "Görünmez olur"], "correctIndex": 1, "explanation": "Aynalar sağ-sol yönünü tersine çevirir, bu yüzden sağ eliniz sol el gibi görünür." },
+      "en": { "text": "When you look in a mirror, which hand does your right hand appear as?", "options": ["Still the right hand", "It appears as the left hand", "Both at once", "It disappears"], "correctIndex": 1, "explanation": "Mirrors flip left and right, so your right hand appears to be a left hand." },
+      "ar": { "text": "عندما تنظر في المرآة، تبدو يدك اليمنى وكأنها أي يد؟", "options": ["ما زالت اليمنى", "تبدو وكأنها اليسرى", "الاثنتان معًا", "تختفي"], "correctIndex": 1, "explanation": "تعكس المرايا اتجاه اليمين واليسار، لذا تبدو يدك اليمنى وكأنها اليسرى." },
+      "de": { "text": "Wenn du in einen Spiegel schaust, wie erscheint deine rechte Hand?", "options": ["Immer noch rechts", "Sie sieht aus wie die linke Hand", "Beide gleichzeitig", "Sie verschwindet"], "correctIndex": 1, "explanation": "Spiegel vertauschen links und rechts, daher sieht deine rechte Hand wie eine linke aus." },
+      "fr": { "text": "Quand vous vous regardez dans un miroir, à quelle main ressemble votre main droite ?", "options": ["Toujours la droite", "Elle ressemble à la main gauche", "Les deux à la fois", "Elle disparaît"], "correctIndex": 1, "explanation": "Les miroirs inversent la gauche et la droite, donc votre main droite ressemble à une main gauche." },
+      "es": { "text": "Cuando te miras en un espejo, ¿a qué mano se parece tu mano derecha?", "options": ["Sigue siendo la derecha", "Parece la mano izquierda", "Ambas a la vez", "Desaparece"], "correctIndex": 1, "explanation": "Los espejos invierten izquierda y derecha, así que tu mano derecha parece la izquierda." },
+      "zh": { "text": "当你照镜子时，你的右手看起来像哪只手？", "options": ["仍然是右手", "看起来像左手", "两只手同时出现", "会消失"], "correctIndex": 1, "explanation": "镜子会左右翻转，所以你的右手看起来像左手。" },
+      "ru": { "text": "Когда вы смотрите в зеркало, какой рукой кажется ваша правая рука?", "options": ["По-прежнему правой", "Кажется левой рукой", "Обеими сразу", "Исчезает"], "correctIndex": 1, "explanation": "Зеркала меняют местами лево и право, поэтому правая рука кажется левой." }
+    }
+  },
+  {
+    "priority": 14,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kedinin kuyruğuna 'bacak' derseniz, kedinin kaç bacağı olur?", "options": ["5 bacak", "4 bacak", "3 bacak", "6 bacak"], "correctIndex": 1, "explanation": "Kuyruğa bacak demek onu gerçekten bacak yapmaz; kedinin hâlâ 4 bacağı vardır." },
+      "en": { "text": "If you call a cat's tail a 'leg', how many legs does the cat have?", "options": ["5 legs", "4 legs", "3 legs", "6 legs"], "correctIndex": 1, "explanation": "Calling a tail a leg doesn't actually make it one; the cat still has 4 legs." },
+      "ar": { "text": "إذا أسميت ذيل القطة 'رجلًا'، فكم عدد أرجل القطة؟", "options": ["5 أرجل", "4 أرجل", "3 أرجل", "6 أرجل"], "correctIndex": 1, "explanation": "تسمية الذيل رجلًا لا يجعله رجلًا فعليًا؛ لا تزال للقطة 4 أرجل." },
+      "de": { "text": "Wenn du den Schwanz einer Katze ein 'Bein' nennst, wie viele Beine hat die Katze dann?", "options": ["5 Beine", "4 Beine", "3 Beine", "6 Beine"], "correctIndex": 1, "explanation": "Nur weil man den Schwanz Bein nennt, wird er nicht dazu; die Katze hat weiterhin 4 Beine." },
+      "fr": { "text": "Si vous appelez la queue d'un chat une 'patte', combien de pattes le chat a-t-il ?", "options": ["5 pattes", "4 pattes", "3 pattes", "6 pattes"], "correctIndex": 1, "explanation": "Appeler la queue une patte ne la transforme pas réellement en patte ; le chat a toujours 4 pattes." },
+      "es": { "text": "Si llamas 'pata' a la cola de un gato, ¿cuántas patas tiene el gato?", "options": ["5 patas", "4 patas", "3 patas", "6 patas"], "correctIndex": 1, "explanation": "Llamar pata a la cola no la convierte en una; el gato sigue teniendo 4 patas." },
+      "zh": { "text": "如果你把猫的尾巴叫做“腿”，那猫有几条腿？", "options": ["5条", "4条", "3条", "6条"], "correctIndex": 1, "explanation": "把尾巴叫做腿并不会让它真的变成腿，猫仍然只有4条腿。" },
+      "ru": { "text": "Если назвать хвост кошки 'ногой', сколько ног будет у кошки?", "options": ["5 ног", "4 ноги", "3 ноги", "6 ног"], "correctIndex": 1, "explanation": "Название хвоста ногой не превращает его в ногу; у кошки по-прежнему 4 ноги." }
+    }
+  },
+  {
+    "priority": 15,
+    "type": "humor",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir balık suda boğulabilir mi?", "options": ["Evet, her zaman", "Hayır, çünkü solungaçla nefes alır", "Sadece derin sularda", "Sadece tuzlu suda"], "correctIndex": 1, "explanation": "Balıklar suda boğulmaz; solungaçlarıyla sudaki oksijeni alarak yaşarlar." },
+      "en": { "text": "Can a fish drown in water?", "options": ["Yes, always", "No, because it breathes through gills", "Only in deep water", "Only in salt water"], "correctIndex": 1, "explanation": "Fish don't drown in water; they breathe oxygen from it through their gills." },
+      "ar": { "text": "هل يمكن للسمكة أن تغرق في الماء؟", "options": ["نعم، دائمًا", "لا، لأنها تتنفس بالخياشيم", "فقط في المياه العميقة", "فقط في المياه المالحة"], "correctIndex": 1, "explanation": "لا تغرق الأسماك في الماء؛ فهي تتنفس الأكسجين منه عبر خياشيمها." },
+      "de": { "text": "Kann ein Fisch im Wasser ertrinken?", "options": ["Ja, immer", "Nein, weil er durch Kiemen atmet", "Nur in tiefem Wasser", "Nur in Salzwasser"], "correctIndex": 1, "explanation": "Fische ertrinken nicht im Wasser; sie atmen Sauerstoff daraus durch ihre Kiemen." },
+      "fr": { "text": "Un poisson peut-il se noyer dans l'eau ?", "options": ["Oui, toujours", "Non, car il respire grâce à ses branchies", "Seulement en eau profonde", "Seulement en eau salée"], "correctIndex": 1, "explanation": "Les poissons ne se noient pas dans l'eau ; ils y respirent l'oxygène grâce à leurs branchies." },
+      "es": { "text": "¿Puede un pez ahogarse en el agua?", "options": ["Sí, siempre", "No, porque respira por branquias", "Solo en aguas profundas", "Solo en agua salada"], "correctIndex": 1, "explanation": "Los peces no se ahogan en el agua; respiran el oxígeno del agua a través de sus branquias." },
+      "zh": { "text": "鱼会在水中溺水吗？", "options": ["会，总是这样", "不会，因为它用鳃呼吸", "只在深水中会", "只在咸水中会"], "correctIndex": 1, "explanation": "鱼不会在水中溺水，它们通过鳃从水中呼吸氧气。" },
+      "ru": { "text": "Может ли рыба утонуть в воде?", "options": ["Да, всегда", "Нет, потому что она дышит жабрами", "Только в глубокой воде", "Только в солёной воде"], "correctIndex": 1, "explanation": "Рыбы не тонут в воде; они дышат кислородом из воды через жабры." }
+    }
+  },
+  {
+    "priority": 16,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "1 kilogram demir mi, yoksa 1 kilogram pamuk mu daha ağırdır?", "options": ["Demir", "Pamuk", "İkisi de aynı ağırlıktadır", "Tartıya göre değişir"], "correctIndex": 2, "explanation": "Her ikisi de 1 kilogram olduğu için ağırlıkları eşittir; sadece hacimleri farklıdır." },
+      "en": { "text": "Which is heavier: 1 kilogram of iron or 1 kilogram of cotton?", "options": ["The iron", "The cotton", "They weigh the same", "Depends on the scale"], "correctIndex": 2, "explanation": "Both weigh exactly 1 kilogram, so they're equal in weight — only their volume differs." },
+      "ar": { "text": "أيهما أثقل: كيلوغرام واحد من الحديد أم كيلوغرام واحد من القطن؟", "options": ["الحديد", "القطن", "كلاهما بنفس الوزن", "يعتمد على الميزان"], "correctIndex": 2, "explanation": "كلاهما يزن كيلوغرامًا واحدًا بالضبط، فوزنهما متساوٍ ويختلف حجمهما فقط." },
+      "de": { "text": "Was ist schwerer: 1 Kilogramm Eisen oder 1 Kilogramm Baumwolle?", "options": ["Das Eisen", "Die Baumwolle", "Sie wiegen gleich viel", "Kommt auf die Waage an"], "correctIndex": 2, "explanation": "Beide wiegen genau 1 Kilogramm, also sind sie gleich schwer — nur ihr Volumen unterscheidet sich." },
+      "fr": { "text": "Qu'est-ce qui est le plus lourd : 1 kilogramme de fer ou 1 kilogramme de coton ?", "options": ["Le fer", "Le coton", "Ils pèsent pareil", "Ça dépend de la balance"], "correctIndex": 2, "explanation": "Les deux pèsent exactement 1 kilogramme, donc ils sont d'un poids égal — seul leur volume diffère." },
+      "es": { "text": "¿Qué pesa más: 1 kilogramo de hierro o 1 kilogramo de algodón?", "options": ["El hierro", "El algodón", "Pesan lo mismo", "Depende de la báscula"], "correctIndex": 2, "explanation": "Ambos pesan exactamente 1 kilogramo, así que pesan igual; solo su volumen es diferente." },
+      "zh": { "text": "1千克铁和1千克棉花，哪个更重？", "options": ["铁更重", "棉花更重", "两者一样重", "取决于秤"], "correctIndex": 2, "explanation": "两者都正好是1千克，所以重量相同，只是体积不同。" },
+      "ru": { "text": "Что тяжелее: 1 килограмм железа или 1 килограмм ваты?", "options": ["Железо", "Вата", "Они весят одинаково", "Зависит от весов"], "correctIndex": 2, "explanation": "Оба весят ровно 1 килограмм, значит их вес одинаков — отличается только объём." }
+    }
+  },
+  {
+    "priority": 17,
+    "type": "logic",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Havasız bir ortamda (vakumda), bir tüy ile bir taş aynı yükseklikten bırakılırsa hangisi önce yere düşer?", "options": ["Taş", "Tüy", "İkisi de aynı anda düşer", "Hiçbiri düşmez"], "correctIndex": 2, "explanation": "Hava direnci olmadığında yerçekimi ikisini de tam olarak aynı hızda etkiler." },
+      "en": { "text": "In a vacuum with no air, a feather and a stone are dropped from the same height. Which hits the ground first?", "options": ["The stone", "The feather", "Both land at the same time", "Neither falls"], "correctIndex": 2, "explanation": "Without air resistance, gravity pulls both objects down at exactly the same speed." },
+      "ar": { "text": "في فراغ بلا هواء، إذا أُسقطت ريشة وحجر من نفس الارتفاع، أيهما يصل الأرض أولًا؟", "options": ["الحجر", "الريشة", "يصلان في نفس الوقت", "لا يسقط أي منهما"], "correctIndex": 2, "explanation": "بدون مقاومة الهواء، تسحب الجاذبية كلا الجسمين بنفس السرعة تمامًا." },
+      "de": { "text": "In einem Vakuum ohne Luft werden eine Feder und ein Stein aus derselben Höhe fallen gelassen. Was landet zuerst?", "options": ["Der Stein", "Die Feder", "Beide landen gleichzeitig", "Keines von beiden fällt"], "correctIndex": 2, "explanation": "Ohne Luftwiderstand zieht die Schwerkraft beide Objekte mit exakt derselben Geschwindigkeit nach unten." },
+      "fr": { "text": "Dans le vide sans air, une plume et une pierre sont lâchées de la même hauteur. Laquelle touche le sol en premier ?", "options": ["La pierre", "La plume", "Elles atterrissent en même temps", "Aucune ne tombe"], "correctIndex": 2, "explanation": "Sans résistance de l'air, la gravité attire les deux objets exactement à la même vitesse." },
+      "es": { "text": "En el vacío sin aire, se dejan caer una pluma y una piedra desde la misma altura. ¿Cuál toca el suelo primero?", "options": ["La piedra", "La pluma", "Ambas caen al mismo tiempo", "Ninguna cae"], "correctIndex": 2, "explanation": "Sin resistencia del aire, la gravedad atrae ambos objetos exactamente a la misma velocidad." },
+      "zh": { "text": "在没有空气的真空中，从同一高度同时释放一根羽毛和一块石头，哪个先落地？", "options": ["石头先落地", "羽毛先落地", "两者同时落地", "都不会落下"], "correctIndex": 2, "explanation": "在没有空气阻力的情况下，重力对两个物体的加速度完全相同。" },
+      "ru": { "text": "В вакууме без воздуха перо и камень бросают с одной высоты. Что упадёт первым?", "options": ["Камень", "Перо", "Оба падают одновременно", "Ни один не падает"], "correctIndex": 2, "explanation": "Без сопротивления воздуха гравитация притягивает оба предмета с абсолютно одинаковой скоростью." }
+    }
+  },
+  {
+    "priority": 18,
+    "type": "riddle",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "İki kişi aynı gün, aynı yıl ve aynı anne babadan doğdu ama ikiz değiller. Bu nasıl mümkün olur?", "options": ["Farklı yıllarda doğdular", "Üçüz doğdukları için", "Evlat edinildiler", "Yalan söylüyorlar"], "correctIndex": 1, "explanation": "Üçüz (veya daha çok) doğanlardan ikisi, üçüncüsü ayrı sayılınca 'ikiz olmayan' iki kardeş olabilir." },
+      "en": { "text": "Two people were born on the same day, same year, to the same parents, but they aren't twins. How is this possible?", "options": ["They were born in different years", "Because they're two of a set of triplets", "They were adopted", "They're lying"], "correctIndex": 1, "explanation": "If they're two of triplets (or more), each pair isn't technically a 'twin' on its own." },
+      "ar": { "text": "وُلد شخصان في نفس اليوم ونفس العام ولنفس الوالدين، لكنهما ليسا توأمًا. كيف يكون ذلك ممكنًا؟", "options": ["وُلدا في سنوات مختلفة", "لأنهما اثنان من ثلاثة توائم", "تم تبنيهما", "إنهما يكذبان"], "correctIndex": 1, "explanation": "إذا كانا اثنين من ثلاثة توائم (أو أكثر)، فكل زوج منهما ليس 'توأمًا' بمفرده تقنيًا." },
+      "de": { "text": "Zwei Menschen wurden am selben Tag, im selben Jahr, von denselben Eltern geboren, sind aber keine Zwillinge. Wie ist das möglich?", "options": ["Sie wurden in verschiedenen Jahren geboren", "Weil sie zwei von Drillingen sind", "Sie wurden adoptiert", "Sie lügen"], "correctIndex": 1, "explanation": "Sind sie zwei von Drillingen (oder mehr), sind sie streng genommen kein eigenes Zwillingspaar." },
+      "fr": { "text": "Deux personnes sont nées le même jour, la même année, des mêmes parents, mais ne sont pas jumelles. Comment est-ce possible ?", "options": ["Elles sont nées des années différentes", "Parce qu'elles font partie de triplés", "Elles ont été adoptées", "Elles mentent"], "correctIndex": 1, "explanation": "Si elles font partie de triplés (ou plus), ce duo n'est techniquement pas des jumeaux à part entière." },
+      "es": { "text": "Dos personas nacieron el mismo día, el mismo año, de los mismos padres, pero no son gemelas. ¿Cómo es posible?", "options": ["Nacieron en años diferentes", "Porque son dos de un trío de trillizos", "Fueron adoptadas", "Están mintiendo"], "correctIndex": 1, "explanation": "Si son dos de un trío de trillizos (o más), ese par no es técnicamente un par de gemelos aparte." },
+      "zh": { "text": "两个人在同一天、同一年、由同一对父母所生，但他们不是双胞胎。这怎么可能？", "options": ["他们出生年份不同", "因为他们是三胞胎中的两个", "他们是被收养的", "他们在撒谎"], "correctIndex": 1, "explanation": "如果他们是三胞胎（或更多胞胎）中的两个，严格来说这一对并不算独立的双胞胎。" },
+      "ru": { "text": "Два человека родились в один день, в один год, у одних родителей, но не являются близнецами. Как это возможно?", "options": ["Они родились в разные годы", "Потому что они двое из тройни", "Их усыновили", "Они лгут"], "correctIndex": 1, "explanation": "Если они двое из тройни (или больше), эта пара технически не считается отдельными близнецами." }
+    }
+  },
+  {
+    "priority": 19,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "İçinde hiçbir şey olmayan, tamamen boş bir kutunun ağırlığı kaç kilogramdır?", "options": ["0 kg", "Kutunun kendi ağırlığı kadar", "Sonsuz", "Hesaplanamaz"], "correctIndex": 1, "explanation": "Kutu boş olsa da kendisi bir nesnedir ve mutlaka bir ağırlığı vardır." },
+      "en": { "text": "What is the weight of a completely empty box with nothing inside?", "options": ["0 kg", "As much as the box itself weighs", "Infinite", "Impossible to calculate"], "correctIndex": 1, "explanation": "Even empty, the box is still an object and must have its own weight." },
+      "ar": { "text": "ما هو وزن صندوق فارغ تمامًا ولا يحتوي على أي شيء بداخله؟", "options": ["0 كغ", "بقدر وزن الصندوق نفسه", "لا نهائي", "لا يمكن حسابه"], "correctIndex": 1, "explanation": "حتى وهو فارغ، يظل الصندوق جسمًا له وزنه الخاص." },
+      "de": { "text": "Wie viel wiegt ein völlig leerer Karton ohne jeglichen Inhalt?", "options": ["0 kg", "So viel wie der Karton selbst wiegt", "Unendlich", "Nicht berechenbar"], "correctIndex": 1, "explanation": "Auch leer bleibt der Karton ein Objekt und hat sein eigenes Gewicht." },
+      "fr": { "text": "Quel est le poids d'une boîte complètement vide, sans rien à l'intérieur ?", "options": ["0 kg", "Le poids de la boîte elle-même", "Infini", "Impossible à calculer"], "correctIndex": 1, "explanation": "Même vide, la boîte reste un objet et possède son propre poids." },
+      "es": { "text": "¿Cuál es el peso de una caja completamente vacía sin nada dentro?", "options": ["0 kg", "Lo que pese la caja misma", "Infinito", "Imposible de calcular"], "correctIndex": 1, "explanation": "Aunque esté vacía, la caja sigue siendo un objeto y tiene su propio peso." },
+      "zh": { "text": "一个里面什么都没有、完全空的盒子重量是多少？", "options": ["0千克", "盒子本身的重量", "无穷大", "无法计算"], "correctIndex": 1, "explanation": "即使是空的，盒子本身仍然是一个物体，一定有自己的重量。" },
+      "ru": { "text": "Сколько весит совершенно пустая коробка, в которой ничего нет?", "options": ["0 кг", "Столько, сколько весит сама коробка", "Бесконечно", "Невозможно вычислить"], "correctIndex": 1, "explanation": "Даже пустая коробка остаётся предметом и имеет собственный вес." }
+    }
+  },
+  {
+    "priority": 20,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Durmuş (bozuk) bir saat günde kaç kez doğru zamanı gösterir?", "options": ["Hiç göstermez", "1 kez", "2 kez", "24 kez"], "correctIndex": 2, "explanation": "Durmuş bir saat 12 saatlik döngüde bir kez doğru olduğu için günde 2 kez doğru zamanı gösterir." },
+      "en": { "text": "How many times a day does a stopped clock show the correct time?", "options": ["Never", "1 time", "2 times", "24 times"], "correctIndex": 2, "explanation": "A stopped clock is correct once every 12 hours, so it shows the right time twice a day." },
+      "ar": { "text": "كم مرة في اليوم تُظهر الساعة المتوقفة الوقت الصحيح؟", "options": ["أبدًا", "مرة واحدة", "مرتين", "24 مرة"], "correctIndex": 2, "explanation": "تكون الساعة المتوقفة صحيحة مرة كل 12 ساعة، لذا تُظهر الوقت الصحيح مرتين يوميًا." },
+      "de": { "text": "Wie oft am Tag zeigt eine stehengebliebene Uhr die richtige Zeit an?", "options": ["Nie", "1 Mal", "2 Mal", "24 Mal"], "correctIndex": 2, "explanation": "Eine stehengebliebene Uhr ist alle 12 Stunden einmal richtig, also zweimal am Tag." },
+      "fr": { "text": "Combien de fois par jour une horloge arrêtée affiche-t-elle la bonne heure ?", "options": ["Jamais", "1 fois", "2 fois", "24 fois"], "correctIndex": 2, "explanation": "Une horloge arrêtée est juste une fois toutes les 12 heures, donc deux fois par jour." },
+      "es": { "text": "¿Cuántas veces al día muestra la hora correcta un reloj detenido?", "options": ["Nunca", "1 vez", "2 veces", "24 veces"], "correctIndex": 2, "explanation": "Un reloj detenido es correcto una vez cada 12 horas, así que acierta dos veces al día." },
+      "zh": { "text": "一个停摆的钟一天能显示几次正确时间？", "options": ["从不", "1次", "2次", "24次"], "correctIndex": 2, "explanation": "停摆的钟每12小时会准确一次，所以一天会显示两次正确时间。" },
+      "ru": { "text": "Сколько раз в день остановившиеся часы показывают точное время?", "options": ["Никогда", "1 раз", "2 раза", "24 раза"], "correctIndex": 2, "explanation": "Остановившиеся часы верны раз в 12 часов, значит показывают точное время дважды в день." }
+    }
+  },
+  {
+    "priority": 21,
+    "type": "logic",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bugün Çarşamba ise, 'yarının dünü' hangi gündür?", "options": ["Salı", "Perşembe", "Çarşamba", "Cuma"], "correctIndex": 2, "explanation": "Yarının dünü her zaman bugündür, yani Çarşamba." },
+      "en": { "text": "If today is Wednesday, what day is 'tomorrow's yesterday'?", "options": ["Tuesday", "Thursday", "Wednesday", "Friday"], "correctIndex": 2, "explanation": "Tomorrow's yesterday is always today — Wednesday." },
+      "ar": { "text": "إذا كان اليوم الأربعاء، فما هو 'أمس الغد'؟", "options": ["الثلاثاء", "الخميس", "الأربعاء", "الجمعة"], "correctIndex": 2, "explanation": "أمس الغد هو دائمًا اليوم نفسه، أي الأربعاء." },
+      "de": { "text": "Wenn heute Mittwoch ist, welcher Tag ist 'der Gestern von morgen'?", "options": ["Dienstag", "Donnerstag", "Mittwoch", "Freitag"], "correctIndex": 2, "explanation": "Der Gestern von morgen ist immer heute — also Mittwoch." },
+      "fr": { "text": "Si aujourd'hui on est mercredi, quel jour est 'l'hier de demain' ?", "options": ["Mardi", "Jeudi", "Mercredi", "Vendredi"], "correctIndex": 2, "explanation": "L'hier de demain, c'est toujours aujourd'hui — mercredi." },
+      "es": { "text": "Si hoy es miércoles, ¿qué día es 'el ayer de mañana'?", "options": ["Martes", "Jueves", "Miércoles", "Viernes"], "correctIndex": 2, "explanation": "El ayer de mañana siempre es hoy: miércoles." },
+      "zh": { "text": "如果今天是星期三，那么“明天的昨天”是星期几？", "options": ["星期二", "星期四", "星期三", "星期五"], "correctIndex": 2, "explanation": "明天的昨天永远都是今天，也就是星期三。" },
+      "ru": { "text": "Если сегодня среда, то какой день недели — 'вчера завтрашнего дня'?", "options": ["Вторник", "Четверг", "Среда", "Пятница"], "correctIndex": 2, "explanation": "Вчера завтрашнего дня — это всегда сегодня, то есть среда." }
+    }
+  },
+  {
+    "priority": 22,
+    "type": "logic",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Tüm kediler hayvandır. Bazı hayvanlar kedi değildir. Bu durumda 'bazı hayvanlar kedidir' ifadesi doğru mudur?", "options": ["Evet, doğrudur", "Hayır, yanlıştır", "Belirsizdir", "Sadece bazı durumlarda"], "correctIndex": 0, "explanation": "Tüm kediler hayvan olduğuna göre, en azından kedi sayısı kadar hayvan kedidir." },
+      "en": { "text": "All cats are animals. Some animals are not cats. Does this mean 'some animals are cats' is true?", "options": ["Yes, it's true", "No, it's false", "It's undetermined", "Only sometimes"], "correctIndex": 0, "explanation": "Since all cats are animals, at least as many animals as there are cats must be cats." },
+      "ar": { "text": "كل القطط حيوانات. بعض الحيوانات ليست قططًا. هل هذا يعني أن عبارة 'بعض الحيوانات قطط' صحيحة؟", "options": ["نعم، صحيحة", "لا، خاطئة", "غير محددة", "أحيانًا فقط"], "correctIndex": 0, "explanation": "بما أن كل القطط حيوانات، فإن عددًا من الحيوانات يساوي على الأقل عدد القطط يجب أن يكون قططًا." },
+      "de": { "text": "Alle Katzen sind Tiere. Manche Tiere sind keine Katzen. Bedeutet das, dass 'manche Tiere sind Katzen' wahr ist?", "options": ["Ja, das stimmt", "Nein, das ist falsch", "Unbestimmt", "Nur manchmal"], "correctIndex": 0, "explanation": "Da alle Katzen Tiere sind, muss es mindestens so viele Tiere geben, die Katzen sind, wie es Katzen gibt." },
+      "fr": { "text": "Tous les chats sont des animaux. Certains animaux ne sont pas des chats. Cela signifie-t-il que 'certains animaux sont des chats' est vrai ?", "options": ["Oui, c'est vrai", "Non, c'est faux", "C'est indéterminé", "Seulement parfois"], "correctIndex": 0, "explanation": "Puisque tous les chats sont des animaux, au moins autant d'animaux que de chats doivent être des chats." },
+      "es": { "text": "Todos los gatos son animales. Algunos animales no son gatos. ¿Esto significa que 'algunos animales son gatos' es verdadero?", "options": ["Sí, es verdadero", "No, es falso", "Es indeterminado", "Solo a veces"], "correctIndex": 0, "explanation": "Como todos los gatos son animales, al menos tantos animales como gatos hay deben ser gatos." },
+      "zh": { "text": "所有的猫都是动物。有些动物不是猫。这是否意味着“有些动物是猫”是正确的？", "options": ["是的，正确", "不，错误", "无法确定", "只是有时正确"], "correctIndex": 0, "explanation": "既然所有猫都是动物，那么至少有和猫数量一样多的动物是猫。" },
+      "ru": { "text": "Все кошки — животные. Некоторые животные — не кошки. Значит ли это, что утверждение 'некоторые животные — кошки' верно?", "options": ["Да, верно", "Нет, неверно", "Неопределённо", "Только иногда"], "correctIndex": 0, "explanation": "Поскольку все кошки — животные, как минимум столько же животных являются кошками, сколько всего кошек." }
+    }
+  },
+  {
+    "priority": 23,
+    "type": "illusion",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "İki çizgi tam olarak aynı uzunlukta, ama birinin uçlarında içe dönük oklar, diğerinde dışa dönük oklar var; bu yüzden biri daha uzun görünüyor. Gerçekte hangisi daha uzundur?", "options": ["İçe dönük oklu çizgi", "Dışa dönük oklu çizgi", "İkisi de eşit uzunlukta", "Ölçüme göre değişir"], "correctIndex": 2, "explanation": "Bu ünlü Müller-Lyer illüzyonudur; gözünüz sizi kandırır ama çizgiler gerçekte tam olarak eşit uzunluktadır." },
+      "en": { "text": "Two lines are exactly the same length, but one has inward-pointing arrows and the other outward-pointing arrows, making one look longer. Which one is actually longer?", "options": ["The line with inward arrows", "The line with outward arrows", "Both are exactly equal", "It depends on measurement"], "correctIndex": 2, "explanation": "This is the famous Müller-Lyer illusion; your eyes are fooled, but both lines are truly equal in length." },
+      "ar": { "text": "خطان متساويان تمامًا في الطول، لكن أحدهما له أسهم تشير للداخل والآخر أسهم تشير للخارج، مما يجعل أحدهما يبدو أطول. أيهما أطول فعليًا؟", "options": ["الخط ذو الأسهم الداخلية", "الخط ذو الأسهم الخارجية", "كلاهما متساويان تمامًا", "يعتمد على القياس"], "correctIndex": 2, "explanation": "هذا هو وهم مولر-لاير الشهير؛ تخدعك عيناك، لكن الخطين متساويان في الطول فعليًا." },
+      "de": { "text": "Zwei Linien sind exakt gleich lang, aber eine hat nach innen zeigende Pfeile, die andere nach außen zeigende — dadurch wirkt eine länger. Welche ist tatsächlich länger?", "options": ["Die Linie mit den Innenpfeilen", "Die Linie mit den Außenpfeilen", "Beide sind exakt gleich lang", "Kommt auf die Messung an"], "correctIndex": 2, "explanation": "Dies ist die berühmte Müller-Lyer-Täuschung; deine Augen täuschen dich, aber beide Linien sind wirklich gleich lang." },
+      "fr": { "text": "Deux lignes ont exactement la même longueur, mais l'une a des flèches pointant vers l'intérieur et l'autre vers l'extérieur, faisant paraître l'une plus longue. Laquelle est réellement plus longue ?", "options": ["La ligne aux flèches intérieures", "La ligne aux flèches extérieures", "Les deux sont exactement égales", "Cela dépend de la mesure"], "correctIndex": 2, "explanation": "C'est la célèbre illusion de Müller-Lyer ; vos yeux vous trompent, mais les deux lignes sont réellement de longueur égale." },
+      "es": { "text": "Dos líneas tienen exactamente la misma longitud, pero una tiene flechas hacia adentro y la otra hacia afuera, haciendo que una parezca más larga. ¿Cuál es realmente más larga?", "options": ["La línea con flechas hacia adentro", "La línea con flechas hacia afuera", "Ambas son exactamente iguales", "Depende de la medición"], "correctIndex": 2, "explanation": "Esta es la famosa ilusión de Müller-Lyer; tus ojos te engañan, pero ambas líneas son realmente iguales en longitud." },
+      "zh": { "text": "两条线长度完全相同，但一条两端箭头向内，另一条箭头向外，导致其中一条看起来更长。实际上哪条更长？", "options": ["箭头向内的那条", "箭头向外的那条", "两条完全一样长", "取决于测量方式"], "correctIndex": 2, "explanation": "这就是著名的缪勒-莱尔错觉；你的眼睛被欺骗了，但两条线实际上长度完全相等。" },
+      "ru": { "text": "Две линии абсолютно одинаковой длины, но у одной стрелки направлены внутрь, а у другой наружу, из-за чего одна кажется длиннее. Какая на самом деле длиннее?", "options": ["Линия со стрелками внутрь", "Линия со стрелками наружу", "Обе абсолютно равны", "Зависит от измерения"], "correctIndex": 2, "explanation": "Это знаменитая иллюзия Мюллера-Лайера; ваши глаза обманывают вас, но обе линии на самом деле равны по длине." }
+    }
+  },
+  {
+    "priority": 24,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "MAVİ kelimesi SARI renkle yazılırsa ne okutulur?", "options": ["Sarı", "Mavi", "Yeşil", "Kırmızı"], "correctIndex": 1, "explanation": "Mürekkep rengine değil, yazının kendisine bakın! Kelime MAVİ okutulur." },
+      "en": { "text": "If the word BLUE is written in YELLOW ink, what does it read?", "options": ["Yellow", "Blue", "Green", "Red"], "correctIndex": 1, "explanation": "Don't look at the ink color, read the word itself! It reads BLUE." },
+      "ar": { "text": "إذا كُتبت كلمة أزرق باللون الأصفر، فماذا تُقرأ؟", "options": ["أصفر", "أزرق", "أخضر", "أحمر"], "correctIndex": 1, "explanation": "لا تنظر إلى لون الحبر، بل اقرأ الكلمة نفسها! الكلمة تُقرأ أزرق." },
+      "de": { "text": "Wenn das Wort BLAU in GELBER Farbe geschrieben ist, wie liest man es?", "options": ["Gelb", "Blau", "Grün", "Rot"], "correctIndex": 1, "explanation": "Achte nicht auf die Tintenfarbe, sondern auf das Wort selbst! Es steht dort BLAU." },
+      "fr": { "text": "Si le mot BLEU est écrit en JAUNE, comment se lit-il ?", "options": ["Jaune", "Bleu", "Vert", "Rouge"], "correctIndex": 1, "explanation": "Ne regardez pas la couleur de l'encre, lisez le mot lui-même ! Il se lit BLEU." },
+      "es": { "text": "Si la palabra AZUL está escrita en color AMARILLO, ¿cómo se lee?", "options": ["Amarillo", "Azul", "Verde", "Rojo"], "correctIndex": 1, "explanation": "¡No mires el color de la tinta, lee la palabra! Se lee AZUL." },
+      "zh": { "text": "如果“蓝色”这个词用黄色写成，它读作什么？", "options": ["黄色", "蓝色", "绿色", "红色"], "correctIndex": 1, "explanation": "不要看墨水颜色，要读文字本身！它读作“蓝色”。" },
+      "ru": { "text": "Если слово СИНИЙ написано ЖЁЛТЫМ цветом, как оно читается?", "options": ["Жёлтый", "Синий", "Зелёный", "Красный"], "correctIndex": 1, "explanation": "Не смотрите на цвет чернил, читайте само слово! Оно читается СИНИЙ." }
+    }
+  },
+  {
+    "priority": 25,
+    "type": "logic",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir merdivenin kaç basamağı olursa olsun, en üst basamağa çıktığınızda önünüzde kaç basamak kalır?", "options": ["1 basamak", "Merdivenin yarısı kadar", "0 basamak", "Sayılamaz"], "correctIndex": 2, "explanation": "En üst basamaktaysanız önünüzde hiç basamak kalmaz, hepsi zaten arkanızdadır." },
+      "en": { "text": "No matter how many steps a staircase has, when you reach the top step, how many steps are ahead of you?", "options": ["1 step", "Half the staircase", "0 steps", "Can't be counted"], "correctIndex": 2, "explanation": "Once you're on the top step, no steps remain ahead of you — they're all behind you." },
+      "ar": { "text": "بغض النظر عن عدد درجات السلم، عندما تصل إلى الدرجة الأخيرة، كم درجة تبقى أمامك؟", "options": ["درجة واحدة", "نصف السلم", "0 درجات", "لا يمكن حسابها"], "correctIndex": 2, "explanation": "عندما تكون على الدرجة الأخيرة، لا تبقى أي درجة أمامك — كلها خلفك." },
+      "de": { "text": "Egal wie viele Stufen eine Treppe hat, wie viele Stufen liegen vor dir, wenn du die oberste Stufe erreichst?", "options": ["1 Stufe", "Die Hälfte der Treppe", "0 Stufen", "Nicht zählbar"], "correctIndex": 2, "explanation": "Bist du auf der obersten Stufe, liegt keine Stufe mehr vor dir — alle liegen hinter dir." },
+      "fr": { "text": "Peu importe le nombre de marches d'un escalier, quand vous atteignez la dernière marche, combien de marches reste-t-il devant vous ?", "options": ["1 marche", "La moitié de l'escalier", "0 marche", "Impossible à compter"], "correctIndex": 2, "explanation": "Une fois sur la dernière marche, il n'en reste aucune devant vous — elles sont toutes derrière." },
+      "es": { "text": "Sin importar cuántos escalones tenga una escalera, al llegar al escalón más alto, ¿cuántos escalones quedan por delante?", "options": ["1 escalón", "La mitad de la escalera", "0 escalones", "No se puede contar"], "correctIndex": 2, "explanation": "Una vez en el escalón más alto, no queda ninguno por delante: todos quedan atrás." },
+      "zh": { "text": "不管楼梯有多少级台阶，当你走到最顶层时，你前面还剩几级台阶？", "options": ["1级", "楼梯的一半", "0级", "无法计算"], "correctIndex": 2, "explanation": "站在最顶层台阶时，前面已经没有台阶了——全都在你身后。" },
+      "ru": { "text": "Независимо от количества ступенек лестницы, сколько ступенек впереди, когда вы стоите на самой верхней?", "options": ["1 ступенька", "Половина лестницы", "0 ступенек", "Невозможно сосчитать"], "correctIndex": 2, "explanation": "Когда вы на верхней ступеньке, впереди не остаётся ни одной — все они позади." }
+    }
+  },
+  {
+    "priority": 26,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "'YEDİ' kelimesinin kaç harfi vardır?", "options": ["3 harf", "4 harf", "7 harf", "5 harf"], "correctIndex": 1, "explanation": "Soru sayının değerini değil, kelimenin harf sayısını sorar: Y-E-D-İ, yani 4 harf." },
+      "en": { "text": "How many letters are in the word 'SEVEN'?", "options": ["3 letters", "4 letters", "7 letters", "5 letters"], "correctIndex": 4, "explanation": "The question asks how many letters the word has, not its numeric value: S-E-V-E-N is 5 letters." },
+      "ar": { "text": "كم عدد حروف كلمة 'سبعة'؟", "options": ["3 حروف", "4 حروف", "7 حروف", "5 حروف"], "correctIndex": 2, "explanation": "السؤال عن عدد حروف الكلمة وليس قيمتها العددية: س-ب-ع-ة، أي 4 حروف." },
+      "de": { "text": "Wie viele Buchstaben hat das Wort 'SIEBEN'?", "options": ["3 Buchstaben", "4 Buchstaben", "7 Buchstaben", "6 Buchstaben"], "correctIndex": 3, "explanation": "Die Frage ist nach der Buchstabenzahl, nicht dem Zahlenwert: S-I-E-B-E-N sind 6 Buchstaben." },
+      "fr": { "text": "Combien de lettres compte le mot 'SEPT' ?", "options": ["3 lettres", "4 lettres", "7 lettres", "5 lettres"], "correctIndex": 1, "explanation": "La question porte sur le nombre de lettres du mot, pas sa valeur numérique : S-E-P-T fait 4 lettres." },
+      "es": { "text": "¿Cuántas letras tiene la palabra 'SIETE'?", "options": ["3 letras", "4 letras", "7 letras", "5 letras"], "correctIndex": 3, "explanation": "La pregunta es sobre el número de letras de la palabra, no su valor numérico: S-I-E-T-E son 5 letras." },
+      "zh": { "text": "“七”这个汉字有几笔？", "options": ["1笔", "2笔", "7笔", "3笔"], "correctIndex": 1, "explanation": "问题问的是这个字的笔画数，不是数字的大小：“七”共有2笔。" },
+      "ru": { "text": "Сколько букв в слове 'СЕМЬ'?", "options": ["3 буквы", "4 буквы", "7 букв", "5 букв"], "correctIndex": 1, "explanation": "Вопрос о количестве букв в слове, а не о числовом значении: С-Е-М-Ь — это 4 буквы." }
+    }
+  },
+  {
+    "priority": 27,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Ne kadar çok alırsanız, arkanızda o kadar çok bırakırsınız. Bu nedir?", "options": ["Para", "Adımlar", "Yemek", "Zaman"], "correctIndex": 1, "explanation": "Adımlarınız arttıkça, arkanızda bıraktığınız ayak izleri de artar." },
+      "en": { "text": "The more of it you take, the more you leave behind. What is it?", "options": ["Money", "Footsteps", "Food", "Time"], "correctIndex": 1, "explanation": "The more footsteps you take, the more footprints you leave behind you." },
+      "ar": { "text": "كلما أخذت منه أكثر، تركت خلفك أكثر. ما هو؟", "options": ["المال", "الخطوات", "الطعام", "الوقت"], "correctIndex": 1, "explanation": "كلما زادت خطواتك، زادت آثار أقدامك التي تتركها خلفك." },
+      "de": { "text": "Je mehr du davon nimmst, desto mehr lässt du zurück. Was ist es?", "options": ["Geld", "Schritte", "Essen", "Zeit"], "correctIndex": 1, "explanation": "Je mehr Schritte du machst, desto mehr Fußspuren hinterlässt du." },
+      "fr": { "text": "Plus vous en prenez, plus vous en laissez derrière vous. Qu'est-ce que c'est ?", "options": ["L'argent", "Les pas", "La nourriture", "Le temps"], "correctIndex": 1, "explanation": "Plus vous faites de pas, plus vous laissez d'empreintes derrière vous." },
+      "es": { "text": "Cuanto más tomas de esto, más dejas atrás. ¿Qué es?", "options": ["Dinero", "Pasos", "Comida", "Tiempo"], "correctIndex": 1, "explanation": "Cuantos más pasos das, más huellas dejas detrás de ti." },
+      "zh": { "text": "你拿得越多，留下的就越多，这是什么？", "options": ["钱", "脚步", "食物", "时间"], "correctIndex": 1, "explanation": "你走的步数越多，留下的脚印也就越多。" },
+      "ru": { "text": "Чем больше этого берёшь, тем больше оставляешь позади. Что это?", "options": ["Деньги", "Шаги", "Еда", "Время"], "correctIndex": 1, "explanation": "Чем больше шагов вы делаете, тем больше следов оставляете позади." }
+    }
+  },
+  {
+    "priority": 28,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir doktor size 3 hap verdi ve her 30 dakikada bir tane almanızı söyledi. Hapları bitirmeniz kaç dakika sürer?", "options": ["90 dakika", "60 dakika", "30 dakika", "120 dakika"], "correctIndex": 1, "explanation": "İlk hap hemen alınır (0. dk), ikincisi 30. dk, üçüncüsü 60. dk'da; toplam süre 60 dakikadır." },
+      "en": { "text": "A doctor gives you 3 pills and says to take one every 30 minutes. How long does it take to finish them all?", "options": ["90 minutes", "60 minutes", "30 minutes", "120 minutes"], "correctIndex": 1, "explanation": "You take the first pill immediately (0 min), second at 30 min, third at 60 min — total is 60 minutes." },
+      "ar": { "text": "أعطاك طبيب 3 حبوب وطلب منك تناول واحدة كل 30 دقيقة. كم دقيقة تحتاج لإنهائها جميعًا؟", "options": ["90 دقيقة", "60 دقيقة", "30 دقيقة", "120 دقيقة"], "correctIndex": 1, "explanation": "تأخذ الحبة الأولى فورًا (الدقيقة 0)، والثانية في الدقيقة 30، والثالثة في الدقيقة 60؛ المجموع 60 دقيقة." },
+      "de": { "text": "Ein Arzt gibt dir 3 Tabletten und sagt, du sollst alle 30 Minuten eine nehmen. Wie lange dauert es, bis du alle genommen hast?", "options": ["90 Minuten", "60 Minuten", "30 Minuten", "120 Minuten"], "correctIndex": 1, "explanation": "Die erste Tablette nimmst du sofort (Minute 0), die zweite bei 30, die dritte bei 60 — insgesamt 60 Minuten." },
+      "fr": { "text": "Un médecin vous donne 3 comprimés et vous dit d'en prendre un toutes les 30 minutes. Combien de temps faut-il pour tous les prendre ?", "options": ["90 minutes", "60 minutes", "30 minutes", "120 minutes"], "correctIndex": 1, "explanation": "Vous prenez le premier immédiatement (minute 0), le deuxième à 30 min, le troisième à 60 min — total 60 minutes." },
+      "es": { "text": "Un médico te da 3 pastillas y te dice que tomes una cada 30 minutos. ¿Cuánto tardas en tomarlas todas?", "options": ["90 minutos", "60 minutos", "30 minutos", "120 minutos"], "correctIndex": 1, "explanation": "Tomas la primera de inmediato (minuto 0), la segunda a los 30 min, la tercera a los 60 min: total 60 minutos." },
+      "zh": { "text": "医生给了你3片药，要求每30分钟吃一片。你需要多长时间才能吃完？", "options": ["90分钟", "60分钟", "30分钟", "120分钟"], "correctIndex": 1, "explanation": "第一片立即服用（第0分钟），第二片第30分钟，第三片第60分钟，总共需要60分钟。" },
+      "ru": { "text": "Врач дал вам 3 таблетки и сказал принимать по одной каждые 30 минут. Сколько времени займёт приём всех таблеток?", "options": ["90 минут", "60 минут", "30 минут", "120 минут"], "correctIndex": 1, "explanation": "Первую таблетку вы принимаете сразу (0 минут), вторую на 30-й минуте, третью на 60-й — всего 60 минут." }
+    }
+  },
+  {
+    "priority": 29,
+    "type": "humor",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir horoz tam olarak damın tepesine bir yumurta bırakırsa, yumurta hangi tarafa yuvarlanır?", "options": ["Sağ tarafa", "Sol tarafa", "Hiçbir tarafa, horozlar yumurtlamaz", "Düz aşağı düşer"], "correctIndex": 2, "explanation": "Horozlar erkektir ve yumurtlamaz; bu sorunun tuzağı tam olarak burasıdır." },
+      "en": { "text": "If a rooster lays an egg on the exact peak of a roof, which side does the egg roll down?", "options": ["The right side", "The left side", "Neither, roosters don't lay eggs", "Straight down"], "correctIndex": 2, "explanation": "Roosters are male and don't lay eggs — that's the trick in this question." },
+      "ar": { "text": "إذا وضع ديك بيضة على قمة السطح تمامًا، إلى أي جانب تتدحرج البيضة؟", "options": ["الجانب الأيمن", "الجانب الأيسر", "لا هذا ولا ذاك، الديك لا يبيض", "تسقط مباشرة"], "correctIndex": 2, "explanation": "الديك ذكر ولا يضع بيضًا — هذه هي الخدعة في هذا السؤال." },
+      "de": { "text": "Wenn ein Hahn genau auf dem Dachfirst ein Ei legt, auf welche Seite rollt das Ei?", "options": ["Nach rechts", "Nach links", "Keine Seite, Hähne legen keine Eier", "Direkt nach unten"], "correctIndex": 2, "explanation": "Hähne sind männlich und legen keine Eier — das ist der Trick dieser Frage." },
+      "fr": { "text": "Si un coq pond un œuf exactement au sommet d'un toit, de quel côté l'œuf roule-t-il ?", "options": ["Côté droit", "Côté gauche", "Aucun, les coqs ne pondent pas d'œufs", "Tout droit vers le bas"], "correctIndex": 2, "explanation": "Les coqs sont mâles et ne pondent pas d'œufs — c'est le piège de cette question." },
+      "es": { "text": "Si un gallo pone un huevo justo en la cima de un tejado, ¿hacia qué lado rueda el huevo?", "options": ["Hacia la derecha", "Hacia la izquierda", "Ninguno, los gallos no ponen huevos", "Directamente hacia abajo"], "correctIndex": 2, "explanation": "Los gallos son machos y no ponen huevos: esa es la trampa de esta pregunta." },
+      "zh": { "text": "如果一只公鸡正好在屋顶最高处下了一个蛋，蛋会滚向哪一边？", "options": ["右边", "左边", "都不会，公鸡不会下蛋", "直接往下掉"], "correctIndex": 2, "explanation": "公鸡是雄性，不会下蛋——这就是这道题的陷阱。" },
+      "ru": { "text": "Если петух снесёт яйцо ровно на коньке крыши, в какую сторону оно скатится?", "options": ["Вправо", "Влево", "Никуда, петухи не несут яйца", "Прямо вниз"], "correctIndex": 2, "explanation": "Петухи — самцы и не несут яйца — в этом и подвох вопроса." }
+    }
+  },
+  {
+    "priority": 30,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kutuda 3 anahtar var, sadece biri kapıyı açıyor ama hangisi olduğunu bilmiyorsunuz. En kötü ihtimalle kaç deneme yaparsınız?", "options": ["1 deneme", "2 deneme", "3 deneme", "Sonsuz deneme"], "correctIndex": 1, "explanation": "İlk iki denemede doğru anahtarı bulamazsanız, kalan üçüncüsü zaten doğru olmalıdır; en kötü ihtimalle 2 deneme yeter." },
+      "en": { "text": "You have 3 keys in a box, only one opens the door, but you don't know which. What's the worst-case number of tries needed?", "options": ["1 try", "2 tries", "3 tries", "Infinite tries"], "correctIndex": 1, "explanation": "If the first two tries fail, the remaining third key must be correct — so worst case is only 2 tries." },
+      "ar": { "text": "لديك 3 مفاتيح في صندوق، مفتاح واحد فقط يفتح الباب لكنك لا تعرف أيها. ما هو أسوأ عدد للمحاولات المطلوبة؟", "options": ["محاولة واحدة", "محاولتان", "3 محاولات", "محاولات لا نهائية"], "correctIndex": 1, "explanation": "إذا فشلت أول محاولتين، فإن المفتاح الثالث المتبقي يجب أن يكون الصحيح — لذا أسوأ حالة هي محاولتان فقط." },
+      "de": { "text": "Du hast 3 Schlüssel in einer Box, nur einer öffnet die Tür, aber du weißt nicht welcher. Wie viele Versuche brauchst du im schlimmsten Fall?", "options": ["1 Versuch", "2 Versuche", "3 Versuche", "Unendlich viele Versuche"], "correctIndex": 1, "explanation": "Scheitern die ersten beiden Versuche, muss der verbleibende dritte Schlüssel richtig sein — im schlimmsten Fall reichen also 2 Versuche." },
+      "fr": { "text": "Vous avez 3 clés dans une boîte, une seule ouvre la porte, mais vous ne savez pas laquelle. Combien d'essais faut-il au pire des cas ?", "options": ["1 essai", "2 essais", "3 essais", "Essais infinis"], "correctIndex": 1, "explanation": "Si les deux premiers essais échouent, la troisième clé restante doit être la bonne — donc au pire, seulement 2 essais suffisent." },
+      "es": { "text": "Tienes 3 llaves en una caja, solo una abre la puerta, pero no sabes cuál. ¿Cuántos intentos necesitas en el peor caso?", "options": ["1 intento", "2 intentos", "3 intentos", "Intentos infinitos"], "correctIndex": 1, "explanation": "Si los dos primeros intentos fallan, la tercera llave restante debe ser la correcta: en el peor caso bastan 2 intentos." },
+      "zh": { "text": "盒子里有3把钥匙，只有一把能开门，但你不知道是哪一把。最坏情况下需要尝试几次？", "options": ["1次", "2次", "3次", "无限次"], "correctIndex": 1, "explanation": "如果前两次都试错了，剩下的第三把一定是对的——所以最坏情况只需要2次。" },
+      "ru": { "text": "У вас 3 ключа в коробке, только один открывает дверь, но вы не знаете какой. Сколько попыток нужно в худшем случае?", "options": ["1 попытка", "2 попытки", "3 попытки", "Бесконечно много попыток"], "correctIndex": 1, "explanation": "Если первые две попытки неудачны, оставшийся третий ключ обязательно верный — значит в худшем случае хватит 2 попыток." }
+    }
+  },
+  {
+    "priority": 31,
+    "type": "attention",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Aşağıdaki cümleyi hızlıca okuyun: 'Paris'te bahar bahar aylarında güzeldir.' Cümlede bir kelime yanlışlıkla iki kez yazıldı, hangisi?", "options": ["Paris'te", "bahar", "aylarında", "güzeldir"], "correctIndex": 1, "explanation": "'Bahar' kelimesi cümlede yanlışlıkla iki kez yazılmış, hızlı okuyunca genelde fark edilmez." },
+      "en": { "text": "Read this sentence quickly: 'Paris in the the spring is beautiful.' One word was accidentally typed twice — which one?", "options": ["Paris", "the", "spring", "beautiful"], "correctIndex": 1, "explanation": "The word 'the' was accidentally typed twice; most people skip right over the repeat when reading fast." },
+      "ar": { "text": "اقرأ هذه الجملة بسرعة: 'باريس في في الربيع جميلة.' كُتبت كلمة مرتين عن طريق الخطأ، ما هي؟", "options": ["باريس", "في", "الربيع", "جميلة"], "correctIndex": 1, "explanation": "كلمة 'في' كُتبت مرتين بالخطأ، ومعظم الناس يتجاوزونها عند القراءة السريعة." },
+      "de": { "text": "Lies diesen Satz schnell: 'Paris im im Frühling ist wunderschön.' Ein Wort wurde versehentlich zweimal getippt — welches?", "options": ["Paris", "im", "Frühling", "wunderschön"], "correctIndex": 1, "explanation": "Das Wort 'im' wurde versehentlich zweimal getippt; beim schnellen Lesen übersieht man das meist." },
+      "fr": { "text": "Lisez cette phrase rapidement : 'Paris au au printemps est magnifique.' Un mot a été tapé deux fois par erreur — lequel ?", "options": ["Paris", "au", "printemps", "magnifique"], "correctIndex": 1, "explanation": "Le mot 'au' a été tapé deux fois par erreur ; en lisant vite, on saute généralement la répétition." },
+      "es": { "text": "Lee esta frase rápidamente: 'París en la la primavera es hermoso.' Una palabra se escribió dos veces por error, ¿cuál?", "options": ["París", "la", "primavera", "hermoso"], "correctIndex": 1, "explanation": "La palabra 'la' se escribió dos veces por error; al leer rápido casi nadie lo nota." },
+      "zh": { "text": "快速读这句话：“巴黎的的春天很美。” 有一个字被误打了两次，是哪个？", "options": ["巴黎", "的", "春天", "很美"], "correctIndex": 1, "explanation": "“的”字被误打了两次；快速阅读时大多数人会直接跳过这个重复。" },
+      "ru": { "text": "Быстро прочитайте фразу: 'Париж весной весной прекрасен.' Одно слово случайно напечатано дважды — какое?", "options": ["Париж", "весной", "прекрасен", "случайно"], "correctIndex": 1, "explanation": "Слово 'весной' случайно напечатано дважды; при быстром чтении это обычно проскакивает мимо внимания." }
+    }
+  },
+  {
+    "priority": 32,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir çiftlikte hem tavuk hem inek var. Toplam 10 baş hayvan ve 28 bacak var. Kaç tane inek vardır?", "options": ["2 inek", "4 inek", "6 inek", "8 inek"], "correctIndex": 1, "explanation": "10 hayvanın hepsi tavuk olsaydı 20 bacak olurdu; fazla 8 bacak, ineklerin fazladan 2'şer bacağından gelir: 8/2 = 4 inek." },
+      "en": { "text": "A farm has chickens and cows, 10 animals total with 28 legs in total. How many cows are there?", "options": ["2 cows", "4 cows", "6 cows", "8 cows"], "correctIndex": 1, "explanation": "If all 10 were chickens there'd be 20 legs; the extra 8 legs come from cows' extra 2 legs each: 8/2 = 4 cows." },
+      "ar": { "text": "في مزرعة دجاج وأبقار، إجمالي 10 حيوانات و28 رجلًا. كم عدد الأبقار؟", "options": ["بقرتان", "4 أبقار", "6 أبقار", "8 أبقار"], "correctIndex": 1, "explanation": "لو كانت كل الـ10 دجاجًا لكان هناك 20 رجلًا؛ الرجلان الإضافيتان لكل بقرة تفسران الـ8 الزائدة: 8÷2 = 4 أبقار." },
+      "de": { "text": "Ein Bauernhof hat Hühner und Kühe, insgesamt 10 Tiere mit 28 Beinen. Wie viele Kühe gibt es?", "options": ["2 Kühe", "4 Kühe", "6 Kühe", "8 Kühe"], "correctIndex": 1, "explanation": "Wären alle 10 Hühner, gäbe es 20 Beine; die zusätzlichen 8 Beine kommen von den 2 Extrabeinen jeder Kuh: 8/2 = 4 Kühe." },
+      "fr": { "text": "Une ferme a des poules et des vaches, 10 animaux au total avec 28 pattes au total. Combien y a-t-il de vaches ?", "options": ["2 vaches", "4 vaches", "6 vaches", "8 vaches"], "correctIndex": 1, "explanation": "Si les 10 étaient des poules, il y aurait 20 pattes ; les 8 pattes en plus viennent des 2 pattes supplémentaires de chaque vache : 8/2 = 4 vaches." },
+      "es": { "text": "Una granja tiene gallinas y vacas, 10 animales en total con 28 patas en total. ¿Cuántas vacas hay?", "options": ["2 vacas", "4 vacas", "6 vacas", "8 vacas"], "correctIndex": 1, "explanation": "Si las 10 fueran gallinas habría 20 patas; las 8 patas extra vienen de las 2 patas adicionales de cada vaca: 8/2 = 4 vacas." },
+      "zh": { "text": "农场里有鸡和牛，共10只动物，一共28条腿。牛有几头？", "options": ["2头", "4头", "6头", "8头"], "correctIndex": 1, "explanation": "如果10只全是鸡就该有20条腿；多出的8条腿来自每头牛比鸡多的2条腿：8÷2=4头牛。" },
+      "ru": { "text": "На ферме есть куры и коровы, всего 10 животных и 28 ног. Сколько коров?", "options": ["2 коровы", "4 коровы", "6 коров", "8 коров"], "correctIndex": 1, "explanation": "Если бы все 10 были курами, было бы 20 ног; лишние 8 ног появляются из-за 2 дополнительных ног у каждой коровы: 8/2 = 4 коровы." }
+    }
+  },
+  {
+    "priority": 33,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Türkiye'de kaç tane Temmuz ayı vardır?", "options": ["1 tane", "2 tane", "12 tane", "0 tane"], "correctIndex": 0, "explanation": "Bir yılda sadece 1 Temmuz ayı vardır; soru ülkeye özgü değildir, herkes için aynıdır." },
+      "en": { "text": "How many months of July are there in a year?", "options": ["1", "2", "12", "0"], "correctIndex": 0, "explanation": "There is only 1 month of July per year, no matter what country you're in." },
+      "ar": { "text": "كم عدد أشهر يوليو في السنة الواحدة؟", "options": ["1", "2", "12", "0"], "correctIndex": 0, "explanation": "يوجد شهر يوليو واحد فقط في كل سنة، بغض النظر عن البلد." },
+      "de": { "text": "Wie viele Monate Juli gibt es in einem Jahr?", "options": ["1", "2", "12", "0"], "correctIndex": 0, "explanation": "Es gibt nur 1 Monat Juli pro Jahr, egal in welchem Land." },
+      "fr": { "text": "Combien de mois de juillet y a-t-il dans une année ?", "options": ["1", "2", "12", "0"], "correctIndex": 0, "explanation": "Il n'y a qu'un seul mois de juillet par an, quel que soit le pays." },
+      "es": { "text": "¿Cuántos meses de julio hay en un año?", "options": ["1", "2", "12", "0"], "correctIndex": 0, "explanation": "Solo hay 1 mes de julio al año, sin importar el país." },
+      "zh": { "text": "一年中有多少个七月？", "options": ["1个", "2个", "12个", "0个"], "correctIndex": 0, "explanation": "无论在哪个国家，一年中只有1个七月。" },
+      "ru": { "text": "Сколько месяцев июля в году?", "options": ["1", "2", "12", "0"], "correctIndex": 0, "explanation": "В году только 1 месяц июль, независимо от страны." }
+    }
+  },
+  {
+    "priority": 34,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Başı var ama beyni yok, yatağı var ama uyumaz. Bu nedir?", "options": ["Bir insan", "Bir çivi ve nehir", "Bir hayvan", "Bir robot"], "correctIndex": 1, "explanation": "Çivinin 'başı' ve nehrin 'yatağı' vardır ama ikisi de kelimenin gerçek anlamıyla o özelliklere sahip değildir." },
+      "en": { "text": "It has a head but no brain, and a bed but never sleeps. What is it?", "options": ["A human", "A nail and a river", "An animal", "A robot"], "correctIndex": 1, "explanation": "A nail has a 'head' and a river has a 'bed', but neither has those features in the literal sense." },
+      "ar": { "text": "له رأس بلا عقل، وله فراش لكنه لا ينام أبدًا. ما هو؟", "options": ["إنسان", "مسمار ونهر", "حيوان", "روبوت"], "correctIndex": 1, "explanation": "للمسمار 'رأس' وللنهر 'فراش'، لكن لا أحد منهما يمتلك هذه الصفات بالمعنى الحرفي." },
+      "de": { "text": "Es hat einen Kopf, aber kein Gehirn, und ein Bett, schläft aber nie. Was ist es?", "options": ["Ein Mensch", "Ein Nagel und ein Fluss", "Ein Tier", "Ein Roboter"], "correctIndex": 1, "explanation": "Ein Nagel hat einen 'Kopf' und ein Fluss ein 'Bett', aber beides ist nur bildlich gemeint." },
+      "fr": { "text": "Il a une tête mais pas de cerveau, et un lit mais ne dort jamais. Qu'est-ce que c'est ?", "options": ["Un être humain", "Un clou et une rivière", "Un animal", "Un robot"], "correctIndex": 1, "explanation": "Un clou a une 'tête' et une rivière un 'lit', mais aucun des deux au sens propre." },
+      "es": { "text": "Tiene cabeza pero no cerebro, y una cama pero nunca duerme. ¿Qué es?", "options": ["Un humano", "Un clavo y un río", "Un animal", "Un robot"], "correctIndex": 1, "explanation": "Un clavo tiene 'cabeza' y un río tiene 'cama' (lecho), pero ninguno en el sentido literal." },
+      "zh": { "text": "它有头却没有脑子，有床却从不睡觉，这是什么？", "options": ["人类", "钉子和河流", "动物", "机器人"], "correctIndex": 1, "explanation": "钉子有“钉头”，河流有“河床”，但都不是字面意义上的头和床。" },
+      "ru": { "text": "У него есть голова, но нет мозга, и есть ложе, но он никогда не спит. Что это?", "options": ["Человек", "Гвоздь и река", "Животное", "Робот"], "correctIndex": 1, "explanation": "У гвоздя есть 'шляпка' (головка), а у реки есть 'русло' (ложе), но ни то ни другое в буквальном смысле." }
+    }
+  },
+  {
+    "priority": 35,
+    "type": "illusion",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir daireyi ikiye bölen tek bir düz çizgi çizerseniz, kaç parça elde edersiniz?", "options": ["3 parça", "2 parça", "4 parça", "1 parça"], "correctIndex": 1, "explanation": "Tek bir düz çizgi bir daireyi sadece 2 parçaya böler, çizginin uzunluğu veya açısı önemli değildir." },
+      "en": { "text": "If you draw a single straight line through a circle, how many pieces do you get?", "options": ["3 pieces", "2 pieces", "4 pieces", "1 piece"], "correctIndex": 1, "explanation": "A single straight line only ever splits a circle into 2 pieces, regardless of its length or angle." },
+      "ar": { "text": "إذا رسمت خطًا مستقيمًا واحدًا عبر دائرة، كم قطعة تحصل عليها؟", "options": ["3 قطع", "قطعتان", "4 قطع", "قطعة واحدة"], "correctIndex": 1, "explanation": "خط مستقيم واحد يقسم الدائرة إلى قطعتين فقط دائمًا، بغض النظر عن طوله أو زاويته." },
+      "de": { "text": "Wenn du eine einzige gerade Linie durch einen Kreis ziehst, wie viele Stücke bekommst du?", "options": ["3 Stücke", "2 Stücke", "4 Stücke", "1 Stück"], "correctIndex": 1, "explanation": "Eine einzige gerade Linie teilt einen Kreis immer nur in 2 Stücke, egal wie lang oder in welchem Winkel." },
+      "fr": { "text": "Si vous tracez une seule ligne droite à travers un cercle, combien de morceaux obtenez-vous ?", "options": ["3 morceaux", "2 morceaux", "4 morceaux", "1 morceau"], "correctIndex": 1, "explanation": "Une seule ligne droite ne divise jamais un cercle qu'en 2 morceaux, quels que soient sa longueur ou son angle." },
+      "es": { "text": "Si trazas una sola línea recta a través de un círculo, ¿cuántos trozos obtienes?", "options": ["3 trozos", "2 trozos", "4 trozos", "1 trozo"], "correctIndex": 1, "explanation": "Una sola línea recta siempre divide un círculo en solo 2 trozos, sin importar su longitud o ángulo." },
+      "zh": { "text": "如果你在一个圆上画一条直线，会得到几块？", "options": ["3块", "2块", "4块", "1块"], "correctIndex": 1, "explanation": "无论长度或角度如何，一条直线只会把圆分成2块。" },
+      "ru": { "text": "Если провести одну прямую линию через круг, сколько частей получится?", "options": ["3 части", "2 части", "4 части", "1 часть"], "correctIndex": 1, "explanation": "Одна прямая линия всегда делит круг только на 2 части, независимо от её длины или угла." }
+    }
+  },
+  {
+    "priority": 36,
+    "type": "math",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir düzine yumurtanın yarısı kaç tanedir?", "options": ["4", "6", "8", "12"], "correctIndex": 1, "explanation": "Bir düzine 12'dir, yarısı ise 6 eder." },
+      "en": { "text": "How many is half a dozen eggs?", "options": ["4", "6", "8", "12"], "correctIndex": 1, "explanation": "A dozen is 12, so half a dozen is 6." },
+      "ar": { "text": "كم عدد نصف دزينة من البيض؟", "options": ["4", "6", "8", "12"], "correctIndex": 1, "explanation": "الدزينة هي 12، فنصفها يساوي 6." },
+      "de": { "text": "Wie viele sind ein halbes Dutzend Eier?", "options": ["4", "6", "8", "12"], "correctIndex": 1, "explanation": "Ein Dutzend sind 12, also ist ein halbes Dutzend 6." },
+      "fr": { "text": "Combien font une demi-douzaine d'œufs ?", "options": ["4", "6", "8", "12"], "correctIndex": 1, "explanation": "Une douzaine vaut 12, donc une demi-douzaine vaut 6." },
+      "es": { "text": "¿Cuántos son media docena de huevos?", "options": ["4", "6", "8", "12"], "correctIndex": 1, "explanation": "Una docena es 12, así que media docena es 6." },
+      "zh": { "text": "半打鸡蛋是多少个？", "options": ["4个", "6个", "8个", "12个"], "correctIndex": 1, "explanation": "一打是12个，所以半打是6个。" },
+      "ru": { "text": "Сколько это — полдюжины яиц?", "options": ["4", "6", "8", "12"], "correctIndex": 1, "explanation": "Дюжина — это 12, значит полдюжины — это 6." }
+    }
+  },
+  {
+    "priority": 37,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Karanlık bir odaya girdiğinizde ilk önce hangisini yakarsınız: mumu mu, kibriti mi?", "options": ["Mumu", "Kibriti", "İkisini birden", "Hiçbirini"], "correctIndex": 1, "explanation": "Mumu yakabilmek için önce kibriti yakmanız gerekir." },
+      "en": { "text": "When you enter a dark room, which do you light first: the candle or the match?", "options": ["The candle", "The match", "Both at once", "Neither"], "correctIndex": 1, "explanation": "You must light the match first to be able to light the candle." },
+      "ar": { "text": "عند دخول غرفة مظلمة، ماذا تُشعل أولاً: الشمعة أم عود الثقاب؟", "options": ["الشمعة", "عود الثقاب", "كلاهما معًا", "لا شيء"], "correctIndex": 1, "explanation": "يجب أن تُشعل عود الثقاب أولاً حتى تتمكن من إشعال الشمعة." },
+      "de": { "text": "Wenn du einen dunklen Raum betrittst, was zündest du zuerst an: die Kerze oder das Streichholz?", "options": ["Die Kerze", "Das Streichholz", "Beide gleichzeitig", "Keines von beiden"], "correctIndex": 1, "explanation": "Du musst zuerst das Streichholz anzünden, um die Kerze anzünden zu können." },
+      "fr": { "text": "Quand vous entrez dans une pièce sombre, qu'allumez-vous en premier : la bougie ou l'allumette ?", "options": ["La bougie", "L'allumette", "Les deux à la fois", "Aucune"], "correctIndex": 1, "explanation": "Vous devez d'abord allumer l'allumette pour pouvoir allumer la bougie." },
+      "es": { "text": "Al entrar en una habitación oscura, ¿qué enciendes primero: la vela o el fósforo?", "options": ["La vela", "El fósforo", "Ambos a la vez", "Ninguno"], "correctIndex": 1, "explanation": "Debes encender el fósforo primero para poder encender la vela." },
+      "zh": { "text": "走进一间黑暗的房间，你会先点燃什么：蜡烛还是火柴？", "options": ["蜡烛", "火柴", "两个一起点", "都不点"], "correctIndex": 1, "explanation": "你必须先点燃火柴，才能用它去点燃蜡烛。" },
+      "ru": { "text": "Войдя в тёмную комнату, что вы зажигаете первым: свечу или спичку?", "options": ["Свечу", "Спичку", "Оба одновременно", "Ни то ни другое"], "correctIndex": 1, "explanation": "Сначала нужно зажечь спичку, чтобы затем зажечь свечу." }
+    }
+  },
+  {
+    "priority": 38,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "PARİS'TE BİR BAHAR AYINDA cümlesindeki kelimelerin İLK harflerini birleştirirseniz ne elde edersiniz?", "options": ["Anlamlı bir kelime", "PBBA", "Rastgele harfler", "Bir sayı"], "correctIndex": 1, "explanation": "Her kelimenin ilk harfini alırsak P-B-B-A elde ederiz, bu basit bir baş harf birleşimidir." },
+      "en": { "text": "If you take the FIRST letter of each word in 'PARIS HAS BEAUTIFUL AUTUMNS', what do you get?", "options": ["A meaningful word", "PHBA", "Random letters", "A number"], "correctIndex": 1, "explanation": "Taking the first letter of each word gives P-H-B-A, a simple initial combination." },
+      "ar": { "text": "إذا أخذت الحرف الأول من كل كلمة في 'باريس بها خريف جميل'، ماذا تحصل؟", "options": ["كلمة ذات معنى", "ب خ ج", "حروف عشوائية", "رقم"], "correctIndex": 1, "explanation": "أخذ الحرف الأول من كل كلمة يعطي مجموعة أحرف بسيطة، وهذا كل ما في الأمر." },
+      "de": { "text": "Wenn du den ERSTEN Buchstaben jedes Wortes in 'PARIS HAT SCHÖNE HERBSTE' nimmst, was erhältst du?", "options": ["Ein sinnvolles Wort", "PHSH", "Zufällige Buchstaben", "Eine Zahl"], "correctIndex": 1, "explanation": "Der erste Buchstabe jedes Wortes ergibt P-H-S-H, eine einfache Anfangsbuchstaben-Kombination." },
+      "fr": { "text": "Si vous prenez la PREMIÈRE lettre de chaque mot dans 'PARIS A DE BEAUX AUTOMNES', qu'obtenez-vous ?", "options": ["Un mot significatif", "PADBA", "Des lettres aléatoires", "Un nombre"], "correctIndex": 1, "explanation": "Prendre la première lettre de chaque mot donne une combinaison simple de lettres." },
+      "es": { "text": "Si tomas la PRIMERA letra de cada palabra en 'PARÍS TIENE OTOÑOS BELLOS', ¿qué obtienes?", "options": ["Una palabra con significado", "PTOB", "Letras aleatorias", "Un número"], "correctIndex": 1, "explanation": "Tomar la primera letra de cada palabra da una simple combinación de iniciales." },
+      "zh": { "text": "如果取“巴黎的秋天很美丽”这句话每个词的第一个字，你会得到什么？", "options": ["一个有意义的词", "巴秋很美", "随机的字", "一个数字"], "correctIndex": 1, "explanation": "取每个词的首字就是简单的首字组合而已。" },
+      "ru": { "text": "Если взять ПЕРВУЮ букву каждого слова в фразе 'ПАРИЖ КРАСИВ ОСЕНЬЮ ВСЕГДА', что получится?", "options": ["Осмысленное слово", "ПКОВ", "Случайные буквы", "Число"], "correctIndex": 1, "explanation": "Взятие первой буквы каждого слова даёт простую комбинацию инициалов." }
+    }
+  },
+  {
+    "priority": 39,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir buz küpü sıcak bir çayın içinde erirse, çayın toplam sıvı hacmi ne olur?", "options": ["Azalır", "Artar", "Değişmez", "Sıfır olur"], "correctIndex": 1, "explanation": "Buz eridiğinde suya dönüşür ve bu su, çaydaki toplam sıvı hacmini artırır." },
+      "en": { "text": "If an ice cube melts in a hot cup of tea, what happens to the tea's total liquid volume?", "options": ["It decreases", "It increases", "It stays the same", "It becomes zero"], "correctIndex": 1, "explanation": "When ice melts it turns into water, which adds to and increases the total liquid volume." },
+      "ar": { "text": "إذا ذابت مكعبة ثلج في كوب شاي ساخن، ماذا يحدث لحجم السائل الكلي في الشاي؟", "options": ["ينقص", "يزيد", "يبقى كما هو", "يصبح صفرًا"], "correctIndex": 1, "explanation": "عندما يذوب الثلج يتحول إلى ماء، مما يزيد من الحجم الكلي للسائل." },
+      "de": { "text": "Wenn ein Eiswürfel in einer heißen Tasse Tee schmilzt, was passiert mit dem gesamten Flüssigkeitsvolumen des Tees?", "options": ["Es nimmt ab", "Es nimmt zu", "Es bleibt gleich", "Es wird null"], "correctIndex": 1, "explanation": "Wenn Eis schmilzt, wird es zu Wasser, das das gesamte Flüssigkeitsvolumen erhöht." },
+      "fr": { "text": "Si un glaçon fond dans une tasse de thé chaud, que devient le volume total du liquide ?", "options": ["Il diminue", "Il augmente", "Il reste le même", "Il devient nul"], "correctIndex": 1, "explanation": "Quand la glace fond, elle se transforme en eau, ce qui augmente le volume total du liquide." },
+      "es": { "text": "Si un cubo de hielo se derrite en una taza de té caliente, ¿qué pasa con el volumen total del líquido?", "options": ["Disminuye", "Aumenta", "Se mantiene igual", "Se vuelve cero"], "correctIndex": 1, "explanation": "Cuando el hielo se derrite se convierte en agua, lo que aumenta el volumen total del líquido." },
+      "zh": { "text": "如果一块冰在一杯热茶中融化，茶的总液体体积会怎样？", "options": ["减少", "增加", "不变", "变为零"], "correctIndex": 1, "explanation": "冰融化后变成水，这会增加茶的总液体体积。" },
+      "ru": { "text": "Если кубик льда растает в чашке горячего чая, что произойдёт с общим объёмом жидкости?", "options": ["Уменьшится", "Увеличится", "Останется прежним", "Станет нулём"], "correctIndex": 1, "explanation": "Когда лёд тает, он превращается в воду, что увеличивает общий объём жидкости." }
+    }
+  },
+  {
+    "priority": 40,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Sizden gittikçe uzaklaşıyorsunuz ama hiç yerinizden kımıldamıyorsunuz. Bu nedir?", "options": ["Gölgeniz akşam uzarken", "Bir rüya", "Bir yansıma", "Zaman"], "correctIndex": 0, "explanation": "Güneş batarken gölgeniz sizden uzaklaşıp uzar, ama siz yerinizde durursunuz." },
+      "en": { "text": "It keeps getting farther from you, yet you never move an inch. What is it?", "options": ["Your shadow at sunset", "A dream", "A reflection", "Time"], "correctIndex": 0, "explanation": "As the sun sets, your shadow stretches farther away even though you stay in place." },
+      "ar": { "text": "يبتعد عنك أكثر فأكثر، لكنك لا تتحرك أبدًا من مكانك. ما هو؟", "options": ["ظلك عند الغروب", "حلم", "انعكاس", "الوقت"], "correctIndex": 0, "explanation": "عند غروب الشمس، يمتد ظلك بعيدًا رغم أنك تبقى في مكانك." },
+      "de": { "text": "Es entfernt sich immer weiter von dir, obwohl du dich keinen Millimeter bewegst. Was ist es?", "options": ["Dein Schatten bei Sonnenuntergang", "Ein Traum", "Eine Spiegelung", "Die Zeit"], "correctIndex": 0, "explanation": "Bei Sonnenuntergang wird dein Schatten immer länger, obwohl du am selben Ort bleibst." },
+      "fr": { "text": "Il s'éloigne de plus en plus de vous, pourtant vous ne bougez pas d'un pouce. Qu'est-ce que c'est ?", "options": ["Votre ombre au coucher du soleil", "Un rêve", "Un reflet", "Le temps"], "correctIndex": 0, "explanation": "Au coucher du soleil, votre ombre s'étire de plus en plus loin même si vous restez immobile." },
+      "es": { "text": "Se aleja cada vez más de ti, pero tú nunca te mueves ni un centímetro. ¿Qué es?", "options": ["Tu sombra al atardecer", "Un sueño", "Un reflejo", "El tiempo"], "correctIndex": 0, "explanation": "Al ponerse el sol, tu sombra se alarga cada vez más aunque tú permanezcas en el mismo sitio." },
+      "zh": { "text": "它离你越来越远，但你一步都没有移动，这是什么？", "options": ["日落时你的影子", "一场梦", "一个倒影", "时间"], "correctIndex": 0, "explanation": "太阳下山时，你的影子会越拉越长、越来越远，即使你一直站在原地。" },
+      "ru": { "text": "Оно всё дальше удаляется от вас, хотя вы не сдвигаетесь ни на шаг. Что это?", "options": ["Ваша тень на закате", "Сон", "Отражение", "Время"], "correctIndex": 0, "explanation": "На закате ваша тень становится всё длиннее и дальше, хотя вы остаётесь на месте." }
+    }
+  },
+  {
+    "priority": 41,
+    "type": "logic",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir doktor size 'Ameliyattan sonra asla yürüyemeyeceksiniz' dedi ve haklı çıktı. Nasıl mümkün oldu?", "options": ["Ameliyat başarısız oldu", "Hasta koşmaya başladı", "Hasta felç kaldı", "Doktor yalan söyledi"], "correctIndex": 1, "explanation": "Hasta yürümek yerine doğrudan koşmaya başladıysa, doktor 'asla yürüyemeyeceksin' derken haklı çıkmış olur." },
+      "en": { "text": "A doctor told you, 'You will never walk again after surgery,' and he was right. How is this possible?", "options": ["The surgery failed", "The patient started running instead", "The patient became paralyzed", "The doctor lied"], "correctIndex": 1, "explanation": "If the patient skipped walking and went straight to running, the doctor was technically correct." },
+      "ar": { "text": "قال لك طبيب: 'لن تمشي مجددًا بعد الجراحة'، وكان محقًا. كيف يكون ذلك ممكنًا؟", "options": ["فشلت الجراحة", "بدأ المريض بالركض بدلًا من المشي", "أصيب المريض بالشلل", "كذب الطبيب"], "correctIndex": 1, "explanation": "إذا تخطى المريض المشي وبدأ بالركض مباشرة، فإن الطبيب كان محقًا تقنيًا." },
+      "de": { "text": "Ein Arzt sagte dir: 'Du wirst nach der Operation nie wieder gehen können', und er hatte recht. Wie ist das möglich?", "options": ["Die Operation ist gescheitert", "Der Patient fing stattdessen an zu rennen", "Der Patient wurde gelähmt", "Der Arzt hat gelogen"], "correctIndex": 1, "explanation": "Wenn der Patient das Gehen übersprang und direkt zum Rennen überging, hatte der Arzt technisch recht." },
+      "fr": { "text": "Un médecin vous a dit : 'Vous ne remarcherez jamais après l'opération', et il avait raison. Comment est-ce possible ?", "options": ["L'opération a échoué", "Le patient s'est mis à courir directement", "Le patient est resté paralysé", "Le médecin a menti"], "correctIndex": 1, "explanation": "Si le patient a sauté l'étape de la marche pour se mettre directement à courir, le médecin avait techniquement raison." },
+      "es": { "text": "Un médico te dijo: 'Nunca volverás a caminar después de la cirugía', y tenía razón. ¿Cómo es posible?", "options": ["La cirugía falló", "El paciente empezó a correr en vez de caminar", "El paciente quedó paralizado", "El médico mintió"], "correctIndex": 1, "explanation": "Si el paciente se saltó caminar y pasó directamente a correr, el médico técnicamente tenía razón." },
+      "zh": { "text": "医生对你说：“手术后你再也无法走路了。”结果他说对了。这怎么可能？", "options": ["手术失败了", "病人直接开始跑步而不是走路", "病人瘫痪了", "医生撒谎了"], "correctIndex": 1, "explanation": "如果病人跳过了走路，直接开始跑步，那么医生的话在技术上是对的。" },
+      "ru": { "text": "Врач сказал вам: «После операции вы никогда больше не сможете ходить», и он оказался прав. Как это возможно?", "options": ["Операция провалилась", "Пациент сразу начал бегать вместо ходьбы", "Пациент оказался парализован", "Врач соврал"], "correctIndex": 1, "explanation": "Если пациент миновал стадию ходьбы и сразу начал бегать, врач технически был прав." }
+    }
+  },
+  {
+    "priority": 42,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir marketten 100 TL'lik alışveriş yaptınız, satıcıya 100 TL verdiniz ama para üstü almadınız. Kaç TL harcadınız?", "options": ["50 TL", "100 TL", "200 TL", "0 TL"], "correctIndex": 1, "explanation": "Tam olarak 100 TL'lik alışveriş için 100 TL ödediniz, para üstü zaten yoktu." },
+      "en": { "text": "You bought $100 worth of groceries, paid the cashier exactly $100, and got no change. How much did you spend?", "options": ["$50", "$100", "$200", "$0"], "correctIndex": 1, "explanation": "You paid exactly $100 for $100 worth of groceries, so naturally there was no change to give." },
+      "ar": { "text": "اشتريت بضائع بقيمة 100 دولار، ودفعت للكاشير 100 دولار بالضبط ولم تحصل على باقٍ. كم أنفقت؟", "options": ["50 دولارًا", "100 دولار", "200 دولار", "0 دولار"], "correctIndex": 1, "explanation": "دفعت 100 دولار بالضبط مقابل بضائع بقيمة 100 دولار، لذا لم يكن هناك باقٍ أصلًا." },
+      "de": { "text": "Du hast für 100 € eingekauft, dem Kassierer genau 100 € gegeben und kein Wechselgeld erhalten. Wie viel hast du ausgegeben?", "options": ["50 €", "100 €", "200 €", "0 €"], "correctIndex": 1, "explanation": "Du hast genau 100 € für 100 € Einkäufe bezahlt, also gab es logischerweise kein Wechselgeld." },
+      "fr": { "text": "Vous avez acheté pour 100 € de courses, payé exactement 100 € au caissier et n'avez reçu aucune monnaie. Combien avez-vous dépensé ?", "options": ["50 €", "100 €", "200 €", "0 €"], "correctIndex": 1, "explanation": "Vous avez payé exactement 100 € pour 100 € de courses, donc il n'y avait logiquement pas de monnaie à rendre." },
+      "es": { "text": "Compraste $100 en víveres, pagaste exactamente $100 al cajero y no recibiste cambio. ¿Cuánto gastaste?", "options": ["$50", "$100", "$200", "$0"], "correctIndex": 1, "explanation": "Pagaste exactamente $100 por $100 de víveres, así que lógicamente no había cambio que dar." },
+      "zh": { "text": "你买了价值100元的杂货，付给收银员正好100元，没有找零。你花了多少钱？", "options": ["50元", "100元", "200元", "0元"], "correctIndex": 1, "explanation": "你为100元的商品支付了正好100元，所以自然没有找零。" },
+      "ru": { "text": "Вы купили продуктов на 100 рублей, заплатили кассиру ровно 100 рублей и не получили сдачи. Сколько вы потратили?", "options": ["50 рублей", "100 рублей", "200 рублей", "0 рублей"], "correctIndex": 1, "explanation": "Вы заплатили ровно 100 рублей за товар на 100 рублей, поэтому сдачи логично не было." }
+    }
+  },
+  {
+    "priority": 43,
+    "type": "humor",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir file yumurta koyarsanız kaç tane delik yumurta elde edersiniz?", "options": ["12 delikli yumurta", "0, çünkü yumurtaların delik olması gerekmez", "6 delikli yumurta", "Sonsuz delik"], "correctIndex": 1, "explanation": "Yumurtaları filenin içine koymak onları delik yapmaz, yumurtalar sağlam kalır." },
+      "en": { "text": "If you put eggs in a net bag, how many holey eggs do you end up with?", "options": ["12 holey eggs", "0, because eggs don't need to have holes", "6 holey eggs", "Infinite holes"], "correctIndex": 1, "explanation": "Putting eggs in a net bag doesn't put holes in them; the eggs remain perfectly intact." },
+      "ar": { "text": "إذا وضعت بيضًا في شبكة، كم بيضة مثقوبة ستحصل عليها؟", "options": ["12 بيضة مثقوبة", "0، لأن البيض لا يحتاج أن يكون مثقوبًا", "6 بيض مثقوب", "ثقوب لا نهائية"], "correctIndex": 1, "explanation": "وضع البيض في شبكة لا يجعله مثقوبًا؛ يبقى البيض سليمًا تمامًا." },
+      "de": { "text": "Wenn du Eier in einen Netzbeutel legst, wie viele löchrige Eier bekommst du?", "options": ["12 löchrige Eier", "0, weil Eier keine Löcher haben müssen", "6 löchrige Eier", "Unendlich viele Löcher"], "correctIndex": 1, "explanation": "Eier in einen Netzbeutel zu legen macht keine Löcher hinein; die Eier bleiben völlig intakt." },
+      "fr": { "text": "Si vous mettez des œufs dans un filet, combien d'œufs troués obtenez-vous ?", "options": ["12 œufs troués", "0, car les œufs n'ont pas besoin d'être troués", "6 œufs troués", "Une infinité de trous"], "correctIndex": 1, "explanation": "Mettre des œufs dans un filet ne les troue pas ; les œufs restent parfaitement intacts." },
+      "es": { "text": "Si pones huevos en una bolsa de red, ¿cuántos huevos agujereados obtienes?", "options": ["12 huevos agujereados", "0, porque los huevos no tienen que tener agujeros", "6 huevos agujereados", "Agujeros infinitos"], "correctIndex": 1, "explanation": "Poner huevos en una bolsa de red no los agujerea; los huevos quedan perfectamente intactos." },
+      "zh": { "text": "如果把鸡蛋放进网袋里，会得到几个有洞的鸡蛋？", "options": ["12个有洞的蛋", "0个，因为鸡蛋不需要有洞", "6个有洞的蛋", "无数个洞"], "correctIndex": 1, "explanation": "把鸡蛋放进网袋并不会让蛋上出现洞，鸡蛋依然完好无损。" },
+      "ru": { "text": "Если положить яйца в сетчатый мешок, сколько дырявых яиц получится?", "options": ["12 дырявых яиц", "0, потому что яйцам не обязательно быть дырявыми", "6 дырявых яиц", "Бесконечно много дыр"], "correctIndex": 1, "explanation": "Помещение яиц в сетку не делает в них дырок; яйца остаются абсолютно целыми." }
+    }
+  },
+  {
+    "priority": 44,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kişi 'Söylediğim her şey yalandır' derse, bu cümle doğru mudur yoksa yanlış mıdır?", "options": ["Kesinlikle doğrudur", "Kesinlikle yanlıştır", "Bir paradokstur, tutarlı bir cevabı yoktur", "Konuya bağlıdır"], "correctIndex": 2, "explanation": "Eğer cümle doğruysa kendisiyle çelişir, yanlışsa yine kendisiyle çelişir; bu klasik yalancı paradoksudur." },
+      "en": { "text": "If someone says, 'Everything I say is a lie,' is that sentence true or false?", "options": ["Definitely true", "Definitely false", "It's a paradox with no consistent answer", "Depends on context"], "correctIndex": 2, "explanation": "If the sentence is true it contradicts itself, and if false it also contradicts itself — this is the classic liar's paradox." },
+      "ar": { "text": "إذا قال شخص 'كل ما أقوله كذب'، فهل هذه الجملة صحيحة أم خاطئة؟", "options": ["صحيحة قطعًا", "خاطئة قطعًا", "إنها مفارقة بلا إجابة ثابتة", "يعتمد على السياق"], "correctIndex": 2, "explanation": "إن كانت الجملة صحيحة فهي تناقض نفسها، وإن كانت خاطئة فهي أيضًا تناقض نفسها — إنها مفارقة الكاذب الشهيرة." },
+      "de": { "text": "Wenn jemand sagt: 'Alles, was ich sage, ist gelogen', ist dieser Satz dann wahr oder falsch?", "options": ["Definitiv wahr", "Definitiv falsch", "Es ist ein Paradox ohne stimmige Antwort", "Kommt auf den Kontext an"], "correctIndex": 2, "explanation": "Ist der Satz wahr, widerspricht er sich selbst, ist er falsch, widerspricht er sich ebenfalls — das ist das klassische Lügner-Paradoxon." },
+      "fr": { "text": "Si quelqu'un dit : 'Tout ce que je dis est un mensonge', cette phrase est-elle vraie ou fausse ?", "options": ["Définitivement vraie", "Définitivement fausse", "C'est un paradoxe sans réponse cohérente", "Cela dépend du contexte"], "correctIndex": 2, "explanation": "Si la phrase est vraie, elle se contredit, et si elle est fausse, elle se contredit aussi — c'est le célèbre paradoxe du menteur." },
+      "es": { "text": "Si alguien dice: 'Todo lo que digo es mentira', ¿esa frase es verdadera o falsa?", "options": ["Definitivamente verdadera", "Definitivamente falsa", "Es una paradoja sin respuesta coherente", "Depende del contexto"], "correctIndex": 2, "explanation": "Si la frase es verdadera se contradice a sí misma, y si es falsa también se contradice — es la clásica paradoja del mentiroso." },
+      "zh": { "text": "如果有人说“我说的一切都是谎言”，这句话是真的还是假的？", "options": ["绝对是真的", "绝对是假的", "这是一个没有一致答案的悖论", "取决于语境"], "correctIndex": 2, "explanation": "如果这句话是真的，它就自相矛盾；如果是假的，它同样自相矛盾——这就是经典的说谎者悖论。" },
+      "ru": { "text": "Если кто-то говорит: «Всё, что я говорю — ложь», это утверждение истинно или ложно?", "options": ["Определённо истинно", "Определённо ложно", "Это парадокс без последовательного ответа", "Зависит от контекста"], "correctIndex": 2, "explanation": "Если утверждение истинно, оно противоречит само себе, а если ложно — тоже противоречит; это классический парадокс лжеца." }
+    }
+  },
+  {
+    "priority": 45,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Ateşin rengi maviye döndüğünde ne olur?", "options": ["Söner", "Genellikle daha sıcaktır", "Kokusu değişir", "Zehirli olur"], "correctIndex": 1, "explanation": "Mavi alevler genellikle kırmızı veya turuncu alevlerden daha yüksek sıcaklığı gösterir." },
+      "en": { "text": "What generally happens when a fire's flame turns blue?", "options": ["It goes out", "It's usually hotter", "Its smell changes", "It becomes poisonous"], "correctIndex": 1, "explanation": "Blue flames generally indicate a higher temperature than red or orange flames." },
+      "ar": { "text": "ماذا يحدث عمومًا عندما يتحول لون لهب النار إلى الأزرق؟", "options": ["ينطفئ", "عادة يكون أسخن", "تتغير رائحته", "يصبح سامًا"], "correctIndex": 1, "explanation": "تشير الألسنة الزرقاء عمومًا إلى درجة حرارة أعلى من الألسنة الحمراء أو البرتقالية." },
+      "de": { "text": "Was passiert im Allgemeinen, wenn eine Feuerflamme blau wird?", "options": ["Sie erlischt", "Sie ist meist heißer", "Ihr Geruch ändert sich", "Sie wird giftig"], "correctIndex": 1, "explanation": "Blaue Flammen zeigen im Allgemeinen eine höhere Temperatur an als rote oder orange Flammen." },
+      "fr": { "text": "Que se passe-t-il généralement quand la flamme d'un feu devient bleue ?", "options": ["Elle s'éteint", "Elle est généralement plus chaude", "Son odeur change", "Elle devient toxique"], "correctIndex": 1, "explanation": "Les flammes bleues indiquent généralement une température plus élevée que les flammes rouges ou orange." },
+      "es": { "text": "¿Qué suele pasar cuando la llama de un fuego se vuelve azul?", "options": ["Se apaga", "Suele estar más caliente", "Cambia su olor", "Se vuelve venenosa"], "correctIndex": 1, "explanation": "Las llamas azules generalmente indican una temperatura más alta que las llamas rojas o naranjas." },
+      "zh": { "text": "火焰变蓝时通常意味着什么？", "options": ["火熄灭了", "通常温度更高", "气味发生变化", "变得有毒"], "correctIndex": 1, "explanation": "蓝色火焰通常比红色或橙色火焰的温度更高。" },
+      "ru": { "text": "Что обычно происходит, когда пламя огня становится синим?", "options": ["Оно гаснет", "Обычно оно горячее", "Меняется его запах", "Оно становится ядовитым"], "correctIndex": 1, "explanation": "Синее пламя обычно указывает на более высокую температуру, чем красное или оранжевое." }
+    }
+  },
+  {
+    "priority": 46,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bu cümledeki harflerden kaç tanesi 'A' harfidir: 'ANKARA'DA ARABA ALAN ADAM'?", "options": ["5", "6", "7", "8"], "correctIndex": 2, "explanation": "Cümleyi tek tek sayarsanız 'A' harfi tam olarak 7 kez geçer." },
+      "en": { "text": "How many times does the letter 'A' appear in: 'A BANANA IN A BASKET AT A BAZAAR'?", "options": ["7", "8", "9", "10"], "correctIndex": 2, "explanation": "Counting carefully letter by letter, 'A' appears exactly 9 times in this sentence." },
+      "ar": { "text": "كم مرة يظهر حرف 'ا' في جملة: 'أكل أحمد الأناناس في الحديقة'؟", "options": ["4", "5", "6", "7"], "correctIndex": 2, "explanation": "بالعد الدقيق حرفًا بحرف، يظهر حرف 'ا' 6 مرات بالضبط في هذه الجملة." },
+      "de": { "text": "Wie oft kommt der Buchstabe 'A' vor in: 'ANNA ASS EINEN APFEL AM ABEND'?", "options": ["5", "6", "7", "8"], "correctIndex": 2, "explanation": "Zählt man sorgfältig Buchstabe für Buchstabe, kommt 'A' genau 7 Mal in diesem Satz vor." },
+      "fr": { "text": "Combien de fois la lettre 'A' apparaît-elle dans : 'ANNA A MANGÉ UNE BANANE À LA GARE' ?", "options": ["5", "6", "7", "8"], "correctIndex": 2, "explanation": "En comptant soigneusement lettre par lettre, 'A' apparaît exactement 7 fois dans cette phrase." },
+      "es": { "text": "¿Cuántas veces aparece la letra 'A' en: 'ANA COMPRÓ UNA MANZANA EN LA PLAZA'?", "options": ["6", "7", "8", "9"], "correctIndex": 2, "explanation": "Contando cuidadosamente letra por letra, la 'A' aparece exactamente 8 veces en esta frase." },
+      "zh": { "text": "这句话里“妈”字出现了几次：“妈妈说妈妈爱吃妈妈做的饭”？", "options": ["4次", "5次", "6次", "7次"], "correctIndex": 2, "explanation": "仔细逐字数一下，“妈”字在这句话中一共出现了6次。" },
+      "ru": { "text": "Сколько раз буква 'А' встречается в фразе: 'АННА ЕЛА АНАНАС НА ДАЧЕ АЛЫ'?", "options": ["6", "7", "8", "9"], "correctIndex": 2, "explanation": "Если внимательно посчитать по буквам, 'А' встречается ровно 8 раз в этой фразе." }
+    }
+  },
+  {
+    "priority": 47,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kova su, tabanında bir delik varsa ve delik su seviyesinin üzerindeyse, su sızdırır mı?", "options": ["Evet, her zaman sızdırır", "Hayır, delik su seviyesinin altında değilse sızmaz", "Sadece geceleri sızdırır", "Kova patlar"], "correctIndex": 1, "explanation": "Su ancak basıncın olduğu, yani su seviyesinin altındaki bir delikten sızabilir; üstteki delikten sızmaz." },
+      "en": { "text": "A bucket has a hole in it, but the hole is above the water level. Does the water leak out?", "options": ["Yes, it always leaks", "No, it won't leak if the hole is above the water level", "Only leaks at night", "The bucket explodes"], "correctIndex": 1, "explanation": "Water can only leak from a hole below the water level where there's pressure; a hole above it stays dry." },
+      "ar": { "text": "يوجد ثقب في دلو، لكن الثقب أعلى من مستوى الماء. هل يتسرب الماء؟", "options": ["نعم، يتسرب دائمًا", "لا، لن يتسرب إذا كان الثقب أعلى من مستوى الماء", "يتسرب ليلًا فقط", "ينفجر الدلو"], "correctIndex": 1, "explanation": "لا يتسرب الماء إلا من ثقب أسفل مستوى الماء حيث يوجد ضغط؛ الثقب الأعلى يبقى جافًا." },
+      "de": { "text": "Ein Eimer hat ein Loch, aber das Loch liegt über dem Wasserstand. Läuft das Wasser aus?", "options": ["Ja, es läuft immer aus", "Nein, es läuft nicht aus, wenn das Loch über dem Wasserstand liegt", "Nur nachts läuft es aus", "Der Eimer explodiert"], "correctIndex": 1, "explanation": "Wasser kann nur aus einem Loch unterhalb des Wasserstands laufen, wo Druck herrscht; ein Loch darüber bleibt trocken." },
+      "fr": { "text": "Un seau a un trou, mais le trou est au-dessus du niveau de l'eau. L'eau s'échappe-t-elle ?", "options": ["Oui, elle s'échappe toujours", "Non, elle ne s'échappera pas si le trou est au-dessus du niveau de l'eau", "Elle s'échappe seulement la nuit", "Le seau explose"], "correctIndex": 1, "explanation": "L'eau ne peut s'échapper que d'un trou sous le niveau de l'eau, là où il y a pression ; un trou au-dessus reste sec." },
+      "es": { "text": "Un balde tiene un agujero, pero está por encima del nivel del agua. ¿Se derrama el agua?", "options": ["Sí, siempre se derrama", "No, no se derramará si el agujero está sobre el nivel del agua", "Solo se derrama de noche", "El balde explota"], "correctIndex": 1, "explanation": "El agua solo puede salir por un agujero debajo del nivel del agua, donde hay presión; uno por encima queda seco." },
+      "zh": { "text": "水桶上有一个洞，但这个洞在水面以上。水会漏出来吗？", "options": ["会，总是会漏", "不会，如果洞在水面以上就不会漏", "只在夜里漏", "水桶会爆炸"], "correctIndex": 1, "explanation": "水只会从水面以下有压力的洞里漏出来，水面以上的洞不会漏水。" },
+      "ru": { "text": "В ведре есть дырка, но она находится выше уровня воды. Вода будет вытекать?", "options": ["Да, всегда вытекает", "Нет, не будет вытекать, если дырка выше уровня воды", "Вытекает только ночью", "Ведро взрывается"], "correctIndex": 1, "explanation": "Вода может вытекать только через отверстие ниже уровня воды, где есть давление; отверстие выше остаётся сухим." }
+    }
+  },
+  {
+    "priority": 48,
+    "type": "math",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir otobüste 20 yolcu vardı. İlk durakta 5 kişi indi, 8 kişi bindi. İkinci durakta 3 kişi indi, 6 kişi bindi. Otobüs şoförünün adı neydi?", "options": ["Bilinmiyor", "Ahmet", "Mehmet", "Cevaplanamaz"], "correctIndex": 3, "explanation": "Soru yolcu sayısını hesaplatmak istese de aslında şoförün adını soruyor ve bu bilgi hiçbir yerde verilmedi." },
+      "en": { "text": "A bus had 20 passengers. At the first stop 5 got off and 8 got on. At the second stop 3 got off and 6 got on. What was the bus driver's name?", "options": ["Unknown", "John", "Michael", "Impossible to answer"], "correctIndex": 3, "explanation": "The question tempts you to calculate passenger counts, but it actually asks the driver's name, which was never given." },
+      "ar": { "text": "كانت حافلة تقل 20 راكبًا. في المحطة الأولى نزل 5 وصعد 8. في المحطة الثانية نزل 3 وصعد 6. ما اسم سائق الحافلة؟", "options": ["غير معروف", "أحمد", "محمد", "لا يمكن الإجابة"], "correctIndex": 3, "explanation": "يغريك السؤال بحساب عدد الركاب، لكنه في الحقيقة يسأل عن اسم السائق الذي لم يُذكر أبدًا." },
+      "de": { "text": "Ein Bus hatte 20 Fahrgäste. An der ersten Haltestelle stiegen 5 aus und 8 ein. An der zweiten stiegen 3 aus und 6 ein. Wie hieß der Busfahrer?", "options": ["Unbekannt", "Hans", "Michael", "Nicht zu beantworten"], "correctIndex": 3, "explanation": "Die Frage verleitet zum Berechnen der Fahrgastzahl, fragt aber eigentlich nach dem Namen des Fahrers, der nie genannt wurde." },
+      "fr": { "text": "Un bus avait 20 passagers. Au premier arrêt, 5 descendent et 8 montent. Au deuxième, 3 descendent et 6 montent. Quel était le nom du chauffeur de bus ?", "options": ["Inconnu", "Jean", "Michel", "Impossible à répondre"], "correctIndex": 3, "explanation": "La question vous tente de calculer le nombre de passagers, mais demande en fait le nom du chauffeur, jamais donné." },
+      "es": { "text": "Un autobús tenía 20 pasajeros. En la primera parada bajaron 5 y subieron 8. En la segunda bajaron 3 y subieron 6. ¿Cómo se llamaba el conductor del autobús?", "options": ["Desconocido", "Juan", "Miguel", "Imposible de responder"], "correctIndex": 3, "explanation": "La pregunta te tienta a calcular pasajeros, pero en realidad pregunta el nombre del conductor, nunca dado." },
+      "zh": { "text": "一辆公交车上有20名乘客。第一站下车5人上车8人，第二站下车3人上车6人。公交车司机叫什么名字？", "options": ["未知", "小明", "小李", "无法回答"], "correctIndex": 3, "explanation": "这道题诱导你去计算乘客人数，但实际上问的是司机的名字，而这从未被提及。" },
+      "ru": { "text": "В автобусе было 20 пассажиров. На первой остановке 5 вышли, 8 вошли. На второй 3 вышли, 6 вошли. Как звали водителя автобуса?", "options": ["Неизвестно", "Иван", "Михаил", "Невозможно ответить"], "correctIndex": 3, "explanation": "Вопрос заманивает вас считать пассажиров, но на самом деле спрашивает имя водителя, которое нигде не было указано." }
+    }
+  },
+  {
+    "priority": 49,
+    "type": "illusion",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir dama tahtasında gri görünen bir kare aslında beyaz bir kareyle aynı tonda olabilir; buna ne sebep olur?", "options": ["Beyni kandıran gölge kontrast etkisi", "Ekran hatası", "Baskı hatası", "Renk körlüğü"], "correctIndex": 0, "explanation": "Beynimiz çevredeki gölge ve kontrastı yorumlarken renk algımızı değiştirir, bu ünlü bir görsel illüzyondur." },
+      "en": { "text": "A square that looks gray on a checkerboard can actually be the exact same shade as a square that looks white. What causes this?", "options": ["A shadow-contrast effect that fools the brain", "A screen glitch", "A printing error", "Color blindness"], "correctIndex": 0, "explanation": "Our brain interprets surrounding shadow and contrast in a way that alters color perception — a famous visual illusion." },
+      "ar": { "text": "قد يبدو مربع رمادي على رقعة شطرنج بنفس درجة لون مربع يبدو أبيض تمامًا. ما سبب ذلك؟", "options": ["تأثير تباين الظل الذي يخدع الدماغ", "خطأ في الشاشة", "خطأ في الطباعة", "عمى الألوان"], "correctIndex": 0, "explanation": "يفسر دماغنا الظل والتباين المحيط بطريقة تغير إدراكنا للون — وهذا وهم بصري شهير." },
+      "de": { "text": "Ein Feld, das auf einem Schachbrett grau erscheint, kann tatsächlich exakt denselben Farbton wie ein weiß erscheinendes Feld haben. Was verursacht das?", "options": ["Ein Schatten-Kontrast-Effekt, der das Gehirn täuscht", "Ein Bildschirmfehler", "Ein Druckfehler", "Farbenblindheit"], "correctIndex": 0, "explanation": "Unser Gehirn interpretiert umgebenden Schatten und Kontrast so, dass es die Farbwahrnehmung verändert — eine berühmte optische Täuschung." },
+      "fr": { "text": "Une case qui paraît grise sur un échiquier peut en réalité être exactement de la même teinte qu'une case qui paraît blanche. Qu'est-ce qui cause cela ?", "options": ["Un effet de contraste d'ombre qui trompe le cerveau", "Un bug d'écran", "Une erreur d'impression", "Le daltonisme"], "correctIndex": 0, "explanation": "Notre cerveau interprète l'ombre et le contraste environnants de manière à modifier notre perception des couleurs — une illusion célèbre." },
+      "es": { "text": "Un cuadro que parece gris en un tablero de ajedrez puede tener en realidad exactamente el mismo tono que uno que parece blanco. ¿Qué lo causa?", "options": ["Un efecto de contraste de sombra que engaña al cerebro", "Un fallo de pantalla", "Un error de impresión", "Daltonismo"], "correctIndex": 0, "explanation": "Nuestro cerebro interpreta la sombra y el contraste circundantes alterando la percepción del color: una ilusión visual famosa." },
+      "zh": { "text": "棋盘上看起来是灰色的方格，实际上可能和看起来是白色的方格颜色完全相同，这是为什么？", "options": ["欺骗大脑的阴影对比效应", "屏幕故障", "印刷错误", "色盲"], "correctIndex": 0, "explanation": "我们的大脑会根据周围的阴影和对比度来解读颜色，从而改变我们的色彩感知——这是一个著名的视觉错觉。" },
+      "ru": { "text": "Клетка, которая кажется серой на шахматной доске, на самом деле может быть точно того же оттенка, что и клетка, кажущаяся белой. Чем это вызвано?", "options": ["Эффектом теневого контраста, обманывающим мозг", "Сбоем экрана", "Ошибкой печати", "Дальтонизмом"], "correctIndex": 0, "explanation": "Наш мозг интерпретирует окружающую тень и контраст так, что меняет восприятие цвета — это знаменитая зрительная иллюзия." }
+    }
+  },
+  {
+    "priority": 50,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir kilogram pamuk şekeri kaç kilogram gelir?", "options": ["0.5 kg", "1 kg", "2 kg", "Tartıya göre değişir"], "correctIndex": 1, "explanation": "'Bir kilogram' ifadesi zaten kesin ağırlığı belirtir; ne kadar hafif görünse de tam olarak 1 kg'dır." },
+      "en": { "text": "How much does one kilogram of cotton candy weigh?", "options": ["0.5 kg", "1 kg", "2 kg", "Depends on the scale"], "correctIndex": 1, "explanation": "The phrase 'one kilogram' already states the exact weight; no matter how light it looks, it's exactly 1 kg." },
+      "ar": { "text": "كم يزن كيلوغرام واحد من حلوى القطن؟", "options": ["0.5 كغ", "1 كغ", "2 كغ", "يعتمد على الميزان"], "correctIndex": 1, "explanation": "عبارة 'كيلوغرام واحد' تحدد الوزن الدقيق بالفعل؛ مهما بدا خفيفًا، فوزنه 1 كغ بالضبط." },
+      "de": { "text": "Wie viel wiegt ein Kilogramm Zuckerwatte?", "options": ["0,5 kg", "1 kg", "2 kg", "Kommt auf die Waage an"], "correctIndex": 1, "explanation": "Die Angabe 'ein Kilogramm' legt bereits das genaue Gewicht fest; egal wie leicht es aussieht, es sind genau 1 kg." },
+      "fr": { "text": "Combien pèse un kilogramme de barbe à papa ?", "options": ["0,5 kg", "1 kg", "2 kg", "Ça dépend de la balance"], "correctIndex": 1, "explanation": "L'expression 'un kilogramme' fixe déjà le poids exact ; aussi légère qu'elle paraisse, elle pèse exactement 1 kg." },
+      "es": { "text": "¿Cuánto pesa un kilogramo de algodón de azúcar?", "options": ["0.5 kg", "1 kg", "2 kg", "Depende de la báscula"], "correctIndex": 1, "explanation": "La frase 'un kilogramo' ya establece el peso exacto; por muy ligero que parezca, pesa exactamente 1 kg." },
+      "zh": { "text": "一千克棉花糖重多少？", "options": ["0.5千克", "1千克", "2千克", "取决于秤"], "correctIndex": 1, "explanation": "“一千克”这个表述已经明确了确切重量；无论看起来多轻，它就是1千克。" },
+      "ru": { "text": "Сколько весит один килограмм сахарной ваты?", "options": ["0,5 кг", "1 кг", "2 кг", "Зависит от весов"], "correctIndex": 1, "explanation": "Фраза «один килограмм» уже указывает точный вес; каким бы лёгким он ни казался, это ровно 1 кг." }
+    }
+  },
+  {
+    "priority": 51,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Konuşmadan cevap veren, ağızsız konuşan, kulaksız duyan bir şey nedir?", "options": ["Bir hayalet", "Yankı", "Bir rüya", "Sessizlik"], "correctIndex": 1, "explanation": "Yankı, sesinizi tekrarlayarak size 'cevap verir' ama gerçek bir ağzı veya kulağı yoktur." },
+      "en": { "text": "What speaks without a mouth, hears without ears, and answers without thinking?", "options": ["A ghost", "An echo", "A dream", "Silence"], "correctIndex": 1, "explanation": "An echo repeats your voice back to you, 'answering' instantly without ever having a real mouth or ears." },
+      "ar": { "text": "ما الذي يتكلم بلا فم، ويسمع بلا أذنين، ويجيب دون تفكير؟", "options": ["شبح", "الصدى", "حلم", "الصمت"], "correctIndex": 1, "explanation": "الصدى يكرر صوتك ويعيده إليك 'كإجابة' فورية دون أن يملك فمًا أو أذنين حقيقيين." },
+      "de": { "text": "Was spricht ohne Mund, hört ohne Ohren und antwortet, ohne nachzudenken?", "options": ["Ein Geist", "Ein Echo", "Ein Traum", "Die Stille"], "correctIndex": 1, "explanation": "Ein Echo wiederholt deine Stimme und 'antwortet' sofort, ohne jemals einen echten Mund oder Ohren zu haben." },
+      "fr": { "text": "Qu'est-ce qui parle sans bouche, entend sans oreilles, et répond sans réfléchir ?", "options": ["Un fantôme", "Un écho", "Un rêve", "Le silence"], "correctIndex": 1, "explanation": "Un écho répète votre voix, vous 'répondant' instantanément sans jamais avoir de vraie bouche ou d'oreilles." },
+      "es": { "text": "¿Qué habla sin boca, oye sin oídos y responde sin pensar?", "options": ["Un fantasma", "Un eco", "Un sueño", "El silencio"], "correctIndex": 1, "explanation": "Un eco repite tu voz, 'respondiéndote' al instante sin tener jamás boca ni oídos reales." },
+      "zh": { "text": "什么东西没有嘴却能说话，没有耳朵却能听见，不用思考就能回答？", "options": ["幽灵", "回声", "梦境", "寂静"], "correctIndex": 1, "explanation": "回声会重复你的声音，立即“回答”你，却从来没有真正的嘴或耳朵。" },
+      "ru": { "text": "Что говорит без рта, слышит без ушей и отвечает, не думая?", "options": ["Призрак", "Эхо", "Сон", "Тишина"], "correctIndex": 1, "explanation": "Эхо повторяет ваш голос, мгновенно «отвечая» вам, хотя у него никогда не было настоящего рта или ушей." }
+    }
+  },
+  {
+    "priority": 52,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "SARI kelimesi KIRMIZI renkle yazılırsa ne okutulur?", "options": ["Kırmızı", "Sarı", "Yeşil", "Mor"], "correctIndex": 1, "explanation": "Mürekkep rengine değil, yazının kendisine bakın! Kelime SARI okutulur." },
+      "en": { "text": "If the word YELLOW is written in RED ink, what does it read?", "options": ["Red", "Yellow", "Green", "Purple"], "correctIndex": 1, "explanation": "Don't look at the ink color, read the word itself! It reads YELLOW." },
+      "ar": { "text": "إذا كُتبت كلمة أصفر باللون الأحمر، فماذا تُقرأ؟", "options": ["أحمر", "أصفر", "أخضر", "بنفسجي"], "correctIndex": 1, "explanation": "لا تنظر إلى لون الحبر، بل اقرأ الكلمة نفسها! الكلمة تُقرأ أصفر." },
+      "de": { "text": "Wenn das Wort GELB in ROTER Farbe geschrieben ist, wie liest man es?", "options": ["Rot", "Gelb", "Grün", "Lila"], "correctIndex": 1, "explanation": "Achte nicht auf die Tintenfarbe, sondern auf das Wort selbst! Es steht dort GELB." },
+      "fr": { "text": "Si le mot JAUNE est écrit en ROUGE, comment se lit-il ?", "options": ["Rouge", "Jaune", "Vert", "Violet"], "correctIndex": 1, "explanation": "Ne regardez pas la couleur de l'encre, lisez le mot lui-même ! Il se lit JAUNE." },
+      "es": { "text": "Si la palabra AMARILLO está escrita en color ROJO, ¿cómo se lee?", "options": ["Rojo", "Amarillo", "Verde", "Morado"], "correctIndex": 1, "explanation": "¡No mires el color de la tinta, lee la palabra! Se lee AMARILLO." },
+      "zh": { "text": "如果“黄色”这个词用红色写成，它读作什么？", "options": ["红色", "黄色", "绿色", "紫色"], "correctIndex": 1, "explanation": "不要看墨水颜色，要读文字本身！它读作“黄色”。" },
+      "ru": { "text": "Если слово ЖЁЛТЫЙ написано КРАСНЫМ цветом, как оно читается?", "options": ["Красный", "Жёлтый", "Зелёный", "Фиолетовый"], "correctIndex": 1, "explanation": "Не смотрите на цвет чернил, читайте само слово! Оно читается ЖЁЛТЫЙ." }
+    }
+  },
+  {
+    "priority": 53,
+    "type": "logic",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Sonsuz sayıda misafiri olan bir otel tamamen doludur. Yeni bir misafir gelir, otel onu nasıl ağırlayabilir?", "options": ["Ağırlayamaz, otel dolu", "Her misafiri bir sonraki odaya kaydırarak 1 numaralı odayı boşaltır", "Yeni bir kat inşa eder", "Misafiri geri çevirir"], "correctIndex": 1, "explanation": "Bu ünlü 'Hilbert'in Sonsuz Oteli' paradoksudur: sonsuzlukta her misafiri bir oda kaydırarak yer açılabilir." },
+      "en": { "text": "A hotel with infinitely many guests is completely full. A new guest arrives. How can the hotel accommodate them?", "options": ["It can't, the hotel is full", "Shift every guest to the next room, freeing room 1", "Build a new floor", "Turn the guest away"], "correctIndex": 1, "explanation": "This is the famous 'Hilbert's Hotel' paradox: with infinity, shifting every guest by one room frees up space." },
+      "ar": { "text": "فندق فيه عدد لا نهائي من النزلاء ممتلئ تمامًا. يصل نزيل جديد. كيف يستطيع الفندق استيعابه؟", "options": ["لا يستطيع، الفندق ممتلئ", "بنقل كل نزيل إلى الغرفة التالية، مما يُخلي الغرفة رقم 1", "ببناء طابق جديد", "برفض النزيل"], "correctIndex": 1, "explanation": "هذه هي مفارقة 'فندق هيلبرت' الشهيرة: في اللانهاية، نقل كل نزيل غرفة واحدة يفرغ مساحة." },
+      "de": { "text": "Ein Hotel mit unendlich vielen Gästen ist komplett voll. Ein neuer Gast kommt an. Wie kann das Hotel ihn unterbringen?", "options": ["Es kann nicht, das Hotel ist voll", "Jeden Gast ins nächste Zimmer verschieben, wodurch Zimmer 1 frei wird", "Eine neue Etage bauen", "Den Gast abweisen"], "correctIndex": 1, "explanation": "Dies ist das berühmte 'Hilberts Hotel'-Paradoxon: Bei Unendlichkeit schafft das Verschieben jedes Gastes um ein Zimmer Platz." },
+      "fr": { "text": "Un hôtel avec une infinité de clients est complet. Un nouveau client arrive. Comment l'hôtel peut-il l'accueillir ?", "options": ["Impossible, l'hôtel est complet", "Décaler chaque client vers la chambre suivante, libérant la chambre 1", "Construire un nouvel étage", "Refuser le client"], "correctIndex": 1, "explanation": "C'est le célèbre paradoxe de 'l'hôtel de Hilbert' : dans l'infini, décaler chaque client d'une chambre libère de la place." },
+      "es": { "text": "Un hotel con infinitos huéspedes está completamente lleno. Llega un nuevo huésped. ¿Cómo puede el hotel alojarlo?", "options": ["No puede, el hotel está lleno", "Mover a cada huésped a la habitación siguiente, liberando la 1", "Construir un nuevo piso", "Rechazar al huésped"], "correctIndex": 1, "explanation": "Esta es la famosa paradoja del 'Hotel de Hilbert': en el infinito, mover a cada huésped una habitación libera espacio." },
+      "zh": { "text": "一家拥有无限多客人的酒店已经客满。一位新客人到来，酒店如何安排他？", "options": ["无法安排，酒店已满", "让每位客人换到下一个房间，腾出1号房", "新建一层楼", "拒绝这位客人"], "correctIndex": 1, "explanation": "这就是著名的“希尔伯特旅馆”悖论：在无限的情况下，让每位客人移到下一个房间就能腾出空间。" },
+      "ru": { "text": "Отель с бесконечным числом гостей полностью заполнен. Приезжает новый гость. Как отель может его разместить?", "options": ["Никак, отель полон", "Переселить каждого гостя в следующий номер, освободив номер 1", "Построить новый этаж", "Отказать гостю"], "correctIndex": 1, "explanation": "Это знаменитый парадокс «Отель Гильберта»: в бесконечности перемещение каждого гостя на один номер освобождает место." }
+    }
+  },
+  {
+    "priority": 54,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kişi doğduğu andan itibaren her gün yaşlanır mı, yoksa sadece doğum gününde mi yaşlanır?", "options": ["Sadece doğum gününde", "Her gün, sürekli olarak", "Sadece geceleri", "Hiç yaşlanmaz"], "correctIndex": 1, "explanation": "Yaşlanma sürekli bir biyolojik süreçtir; doğum günleri sadece bunun sembolik olarak kutlandığı gündür." },
+      "en": { "text": "Does a person age every single day, or only on their birthday?", "options": ["Only on their birthday", "Every single day, continuously", "Only at night", "They never age"], "correctIndex": 1, "explanation": "Aging is a continuous biological process; a birthday is just the day this is symbolically celebrated." },
+      "ar": { "text": "هل يتقدم الشخص في السن كل يوم، أم فقط في عيد ميلاده؟", "options": ["فقط في عيد ميلاده", "كل يوم، باستمرار", "فقط ليلًا", "لا يتقدم في السن أبدًا"], "correctIndex": 1, "explanation": "التقدم في السن عملية بيولوجية مستمرة؛ عيد الميلاد هو فقط اليوم الذي يُحتفل فيه بذلك رمزيًا." },
+      "de": { "text": "Altert ein Mensch jeden einzelnen Tag, oder nur an seinem Geburtstag?", "options": ["Nur an seinem Geburtstag", "Jeden einzelnen Tag, kontinuierlich", "Nur nachts", "Er altert nie"], "correctIndex": 1, "explanation": "Altern ist ein kontinuierlicher biologischer Prozess; der Geburtstag ist nur der Tag, an dem dies symbolisch gefeiert wird." },
+      "fr": { "text": "Une personne vieillit-elle chaque jour, ou seulement le jour de son anniversaire ?", "options": ["Seulement à son anniversaire", "Chaque jour, continuellement", "Seulement la nuit", "Elle ne vieillit jamais"], "correctIndex": 1, "explanation": "Vieillir est un processus biologique continu ; l'anniversaire n'est que le jour où cela est célébré symboliquement." },
+      "es": { "text": "¿Una persona envejece cada día, o solo el día de su cumpleaños?", "options": ["Solo en su cumpleaños", "Cada día, continuamente", "Solo de noche", "Nunca envejece"], "correctIndex": 1, "explanation": "Envejecer es un proceso biológico continuo; el cumpleaños es solo el día en que se celebra simbólicamente." },
+      "zh": { "text": "一个人是每天都在变老，还是只有在生日那天才变老？", "options": ["只在生日那天", "每一天，持续不断地", "只在夜里", "从不变老"], "correctIndex": 1, "explanation": "衰老是一个持续的生物学过程；生日只是象征性庆祝这一过程的那一天。" },
+      "ru": { "text": "Человек стареет каждый день или только в день рождения?", "options": ["Только в день рождения", "Каждый день, непрерывно", "Только ночью", "Он никогда не стареет"], "correctIndex": 1, "explanation": "Старение — это непрерывный биологический процесс; день рождения — лишь день, когда это символически отмечается." }
+    }
+  },
+  {
+    "priority": 55,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir düzine kalemin fiyatı 12 TL ise, tek bir kalem kaç TL'dir?", "options": ["12 TL", "6 TL", "1 TL", "2 TL"], "correctIndex": 2, "explanation": "Bir düzine 12 tanedir, 12 TL'yi 12'ye bölerseniz her kalem 1 TL eder." },
+      "en": { "text": "If a dozen pencils cost $12, how much does one pencil cost?", "options": ["$12", "$6", "$1", "$2"], "correctIndex": 2, "explanation": "A dozen is 12 pencils, so dividing $12 by 12 gives $1 per pencil." },
+      "ar": { "text": "إذا كانت دزينة أقلام تكلف 12 دولارًا، فكم يكلف قلم واحد؟", "options": ["12 دولارًا", "6 دولارات", "دولار واحد", "دولاران"], "correctIndex": 2, "explanation": "الدزينة هي 12 قلمًا، فقسمة 12 دولارًا على 12 يعطي دولارًا واحدًا لكل قلم." },
+      "de": { "text": "Wenn ein Dutzend Bleistifte 12 € kosten, wie viel kostet ein einzelner Bleistift?", "options": ["12 €", "6 €", "1 €", "2 €"], "correctIndex": 2, "explanation": "Ein Dutzend sind 12 Bleistifte, also ergibt 12 € geteilt durch 12 einen Preis von 1 € pro Stift." },
+      "fr": { "text": "Si une douzaine de crayons coûte 12 €, combien coûte un seul crayon ?", "options": ["12 €", "6 €", "1 €", "2 €"], "correctIndex": 2, "explanation": "Une douzaine, c'est 12 crayons, donc diviser 12 € par 12 donne 1 € par crayon." },
+      "es": { "text": "Si una docena de lápices cuesta $12, ¿cuánto cuesta un solo lápiz?", "options": ["$12", "$6", "$1", "$2"], "correctIndex": 2, "explanation": "Una docena son 12 lápices, así que dividir $12 entre 12 da $1 por lápiz." },
+      "zh": { "text": "如果一打铅笔要12元，那么一支铅笔多少钱？", "options": ["12元", "6元", "1元", "2元"], "correctIndex": 2, "explanation": "一打是12支，12元除以12得出每支1元。" },
+      "ru": { "text": "Если дюжина карандашей стоит 12 рублей, сколько стоит один карандаш?", "options": ["12 рублей", "6 рублей", "1 рубль", "2 рубля"], "correctIndex": 2, "explanation": "Дюжина — это 12 карандашей, значит 12, делённые на 12, дают 1 рубль за карандаш." }
+    }
+  },
+  {
+    "priority": 56,
+    "type": "humor",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir şempanze aynaya bakıp kendini tanıyabilir mi?", "options": ["Hayır, hiçbir hayvan tanıyamaz", "Evet, bazı türler kendini tanıyabilir", "Sadece uyuyan şempanzeler", "Sadece aynada değil suda"], "correctIndex": 1, "explanation": "Şempanzeler, yunuslar ve fillerin de dahil olduğu birkaç tür, ayna testinde kendini tanıyabildiğini göstermiştir." },
+      "en": { "text": "Can a chimpanzee recognize itself when looking in a mirror?", "options": ["No, no animal can", "Yes, some species can recognize themselves", "Only sleeping chimps can", "Only in water, not mirrors"], "correctIndex": 1, "explanation": "Chimpanzees, along with dolphins and elephants, have shown self-recognition on mirror tests." },
+      "ar": { "text": "هل يستطيع الشمبانزي التعرف على نفسه عند النظر في المرآة؟", "options": ["لا، لا يستطيع أي حيوان ذلك", "نعم، بعض الأنواع تستطيع التعرف على نفسها", "فقط الشمبانزي النائم", "فقط في الماء وليس المرآة"], "correctIndex": 1, "explanation": "أظهرت الشمبانزي، إلى جانب الدلافين والفيلة، القدرة على التعرف على نفسها في اختبار المرآة." },
+      "de": { "text": "Kann ein Schimpanse sich selbst erkennen, wenn er in einen Spiegel schaut?", "options": ["Nein, kein Tier kann das", "Ja, manche Arten können sich selbst erkennen", "Nur schlafende Schimpansen", "Nur im Wasser, nicht im Spiegel"], "correctIndex": 1, "explanation": "Schimpansen zeigten zusammen mit Delfinen und Elefanten Selbsterkennung im Spiegeltest." },
+      "fr": { "text": "Un chimpanzé peut-il se reconnaître en se regardant dans un miroir ?", "options": ["Non, aucun animal ne le peut", "Oui, certaines espèces peuvent se reconnaître", "Seulement les chimpanzés endormis", "Seulement dans l'eau, pas dans un miroir"], "correctIndex": 1, "explanation": "Les chimpanzés, tout comme les dauphins et les éléphants, ont montré une reconnaissance de soi au test du miroir." },
+      "es": { "text": "¿Puede un chimpancé reconocerse al mirarse en un espejo?", "options": ["No, ningún animal puede", "Sí, algunas especies pueden reconocerse", "Solo los chimpancés dormidos", "Solo en el agua, no en espejos"], "correctIndex": 1, "explanation": "Los chimpancés, junto con delfines y elefantes, han mostrado autorreconocimiento en la prueba del espejo." },
+      "zh": { "text": "黑猩猩照镜子时能认出自己吗？", "options": ["不能，没有动物能做到", "能，有些物种可以认出自己", "只有睡着的黑猩猩能", "只在水中能，镜子里不行"], "correctIndex": 1, "explanation": "黑猩猩和海豚、大象一样，在镜像测试中表现出了自我认知能力。" },
+      "ru": { "text": "Может ли шимпанзе узнать себя, глядя в зеркало?", "options": ["Нет, ни одно животное не может", "Да, некоторые виды способны узнавать себя", "Только спящие шимпанзе", "Только в воде, а не в зеркале"], "correctIndex": 1, "explanation": "Шимпанзе, как и дельфины и слоны, продемонстрировали способность к самоузнаванию в зеркальном тесте." }
+    }
+  },
+  {
+    "priority": 57,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir çift ayakkabının sol teki 40 numaraysa, sağ teki kaç numaradır?", "options": ["41 numara", "39 numara", "40 numara", "Belirsiz"], "correctIndex": 2, "explanation": "Bir çift ayakkabının her iki teki de her zaman aynı numaradadır." },
+      "en": { "text": "If the left shoe of a pair is size 9, what size is the right shoe?", "options": ["Size 10", "Size 8", "Size 9", "Undetermined"], "correctIndex": 2, "explanation": "Both shoes in a pair are always the same size as each other." },
+      "ar": { "text": "إذا كان مقاس الحذاء الأيسر من زوج ما هو 40، فما مقاس الحذاء الأيمن؟", "options": ["مقاس 41", "مقاس 39", "مقاس 40", "غير محدد"], "correctIndex": 2, "explanation": "دائمًا ما يكون كلا الحذاءين في الزوج بنفس المقاس." },
+      "de": { "text": "Wenn der linke Schuh eines Paares Größe 40 hat, welche Größe hat dann der rechte Schuh?", "options": ["Größe 41", "Größe 39", "Größe 40", "Unbestimmt"], "correctIndex": 2, "explanation": "Beide Schuhe eines Paares haben immer dieselbe Größe." },
+      "fr": { "text": "Si la chaussure gauche d'une paire fait du 40, quelle pointure fait la chaussure droite ?", "options": ["Du 41", "Du 39", "Du 40", "Indéterminé"], "correctIndex": 2, "explanation": "Les deux chaussures d'une paire ont toujours la même pointure." },
+      "es": { "text": "Si el zapato izquierdo de un par es del 40, ¿de qué talla es el derecho?", "options": ["Del 41", "Del 39", "Del 40", "Indeterminado"], "correctIndex": 2, "explanation": "Ambos zapatos de un par siempre tienen la misma talla." },
+      "zh": { "text": "如果一双鞋的左脚是40码，那右脚是几码？", "options": ["41码", "39码", "40码", "无法确定"], "correctIndex": 2, "explanation": "一双鞋的两只鞋码永远是相同的。" },
+      "ru": { "text": "Если левый ботинок пары имеет размер 40, какой размер у правого ботинка?", "options": ["Размер 41", "Размер 39", "Размер 40", "Неопределённо"], "correctIndex": 2, "explanation": "Оба ботинка одной пары всегда имеют одинаковый размер." }
+    }
+  },
+  {
+    "priority": 58,
+    "type": "riddle",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir adam şehir dışına 5 km yürüyor, sonra durup güneye dönüyor, 3 km daha yürüyor. Sonra geri döner ve doğruca eve gider ama hiç dönmeden yürür. Bu nasıl mümkün olur?", "options": ["Uçakla gider", "Zaten dairesel bir yolda yürüyordu", "Rüyadaydı", "Geri geri yürüdü"], "correctIndex": 1, "explanation": "Yön değiştirmeden yürüyüp geri dönmek, ancak dairesel/eğri bir güzergahta mümkündür; bu bir mantık tuzağıdır ve birçok cevap kabul edilebilir." },
+      "en": { "text": "A man walks 5 km out of town, stops, turns south, walks 3 more km. Then he heads straight home without ever turning around. How is this possible?", "options": ["He takes a plane", "He was already walking a curved path", "He was dreaming", "He walked backward"], "correctIndex": 1, "explanation": "Walking home without ever turning is only possible on a curved or circular path — this is a logic trap with multiple valid answers." },
+      "ar": { "text": "يمشي رجل 5 كم خارج المدينة، يتوقف، يتجه جنوبًا، يمشي 3 كم إضافية. ثم يتجه مباشرة إلى المنزل دون أن يستدير أبدًا. كيف يكون ذلك ممكنًا؟", "options": ["يستقل طائرة", "كان يسير بالفعل في مسار منحنٍ", "كان يحلم", "مشى إلى الوراء"], "correctIndex": 1, "explanation": "المشي إلى المنزل دون أي استدارة لا يكون ممكنًا إلا في مسار منحنٍ أو دائري — هذا فخ منطقي له عدة إجابات صحيحة." },
+      "de": { "text": "Ein Mann geht 5 km aus der Stadt, hält an, dreht nach Süden, geht 3 km weiter. Dann geht er direkt nach Hause, ohne sich jemals umzudrehen. Wie ist das möglich?", "options": ["Er nimmt ein Flugzeug", "Er ging bereits auf einem gekrümmten Weg", "Er hat geträumt", "Er ging rückwärts"], "correctIndex": 1, "explanation": "Nach Hause zu gehen, ohne sich jemals umzudrehen, ist nur auf einem gekrümmten oder kreisförmigen Weg möglich — eine Logikfalle mit mehreren gültigen Antworten." },
+      "fr": { "text": "Un homme marche 5 km hors de la ville, s'arrête, se tourne vers le sud, marche encore 3 km. Puis il rentre directement chez lui sans jamais se retourner. Comment est-ce possible ?", "options": ["Il prend l'avion", "Il marchait déjà sur un chemin courbe", "Il rêvait", "Il a marché à reculons"], "correctIndex": 1, "explanation": "Rentrer chez soi sans jamais se retourner n'est possible que sur un chemin courbe ou circulaire — c'est un piège logique aux réponses multiples." },
+      "es": { "text": "Un hombre camina 5 km fuera de la ciudad, se detiene, gira al sur, camina 3 km más. Luego va directo a casa sin girarse nunca. ¿Cómo es posible?", "options": ["Toma un avión", "Ya estaba caminando por un camino curvo", "Estaba soñando", "Caminó hacia atrás"], "correctIndex": 1, "explanation": "Caminar a casa sin girarse nunca solo es posible en un camino curvo o circular; es una trampa lógica con varias respuestas válidas." },
+      "zh": { "text": "一个男人往城外走了5公里，停下来转向南方，又走了3公里，然后他一路直走回家，从未转身。这怎么可能？", "options": ["他坐飞机回家", "他本来走的就是弯曲的路径", "他在做梦", "他是倒着走的"], "correctIndex": 1, "explanation": "从不转身却能走回家，只有在弯曲或环形路径上才有可能——这是一个有多种合理答案的逻辑陷阱。" },
+      "ru": { "text": "Мужчина проходит 5 км за город, останавливается, поворачивает на юг, идёт ещё 3 км. Затем идёт прямо домой, ни разу не повернувшись. Как это возможно?", "options": ["Он летит на самолёте", "Он уже шёл по изогнутому пути", "Ему это снилось", "Он шёл задом наперёд"], "correctIndex": 1, "explanation": "Идти домой, ни разу не повернувшись, возможно только на изогнутом или круговом пути — это логическая ловушка с несколькими верными ответами." }
+    }
+  },
+  {
+    "priority": 59,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Karanlık bir odada siyah bir kedi varsa ama siz göremiyorsanız, kedi orada var mıdır?", "options": ["Hayır, göremediğimiz şeyler yoktur", "Evet, görmesek de kedi hâlâ oradadır", "Sadece gözlerinizi kapatırsanız yoktur", "Belirsizdir"], "correctIndex": 1, "explanation": "Bir şeyi görememek onun var olmadığı anlamına gelmez; kedi karanlıkta da fiziksel olarak oradadır." },
+      "en": { "text": "If there's a black cat in a dark room but you can't see it, is the cat still there?", "options": ["No, things we can't see don't exist", "Yes, the cat is still there even if unseen", "Only if you close your eyes", "It's undetermined"], "correctIndex": 1, "explanation": "Not being able to see something doesn't mean it doesn't exist; the cat is physically still there in the dark." },
+      "ar": { "text": "إذا كانت هناك قطة سوداء في غرفة مظلمة ولا يمكنك رؤيتها، فهل القطة موجودة فعلًا؟", "options": ["لا، الأشياء التي لا نراها غير موجودة", "نعم، القطة لا تزال موجودة حتى لو لم تُرَ", "فقط إذا أغلقت عينيك", "غير محدد"], "correctIndex": 1, "explanation": "عدم القدرة على رؤية شيء لا يعني أنه غير موجود؛ القطة موجودة فعليًا في الظلام." },
+      "de": { "text": "Wenn eine schwarze Katze in einem dunklen Raum ist, du sie aber nicht sehen kannst, ist die Katze dann noch da?", "options": ["Nein, Dinge, die wir nicht sehen, existieren nicht", "Ja, die Katze ist auch ungesehen noch da", "Nur wenn du die Augen schließt", "Es ist unbestimmt"], "correctIndex": 1, "explanation": "Etwas nicht sehen zu können, bedeutet nicht, dass es nicht existiert; die Katze ist physisch noch im Dunkeln." },
+      "fr": { "text": "S'il y a un chat noir dans une pièce sombre mais que vous ne pouvez pas le voir, le chat est-il toujours là ?", "options": ["Non, ce qu'on ne voit pas n'existe pas", "Oui, le chat est toujours là même invisible", "Seulement si vous fermez les yeux", "C'est indéterminé"], "correctIndex": 1, "explanation": "Ne pas pouvoir voir quelque chose ne signifie pas qu'il n'existe pas ; le chat est physiquement toujours là dans le noir." },
+      "es": { "text": "Si hay un gato negro en una habitación oscura pero no puedes verlo, ¿el gato sigue ahí?", "options": ["No, lo que no vemos no existe", "Sí, el gato sigue ahí aunque no se vea", "Solo si cierras los ojos", "Es indeterminado"], "correctIndex": 1, "explanation": "No poder ver algo no significa que no exista; el gato sigue físicamente ahí en la oscuridad." },
+      "zh": { "text": "如果黑暗的房间里有一只黑猫，但你看不见它，那猫还在那里吗？", "options": ["不在，我们看不见的东西就不存在", "在，即使看不见，猫仍然在那里", "只有你闭上眼睛时才不在", "无法确定"], "correctIndex": 1, "explanation": "看不见某样东西不代表它不存在，猫在黑暗中依然真实存在。" },
+      "ru": { "text": "Если в тёмной комнате есть чёрная кошка, но вы её не видите, находится ли кошка там на самом деле?", "options": ["Нет, то, что мы не видим, не существует", "Да, кошка всё равно там, даже невидимая", "Только если закрыть глаза", "Неопределённо"], "correctIndex": 1, "explanation": "Невозможность что-то увидеть не означает, что этого не существует; кошка физически находится там, в темноте." }
+    }
+  },
+  {
+    "priority": 60,
+    "type": "math",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "0.999... (sonsuza kadar tekrarlayan 9'lar) sayısı 1'e eşit midir?", "options": ["Hayır, her zaman biraz küçüktür", "Evet, matematiksel olarak tam olarak 1'e eşittir", "Sadece yuvarlarsak eşittir", "Sonsuz küçük bir fark vardır"], "correctIndex": 1, "explanation": "Matematiksel ispatla (örneğin x=0.999..., 10x=9.999..., 10x-x=9, x=1) 0.999... tam olarak 1'e eşittir." },
+      "en": { "text": "Is the number 0.999... (repeating 9s forever) equal to 1?", "options": ["No, it's always slightly less", "Yes, mathematically it's exactly equal to 1", "Only equal if you round it", "There's an infinitely small difference"], "correctIndex": 1, "explanation": "By mathematical proof (let x=0.999..., 10x=9.999..., 10x-x=9, so x=1), 0.999... is exactly equal to 1." },
+      "ar": { "text": "هل الرقم 0.999... (بتكرار 9 إلى ما لا نهاية) يساوي 1؟", "options": ["لا، إنه دائمًا أصغر قليلًا", "نعم، رياضيًا يساوي 1 تمامًا", "متساوٍ فقط عند التقريب", "هناك فرق صغير لا نهائي"], "correctIndex": 1, "explanation": "بالإثبات الرياضي (لتكن x=0.999...، 10x=9.999...، 10x-x=9، إذن x=1)، فإن 0.999... يساوي 1 تمامًا." },
+      "de": { "text": "Ist die Zahl 0,999... (unendlich sich wiederholende 9en) gleich 1?", "options": ["Nein, sie ist immer etwas kleiner", "Ja, mathematisch ist sie exakt gleich 1", "Nur beim Runden gleich", "Es gibt eine unendlich kleine Differenz"], "correctIndex": 1, "explanation": "Durch mathematischen Beweis (sei x=0,999..., 10x=9,999..., 10x-x=9, also x=1) ist 0,999... exakt gleich 1." },
+      "fr": { "text": "Le nombre 0,999... (des 9 se répétant à l'infini) est-il égal à 1 ?", "options": ["Non, il est toujours légèrement inférieur", "Oui, mathématiquement il est exactement égal à 1", "Égal seulement si on arrondit", "Il y a une différence infiniment petite"], "correctIndex": 1, "explanation": "Par preuve mathématique (soit x=0,999..., 10x=9,999..., 10x-x=9, donc x=1), 0,999... est exactement égal à 1." },
+      "es": { "text": "¿El número 0.999... (con 9 repetido infinitamente) es igual a 1?", "options": ["No, siempre es ligeramente menor", "Sí, matemáticamente es exactamente igual a 1", "Solo es igual si se redondea", "Hay una diferencia infinitamente pequeña"], "correctIndex": 1, "explanation": "Por demostración matemática (sea x=0.999..., 10x=9.999..., 10x-x=9, entonces x=1), 0.999... es exactamente igual a 1." },
+      "zh": { "text": "数字0.999...（9无限循环）等于1吗？", "options": ["不等于，它总是略小一点", "等于，数学上它完全等于1", "只有四舍五入后才相等", "存在一个无穷小的差值"], "correctIndex": 1, "explanation": "通过数学证明（设x=0.999...，10x=9.999...，10x-x=9，得x=1），0.999...确实完全等于1。" },
+      "ru": { "text": "Равно ли число 0,999... (девятки, повторяющиеся бесконечно) единице?", "options": ["Нет, оно всегда чуть меньше", "Да, математически оно точно равно 1", "Равно только при округлении", "Есть бесконечно малая разница"], "correctIndex": 1, "explanation": "По математическому доказательству (пусть x=0,999..., 10x=9,999..., 10x-x=9, значит x=1) число 0,999... точно равно 1." }
+    }
+  },
+  {
+    "priority": 61,
+    "type": "logic",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir saatin akrep ve yelkovanı tam olarak 12'de üst üste bindiğinde, saat kaçtır?", "options": ["Sadece 12:00", "12:00 ve ayrıca 00:00", "12:00'da bir kez", "Hiçbir zaman"], "correctIndex": 2, "explanation": "İki gösterge tam üst üste 12'de sadece saat 12:00'da (öğlen veya gece yarısı) çakışır, bu aynı andır." },
+      "en": { "text": "When both hands of a clock overlap exactly at the 12, what time is it?", "options": ["Only 12:00", "12:00 and also 00:00", "12:00, once", "Never"], "correctIndex": 2, "explanation": "Both hands only overlap exactly at the 12 mark at 12:00 (noon or midnight), which is the same moment." },
+      "ar": { "text": "عندما تتطابق عقربا الساعة تمامًا عند الرقم 12، كم الساعة؟", "options": ["فقط 12:00", "12:00 وأيضًا 00:00", "12:00، مرة واحدة", "أبدًا"], "correctIndex": 2, "explanation": "يتطابق العقربان تمامًا عند الرقم 12 فقط في تمام الساعة 12:00 (ظهرًا أو منتصف الليل)، وهي نفس اللحظة." },
+      "de": { "text": "Wenn sich beide Zeiger einer Uhr genau bei der 12 überlappen, wie spät ist es?", "options": ["Nur 12:00 Uhr", "12:00 Uhr und auch 00:00 Uhr", "12:00 Uhr, einmal", "Niemals"], "correctIndex": 2, "explanation": "Beide Zeiger überlappen sich genau bei der 12 nur um 12:00 Uhr (mittags oder mitternachts), was derselbe Moment ist." },
+      "fr": { "text": "Quand les deux aiguilles d'une horloge se chevauchent exactement à 12, quelle heure est-il ?", "options": ["Seulement 12h00", "12h00 et aussi 00h00", "12h00, une fois", "Jamais"], "correctIndex": 2, "explanation": "Les deux aiguilles ne se chevauchent exactement à 12 qu'à 12h00 (midi ou minuit), qui est le même instant." },
+      "es": { "text": "Cuando ambas manecillas de un reloj se superponen exactamente en el 12, ¿qué hora es?", "options": ["Solo las 12:00", "Las 12:00 y también las 00:00", "Las 12:00, una vez", "Nunca"], "correctIndex": 2, "explanation": "Ambas manecillas solo se superponen exactamente en el 12 a las 12:00 (mediodía o medianoche), que es el mismo instante." },
+      "zh": { "text": "当时钟的两根指针正好重叠在12点位置时，现在是几点？", "options": ["只有12点整", "12点整并且也是0点整", "12点整，仅一次", "永远不会重叠"], "correctIndex": 2, "explanation": "两根指针只在12点整（正午或午夜）重叠，这其实是同一个时刻。" },
+      "ru": { "text": "Когда обе стрелки часов совпадают точно на цифре 12, который час?", "options": ["Только 12:00", "12:00 и также 00:00", "12:00, один раз", "Никогда"], "correctIndex": 2, "explanation": "Обе стрелки совпадают точно на 12 только в 12:00 (полдень или полночь), что является одним и тем же моментом." }
+    }
+  },
+  {
+    "priority": 62,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "'Bu cümlede yedi kelime vardır' cümlesi doğru mudur?", "options": ["Evet, tam olarak doğru", "Hayır, yanlış sayıda kelime var", "Sadece Türkçede doğru", "Cevap yok"], "correctIndex": 1, "explanation": "'Bu cümlede yedi kelime vardır' cümlesini sayarsanız aslında 5 kelime içerir, dolayısıyla ifade yanlıştır." },
+      "en": { "text": "Is the sentence 'This sentence has seven words' true?", "options": ["Yes, it's exactly true", "No, it has a different number of words", "Only true in English", "There's no answer"], "correctIndex": 1, "explanation": "Counting the words in 'This sentence has seven words' gives 6 words, not 7, so the statement is false." },
+      "ar": { "text": "هل الجملة 'هذه الجملة تحتوي على سبع كلمات' صحيحة؟", "options": ["نعم، صحيحة تمامًا", "لا، عدد الكلمات مختلف", "صحيحة فقط بالعربية", "لا توجد إجابة"], "correctIndex": 1, "explanation": "بعد ما لديك من كلمات في الجملة نفسها ستجد أن العدد الفعلي يختلف عن سبعة، لذا العبارة خاطئة." },
+      "de": { "text": "Ist der Satz 'Dieser Satz hat sieben Wörter' wahr?", "options": ["Ja, das stimmt genau", "Nein, er hat eine andere Wortzahl", "Nur auf Deutsch wahr", "Es gibt keine Antwort"], "correctIndex": 1, "explanation": "Zählt man die Wörter in 'Dieser Satz hat sieben Wörter', ergeben sich 6, nicht 7, also ist die Aussage falsch." },
+      "fr": { "text": "La phrase 'Cette phrase compte sept mots' est-elle vraie ?", "options": ["Oui, c'est exact", "Non, elle a un nombre de mots différent", "Vraie seulement en français", "Il n'y a pas de réponse"], "correctIndex": 1, "explanation": "En comptant les mots de 'Cette phrase compte sept mots', on obtient un nombre différent de sept, donc c'est faux." },
+      "es": { "text": "¿Es verdadera la frase 'Esta frase tiene siete palabras'?", "options": ["Sí, es exactamente cierta", "No, tiene un número diferente de palabras", "Solo es cierta en español", "No hay respuesta"], "correctIndex": 1, "explanation": "Al contar las palabras de 'Esta frase tiene siete palabras' se obtiene un número distinto de siete, por lo que es falsa." },
+      "zh": { "text": "“这句话有七个字”这句话是真的吗？", "options": ["是的，完全正确", "不是，字数不对", "只在中文里正确", "没有答案"], "correctIndex": 1, "explanation": "数一下“这句话有七个字”实际上并不是七个字，所以这句话是假的。" },
+      "ru": { "text": "Верно ли утверждение 'В этом предложении семь слов'?", "options": ["Да, это точно верно", "Нет, слов другое количество", "Верно только по-русски", "Ответа нет"], "correctIndex": 1, "explanation": "Если посчитать слова во фразе 'В этом предложении семь слов', получится другое число, значит утверждение ложно." }
+    }
+  },
+  {
+    "priority": 63,
+    "type": "riddle",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Ne kadar çok yıkanırsa o kadar kirlenen şey nedir?", "options": ["Bir havlu", "Su", "Sabun", "El"], "correctIndex": 0, "explanation": "Havlu, kirli elleri veya bulaşıkları kuruturken her seferinde biraz daha kirlenir." },
+      "en": { "text": "The more it gets washed, the dirtier it becomes. What is it?", "options": ["A towel", "Water", "Soap", "A hand"], "correctIndex": 0, "explanation": "A towel gets a little dirtier each time it's used to dry off dirty hands or dishes." },
+      "ar": { "text": "كلما غُسل أكثر، أصبح أكثر اتساخًا. ما هو؟", "options": ["منشفة", "الماء", "الصابون", "اليد"], "correctIndex": 0, "explanation": "تصبح المنشفة أكثر اتساخًا قليلًا في كل مرة تُستخدم فيها لتجفيف الأيدي أو الأطباق المتسخة." },
+      "de": { "text": "Je öfter es gewaschen wird, desto schmutziger wird es. Was ist es?", "options": ["Ein Handtuch", "Wasser", "Seife", "Eine Hand"], "correctIndex": 0, "explanation": "Ein Handtuch wird bei jedem Gebrauch zum Trocknen schmutziger Hände oder Geschirr etwas schmutziger." },
+      "fr": { "text": "Plus on le lave, plus il devient sale. Qu'est-ce que c'est ?", "options": ["Une serviette", "L'eau", "Le savon", "Une main"], "correctIndex": 0, "explanation": "Une serviette devient un peu plus sale à chaque fois qu'on l'utilise pour sécher des mains ou de la vaisselle sale." },
+      "es": { "text": "Cuanto más se lava, más sucio se vuelve. ¿Qué es?", "options": ["Una toalla", "El agua", "El jabón", "Una mano"], "correctIndex": 0, "explanation": "Una toalla se ensucia un poco más cada vez que se usa para secar manos o platos sucios." },
+      "zh": { "text": "越洗越脏的东西是什么？", "options": ["毛巾", "水", "肥皂", "手"], "correctIndex": 0, "explanation": "毛巾每次用来擦干脏手或脏碗碟时，都会变得稍微脏一点。" },
+      "ru": { "text": "Чем чаще его моют, тем грязнее оно становится. Что это?", "options": ["Полотенце", "Вода", "Мыло", "Рука"], "correctIndex": 0, "explanation": "Полотенце становится немного грязнее каждый раз, когда им вытирают грязные руки или посуду." }
+    }
+  },
+  {
+    "priority": 64,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir bardağın yarısı boşsa, aynı zamanda yarısı dolu mudur?", "options": ["Hayır, ya doludur ya boştur", "Evet, aynı durumun iki farklı ifadesidir", "Sadece su içinse doludur", "Bardağın boyutuna bağlıdır"], "correctIndex": 1, "explanation": "'Yarısı boş' ve 'yarısı dolu' aynı fiziksel durumu tarif eden farklı bakış açılarıdır, ikisi de aynı anda doğrudur." },
+      "en": { "text": "If a glass is half empty, is it also half full at the same time?", "options": ["No, it's either one or the other", "Yes, they're two descriptions of the same state", "Only full if it's water", "Depends on the glass size"], "correctIndex": 1, "explanation": "'Half empty' and 'half full' describe the same physical state from different perspectives — both are true simultaneously." },
+      "ar": { "text": "إذا كان الكوب نصفه فارغًا، فهل هو أيضًا نصفه ممتلئ في الوقت نفسه؟", "options": ["لا، إما هذا أو ذاك", "نعم، إنهما وصفان لنفس الحالة", "ممتلئ فقط إذا كان ماءً", "يعتمد على حجم الكوب"], "correctIndex": 1, "explanation": "'نصف فارغ' و'نصف ممتلئ' يصفان نفس الحالة الفيزيائية من منظورين مختلفين، وكلاهما صحيح في آن واحد." },
+      "de": { "text": "Wenn ein Glas halb leer ist, ist es dann gleichzeitig auch halb voll?", "options": ["Nein, es ist entweder das eine oder das andere", "Ja, es sind zwei Beschreibungen desselben Zustands", "Nur voll, wenn es Wasser ist", "Kommt auf die Glasgröße an"], "correctIndex": 1, "explanation": "'Halb leer' und 'halb voll' beschreiben denselben physischen Zustand aus unterschiedlichen Perspektiven — beides stimmt gleichzeitig." },
+      "fr": { "text": "Si un verre est à moitié vide, est-il aussi à moitié plein en même temps ?", "options": ["Non, c'est l'un ou l'autre", "Oui, ce sont deux descriptions du même état", "Plein seulement si c'est de l'eau", "Cela dépend de la taille du verre"], "correctIndex": 1, "explanation": "'À moitié vide' et 'à moitié plein' décrivent le même état physique sous des angles différents — les deux sont vrais en même temps." },
+      "es": { "text": "Si un vaso está medio vacío, ¿también está medio lleno al mismo tiempo?", "options": ["No, es una cosa o la otra", "Sí, son dos descripciones del mismo estado", "Solo lleno si es agua", "Depende del tamaño del vaso"], "correctIndex": 1, "explanation": "'Medio vacío' y 'medio lleno' describen el mismo estado físico desde perspectivas distintas; ambas son ciertas a la vez." },
+      "zh": { "text": "如果一个杯子是半空的，那它同时也是半满的吗？", "options": ["不是，只能是其中一种", "是的，这是同一状态的两种描述", "只有装水时才算满", "取决于杯子大小"], "correctIndex": 1, "explanation": "“半空”和“半满”是从不同角度描述同一个物理状态，两者同时成立。" },
+      "ru": { "text": "Если стакан наполовину пуст, является ли он одновременно наполовину полным?", "options": ["Нет, это либо одно, либо другое", "Да, это два описания одного и того же состояния", "Полон только если это вода", "Зависит от размера стакана"], "correctIndex": 1, "explanation": "«Наполовину пуст» и «наполовину полон» описывают одно и то же физическое состояние с разных точек зрения — оба верны одновременно." }
+    }
+  },
+  {
+    "priority": 65,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir yıl kaç saniyedir? (Yaklaşık olarak)", "options": ["365 saniye", "8,760 saniye", "31,536,000 saniye", "3,153,600 saniye"], "correctIndex": 2, "explanation": "365 gün x 24 saat x 60 dakika x 60 saniye hesabıyla yaklaşık 31.536.000 saniye elde edilir." },
+      "en": { "text": "How many seconds are there in one year? (Approximately)", "options": ["365 seconds", "8,760 seconds", "31,536,000 seconds", "3,153,600 seconds"], "correctIndex": 2, "explanation": "365 days × 24 hours × 60 minutes × 60 seconds gives approximately 31,536,000 seconds." },
+      "ar": { "text": "كم عدد الثواني في سنة واحدة تقريبًا؟", "options": ["365 ثانية", "8,760 ثانية", "31,536,000 ثانية", "3,153,600 ثانية"], "correctIndex": 2, "explanation": "365 يومًا × 24 ساعة × 60 دقيقة × 60 ثانية يعطي حوالي 31,536,000 ثانية." },
+      "de": { "text": "Wie viele Sekunden hat ein Jahr ungefähr?", "options": ["365 Sekunden", "8.760 Sekunden", "31.536.000 Sekunden", "3.153.600 Sekunden"], "correctIndex": 2, "explanation": "365 Tage × 24 Stunden × 60 Minuten × 60 Sekunden ergibt ungefähr 31.536.000 Sekunden." },
+      "fr": { "text": "Combien de secondes y a-t-il environ dans une année ?", "options": ["365 secondes", "8 760 secondes", "31 536 000 secondes", "3 153 600 secondes"], "correctIndex": 2, "explanation": "365 jours × 24 heures × 60 minutes × 60 secondes donne environ 31 536 000 secondes." },
+      "es": { "text": "¿Cuántos segundos hay aproximadamente en un año?", "options": ["365 segundos", "8,760 segundos", "31,536,000 segundos", "3,153,600 segundos"], "correctIndex": 2, "explanation": "365 días × 24 horas × 60 minutos × 60 segundos da aproximadamente 31,536,000 segundos." },
+      "zh": { "text": "一年大约有多少秒？", "options": ["365秒", "8,760秒", "31,536,000秒", "3,153,600秒"], "correctIndex": 2, "explanation": "365天×24小时×60分钟×60秒，得出大约31,536,000秒。" },
+      "ru": { "text": "Сколько секунд примерно в одном году?", "options": ["365 секунд", "8 760 секунд", "31 536 000 секунд", "3 153 600 секунд"], "correctIndex": 2, "explanation": "365 дней × 24 часа × 60 минут × 60 секунд даёт примерно 31 536 000 секунд." }
+    }
+  },
+  {
+    "priority": 66,
+    "type": "illusion",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Aynı büyüklükteki iki daire, biri büyük dairelerle biri küçük dairelerle çevrilirse, hangisi daha büyük görünür?", "options": ["Büyük dairelerle çevrili olan", "Küçük dairelerle çevrili olan", "İkisi de aynı görünür", "Renklerine göre değişir"], "correctIndex": 1, "explanation": "Bu Ebbinghaus illüzyonudur: küçük dairelerle çevrili olan merkez daire, aslında aynı boyutta olmasına rağmen daha büyük görünür." },
+      "en": { "text": "Two circles of identical size, one surrounded by large circles and the other by small circles — which one looks bigger?", "options": ["The one surrounded by large circles", "The one surrounded by small circles", "Both look the same", "Depends on color"], "correctIndex": 1, "explanation": "This is the Ebbinghaus illusion: the circle surrounded by small circles appears bigger, even though both center circles are exactly the same size." },
+      "ar": { "text": "دائرتان بنفس الحجم، إحداهما محاطة بدوائر كبيرة والأخرى بدوائر صغيرة، أيهما تبدو أكبر؟", "options": ["المحاطة بدوائر كبيرة", "المحاطة بدوائر صغيرة", "تبدوان متساويتين", "يعتمد على اللون"], "correctIndex": 1, "explanation": "هذا وهم إبينغهاوس: الدائرة المحاطة بدوائر صغيرة تبدو أكبر رغم أن كلتا الدائرتين المركزيتين بنفس الحجم تمامًا." },
+      "de": { "text": "Zwei gleich große Kreise, einer umgeben von großen Kreisen, der andere von kleinen — welcher wirkt größer?", "options": ["Der von großen Kreisen umgebene", "Der von kleinen Kreisen umgebene", "Beide sehen gleich aus", "Kommt auf die Farbe an"], "correctIndex": 1, "explanation": "Dies ist die Ebbinghaus-Täuschung: Der von kleinen Kreisen umgebene Kreis wirkt größer, obwohl beide Mittelkreise exakt gleich groß sind." },
+      "fr": { "text": "Deux cercles de taille identique, l'un entouré de grands cercles et l'autre de petits — lequel paraît plus grand ?", "options": ["Celui entouré de grands cercles", "Celui entouré de petits cercles", "Les deux paraissent identiques", "Ça dépend de la couleur"], "correctIndex": 1, "explanation": "C'est l'illusion d'Ebbinghaus : le cercle entouré de petits cercles paraît plus grand, bien que les deux cercles centraux soient exactement de la même taille." },
+      "es": { "text": "Dos círculos de tamaño idéntico, uno rodeado de círculos grandes y otro de círculos pequeños, ¿cuál parece más grande?", "options": ["El rodeado de círculos grandes", "El rodeado de círculos pequeños", "Ambos parecen iguales", "Depende del color"], "correctIndex": 1, "explanation": "Esta es la ilusión de Ebbinghaus: el círculo rodeado de círculos pequeños parece más grande, aunque ambos círculos centrales tienen exactamente el mismo tamaño." },
+      "zh": { "text": "两个大小完全相同的圆，一个被大圆包围，另一个被小圆包围，哪个看起来更大？", "options": ["被大圆包围的那个", "被小圆包围的那个", "两个看起来一样大", "取决于颜色"], "correctIndex": 1, "explanation": "这就是艾宾浩斯错觉：被小圆包围的圆看起来更大，尽管两个中心圆的实际大小完全相同。" },
+      "ru": { "text": "Два круга одинакового размера, один окружён большими кругами, другой — маленькими. Какой кажется больше?", "options": ["Окружённый большими кругами", "Окружённый маленькими кругами", "Оба выглядят одинаково", "Зависит от цвета"], "correctIndex": 1, "explanation": "Это иллюзия Эббингауза: круг, окружённый маленькими кругами, кажется больше, хотя оба центральных круга абсолютно одинакового размера." }
+    }
+  },
+  {
+    "priority": 67,
+    "type": "logic",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir grupta herkes en az bir yalan söylüyor ve herkes 'Ben yalancı değilim' diyorsa, bu ifade doğru olabilir mi?", "options": ["Evet, hepsi doğru söylüyor olabilir", "Hayır, çünkü hepsi yalancı olduğu için bu ifade de yalan olur", "Sadece bir kişi doğru söylüyordur", "Belirsizdir"], "correctIndex": 1, "explanation": "Eğer herkes gerçekten yalancıysa, 'Ben yalancı değilim' demeleri de bir yalan olur, dolayısıyla ifade tutarlıdır ama doğru değildir." },
+      "en": { "text": "If everyone in a group is a liar and each one says 'I am not a liar,' can that statement be true?", "options": ["Yes, they could all be telling the truth", "No, since they're all liars, that statement is also a lie", "Only one person is telling the truth", "It's undetermined"], "correctIndex": 1, "explanation": "If everyone is genuinely a liar, saying 'I am not a liar' is itself a lie, so the statement is consistent but false." },
+      "ar": { "text": "إذا كان كل فرد في مجموعة كاذبًا وقال كل منهم 'أنا لست كاذبًا'، فهل يمكن أن تكون هذه العبارة صحيحة؟", "options": ["نعم، يمكن أن يكونوا جميعًا صادقين", "لا، لأنهم كلهم كاذبون فهذه العبارة أيضًا كذبة", "شخص واحد فقط يقول الحقيقة", "غير محدد"], "correctIndex": 1, "explanation": "إذا كان الجميع كاذبين حقًا، فإن قول 'أنا لست كاذبًا' يكون كذبة أيضًا، لذا العبارة متسقة لكنها خاطئة." },
+      "de": { "text": "Wenn jeder in einer Gruppe ein Lügner ist und jeder sagt 'Ich bin kein Lügner', kann diese Aussage wahr sein?", "options": ["Ja, sie könnten alle die Wahrheit sagen", "Nein, da sie alle Lügner sind, ist diese Aussage ebenfalls eine Lüge", "Nur eine Person sagt die Wahrheit", "Es ist unbestimmt"], "correctIndex": 1, "explanation": "Wenn wirklich alle Lügner sind, ist 'Ich bin kein Lügner' auch eine Lüge, also ist die Aussage konsistent, aber falsch." },
+      "fr": { "text": "Si tout le monde dans un groupe est menteur et que chacun dit 'Je ne suis pas menteur', cette affirmation peut-elle être vraie ?", "options": ["Oui, ils pourraient tous dire la vérité", "Non, puisqu'ils sont tous menteurs, cette affirmation est aussi un mensonge", "Une seule personne dit la vérité", "C'est indéterminé"], "correctIndex": 1, "explanation": "Si tout le monde ment réellement, dire 'Je ne suis pas menteur' est aussi un mensonge, donc l'affirmation est cohérente mais fausse." },
+      "es": { "text": "Si todos en un grupo son mentirosos y cada uno dice 'No soy mentiroso', ¿puede esa afirmación ser verdadera?", "options": ["Sí, todos podrían estar diciendo la verdad", "No, ya que todos son mentirosos, esa afirmación también es mentira", "Solo una persona dice la verdad", "Es indeterminado"], "correctIndex": 1, "explanation": "Si todos son realmente mentirosos, decir 'No soy mentiroso' también es mentira, así que la afirmación es coherente pero falsa." },
+      "zh": { "text": "如果一个群体中每个人都是说谎者，每个人都说“我不是说谎者”，这句话可能是真的吗？", "options": ["可能，他们可能都在说真话", "不可能，因为他们都是说谎者，这句话本身也是谎言", "只有一个人在说真话", "无法确定"], "correctIndex": 1, "explanation": "如果每个人真的都是说谎者，那么说“我不是说谎者”本身也是谎言，所以这句话是自洽的但是虚假的。" },
+      "ru": { "text": "Если все в группе лжецы и каждый говорит «Я не лжец», может ли это утверждение быть истинным?", "options": ["Да, все они могли говорить правду", "Нет, поскольку все они лжецы, это утверждение тоже ложь", "Только один человек говорит правду", "Неопределённо"], "correctIndex": 1, "explanation": "Если все действительно лжецы, то сказать «Я не лжец» — тоже ложь, значит утверждение непротиворечиво, но ложно." }
+    }
+  },
+  {
+    "priority": 68,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Gökkuşağının rengi kaç tanedir?", "options": ["5", "6", "7", "9"], "correctIndex": 2, "explanation": "Geleneksel olarak gökkuşağı kırmızı, turuncu, sarı, yeşil, mavi, lacivert ve mor olmak üzere 7 renkten oluşur." },
+      "en": { "text": "How many colors does a rainbow traditionally have?", "options": ["5", "6", "7", "9"], "correctIndex": 2, "explanation": "Traditionally a rainbow has 7 colors: red, orange, yellow, green, blue, indigo, and violet." },
+      "ar": { "text": "كم عدد ألوان قوس قزح تقليديًا؟", "options": ["5", "6", "7", "9"], "correctIndex": 2, "explanation": "يتكون قوس قزح تقليديًا من 7 ألوان: الأحمر والبرتقالي والأصفر والأخضر والأزرق والنيلي والبنفسجي." },
+      "de": { "text": "Wie viele Farben hat ein Regenbogen traditionell?", "options": ["5", "6", "7", "9"], "correctIndex": 2, "explanation": "Traditionell hat ein Regenbogen 7 Farben: Rot, Orange, Gelb, Grün, Blau, Indigo und Violett." },
+      "fr": { "text": "Combien de couleurs un arc-en-ciel a-t-il traditionnellement ?", "options": ["5", "6", "7", "9"], "correctIndex": 2, "explanation": "Traditionnellement, un arc-en-ciel compte 7 couleurs : rouge, orange, jaune, vert, bleu, indigo et violet." },
+      "es": { "text": "¿Cuántos colores tiene tradicionalmente un arcoíris?", "options": ["5", "6", "7", "9"], "correctIndex": 2, "explanation": "Tradicionalmente un arcoíris tiene 7 colores: rojo, naranja, amarillo, verde, azul, índigo y violeta." },
+      "zh": { "text": "彩虹传统上有几种颜色？", "options": ["5种", "6种", "7种", "9种"], "correctIndex": 2, "explanation": "传统上彩虹有7种颜色：红、橙、黄、绿、蓝、靛、紫。" },
+      "ru": { "text": "Сколько цветов традиционно у радуги?", "options": ["5", "6", "7", "9"], "correctIndex": 2, "explanation": "Традиционно у радуги 7 цветов: красный, оранжевый, жёлтый, зелёный, голубой, синий и фиолетовый." }
+    }
+  },
+  {
+    "priority": 69,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir odada 5 kişi var, her biri diğer herkesle bir kez el sıkışıyor. Toplam kaç el sıkışma olur?", "options": ["5", "10", "20", "25"], "correctIndex": 1, "explanation": "5 kişi arasındaki tüm ikili kombinasyonlar (5x4)/2 = 10 el sıkışma verir." },
+      "en": { "text": "There are 5 people in a room, and each shakes hands with every other person exactly once. How many handshakes happen in total?", "options": ["5", "10", "20", "25"], "correctIndex": 1, "explanation": "All pairwise combinations among 5 people give (5×4)/2 = 10 handshakes." },
+      "ar": { "text": "يوجد 5 أشخاص في غرفة، ويصافح كل منهم الآخرين مرة واحدة فقط. كم عدد المصافحات الإجمالي؟", "options": ["5", "10", "20", "25"], "correctIndex": 1, "explanation": "جميع التوليفات الثنائية بين 5 أشخاص تعطي (5×4)/2 = 10 مصافحات." },
+      "de": { "text": "In einem Raum sind 5 Personen, und jede schüttelt jeder anderen genau einmal die Hand. Wie viele Händeschütteln gibt es insgesamt?", "options": ["5", "10", "20", "25"], "correctIndex": 1, "explanation": "Alle paarweisen Kombinationen unter 5 Personen ergeben (5×4)/2 = 10 Händeschütteln." },
+      "fr": { "text": "Il y a 5 personnes dans une pièce, et chacune serre la main de chaque autre exactement une fois. Combien de poignées de main au total ?", "options": ["5", "10", "20", "25"], "correctIndex": 1, "explanation": "Toutes les combinaisons par paires parmi 5 personnes donnent (5×4)/2 = 10 poignées de main." },
+      "es": { "text": "Hay 5 personas en una sala, y cada una da la mano a las demás exactamente una vez. ¿Cuántos apretones de manos hay en total?", "options": ["5", "10", "20", "25"], "correctIndex": 1, "explanation": "Todas las combinaciones por pares entre 5 personas dan (5×4)/2 = 10 apretones de manos." },
+      "zh": { "text": "房间里有5个人，每个人都与其他人握手一次。总共握手多少次？", "options": ["5次", "10次", "20次", "25次"], "correctIndex": 1, "explanation": "5个人之间所有的两两组合是(5×4)/2=10次握手。" },
+      "ru": { "text": "В комнате 5 человек, и каждый пожимает руку каждому другому ровно один раз. Сколько всего рукопожатий?", "options": ["5", "10", "20", "25"], "correctIndex": 1, "explanation": "Все парные комбинации среди 5 человек дают (5×4)/2 = 10 рукопожатий." }
+    }
+  },
+  {
+    "priority": 70,
+    "type": "attention",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Aşağıdaki gruptan hangisi diğerlerinden farklıdır: Elma, Muz, Havuç, Portakal?", "options": ["Elma", "Muz", "Havuç", "Portakal"], "correctIndex": 2, "explanation": "Diğerleri meyve iken havuç bir sebzedir." },
+      "en": { "text": "Which of these is different from the others: Apple, Banana, Carrot, Orange?", "options": ["Apple", "Banana", "Carrot", "Orange"], "correctIndex": 2, "explanation": "The others are all fruits, while a carrot is a vegetable." },
+      "ar": { "text": "أي من هذه العناصر مختلف عن البقية: تفاح، موز، جزر، برتقال؟", "options": ["تفاح", "موز", "جزر", "برتقال"], "correctIndex": 2, "explanation": "البقية جميعها فواكه، بينما الجزر خضار." },
+      "de": { "text": "Welches davon unterscheidet sich von den anderen: Apfel, Banane, Karotte, Orange?", "options": ["Apfel", "Banane", "Karotte", "Orange"], "correctIndex": 2, "explanation": "Die anderen sind alle Obst, während eine Karotte Gemüse ist." },
+      "fr": { "text": "Lequel de ces éléments est différent des autres : Pomme, Banane, Carotte, Orange ?", "options": ["Pomme", "Banane", "Carotte", "Orange"], "correctIndex": 2, "explanation": "Les autres sont tous des fruits, alors qu'une carotte est un légume." },
+      "es": { "text": "¿Cuál de estos es diferente a los demás: Manzana, Plátano, Zanahoria, Naranja?", "options": ["Manzana", "Plátano", "Zanahoria", "Naranja"], "correctIndex": 2, "explanation": "Los demás son todos frutas, mientras que la zanahoria es una verdura." },
+      "zh": { "text": "以下哪个和其他不同：苹果、香蕉、胡萝卜、橙子？", "options": ["苹果", "香蕉", "胡萝卜", "橙子"], "correctIndex": 2, "explanation": "其他都是水果，而胡萝卜是蔬菜。" },
+      "ru": { "text": "Что из этого отличается от остальных: Яблоко, Банан, Морковь, Апельсин?", "options": ["Яблоко", "Банан", "Морковь", "Апельсин"], "correctIndex": 2, "explanation": "Остальные — фрукты, а морковь — овощ." }
+    }
+  },
+  {
+    "priority": 71,
+    "type": "humor",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir muz kabuğuna basarsanız gerçekten kayar mısınız?", "options": ["Hayır, sadece filmlerde olur", "Evet, bazı bilimsel çalışmalar gerçek olduğunu gösterdi", "Sadece sarı muzlarla olur", "Sadece yağmurda olur"], "correctIndex": 1, "explanation": "Japon bilim insanları bu klasik komedi klişesini test etti ve muz kabuğunun gerçekten sürtünmeyi ciddi şekilde azalttığını buldu." },
+      "en": { "text": "If you step on a banana peel, do you actually slip?", "options": ["No, that only happens in movies", "Yes, some real scientific studies confirmed it", "Only with yellow bananas", "Only when it's raining"], "correctIndex": 1, "explanation": "Japanese scientists actually tested this classic comedy trope and found banana peels really do significantly reduce friction." },
+      "ar": { "text": "إذا وطأت على قشرة موز، هل تنزلق فعلًا؟", "options": ["لا، هذا يحدث فقط في الأفلام", "نعم، أكدت بعض الدراسات العلمية الحقيقية ذلك", "فقط مع الموز الأصفر", "فقط عندما تمطر"], "correctIndex": 1, "explanation": "اختبر علماء يابانيون هذه الفكرة الكوميدية الكلاسيكية ووجدوا أن قشور الموز تقلل الاحتكاك بشكل كبير حقًا." },
+      "de": { "text": "Rutschst du wirklich aus, wenn du auf eine Bananenschale trittst?", "options": ["Nein, das passiert nur in Filmen", "Ja, echte wissenschaftliche Studien haben es bestätigt", "Nur bei gelben Bananen", "Nur wenn es regnet"], "correctIndex": 1, "explanation": "Japanische Wissenschaftler testeten dieses klassische Komödien-Klischee tatsächlich und stellten fest, dass Bananenschalen die Reibung wirklich deutlich verringern." },
+      "fr": { "text": "Si vous marchez sur une peau de banane, glissez-vous vraiment ?", "options": ["Non, ça n'arrive que dans les films", "Oui, de vraies études scientifiques l'ont confirmé", "Seulement avec des bananes jaunes", "Seulement quand il pleut"], "correctIndex": 1, "explanation": "Des scientifiques japonais ont réellement testé ce cliché comique classique et ont découvert que les peaux de banane réduisent vraiment significativement la friction." },
+      "es": { "text": "Si pisas una cáscara de plátano, ¿realmente te resbalas?", "options": ["No, eso solo pasa en las películas", "Sí, algunos estudios científicos reales lo confirmaron", "Solo con plátanos amarillos", "Solo cuando llueve"], "correctIndex": 1, "explanation": "Científicos japoneses probaron este clásico cliché cómico y descubrieron que las cáscaras de plátano realmente reducen mucho la fricción." },
+      "zh": { "text": "如果踩到香蕉皮，真的会滑倒吗？", "options": ["不会，那只在电影里发生", "会，一些真实的科学研究证实了这一点", "只有黄色香蕉才会", "只有下雨天才会"], "correctIndex": 1, "explanation": "日本科学家真的测试过这个经典的喜剧桥段，发现香蕉皮确实能显著降低摩擦力。" },
+      "ru": { "text": "Если наступить на банановую кожуру, действительно ли поскользнёшься?", "options": ["Нет, это бывает только в фильмах", "Да, некоторые реальные научные исследования это подтвердили", "Только с жёлтыми бананами", "Только когда идёт дождь"], "correctIndex": 1, "explanation": "Японские учёные действительно проверили этот классический комедийный штамп и обнаружили, что банановая кожура реально значительно снижает трение." }
+    }
+  },
+  {
+    "priority": 72,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir insanın gölgesi hiç kendisinden daha ağır olabilir mi?", "options": ["Evet, öğlen vakti olur", "Hayır, gölgenin ağırlığı yoktur", "Sadece gece olur", "Sadece suda olur"], "correctIndex": 1, "explanation": "Gölge, ışığın engellenmesiyle oluşan bir görüntüdür, fiziksel bir kütlesi ve dolayısıyla ağırlığı yoktur." },
+      "en": { "text": "Can a person's shadow ever weigh more than the person?", "options": ["Yes, at noon it can", "No, a shadow has no weight at all", "Only at night", "Only in water"], "correctIndex": 1, "explanation": "A shadow is just an image formed by blocked light; it has no physical mass and therefore no weight." },
+      "ar": { "text": "هل يمكن أن يزن ظل الشخص أكثر من الشخص نفسه؟", "options": ["نعم، في الظهيرة يمكن ذلك", "لا، الظل ليس له وزن على الإطلاق", "فقط ليلًا", "فقط في الماء"], "correctIndex": 1, "explanation": "الظل مجرد صورة تتشكل بحجب الضوء؛ ليس له كتلة فيزيائية وبالتالي لا يمتلك وزنًا." },
+      "de": { "text": "Kann der Schatten einer Person jemals mehr wiegen als die Person selbst?", "options": ["Ja, mittags kann das passieren", "Nein, ein Schatten hat überhaupt kein Gewicht", "Nur nachts", "Nur im Wasser"], "correctIndex": 1, "explanation": "Ein Schatten ist nur ein durch blockiertes Licht entstandenes Bild; er hat keine physische Masse und somit kein Gewicht." },
+      "fr": { "text": "L'ombre d'une personne peut-elle un jour peser plus que la personne elle-même ?", "options": ["Oui, à midi c'est possible", "Non, une ombre n'a aucun poids", "Seulement la nuit", "Seulement dans l'eau"], "correctIndex": 1, "explanation": "Une ombre n'est qu'une image formée par la lumière bloquée ; elle n'a pas de masse physique et donc pas de poids." },
+      "es": { "text": "¿Puede la sombra de una persona pesar alguna vez más que la persona misma?", "options": ["Sí, al mediodía puede pasar", "No, una sombra no tiene ningún peso", "Solo de noche", "Solo en el agua"], "correctIndex": 1, "explanation": "Una sombra es solo una imagen formada por la luz bloqueada; no tiene masa física y, por lo tanto, no tiene peso." },
+      "zh": { "text": "一个人的影子会比这个人本身更重吗？", "options": ["会，正午时可能会", "不会，影子根本没有重量", "只在夜里会", "只在水中会"], "correctIndex": 1, "explanation": "影子只是光被遮挡形成的图像，没有物理质量，因此没有重量。" },
+      "ru": { "text": "Может ли тень человека когда-нибудь весить больше самого человека?", "options": ["Да, в полдень это возможно", "Нет, у тени вообще нет веса", "Только ночью", "Только в воде"], "correctIndex": 1, "explanation": "Тень — это лишь изображение, образованное заблокированным светом; у неё нет физической массы и, следовательно, веса." }
+    }
+  },
+  {
+    "priority": 73,
+    "type": "math",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir hafta içinde kaç 'Cuma' vardır?", "options": ["1", "2", "7", "4"], "correctIndex": 0, "explanation": "Bir hafta 7 farklı günden oluşur ve bunlardan sadece bir tanesi Cuma'dır." },
+      "en": { "text": "How many 'Fridays' are there in a single week?", "options": ["1", "2", "7", "4"], "correctIndex": 0, "explanation": "A week consists of 7 different days, and only one of them is Friday." },
+      "ar": { "text": "كم عدد 'أيام الجمعة' في أسبوع واحد؟", "options": ["1", "2", "7", "4"], "correctIndex": 0, "explanation": "يتكون الأسبوع من 7 أيام مختلفة، وواحد منها فقط هو يوم الجمعة." },
+      "de": { "text": "Wie viele 'Freitage' gibt es in einer einzigen Woche?", "options": ["1", "2", "7", "4"], "correctIndex": 0, "explanation": "Eine Woche besteht aus 7 verschiedenen Tagen, und nur einer davon ist Freitag." },
+      "fr": { "text": "Combien de 'vendredis' y a-t-il dans une seule semaine ?", "options": ["1", "2", "7", "4"], "correctIndex": 0, "explanation": "Une semaine compte 7 jours différents, et un seul d'entre eux est un vendredi." },
+      "es": { "text": "¿Cuántos 'viernes' hay en una sola semana?", "options": ["1", "2", "7", "4"], "correctIndex": 0, "explanation": "Una semana consta de 7 días diferentes, y solo uno de ellos es viernes." },
+      "zh": { "text": "一周中有几个“星期五”？", "options": ["1个", "2个", "7个", "4个"], "correctIndex": 0, "explanation": "一周由7个不同的日子组成，其中只有一个是星期五。" },
+      "ru": { "text": "Сколько 'пятниц' в одной неделе?", "options": ["1", "2", "7", "4"], "correctIndex": 0, "explanation": "Неделя состоит из 7 разных дней, и только один из них — пятница." }
+    }
+  },
+  {
+    "priority": 74,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir domates meyve midir sebze midir?", "options": ["Sadece sebzedir", "Botanik olarak meyve, mutfakta sebze olarak kullanılır", "Sadece meyvedir", "Ne meyve ne sebzedir"], "correctIndex": 1, "explanation": "Domates botanik olarak bir meyvedir (çünkü tohum içerir) ama tadı ve kullanımı nedeniyle mutfakta sebze olarak kabul edilir." },
+      "en": { "text": "Is a tomato a fruit or a vegetable?", "options": ["Only a vegetable", "Botanically a fruit, but culinarily used as a vegetable", "Only a fruit", "Neither fruit nor vegetable"], "correctIndex": 1, "explanation": "A tomato is botanically a fruit (since it contains seeds), but it's treated as a vegetable in cooking due to its taste and use." },
+      "ar": { "text": "هل الطماطم فاكهة أم خضار؟", "options": ["خضار فقط", "فاكهة نباتيًا، لكنها تُستخدم كخضار في الطبخ", "فاكهة فقط", "لا فاكهة ولا خضار"], "correctIndex": 1, "explanation": "الطماطم فاكهة من الناحية النباتية (لأنها تحتوي على بذور)، لكنها تُعامل كخضار في الطهي بسبب طعمها واستخدامها." },
+      "de": { "text": "Ist eine Tomate ein Obst oder ein Gemüse?", "options": ["Nur Gemüse", "Botanisch ein Obst, aber kulinarisch als Gemüse verwendet", "Nur Obst", "Weder Obst noch Gemüse"], "correctIndex": 1, "explanation": "Eine Tomate ist botanisch ein Obst (da sie Samen enthält), wird aber wegen Geschmack und Verwendung kulinarisch als Gemüse behandelt." },
+      "fr": { "text": "Une tomate est-elle un fruit ou un légume ?", "options": ["Seulement un légume", "Botaniquement un fruit, mais utilisée comme légume en cuisine", "Seulement un fruit", "Ni fruit ni légume"], "correctIndex": 1, "explanation": "Une tomate est botaniquement un fruit (car elle contient des graines), mais elle est traitée comme un légume en cuisine en raison de son goût et de son usage." },
+      "es": { "text": "¿Es el tomate una fruta o una verdura?", "options": ["Solo verdura", "Botánicamente es fruta, pero se usa como verdura en la cocina", "Solo fruta", "Ni fruta ni verdura"], "correctIndex": 1, "explanation": "El tomate es botánicamente una fruta (porque contiene semillas), pero se trata como verdura en la cocina por su sabor y uso." },
+      "zh": { "text": "西红柿是水果还是蔬菜？", "options": ["只是蔬菜", "植物学上是水果，但烹饪中作为蔬菜使用", "只是水果", "既不是水果也不是蔬菜"], "correctIndex": 1, "explanation": "西红柿在植物学上是水果（因为含有种子），但因其味道和用途，在烹饪中被当作蔬菜使用。" },
+      "ru": { "text": "Помидор — это фрукт или овощ?", "options": ["Только овощ", "Ботанически фрукт, но кулинарно используется как овощ", "Только фрукт", "Ни фрукт, ни овощ"], "correctIndex": 1, "explanation": "Помидор ботанически является фруктом (так как содержит семена), но кулинарно используется как овощ из-за вкуса и применения." }
+    }
+  },
+  {
+    "priority": 75,
+    "type": "riddle",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Beni tutarsanız kaybolurum. Nedir bu?", "options": ["Bir sır", "Nefesinizi tutmak", "Buz", "Rüzgar"], "correctIndex": 1, "explanation": "Nefesinizi tuttuğunuzda, aslında havayı içinizde tutarsınız ama uzun süre tutamazsınız, sonunda 'kaybolur' yani bırakmak zorunda kalırsınız." },
+      "en": { "text": "If you hold onto me, I disappear. What am I?", "options": ["A secret", "Your breath", "Ice", "The wind"], "correctIndex": 1, "explanation": "If you try to hold your breath, you're holding air inside you, but eventually you must release it — it 'disappears' the moment you let go." },
+      "ar": { "text": "إذا أمسكتني، أختفي. ما أنا؟", "options": ["سر", "نفسك", "الثلج", "الريح"], "correctIndex": 1, "explanation": "إذا حاولت حبس نفسك، فأنت تحبس الهواء بداخلك، لكن في النهاية يجب أن تطلقه — فيختفي عند تركه." },
+      "de": { "text": "Wenn du mich festhältst, verschwinde ich. Was bin ich?", "options": ["Ein Geheimnis", "Dein Atem", "Eis", "Der Wind"], "correctIndex": 1, "explanation": "Wenn du versuchst, deinen Atem anzuhalten, hältst du Luft in dir, aber irgendwann musst du sie loslassen — sie 'verschwindet' in dem Moment." },
+      "fr": { "text": "Si vous me retenez, je disparais. Que suis-je ?", "options": ["Un secret", "Votre souffle", "La glace", "Le vent"], "correctIndex": 1, "explanation": "Si vous essayez de retenir votre souffle, vous gardez de l'air en vous, mais vous devez finalement le relâcher — il 'disparaît' à ce moment-là." },
+      "es": { "text": "Si me retienes, desaparezco. ¿Qué soy?", "options": ["Un secreto", "Tu aliento", "El hielo", "El viento"], "correctIndex": 1, "explanation": "Si intentas contener la respiración, retienes aire dentro de ti, pero eventualmente debes soltarlo: 'desaparece' en ese momento." },
+      "zh": { "text": "如果你抓住我，我就会消失。我是什么？", "options": ["一个秘密", "你的呼吸", "冰", "风"], "correctIndex": 1, "explanation": "如果你试图憋住呼吸，你就是在体内留住了空气，但最终必须放开它——那一刻它就“消失”了。" },
+      "ru": { "text": "Если ты удержишь меня, я исчезну. Что это?", "options": ["Секрет", "Твоё дыхание", "Лёд", "Ветер"], "correctIndex": 1, "explanation": "Если задержать дыхание, вы удерживаете воздух внутри себя, но в конце концов должны отпустить его — оно «исчезает» в тот момент." }
+    }
+  },
+  {
+    "priority": 76,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir 'M' harfini ters çevirirseniz ne olur?", "options": ["N harfi olur", "W harfi olur", "M harfi kalır", "E harfi olur"], "correctIndex": 1, "explanation": "M harfini dikey olarak ters çevirirseniz W harfine benzer bir şekil oluşur." },
+      "en": { "text": "If you flip the letter 'M' upside down, what does it become?", "options": ["The letter N", "The letter W", "It stays M", "The letter E"], "correctIndex": 1, "explanation": "Flipping the letter M vertically upside down produces a shape that looks like the letter W." },
+      "ar": { "text": "إذا قلبت حرف 'M' رأسًا على عقب، ماذا يصبح؟", "options": ["يصبح N", "يصبح W", "يبقى M", "يصبح E"], "correctIndex": 1, "explanation": "قلب حرف M عموديًا رأسًا على عقب ينتج شكلاً يشبه حرف W." },
+      "de": { "text": "Wenn du den Buchstaben 'M' auf den Kopf stellst, was wird daraus?", "options": ["Der Buchstabe N", "Der Buchstabe W", "Er bleibt M", "Der Buchstabe E"], "correctIndex": 1, "explanation": "Dreht man den Buchstaben M vertikal auf den Kopf, entsteht eine Form, die wie der Buchstabe W aussieht." },
+      "fr": { "text": "Si vous retournez la lettre 'M' à l'envers, que devient-elle ?", "options": ["La lettre N", "La lettre W", "Elle reste M", "La lettre E"], "correctIndex": 1, "explanation": "Retourner verticalement la lettre M produit une forme qui ressemble à la lettre W." },
+      "es": { "text": "Si volteas la letra 'M' al revés, ¿en qué se convierte?", "options": ["La letra N", "La letra W", "Sigue siendo M", "La letra E"], "correctIndex": 1, "explanation": "Voltear la letra M verticalmente hacia abajo produce una forma que se parece a la letra W." },
+      "zh": { "text": "如果把字母“M”上下颠倒，它会变成什么？", "options": ["变成N", "变成W", "还是M", "变成E"], "correctIndex": 1, "explanation": "将字母M垂直翻转后，形状看起来就像字母W。" },
+      "ru": { "text": "Если перевернуть букву 'M' вверх ногами, во что она превратится?", "options": ["В букву N", "В букву W", "Останется M", "В букву E"], "correctIndex": 1, "explanation": "При переворачивании буквы M по вертикали получается форма, похожая на букву W." }
+    }
+  },
+  {
+    "priority": 77,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kurabiye kavanozunda 0 kurabiye varsa ve siz 'kurabiyeleri' paylaştırmanız gerekiyorsa, her arkadaşınıza kaç kurabiye düşer?", "options": ["1 tane", "Yarım tane", "0 tane", "Sonsuz"], "correctIndex": 2, "explanation": "Kavanozda hiç kurabiye olmadığından, kaç arkadaşa paylaştırırsanız paylaştırın, herkese sıfır kurabiye düşer." },
+      "en": { "text": "If a cookie jar has 0 cookies and you need to share 'the cookies' among your friends, how many cookies does each friend get?", "options": ["1 each", "Half each", "0 each", "Infinite"], "correctIndex": 2, "explanation": "Since there are no cookies in the jar to begin with, no matter how many friends you share among, everyone gets zero." },
+      "ar": { "text": "إذا كان في وعاء البسكويت 0 بسكويت وتحتاج إلى مشاركة 'البسكويت' بين أصدقائك، كم بسكويتة يحصل عليها كل صديق؟", "options": ["واحدة لكل شخص", "نصف واحدة لكل شخص", "0 لكل شخص", "عدد لا نهائي"], "correctIndex": 2, "explanation": "بما أنه لا يوجد بسكويت في الوعاء أصلًا، فمهما كان عدد الأصدقاء، سيحصل الجميع على صفر." },
+      "de": { "text": "Wenn ein Keksglas 0 Kekse enthält und du 'die Kekse' unter deinen Freunden aufteilen musst, wie viele Kekse bekommt jeder Freund?", "options": ["1 jeweils", "Einen halben jeweils", "0 jeweils", "Unendlich viele"], "correctIndex": 2, "explanation": "Da es von Anfang an keine Kekse im Glas gibt, bekommt jeder null, egal unter wie vielen Freunden aufgeteilt wird." },
+      "fr": { "text": "Si un pot de biscuits contient 0 biscuit et que vous devez partager 'les biscuits' entre vos amis, combien de biscuits reçoit chaque ami ?", "options": ["1 chacun", "La moitié chacun", "0 chacun", "Une infinité"], "correctIndex": 2, "explanation": "Puisqu'il n'y a aucun biscuit dans le pot au départ, peu importe le nombre d'amis, tout le monde en reçoit zéro." },
+      "es": { "text": "Si un frasco de galletas tiene 0 galletas y necesitas compartir 'las galletas' entre tus amigos, ¿cuántas galletas recibe cada amigo?", "options": ["1 cada uno", "Media cada uno", "0 cada uno", "Infinitas"], "correctIndex": 2, "explanation": "Como no hay galletas en el frasco desde el principio, sin importar entre cuántos amigos se reparta, todos reciben cero." },
+      "zh": { "text": "如果饼干罐里有0块饼干，你需要把“饼干”分给朋友们，每位朋友能分到几块？", "options": ["每人1块", "每人半块", "每人0块", "无数块"], "correctIndex": 2, "explanation": "既然罐子里本来就没有饼干，无论分给多少朋友，每个人分到的都是零。" },
+      "ru": { "text": "Если в банке для печенья 0 печенек, и вам нужно разделить 'печенье' между друзьями, сколько печенек получит каждый друг?", "options": ["По 1 каждому", "По половине каждому", "По 0 каждому", "Бесконечно много"], "correctIndex": 2, "explanation": "Поскольку в банке изначально нет печенья, независимо от количества друзей, каждый получит ноль." }
+    }
+  },
+  {
+    "priority": 78,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kişi doğduğunda 0 yaşındadır. 1 yıl sonra kaç yaşında olur?", "options": ["0 yaşında", "1 yaşında", "2 yaşında", "Belirsiz"], "correctIndex": 1, "explanation": "Doğumdan 1 yıl sonra kişi tam olarak 1 yaşına girer, bu basit bir yaş hesabıdır." },
+      "en": { "text": "A person is 0 years old at birth. How old are they after 1 year has passed?", "options": ["0 years old", "1 year old", "2 years old", "Undetermined"], "correctIndex": 1, "explanation": "One year after birth, a person turns exactly 1 year old — this is simple age arithmetic." },
+      "ar": { "text": "يكون عمر الشخص 0 عند الولادة. كم يبلغ عمره بعد مرور سنة واحدة؟", "options": ["0 سنوات", "سنة واحدة", "سنتان", "غير محدد"], "correctIndex": 1, "explanation": "بعد سنة واحدة من الولادة، يبلغ الشخص عامه الأول بالضبط — وهذا حساب بسيط للعمر." },
+      "de": { "text": "Ein Mensch ist bei der Geburt 0 Jahre alt. Wie alt ist er nach 1 Jahr?", "options": ["0 Jahre alt", "1 Jahr alt", "2 Jahre alt", "Unbestimmt"], "correctIndex": 1, "explanation": "Ein Jahr nach der Geburt wird ein Mensch genau 1 Jahr alt — einfache Altersrechnung." },
+      "fr": { "text": "Une personne a 0 an à la naissance. Quel âge a-t-elle après 1 an ?", "options": ["0 an", "1 an", "2 ans", "Indéterminé"], "correctIndex": 1, "explanation": "Un an après la naissance, une personne a exactement 1 an — un simple calcul d'âge." },
+      "es": { "text": "Una persona tiene 0 años al nacer. ¿Cuántos años tiene después de 1 año?", "options": ["0 años", "1 año", "2 años", "Indeterminado"], "correctIndex": 1, "explanation": "Un año después de nacer, una persona cumple exactamente 1 año: un cálculo de edad simple." },
+      "zh": { "text": "一个人出生时是0岁。过了1年后他多大了？", "options": ["0岁", "1岁", "2岁", "无法确定"], "correctIndex": 1, "explanation": "出生一年后，这个人正好满1岁——这是简单的年龄计算。" },
+      "ru": { "text": "При рождении человеку 0 лет. Сколько ему лет спустя 1 год?", "options": ["0 лет", "1 год", "2 года", "Неопределённо"], "correctIndex": 1, "explanation": "Через год после рождения человеку исполняется ровно 1 год — простая арифметика возраста." }
+    }
+  },
+  {
+    "priority": 79,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir termometre havayı ısıtabilir mi?", "options": ["Evet, her zaman ısıtır", "Hayır, sadece sıcaklığı ölçer, ısıtmaz", "Sadece güneşte ısıtır", "Kırmızı termometreler ısıtır"], "correctIndex": 1, "explanation": "Termometre sadece mevcut sıcaklığı gösteren bir ölçüm aracıdır, havayı ısıtma veya soğutma etkisi yoktur." },
+      "en": { "text": "Can a thermometer heat up the air around it?", "options": ["Yes, it always heats things up", "No, it only measures temperature, it doesn't heat anything", "Only in sunlight", "Red thermometers heat things up"], "correctIndex": 1, "explanation": "A thermometer is only a measuring tool that shows the existing temperature; it has no effect of heating or cooling the air." },
+      "ar": { "text": "هل يمكن لميزان الحرارة أن يسخن الهواء المحيط به؟", "options": ["نعم، يسخن دائمًا", "لا، هو فقط يقيس الحرارة ولا يسخن أي شيء", "فقط في ضوء الشمس", "موازين الحرارة الحمراء تسخن"], "correctIndex": 1, "explanation": "ميزان الحرارة هو مجرد أداة قياس تعرض درجة الحرارة الحالية، وليس له أي تأثير في تسخين أو تبريد الهواء." },
+      "de": { "text": "Kann ein Thermometer die Luft um sich herum erwärmen?", "options": ["Ja, es erwärmt immer etwas", "Nein, es misst nur die Temperatur, erwärmt nichts", "Nur im Sonnenlicht", "Rote Thermometer erwärmen"], "correctIndex": 1, "explanation": "Ein Thermometer ist nur ein Messgerät, das die bestehende Temperatur anzeigt; es hat keine Wirkung auf das Erwärmen oder Kühlen der Luft." },
+      "fr": { "text": "Un thermomètre peut-il réchauffer l'air qui l'entoure ?", "options": ["Oui, il réchauffe toujours quelque chose", "Non, il ne fait que mesurer la température, il ne réchauffe rien", "Seulement au soleil", "Les thermomètres rouges réchauffent"], "correctIndex": 1, "explanation": "Un thermomètre n'est qu'un outil de mesure qui indique la température existante ; il n'a aucun effet de réchauffement ou de refroidissement de l'air." },
+      "es": { "text": "¿Puede un termómetro calentar el aire que lo rodea?", "options": ["Sí, siempre calienta algo", "No, solo mide la temperatura, no calienta nada", "Solo bajo la luz solar", "Los termómetros rojos calientan"], "correctIndex": 1, "explanation": "Un termómetro es solo una herramienta de medición que muestra la temperatura existente; no tiene ningún efecto de calentar o enfriar el aire." },
+      "zh": { "text": "温度计能加热周围的空气吗？", "options": ["能，它总是会加热", "不能，它只测量温度，不会加热任何东西", "只有在阳光下才会", "红色温度计会加热"], "correctIndex": 1, "explanation": "温度计只是一种测量工具，用来显示现有的温度，对空气没有加热或冷却的作用。" },
+      "ru": { "text": "Может ли термометр нагревать воздух вокруг себя?", "options": ["Да, он всегда что-то нагревает", "Нет, он лишь измеряет температуру, ничего не нагревая", "Только на солнце", "Красные термометры нагревают"], "correctIndex": 1, "explanation": "Термометр — это лишь измерительный прибор, показывающий существующую температуру; он не оказывает эффекта нагрева или охлаждения воздуха." }
+    }
+  },
+  {
+    "priority": 80,
+    "type": "illusion",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Aynı anda hem genç bir kadın hem de yaşlı bir kadın gibi görünebilen ünlü çizim hangi tür illüzyondur?", "options": ["Renk illüzyonu", "İki anlamlı (belirsiz) figür illüzyonu", "Hareket illüzyonu", "Boyut illüzyonu"], "correctIndex": 1, "explanation": "Bu 'genç kadın-yaşlı kadın' çizimi, beynin aynı görseli iki farklı şekilde yorumlayabildiği ünlü bir iki anlamlı figür illüzyonudur." },
+      "en": { "text": "What type of illusion is the famous drawing that can look like both a young woman and an old woman at once?", "options": ["A color illusion", "An ambiguous (bistable) figure illusion", "A motion illusion", "A size illusion"], "correctIndex": 1, "explanation": "This 'young woman-old woman' drawing is a famous ambiguous figure illusion where the brain interprets the same image two different ways." },
+      "ar": { "text": "ما نوع الوهم الذي يمثله الرسم الشهير الذي يبدو وكأنه امرأة شابة وامرأة عجوز في آن واحد؟", "options": ["وهم لوني", "وهم الشكل الغامض (ثنائي التفسير)", "وهم حركي", "وهم الحجم"], "correctIndex": 1, "explanation": "هذا الرسم 'الشابة والعجوز' هو وهم شكل غامض شهير حيث يفسر الدماغ نفس الصورة بطريقتين مختلفتين." },
+      "de": { "text": "Um welche Art von Illusion handelt es sich bei der berühmten Zeichnung, die gleichzeitig wie eine junge und eine alte Frau aussehen kann?", "options": ["Eine Farbillusion", "Eine mehrdeutige (bistabile) Figur-Illusion", "Eine Bewegungsillusion", "Eine Größenillusion"], "correctIndex": 1, "explanation": "Diese 'junge Frau-alte Frau'-Zeichnung ist eine berühmte mehrdeutige Figur-Illusion, bei der das Gehirn dasselbe Bild auf zwei Arten interpretiert." },
+      "fr": { "text": "Quel type d'illusion représente le célèbre dessin qui peut ressembler à la fois à une jeune femme et à une vieille femme ?", "options": ["Une illusion de couleur", "Une illusion de figure ambiguë (bistable)", "Une illusion de mouvement", "Une illusion de taille"], "correctIndex": 1, "explanation": "Ce dessin de la 'jeune femme-vieille femme' est une célèbre illusion de figure ambiguë où le cerveau interprète la même image de deux façons différentes." },
+      "es": { "text": "¿Qué tipo de ilusión representa el famoso dibujo que puede parecer una mujer joven y una anciana a la vez?", "options": ["Una ilusión de color", "Una ilusión de figura ambigua (biestable)", "Una ilusión de movimiento", "Una ilusión de tamaño"], "correctIndex": 1, "explanation": "Este dibujo de la 'joven-anciana' es una famosa ilusión de figura ambigua donde el cerebro interpreta la misma imagen de dos formas distintas." },
+      "zh": { "text": "那幅既能看成年轻女子又能看成老妇人的著名图画属于哪种错觉？", "options": ["色彩错觉", "双关（双稳态）图形错觉", "运动错觉", "尺寸错觉"], "correctIndex": 1, "explanation": "这幅“少女-老妇”图是著名的双关图形错觉，大脑会以两种不同方式解读同一张图像。" },
+      "ru": { "text": "К какому типу иллюзии относится знаменитый рисунок, который может выглядеть одновременно и как молодая, и как старая женщина?", "options": ["Цветовая иллюзия", "Иллюзия неоднозначной (бистабильной) фигуры", "Иллюзия движения", "Иллюзия размера"], "correctIndex": 1, "explanation": "Этот рисунок «молодая женщина — старуха» — знаменитая иллюзия неоднозначной фигуры, где мозг интерпретирует одно и то же изображение двумя разными способами." }
+    }
+  },
+  {
+    "priority": 81,
+    "type": "logic",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir saatte kaç dakika vardır?", "options": ["100 dakika", "60 dakika", "24 dakika", "50 dakika"], "correctIndex": 1, "explanation": "Standart bir saat 60 dakikadan oluşur." },
+      "en": { "text": "How many minutes are there in an hour?", "options": ["100 minutes", "60 minutes", "24 minutes", "50 minutes"], "correctIndex": 1, "explanation": "A standard hour consists of 60 minutes." },
+      "ar": { "text": "كم عدد الدقائق في الساعة الواحدة؟", "options": ["100 دقيقة", "60 دقيقة", "24 دقيقة", "50 دقيقة"], "correctIndex": 1, "explanation": "تتكون الساعة القياسية من 60 دقيقة." },
+      "de": { "text": "Wie viele Minuten hat eine Stunde?", "options": ["100 Minuten", "60 Minuten", "24 Minuten", "50 Minuten"], "correctIndex": 1, "explanation": "Eine Standardstunde besteht aus 60 Minuten." },
+      "fr": { "text": "Combien de minutes y a-t-il dans une heure ?", "options": ["100 minutes", "60 minutes", "24 minutes", "50 minutes"], "correctIndex": 1, "explanation": "Une heure standard compte 60 minutes." },
+      "es": { "text": "¿Cuántos minutos hay en una hora?", "options": ["100 minutos", "60 minutos", "24 minutos", "50 minutos"], "correctIndex": 1, "explanation": "Una hora estándar consta de 60 minutos." },
+      "zh": { "text": "一个小时有多少分钟？", "options": ["100分钟", "60分钟", "24分钟", "50分钟"], "correctIndex": 1, "explanation": "标准的一小时由60分钟组成。" },
+      "ru": { "text": "Сколько минут в одном часе?", "options": ["100 минут", "60 минут", "24 минуты", "50 минут"], "correctIndex": 1, "explanation": "Стандартный час состоит из 60 минут." }
+    }
+  },
+  {
+    "priority": 82,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Dişleri var ama ısıramaz. Bu nedir?", "options": ["Bir tarak", "Bir köpek", "Bir çekiç", "Bir bıçak"], "correctIndex": 0, "explanation": "Tarağın 'dişleri' vardır ama bunlar saç taramak içindir, ısırmak için değil." },
+      "en": { "text": "It has teeth but cannot bite. What is it?", "options": ["A comb", "A dog", "A hammer", "A knife"], "correctIndex": 0, "explanation": "A comb has 'teeth', but they're for combing hair, not for biting." },
+      "ar": { "text": "له أسنان لكنه لا يستطيع أن يعض. ما هو؟", "options": ["مشط", "كلب", "مطرقة", "سكين"], "correctIndex": 0, "explanation": "للمشط 'أسنان'، لكنها لتمشيط الشعر وليس للعض." },
+      "de": { "text": "Es hat Zähne, kann aber nicht beißen. Was ist es?", "options": ["Ein Kamm", "Ein Hund", "Ein Hammer", "Ein Messer"], "correctIndex": 0, "explanation": "Ein Kamm hat 'Zähne', aber sie sind zum Kämmen der Haare da, nicht zum Beißen." },
+      "fr": { "text": "Il a des dents mais ne peut pas mordre. Qu'est-ce que c'est ?", "options": ["Un peigne", "Un chien", "Un marteau", "Un couteau"], "correctIndex": 0, "explanation": "Un peigne a des 'dents', mais elles servent à peigner les cheveux, pas à mordre." },
+      "es": { "text": "Tiene dientes pero no puede morder. ¿Qué es?", "options": ["Un peine", "Un perro", "Un martillo", "Un cuchillo"], "correctIndex": 0, "explanation": "Un peine tiene 'dientes', pero son para peinar el cabello, no para morder." },
+      "zh": { "text": "它有齿却不能咬人，这是什么？", "options": ["梳子", "狗", "锤子", "刀"], "correctIndex": 0, "explanation": "梳子有“齿”，但那是用来梳头发的，不是用来咬东西的。" },
+      "ru": { "text": "У него есть зубья, но он не может кусаться. Что это?", "options": ["Расчёска", "Собака", "Молоток", "Нож"], "correctIndex": 0, "explanation": "У расчёски есть «зубья», но они предназначены для расчёсывания волос, а не для укуса." }
+    }
+  },
+  {
+    "priority": 83,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Şu kelimeyi tersten okuyun: 'NİLUFER'. Doğru okuduğunuzda ne elde edersiniz?", "options": ["Anlamlı bir isim", "REFULİN", "Aynı kelime", "Rastgele harfler"], "correctIndex": 1, "explanation": "'NİLUFER' kelimesini tersten yazarsanız 'REFULİN' elde edersiniz, bu sadece harflerin ters sıralanmasıdır." },
+      "en": { "text": "Read this word backward: 'LEMON'. What do you get?", "options": ["A meaningful word", "NOMEL", "The same word", "Random letters"], "correctIndex": 1, "explanation": "Spelling 'LEMON' backward gives 'NOMEL', which is simply the letters in reverse order." },
+      "ar": { "text": "اقرأ هذه الكلمة بالمقلوب: 'ليمون'. ماذا تحصل؟", "options": ["كلمة ذات معنى", "نوميل", "نفس الكلمة", "حروف عشوائية"], "correctIndex": 1, "explanation": "كتابة 'ليمون' بالمقلوب تعطي 'نوميل'، وهو ببساطة الحروف بترتيب معكوس." },
+      "de": { "text": "Lies dieses Wort rückwärts: 'ZITRONE'. Was erhältst du?", "options": ["Ein sinnvolles Wort", "ENORTIZ", "Das gleiche Wort", "Zufällige Buchstaben"], "correctIndex": 1, "explanation": "Rückwärts geschrieben ergibt 'ZITRONE' das Wort 'ENORTIZ', einfach die Buchstaben in umgekehrter Reihenfolge." },
+      "fr": { "text": "Lisez ce mot à l'envers : 'CITRON'. Qu'obtenez-vous ?", "options": ["Un mot significatif", "NORTIC", "Le même mot", "Des lettres aléatoires"], "correctIndex": 1, "explanation": "Épeler 'CITRON' à l'envers donne 'NORTIC', simplement les lettres dans l'ordre inverse." },
+      "es": { "text": "Lee esta palabra al revés: 'LIMON'. ¿Qué obtienes?", "options": ["Una palabra con significado", "NOMIL", "La misma palabra", "Letras aleatorias"], "correctIndex": 1, "explanation": "Escribir 'LIMON' al revés da 'NOMIL', simplemente las letras en orden inverso." },
+      "zh": { "text": "把“柠檬”这个词倒过来读，你会得到什么？", "options": ["一个有意义的词", "檬柠", "同一个词", "随机的字"], "correctIndex": 1, "explanation": "把“柠檬”倒过来就是“檬柠”，只是字的顺序颠倒了而已。" },
+      "ru": { "text": "Прочитайте это слово наоборот: 'ЛИМОН'. Что получится?", "options": ["Осмысленное слово", "НОМИЛ", "То же самое слово", "Случайные буквы"], "correctIndex": 1, "explanation": "Если написать 'ЛИМОН' наоборот, получится 'НОМИЛ' — просто буквы в обратном порядке." }
+    }
+  },
+  {
+    "priority": 84,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kişi kendi doğum gününü unutabilir mi?", "options": ["Hayır, imkansızdır", "Evet, elbette unutabilir", "Sadece hafıza kaybı olanlar unutur", "Sadece çocuklar unutur"], "correctIndex": 1, "explanation": "İnsanlar unutkanlık, dikkatsizlik veya zaman kaybı gibi nedenlerle kendi doğum günlerini bile unutabilirler, bu tamamen normal bir insani durumdur." },
+      "en": { "text": "Can a person forget their own birthday?", "options": ["No, it's impossible", "Yes, of course they can", "Only people with memory loss forget", "Only children forget"], "correctIndex": 1, "explanation": "People can absolutely forget even their own birthday due to distraction, busyness, or simply losing track of the date — it's a normal human thing." },
+      "ar": { "text": "هل يمكن لشخص أن ينسى عيد ميلاده الخاص؟", "options": ["لا، هذا مستحيل", "نعم، بالطبع يمكنه ذلك", "فقط من يعانون من فقدان الذاكرة ينسون", "فقط الأطفال ينسون"], "correctIndex": 1, "explanation": "يمكن للناس بالتأكيد أن ينسوا حتى عيد ميلادهم الخاص بسبب الانشغال أو فقدان تتبع التاريخ — وهذا أمر بشري طبيعي." },
+      "de": { "text": "Kann eine Person ihren eigenen Geburtstag vergessen?", "options": ["Nein, das ist unmöglich", "Ja, natürlich kann sie das", "Nur Menschen mit Gedächtnisverlust vergessen", "Nur Kinder vergessen"], "correctIndex": 1, "explanation": "Menschen können durchaus sogar ihren eigenen Geburtstag vergessen, wegen Ablenkung oder verlorenem Zeitgefühl — das ist ganz normal menschlich." },
+      "fr": { "text": "Une personne peut-elle oublier son propre anniversaire ?", "options": ["Non, c'est impossible", "Oui, bien sûr que oui", "Seules les personnes avec des pertes de mémoire oublient", "Seuls les enfants oublient"], "correctIndex": 1, "explanation": "Les gens peuvent absolument oublier même leur propre anniversaire à cause de distraction ou en perdant le fil des dates — c'est tout à fait humain." },
+      "es": { "text": "¿Puede una persona olvidar su propio cumpleaños?", "options": ["No, es imposible", "Sí, por supuesto que puede", "Solo las personas con pérdida de memoria olvidan", "Solo los niños olvidan"], "correctIndex": 1, "explanation": "Las personas pueden absolutamente olvidar incluso su propio cumpleaños por distracción o por perder la noción de la fecha; es algo humano normal." },
+      "zh": { "text": "一个人会忘记自己的生日吗？", "options": ["不会，这不可能", "会，当然可能", "只有失忆的人才会忘记", "只有小孩才会忘记"], "correctIndex": 1, "explanation": "人们完全可能因为分心、忙碌或单纯记不清日期而忘记自己的生日——这是很正常的人类现象。" },
+      "ru": { "text": "Может ли человек забыть свой собственный день рождения?", "options": ["Нет, это невозможно", "Да, конечно может", "Забывают только люди с потерей памяти", "Забывают только дети"], "correctIndex": 1, "explanation": "Люди вполне могут забыть даже свой собственный день рождения из-за занятости или потери счёта датам — это совершенно нормально." }
+    }
+  },
+  {
+    "priority": 85,
+    "type": "math",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "1'den 100'e kadar olan tüm sayıları toplarsanız sonuç kaç olur?", "options": ["5000", "5050", "4950", "10000"], "correctIndex": 1, "explanation": "Gauss'un formülüyle: n(n+1)/2 = 100x101/2 = 5050." },
+      "en": { "text": "If you add up all the numbers from 1 to 100, what's the total?", "options": ["5000", "5050", "4950", "10000"], "correctIndex": 1, "explanation": "Using Gauss's formula: n(n+1)/2 = 100×101/2 = 5050." },
+      "ar": { "text": "إذا جمعت كل الأرقام من 1 إلى 100، فما هو المجموع؟", "options": ["5000", "5050", "4950", "10000"], "correctIndex": 1, "explanation": "باستخدام معادلة غاوس: n(n+1)/2 = 100×101/2 = 5050." },
+      "de": { "text": "Wenn du alle Zahlen von 1 bis 100 addierst, wie hoch ist die Summe?", "options": ["5000", "5050", "4950", "10000"], "correctIndex": 1, "explanation": "Mit der Gauß-Formel: n(n+1)/2 = 100×101/2 = 5050." },
+      "fr": { "text": "Si vous additionnez tous les nombres de 1 à 100, quel est le total ?", "options": ["5000", "5050", "4950", "10000"], "correctIndex": 1, "explanation": "Avec la formule de Gauss : n(n+1)/2 = 100×101/2 = 5050." },
+      "es": { "text": "Si sumas todos los números del 1 al 100, ¿cuál es el total?", "options": ["5000", "5050", "4950", "10000"], "correctIndex": 1, "explanation": "Usando la fórmula de Gauss: n(n+1)/2 = 100×101/2 = 5050." },
+      "zh": { "text": "如果把1到100的所有数字加起来，总和是多少？", "options": ["5000", "5050", "4950", "10000"], "correctIndex": 1, "explanation": "用高斯公式：n(n+1)/2 = 100×101/2 = 5050。" },
+      "ru": { "text": "Если сложить все числа от 1 до 100, какова будет сумма?", "options": ["5000", "5050", "4950", "10000"], "correctIndex": 1, "explanation": "По формуле Гаусса: n(n+1)/2 = 100×101/2 = 5050." }
+    }
+  },
+  {
+    "priority": 86,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir örümceğin kaç bacağı vardır?", "options": ["6 bacak", "8 bacak", "10 bacak", "4 bacak"], "correctIndex": 1, "explanation": "Örümcekler böcek değil örümceksi (araknid) sınıfına aittir ve 8 bacakları vardır." },
+      "en": { "text": "How many legs does a spider have?", "options": ["6 legs", "8 legs", "10 legs", "4 legs"], "correctIndex": 1, "explanation": "Spiders are not insects but arachnids, and they have 8 legs." },
+      "ar": { "text": "كم عدد أرجل العنكبوت؟", "options": ["6 أرجل", "8 أرجل", "10 أرجل", "4 أرجل"], "correctIndex": 1, "explanation": "العناكب ليست حشرات بل عنكبيات، ولها 8 أرجل." },
+      "de": { "text": "Wie viele Beine hat eine Spinne?", "options": ["6 Beine", "8 Beine", "10 Beine", "4 Beine"], "correctIndex": 1, "explanation": "Spinnen sind keine Insekten, sondern Spinnentiere, und sie haben 8 Beine." },
+      "fr": { "text": "Combien de pattes une araignée a-t-elle ?", "options": ["6 pattes", "8 pattes", "10 pattes", "4 pattes"], "correctIndex": 1, "explanation": "Les araignées ne sont pas des insectes mais des arachnides, et elles ont 8 pattes." },
+      "es": { "text": "¿Cuántas patas tiene una araña?", "options": ["6 patas", "8 patas", "10 patas", "4 patas"], "correctIndex": 1, "explanation": "Las arañas no son insectos sino arácnidos, y tienen 8 patas." },
+      "zh": { "text": "蜘蛛有几条腿？", "options": ["6条", "8条", "10条", "4条"], "correctIndex": 1, "explanation": "蜘蛛不是昆虫而是蛛形纲动物，它们有8条腿。" },
+      "ru": { "text": "Сколько ног у паука?", "options": ["6 ног", "8 ног", "10 ног", "4 ноги"], "correctIndex": 1, "explanation": "Пауки — не насекомые, а паукообразные, и у них 8 ног." }
+    }
+  },
+  {
+    "priority": 87,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kilitli kapının anahtarı kapının içinde unutulmuşsa, dışarıdan anahtarla açılabilir mi?", "options": ["Evet, her zaman açılır", "Hayır, genellikle açılamaz çünkü anahtar deliği tıkalıdır", "Sadece pencereden açılır", "Sadece gece açılır"], "correctIndex": 1, "explanation": "Anahtar kilidin içinde bırakılmışsa, çoğu kilit türünde dışarıdan başka bir anahtar sokulamaz çünkü delik dolu olur." },
+      "en": { "text": "If a door's key is left inside the lock, can it still be opened with a key from outside?", "options": ["Yes, always", "No, usually not, since the keyhole is blocked", "Only through the window", "Only at night"], "correctIndex": 1, "explanation": "If a key is left inside the lock, most lock types can't accept a second key from outside since the keyhole is occupied." },
+      "ar": { "text": "إذا تُرك مفتاح باب داخل القفل، هل يمكن فتحه بمفتاح من الخارج؟", "options": ["نعم، دائمًا", "لا، عادة لا يمكن لأن فتحة المفتاح مسدودة", "فقط من النافذة", "فقط ليلًا"], "correctIndex": 1, "explanation": "إذا تُرك مفتاح داخل القفل، فإن معظم أنواع الأقفال لا تقبل مفتاحًا آخر من الخارج لأن فتحة المفتاح مشغولة." },
+      "de": { "text": "Wenn der Schlüssel einer Tür im Schloss steckt, kann sie dann trotzdem von außen mit einem Schlüssel geöffnet werden?", "options": ["Ja, immer", "Nein, meistens nicht, da das Schlüsselloch blockiert ist", "Nur durchs Fenster", "Nur nachts"], "correctIndex": 1, "explanation": "Steckt ein Schlüssel im Schloss, können die meisten Schlosstypen keinen zweiten Schlüssel von außen aufnehmen, da das Loch belegt ist." },
+      "fr": { "text": "Si la clé d'une porte est laissée dans la serrure, peut-elle quand même être ouverte de l'extérieur avec une clé ?", "options": ["Oui, toujours", "Non, généralement pas, car le trou de serrure est bloqué", "Seulement par la fenêtre", "Seulement la nuit"], "correctIndex": 1, "explanation": "Si une clé est laissée dans la serrure, la plupart des types de serrures ne peuvent pas accepter une seconde clé de l'extérieur car le trou est occupé." },
+      "es": { "text": "Si la llave de una puerta se deja dentro de la cerradura, ¿puede abrirse desde afuera con otra llave?", "options": ["Sí, siempre", "No, generalmente no, porque el ojo de la cerradura está bloqueado", "Solo por la ventana", "Solo de noche"], "correctIndex": 1, "explanation": "Si una llave se deja dentro de la cerradura, la mayoría de los tipos de cerraduras no aceptan otra llave desde afuera porque el orificio está ocupado." },
+      "zh": { "text": "如果一扇门的钥匙被留在锁孔里，还能从外面用另一把钥匙打开吗？", "options": ["能，总是能打开", "不能，通常不能，因为锁孔被堵住了", "只能从窗户进", "只在夜里能打开"], "correctIndex": 1, "explanation": "如果钥匙留在锁孔里，大多数锁具类型无法从外面插入第二把钥匙，因为锁孔已被占用。" },
+      "ru": { "text": "Если ключ от двери оставлен в замке изнутри, можно ли открыть её снаружи другим ключом?", "options": ["Да, всегда можно", "Нет, обычно нельзя, так как замочная скважина занята", "Только через окно", "Только ночью"], "correctIndex": 1, "explanation": "Если ключ оставлен в замке, большинство типов замков не позволяют вставить второй ключ снаружи, так как отверстие занято." }
+    }
+  },
+  {
+    "priority": 88,
+    "type": "humor",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir devekuşu tehlike anında gerçekten başını kuma mı gömer?", "options": ["Evet, tam olarak öyle yapar", "Hayır, bu bir efsanedir; yumurtalarını kontrol ederken eğilir", "Sadece geceleri gömer", "Sadece Afrika'da gömer"], "correctIndex": 1, "explanation": "Devekuşları başlarını kuma gömmezler; bu popüler bir efsanedir. Yerdeki yumurtalarını çevirirken başlarını eğdiklerinde bu yanlış anlaşılma ortaya çıkmıştır." },
+      "en": { "text": "Does an ostrich actually bury its head in the sand when in danger?", "options": ["Yes, exactly that", "No, it's a myth; they bend down to check their eggs", "Only at night", "Only in Africa"], "correctIndex": 1, "explanation": "Ostriches don't actually bury their heads in sand — this popular myth likely comes from them bending down to turn their ground-nested eggs." },
+      "ar": { "text": "هل يدفن النعام رأسه فعلًا في الرمل عند الخطر؟", "options": ["نعم، بالضبط هكذا", "لا، إنها أسطورة؛ ينحني للتحقق من بيضه", "فقط في الليل", "فقط في أفريقيا"], "correctIndex": 1, "explanation": "لا يدفن النعام رأسه فعلًا في الرمل — تنبع هذه الأسطورة الشائعة على الأرجح من انحنائه لقلب بيضه الموجود على الأرض." },
+      "de": { "text": "Steckt ein Strauß tatsächlich seinen Kopf in den Sand, wenn Gefahr droht?", "options": ["Ja, genau das tut er", "Nein, das ist ein Mythos; er beugt sich, um seine Eier zu prüfen", "Nur nachts", "Nur in Afrika"], "correctIndex": 1, "explanation": "Strauße stecken ihren Kopf nicht wirklich in den Sand — dieser Mythos entstand wahrscheinlich dadurch, dass sie sich bücken, um ihre am Boden liegenden Eier zu wenden." },
+      "fr": { "text": "Une autruche enfouit-elle vraiment sa tête dans le sable en cas de danger ?", "options": ["Oui, exactement ça", "Non, c'est un mythe ; elle se penche pour vérifier ses œufs", "Seulement la nuit", "Seulement en Afrique"], "correctIndex": 1, "explanation": "Les autruches n'enfouissent pas réellement leur tête dans le sable — ce mythe populaire vient probablement du fait qu'elles se penchent pour retourner leurs œufs au sol." },
+      "es": { "text": "¿Un avestruz realmente entierra su cabeza en la arena cuando hay peligro?", "options": ["Sí, exactamente eso", "No, es un mito; se agacha para revisar sus huevos", "Solo de noche", "Solo en África"], "correctIndex": 1, "explanation": "Los avestruces no entierran realmente su cabeza en la arena; este mito popular probablemente proviene de que se agachan para voltear sus huevos en el suelo." },
+      "zh": { "text": "鸵鸟遇到危险时真的会把头埋进沙子里吗？", "options": ["会，就是这样", "不会，这是个传说；它们是弯腰检查蛋", "只在夜里会", "只在非洲才会"], "correctIndex": 1, "explanation": "鸵鸟其实并不会把头埋进沙子里——这个流行的传说很可能源于它们弯腰翻动地上鸟蛋的动作。" },
+      "ru": { "text": "Действительно ли страус зарывает голову в песок в момент опасности?", "options": ["Да, именно так и делает", "Нет, это миф; он наклоняется, чтобы проверить свои яйца", "Только ночью", "Только в Африке"], "correctIndex": 1, "explanation": "Страусы на самом деле не зарывают голову в песок — этот популярный миф, вероятно, возник из-за того, что они наклоняются, переворачивая яйца в гнезде на земле." }
+    }
+  },
+  {
+    "priority": 89,
+    "type": "logic",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir gemi limanda demirliyken üzerindeki merdivenin basamakları su altında kalır. Gelgit her saat 30 cm yükseliyorsa, gemi de yükseldiği için kaç basamak su altında kalır?", "options": ["Sürekli artar", "Değişmez, çünkü gemi de gelgitle birlikte yükselir", "Sürekli azalır", "Hesaplanamaz"], "correctIndex": 1, "explanation": "Gemi suyun üzerinde yüzdüğü için gelgitle birlikte yükselir, dolayısıyla su altında kalan basamak sayısı hep aynı kalır." },
+      "en": { "text": "A ship is docked with a ladder hanging over the side; some rungs are underwater. If the tide rises 30 cm every hour, how many rungs stay underwater as the ship rises too?", "options": ["It keeps increasing", "It stays the same, since the ship rises with the tide", "It keeps decreasing", "It can't be calculated"], "correctIndex": 1, "explanation": "Since the ship floats on the water, it rises along with the tide, so the number of submerged rungs never changes." },
+      "ar": { "text": "سفينة راسية في الميناء وعليها سلم، بعض درجاته تحت الماء. إذا ارتفع المد 30 سم كل ساعة، فكم درجة تبقى تحت الماء مع ارتفاع السفينة أيضًا؟", "options": ["يزداد باستمرار", "يبقى كما هو لأن السفينة ترتفع مع المد", "ينقص باستمرار", "لا يمكن حسابه"], "correctIndex": 1, "explanation": "بما أن السفينة تطفو على الماء، فإنها ترتفع مع المد، لذا يبقى عدد الدرجات المغمورة تحت الماء كما هو دائمًا." },
+      "de": { "text": "Ein Schiff liegt im Hafen mit einer Leiter über der Seite; einige Sprossen sind unter Wasser. Wenn die Flut jede Stunde um 30 cm steigt, wie viele Sprossen bleiben unter Wasser, wenn auch das Schiff steigt?", "options": ["Es nimmt ständig zu", "Es bleibt gleich, da das Schiff mit der Flut steigt", "Es nimmt ständig ab", "Nicht berechenbar"], "correctIndex": 1, "explanation": "Da das Schiff auf dem Wasser schwimmt, steigt es mit der Flut, sodass die Zahl der überfluteten Sprossen immer gleich bleibt." },
+      "fr": { "text": "Un navire est amarré avec une échelle pendant sur le côté ; certains barreaux sont sous l'eau. Si la marée monte de 30 cm chaque heure, combien de barreaux restent sous l'eau puisque le navire monte aussi ?", "options": ["Ça continue d'augmenter", "Ça reste pareil, car le navire monte avec la marée", "Ça continue de diminuer", "Impossible à calculer"], "correctIndex": 1, "explanation": "Puisque le navire flotte sur l'eau, il monte avec la marée, donc le nombre de barreaux submergés ne change jamais." },
+      "es": { "text": "Un barco está atracado con una escalera colgando por el costado; algunos peldaños están bajo el agua. Si la marea sube 30 cm cada hora, ¿cuántos peldaños quedan bajo el agua mientras el barco también sube?", "options": ["Sigue aumentando", "Se mantiene igual, porque el barco sube con la marea", "Sigue disminuyendo", "No se puede calcular"], "correctIndex": 1, "explanation": "Como el barco flota sobre el agua, sube junto con la marea, así que el número de peldaños sumergidos nunca cambia." },
+      "zh": { "text": "一艘船停靠在港口，船边挂着一个梯子，部分横档在水下。如果潮水每小时上涨30厘米，随着船也一起上升，有多少横档保持在水下？", "options": ["会不断增加", "保持不变，因为船会随着潮水一起上升", "会不断减少", "无法计算"], "correctIndex": 1, "explanation": "由于船漂浮在水面上，会随着潮水一起上升，所以浸在水下的横档数量永远不变。" },
+      "ru": { "text": "Корабль пришвартован, с борта свисает лестница; часть перекладин под водой. Если прилив поднимается на 30 см каждый час, сколько перекладин останется под водой, ведь корабль тоже поднимается?", "options": ["Постоянно увеличивается", "Остаётся неизменным, так как корабль поднимается вместе с приливом", "Постоянно уменьшается", "Невозможно вычислить"], "correctIndex": 1, "explanation": "Поскольку корабль плавает на воде, он поднимается вместе с приливом, поэтому количество затопленных перекладин никогда не меняется." }
+    }
+  },
+  {
+    "priority": 90,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "MOR kelimesi YEŞİL renkle yazılırsa ne okutulur?", "options": ["Yeşil", "Mor", "Kırmızı", "Turuncu"], "correctIndex": 1, "explanation": "Mürekkep rengine değil, yazının kendisine bakın! Kelime MOR okutulur." },
+      "en": { "text": "If the word PURPLE is written in GREEN ink, what does it read?", "options": ["Green", "Purple", "Red", "Orange"], "correctIndex": 1, "explanation": "Don't look at the ink color, read the word itself! It reads PURPLE." },
+      "ar": { "text": "إذا كُتبت كلمة بنفسجي باللون الأخضر، فماذا تُقرأ؟", "options": ["أخضر", "بنفسجي", "أحمر", "برتقالي"], "correctIndex": 1, "explanation": "لا تنظر إلى لون الحبر، بل اقرأ الكلمة نفسها! الكلمة تُقرأ بنفسجي." },
+      "de": { "text": "Wenn das Wort LILA in GRÜNER Farbe geschrieben ist, wie liest man es?", "options": ["Grün", "Lila", "Rot", "Orange"], "correctIndex": 1, "explanation": "Achte nicht auf die Tintenfarbe, sondern auf das Wort selbst! Es steht dort LILA." },
+      "fr": { "text": "Si le mot VIOLET est écrit en VERT, comment se lit-il ?", "options": ["Vert", "Violet", "Rouge", "Orange"], "correctIndex": 1, "explanation": "Ne regardez pas la couleur de l'encre, lisez le mot lui-même ! Il se lit VIOLET." },
+      "es": { "text": "Si la palabra MORADO está escrita en color VERDE, ¿cómo se lee?", "options": ["Verde", "Morado", "Rojo", "Naranja"], "correctIndex": 1, "explanation": "¡No mires el color de la tinta, lee la palabra! Se lee MORADO." },
+      "zh": { "text": "如果“紫色”这个词用绿色写成，它读作什么？", "options": ["绿色", "紫色", "红色", "橙色"], "correctIndex": 1, "explanation": "不要看墨水颜色，要读文字本身！它读作“紫色”。" },
+      "ru": { "text": "Если слово ФИОЛЕТОВЫЙ написано ЗЕЛЁНЫМ цветом, как оно читается?", "options": ["Зелёный", "Фиолетовый", "Красный", "Оранжевый"], "correctIndex": 1, "explanation": "Не смотрите на цвет чернил, читайте само слово! Оно читается ФИОЛЕТОВЫЙ." }
+    }
+  },
+  {
+    "priority": 91,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Şehirleri var ama evleri yok, ormanları var ama ağaçları yok, nehirleri var ama suyu yok. Bu nedir?", "options": ["Bir hayal", "Bir harita", "Bir rüya", "Bir oyun"], "correctIndex": 1, "explanation": "Bir harita, şehirleri, ormanları ve nehirleri sembolik olarak gösterir ama gerçek fiziksel evler, ağaçlar veya su içermez." },
+      "en": { "text": "It has cities but no houses, forests but no trees, and rivers but no water. What is it?", "options": ["An imagination", "A map", "A dream", "A game"], "correctIndex": 1, "explanation": "A map symbolically shows cities, forests, and rivers, but contains no actual physical houses, trees, or water." },
+      "ar": { "text": "له مدن بلا منازل، وغابات بلا أشجار، وأنهار بلا ماء. ما هو؟", "options": ["خيال", "خريطة", "حلم", "لعبة"], "correctIndex": 1, "explanation": "تُظهر الخريطة المدن والغابات والأنهار بشكل رمزي، لكنها لا تحتوي على منازل أو أشجار أو ماء فعلي." },
+      "de": { "text": "Es hat Städte, aber keine Häuser, Wälder, aber keine Bäume, und Flüsse, aber kein Wasser. Was ist es?", "options": ["Eine Vorstellung", "Eine Landkarte", "Ein Traum", "Ein Spiel"], "correctIndex": 1, "explanation": "Eine Landkarte zeigt Städte, Wälder und Flüsse symbolisch, enthält aber keine echten physischen Häuser, Bäume oder Wasser." },
+      "fr": { "text": "Il a des villes mais pas de maisons, des forêts mais pas d'arbres, et des rivières mais pas d'eau. Qu'est-ce que c'est ?", "options": ["Une imagination", "Une carte", "Un rêve", "Un jeu"], "correctIndex": 1, "explanation": "Une carte montre symboliquement des villes, des forêts et des rivières, mais ne contient aucune maison, arbre ou eau physique." },
+      "es": { "text": "Tiene ciudades pero no casas, bosques pero no árboles, y ríos pero no agua. ¿Qué es?", "options": ["Una imaginación", "Un mapa", "Un sueño", "Un juego"], "correctIndex": 1, "explanation": "Un mapa muestra simbólicamente ciudades, bosques y ríos, pero no contiene casas, árboles ni agua físicos reales." },
+      "zh": { "text": "它有城市却没有房屋，有森林却没有树木，有河流却没有水，这是什么？", "options": ["想象", "地图", "梦境", "游戏"], "correctIndex": 1, "explanation": "地图象征性地展示城市、森林和河流，但并不包含真实的房屋、树木或水。" },
+      "ru": { "text": "У него есть города, но нет домов, леса, но нет деревьев, реки, но нет воды. Что это?", "options": ["Воображение", "Карта", "Сон", "Игра"], "correctIndex": 1, "explanation": "Карта символически показывает города, леса и реки, но не содержит настоящих домов, деревьев или воды." }
+    }
+  },
+  {
+    "priority": 92,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir uçak havada uçarken içindeki yolcular yerçekimini hisseder mi?", "options": ["Hayır, hiç hissetmezler", "Evet, normal uçuşta yerçekimi hâlâ tam olarak etkilidir", "Sadece kalkışta hissederler", "Sadece inişte hissederler"], "correctIndex": 1, "explanation": "Uçak yükselse de sabit hızda uçarken yerçekimi hâlâ tam olarak yolcuları etkiler; ağırlıksızlık hissi sadece serbest düşüşte olur." },
+      "en": { "text": "Do passengers feel gravity while a plane is flying through the air?", "options": ["No, they never feel it", "Yes, gravity still fully affects them during normal flight", "Only during takeoff", "Only during landing"], "correctIndex": 1, "explanation": "Even though the plane is airborne, at steady flight gravity still fully affects passengers; weightlessness only happens during free fall." },
+      "ar": { "text": "هل يشعر الركاب بالجاذبية أثناء طيران الطائرة في الهواء؟", "options": ["لا، لا يشعرون بها إطلاقًا", "نعم، لا تزال الجاذبية تؤثر عليهم بالكامل أثناء الطيران العادي", "فقط أثناء الإقلاع", "فقط أثناء الهبوط"], "correctIndex": 1, "explanation": "رغم أن الطائرة في الجو، أثناء الطيران الثابت تظل الجاذبية تؤثر على الركاب بالكامل؛ انعدام الوزن يحدث فقط أثناء السقوط الحر." },
+      "de": { "text": "Spüren Passagiere die Schwerkraft, während ein Flugzeug durch die Luft fliegt?", "options": ["Nein, sie spüren sie nie", "Ja, die Schwerkraft wirkt im normalen Flug immer noch voll auf sie", "Nur beim Start", "Nur bei der Landung"], "correctIndex": 1, "explanation": "Obwohl das Flugzeug fliegt, wirkt bei gleichmäßigem Flug die Schwerkraft immer noch voll auf die Passagiere; Schwerelosigkeit tritt nur im freien Fall auf." },
+      "fr": { "text": "Les passagers ressentent-ils la gravité pendant qu'un avion vole dans les airs ?", "options": ["Non, ils ne la ressentent jamais", "Oui, la gravité les affecte toujours pleinement en vol normal", "Seulement au décollage", "Seulement à l'atterrissage"], "correctIndex": 1, "explanation": "Même si l'avion est en vol, en vol stable la gravité affecte toujours pleinement les passagers ; l'apesanteur ne se produit que lors d'une chute libre." },
+      "es": { "text": "¿Sienten gravedad los pasajeros mientras un avión vuela por el aire?", "options": ["No, nunca la sienten", "Sí, la gravedad todavía les afecta plenamente durante el vuelo normal", "Solo durante el despegue", "Solo durante el aterrizaje"], "correctIndex": 1, "explanation": "Aunque el avión esté en el aire, en vuelo estable la gravedad sigue afectando completamente a los pasajeros; la ingravidez solo ocurre en caída libre." },
+      "zh": { "text": "飞机在空中飞行时，乘客会感受到重力吗？", "options": ["不会，完全感受不到", "会，正常飞行时重力仍然完全作用于他们", "只有起飞时才会感受到", "只有降落时才会感受到"], "correctIndex": 1, "explanation": "尽管飞机在空中，稳定飞行时重力仍然完全作用于乘客；失重感只会在自由落体时出现。" },
+      "ru": { "text": "Чувствуют ли пассажиры гравитацию, пока самолёт летит по воздуху?", "options": ["Нет, они никогда её не чувствуют", "Да, гравитация по-прежнему полностью действует на них при обычном полёте", "Только при взлёте", "Только при посадке"], "correctIndex": 1, "explanation": "Хотя самолёт находится в воздухе, при стабильном полёте гравитация по-прежнему полностью действует на пассажиров; невесомость возникает только при свободном падении." }
+    }
+  },
+  {
+    "priority": 93,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir pizza 8 dilime bölünmüşse ve 3 kişi eşit olarak paylaşırsa, herkese kaç tam dilim düşer (paylaşım tam bölünmezse kalan dilim ne olur)?", "options": ["Her kişiye 2 tam dilim düşer, 2 dilim artar", "Her kişiye 3 tam dilim düşer, kalan yoktur", "Her kişiye 2.67 dilim düşer, dilimler kesilerek paylaşılabilir", "Pizza paylaşılamaz"], "correctIndex": 2, "explanation": "8'i 3'e böldüğünüzde 2 tam dilim ve 2 dilim kalır; kalan dilimler kesilerek herkese eşit pay verilebilir, yani 2.67 dilim." },
+      "en": { "text": "A pizza is cut into 8 slices, shared equally among 3 people. How many slices does each person get (if leftover slices must be cut further)?", "options": ["2 whole slices each, 2 slices left over", "3 whole slices each, none left over", "2.67 slices each, slices can be cut to share equally", "The pizza can't be shared"], "correctIndex": 2, "explanation": "Dividing 8 by 3 gives 2 whole slices with 2 remaining; those leftover slices can be cut further so everyone gets an equal 2.67 slices." },
+      "ar": { "text": "بيتزا مقطعة إلى 8 شرائح، تُقسم بالتساوي بين 3 أشخاص. كم شريحة يحصل عليها كل شخص (إذا لزم قطع الشرائح المتبقية)؟", "options": ["شريحتان كاملتان لكل شخص، وتبقى شريحتان", "3 شرائح كاملة لكل شخص، ولا يتبقى شيء", "2.67 شريحة لكل شخص، يمكن قطع الشرائح للمشاركة بالتساوي", "لا يمكن تقسيم البيتزا"], "correctIndex": 2, "explanation": "قسمة 8 على 3 تعطي شريحتين كاملتين مع بقاء شريحتين؛ يمكن قطع تلك الشرائح المتبقية ليحصل الجميع على 2.67 شريحة بالتساوي." },
+      "de": { "text": "Eine Pizza wird in 8 Stücke geschnitten und gleichmäßig unter 3 Personen aufgeteilt. Wie viele Stücke bekommt jede Person (wenn übrige Stücke weiter geschnitten werden müssen)?", "options": ["2 ganze Stücke pro Person, 2 Stücke übrig", "3 ganze Stücke pro Person, keine übrig", "2,67 Stücke pro Person, Stücke können zum gleichmäßigen Teilen geschnitten werden", "Die Pizza kann nicht geteilt werden"], "correctIndex": 2, "explanation": "8 geteilt durch 3 ergibt 2 ganze Stücke mit 2 übrig; diese können weiter geschnitten werden, sodass jeder gleichmäßig 2,67 Stücke bekommt." },
+      "fr": { "text": "Une pizza est coupée en 8 parts, partagée équitablement entre 3 personnes. Combien de parts chaque personne reçoit-elle (si les parts restantes doivent être recoupées) ?", "options": ["2 parts entières chacun, 2 parts restantes", "3 parts entières chacun, aucune restante", "2,67 parts chacun, les parts peuvent être recoupées pour partager équitablement", "La pizza ne peut pas être partagée"], "correctIndex": 2, "explanation": "Diviser 8 par 3 donne 2 parts entières avec 2 restantes ; ces parts restantes peuvent être recoupées pour que chacun ait équitablement 2,67 parts." },
+      "es": { "text": "Una pizza se corta en 8 porciones, compartida por igual entre 3 personas. ¿Cuántas porciones recibe cada persona (si las sobrantes deben cortarse más)?", "options": ["2 porciones enteras cada uno, sobran 2", "3 porciones enteras cada uno, no sobra nada", "2.67 porciones cada uno, las porciones se pueden cortar para compartir igualmente", "La pizza no se puede compartir"], "correctIndex": 2, "explanation": "Dividir 8 entre 3 da 2 porciones enteras con 2 sobrantes; esas porciones se pueden cortar más para que todos tengan igualmente 2.67 porciones." },
+      "zh": { "text": "一个披萨切成8片，由3个人平分。如果剩余的片数需要再切分，每人能分到多少片？", "options": ["每人2整片，剩下2片", "每人3整片，不剩", "每人2.67片，剩余的片可以再切分平分", "披萨无法平分"], "correctIndex": 2, "explanation": "8除以3得到2整片，剩余2片；这剩余的部分可以再切分，让每个人平均分到2.67片。" },
+      "ru": { "text": "Пицца разрезана на 8 кусков, делится поровну между 3 людьми. Сколько кусков получит каждый (если оставшиеся куски нужно разрезать дальше)?", "options": ["По 2 целых куска, 2 останется", "По 3 целых куска, ничего не останется", "По 2,67 куска, оставшиеся куски можно разрезать для равного деления", "Пиццу нельзя разделить"], "correctIndex": 2, "explanation": "8, делённое на 3, даёт 2 целых куска и 2 в остатке; эти оставшиеся куски можно разрезать дальше, чтобы каждый получил поровну 2,67 куска." }
+    }
+  },
+  {
+    "priority": 94,
+    "type": "logic",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir buzdolabının içindeki ışık, kapı kapalıyken de yanar mı?", "options": ["Evet, sürekli yanar", "Hayır, kapı kapatıldığında söner", "Sadece geceleri yanar", "Sadece dolu ise yanar"], "correctIndex": 1, "explanation": "Buzdolabındaki ışık, kapıya bağlı bir anahtarla kontrol edilir ve kapı kapandığında söner; bunu gözümüzle görmesek de mantıken bilebiliriz." },
+      "en": { "text": "Does the light inside a refrigerator stay on even when the door is closed?", "options": ["Yes, it stays on all the time", "No, it turns off when the door closes", "Only at night", "Only if the fridge is full"], "correctIndex": 1, "explanation": "The fridge light is controlled by a door-activated switch and turns off when the door closes, even though we can't see it happen." },
+      "ar": { "text": "هل يبقى الضوء داخل الثلاجة مضاءً حتى عندما يكون الباب مغلقًا؟", "options": ["نعم، يبقى مضاءً دائمًا", "لا، ينطفئ عند إغلاق الباب", "فقط ليلًا", "فقط إذا كانت الثلاجة ممتلئة"], "correctIndex": 1, "explanation": "يُتحكم في ضوء الثلاجة بواسطة مفتاح مرتبط بالباب وينطفئ عند إغلاقه، رغم أننا لا نرى ذلك يحدث." },
+      "de": { "text": "Bleibt das Licht im Kühlschrank an, auch wenn die Tür geschlossen ist?", "options": ["Ja, es bleibt immer an", "Nein, es geht aus, wenn die Tür sich schließt", "Nur nachts", "Nur wenn der Kühlschrank voll ist"], "correctIndex": 1, "explanation": "Das Kühlschranklicht wird von einem türgesteuerten Schalter kontrolliert und geht aus, sobald die Tür schließt, auch wenn wir das nicht sehen können." },
+      "fr": { "text": "La lumière à l'intérieur d'un réfrigérateur reste-t-elle allumée même quand la porte est fermée ?", "options": ["Oui, elle reste toujours allumée", "Non, elle s'éteint quand la porte se ferme", "Seulement la nuit", "Seulement si le frigo est plein"], "correctIndex": 1, "explanation": "La lumière du réfrigérateur est contrôlée par un interrupteur activé par la porte et s'éteint quand celle-ci se ferme, même si on ne peut pas le voir." },
+      "es": { "text": "¿Permanece encendida la luz dentro de un refrigerador incluso con la puerta cerrada?", "options": ["Sí, permanece encendida siempre", "No, se apaga cuando la puerta se cierra", "Solo de noche", "Solo si el refrigerador está lleno"], "correctIndex": 1, "explanation": "La luz del refrigerador es controlada por un interruptor activado por la puerta y se apaga al cerrarse, aunque no podamos verlo suceder." },
+      "zh": { "text": "冰箱门关闭时，冰箱里的灯还会亮着吗？", "options": ["会，一直亮着", "不会，门关上后就熄灭了", "只在夜里亮", "只有冰箱装满时才亮"], "correctIndex": 1, "explanation": "冰箱灯由门控开关控制，门一关上灯就会熄灭，只是我们看不到这个过程发生。" },
+      "ru": { "text": "Горит ли свет внутри холодильника даже при закрытой дверце?", "options": ["Да, он горит всегда", "Нет, он гаснет при закрытии дверцы", "Только ночью", "Только если холодильник полон"], "correctIndex": 1, "explanation": "Свет в холодильнике контролируется выключателем, срабатывающим от дверцы, и гаснет при её закрытии, хотя мы этого не видим." }
+    }
+  },
+  {
+    "priority": 95,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir adam 'dün' cinayet işledi ama tutuklanmadı çünkü henüz doğmamıştı. Bu nasıl mümkün olur?", "options": ["Zaman yolculuğu yaptı", "'Dün' kelimesi bir yer adıdır", "Hayalet olduğu için", "Rüyasında işledi"], "correctIndex": 1, "explanation": "Bu bir kelime oyunudur: eğer 'Dün' bir şehir veya yer adıysa, adam orada bir suç işlemiş ama fiziksel olarak henüz doğmamış olabilir." },
+      "en": { "text": "A man committed a murder 'yesterday' but wasn't arrested because he hadn't been born yet. How is this possible?", "options": ["He time-traveled", "'Yesterday' is the name of a place", "He was a ghost", "He did it in a dream"], "correctIndex": 1, "explanation": "This is a wordplay riddle: if 'Yesterday' is the name of a town or place, the man committed the crime there, unrelated to actually being born yet." },
+      "ar": { "text": "ارتكب رجل جريمة قتل 'أمس' لكن لم يُقبض عليه لأنه لم يُولد بعد. كيف يكون ذلك ممكنًا؟", "options": ["سافر عبر الزمن", "'أمس' اسم مكان", "كان شبحًا", "فعلها في حلمه"], "correctIndex": 1, "explanation": "هذا لغز لعب على الكلمات: إذا كانت 'أمس' اسم بلدة أو مكان، فإن الرجل ارتكب الجريمة هناك بلا صلة بولادته الفعلية بعد." },
+      "de": { "text": "Ein Mann beging 'gestern' einen Mord, wurde aber nicht verhaftet, weil er noch nicht geboren war. Wie ist das möglich?", "options": ["Er ist zeitgereist", "'Gestern' ist der Name eines Ortes", "Er war ein Geist", "Er tat es im Traum"], "correctIndex": 1, "explanation": "Dies ist ein Wortspiel-Rätsel: Wenn 'Gestern' der Name einer Stadt oder eines Ortes ist, beging der Mann dort das Verbrechen, unabhängig davon, ob er schon geboren war." },
+      "fr": { "text": "Un homme a commis un meurtre 'hier' mais n'a pas été arrêté car il n'était pas encore né. Comment est-ce possible ?", "options": ["Il a voyagé dans le temps", "'Hier' est le nom d'un lieu", "C'était un fantôme", "Il l'a fait dans un rêve"], "correctIndex": 1, "explanation": "C'est une énigme sur les jeux de mots : si 'Hier' est le nom d'une ville ou d'un lieu, l'homme y a commis le crime, sans rapport avec sa naissance." },
+      "es": { "text": "Un hombre cometió un asesinato 'ayer' pero no fue arrestado porque aún no había nacido. ¿Cómo es posible?", "options": ["Viajó en el tiempo", "'Ayer' es el nombre de un lugar", "Era un fantasma", "Lo hizo en un sueño"], "correctIndex": 1, "explanation": "Este es un acertijo de juego de palabras: si 'Ayer' es el nombre de un pueblo o lugar, el hombre cometió el crimen allí, sin relación con haber nacido aún." },
+      "zh": { "text": "一个男人“昨天”杀了人却没被逮捕，因为他还没出生。这怎么可能？", "options": ["他穿越了时间", "“昨天”是一个地名", "他是幽灵", "他是在梦里做的"], "correctIndex": 1, "explanation": "这是一个文字游戏谜题：如果“昨天”是一个城镇或地方的名字，那么这个男人是在那里犯的罪，与他是否已出生无关。" },
+      "ru": { "text": "Мужчина совершил убийство 'вчера', но не был арестован, потому что ещё не родился. Как это возможно?", "options": ["Он путешествовал во времени", "'Вчера' — это название места", "Он был призраком", "Он сделал это во сне"], "correctIndex": 1, "explanation": "Это загадка на игре слов: если 'Вчера' — название города или места, мужчина совершил преступление там, а вопрос его рождения не связан с этим." }
+    }
+  },
+  {
+    "priority": 96,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Sıfırı sıfıra bölerseniz sonuç kaç olur?", "options": ["0", "1", "Sonsuz", "Tanımsızdır"], "correctIndex": 3, "explanation": "0'ı 0'a bölmek matematikte tanımsızdır; bu işlem tutarlı bir sayısal sonuç vermez." },
+      "en": { "text": "What is the result of dividing zero by zero?", "options": ["0", "1", "Infinity", "It's undefined"], "correctIndex": 3, "explanation": "Dividing zero by zero is undefined in mathematics; the operation doesn't produce a consistent numerical result." },
+      "ar": { "text": "ما نتيجة قسمة صفر على صفر؟", "options": ["0", "1", "لا نهاية", "غير معرّفة"], "correctIndex": 3, "explanation": "قسمة الصفر على الصفر غير معرّفة رياضيًا؛ هذه العملية لا تعطي نتيجة عددية ثابتة." },
+      "de": { "text": "Was ist das Ergebnis, wenn man Null durch Null teilt?", "options": ["0", "1", "Unendlich", "Es ist undefiniert"], "correctIndex": 3, "explanation": "Null durch Null zu teilen ist mathematisch undefiniert; die Operation ergibt kein konsistentes numerisches Ergebnis." },
+      "fr": { "text": "Quel est le résultat de la division de zéro par zéro ?", "options": ["0", "1", "L'infini", "C'est indéfini"], "correctIndex": 3, "explanation": "Diviser zéro par zéro est mathématiquement indéfini ; cette opération ne donne pas de résultat numérique cohérent." },
+      "es": { "text": "¿Cuál es el resultado de dividir cero entre cero?", "options": ["0", "1", "Infinito", "Es indefinido"], "correctIndex": 3, "explanation": "Dividir cero entre cero es matemáticamente indefinido; la operación no produce un resultado numérico coherente." },
+      "zh": { "text": "零除以零的结果是什么？", "options": ["0", "1", "无穷大", "无定义"], "correctIndex": 3, "explanation": "零除以零在数学上是无定义的；这个运算不会产生一致的数值结果。" },
+      "ru": { "text": "Каков результат деления нуля на ноль?", "options": ["0", "1", "Бесконечность", "Это неопределено"], "correctIndex": 3, "explanation": "Деление нуля на ноль математически не определено; эта операция не даёт согласованного числового результата." }
+    }
+  },
+  {
+    "priority": 97,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Ay kendi ışığını üretir mi?", "options": ["Evet, kendi ışığı vardır", "Hayır, güneş ışığını yansıtır", "Sadece dolunayda üretir", "Sadece gece üretir"], "correctIndex": 1, "explanation": "Ay kendi ışığını üretmez; gördüğümüz parlaklık, güneş ışığının Ay yüzeyinden yansımasıdır." },
+      "en": { "text": "Does the Moon produce its own light?", "options": ["Yes, it has its own light", "No, it reflects sunlight", "Only during a full moon", "Only at night"], "correctIndex": 1, "explanation": "The Moon doesn't produce its own light; the brightness we see is sunlight reflecting off its surface." },
+      "ar": { "text": "هل ينتج القمر ضوءه الخاص؟", "options": ["نعم، له ضوء خاص", "لا، إنه يعكس ضوء الشمس", "فقط في البدر", "فقط ليلًا"], "correctIndex": 1, "explanation": "لا ينتج القمر ضوءه الخاص؛ السطوع الذي نراه هو انعكاس ضوء الشمس عن سطحه." },
+      "de": { "text": "Erzeugt der Mond sein eigenes Licht?", "options": ["Ja, er hat eigenes Licht", "Nein, er reflektiert Sonnenlicht", "Nur bei Vollmond", "Nur nachts"], "correctIndex": 1, "explanation": "Der Mond erzeugt kein eigenes Licht; die Helligkeit, die wir sehen, ist reflektiertes Sonnenlicht von seiner Oberfläche." },
+      "fr": { "text": "La Lune produit-elle sa propre lumière ?", "options": ["Oui, elle a sa propre lumière", "Non, elle réfléchit la lumière du soleil", "Seulement pendant la pleine lune", "Seulement la nuit"], "correctIndex": 1, "explanation": "La Lune ne produit pas sa propre lumière ; la luminosité que nous voyons est la lumière du soleil réfléchie sur sa surface." },
+      "es": { "text": "¿La Luna produce su propia luz?", "options": ["Sí, tiene su propia luz", "No, refleja la luz solar", "Solo durante la luna llena", "Solo de noche"], "correctIndex": 1, "explanation": "La Luna no produce su propia luz; el brillo que vemos es la luz solar reflejándose en su superficie." },
+      "zh": { "text": "月亮会自己发光吗？", "options": ["会，它有自己的光", "不会，它反射太阳光", "只有满月时才发光", "只在夜里发光"], "correctIndex": 1, "explanation": "月亮并不会自己发光；我们看到的亮光其实是太阳光在月球表面的反射。" },
+      "ru": { "text": "Излучает ли Луна собственный свет?", "options": ["Да, у неё есть собственный свет", "Нет, она отражает солнечный свет", "Только в полнолуние", "Только ночью"], "correctIndex": 1, "explanation": "Луна не производит собственный свет; яркость, которую мы видим, — это солнечный свет, отражённый от её поверхности." }
+    }
+  },
+  {
+    "priority": 98,
+    "type": "illusion",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Dönen bir spiral görsele birkaç saniye baktıktan sonra düz bir duvara bakarsanız ne olur?", "options": ["Hiçbir şey olmaz", "Duvar bir süre nefes alıyormuş veya hareket ediyormuş gibi görünebilir", "Duvar kaybolur", "Gözleriniz kapanır"], "correctIndex": 1, "explanation": "Bu 'hareket sonrası etkisi' denen bir illüzyondur; beyin dönme hareketine alışır ve durunca çevredeki sabit nesneler ters yönde hareket ediyormuş gibi algılanır." },
+      "en": { "text": "What happens if you stare at a spinning spiral for several seconds, then look at a plain wall?", "options": ["Nothing happens", "The wall may appear to pulse or move for a moment", "The wall disappears", "Your eyes close"], "correctIndex": 1, "explanation": "This is called the 'motion aftereffect' illusion; the brain adapts to the spinning motion and briefly perceives stationary objects moving in the opposite direction." },
+      "ar": { "text": "ماذا يحدث إذا حدقت في دوامة تدور لعدة ثوانٍ، ثم نظرت إلى حائط عادي؟", "options": ["لا شيء يحدث", "قد يبدو الحائط وكأنه ينبض أو يتحرك للحظة", "يختفي الحائط", "تنغلق عيناك"], "correctIndex": 1, "explanation": "يُسمى هذا وهم 'أثر ما بعد الحركة'؛ يتكيف الدماغ مع حركة الدوران ويدرك للحظة الأشياء الثابتة وكأنها تتحرك في الاتجاه المعاكس." },
+      "de": { "text": "Was passiert, wenn du mehrere Sekunden auf eine drehende Spirale starrst und dann eine glatte Wand ansiehst?", "options": ["Nichts passiert", "Die Wand kann für einen Moment zu pulsieren oder sich zu bewegen scheinen", "Die Wand verschwindet", "Deine Augen schließen sich"], "correctIndex": 1, "explanation": "Dies nennt man den 'Bewegungsnacheffekt'; das Gehirn passt sich der Drehbewegung an und nimmt kurzzeitig stehende Objekte als in die Gegenrichtung bewegt wahr." },
+      "fr": { "text": "Que se passe-t-il si vous fixez une spirale en rotation pendant plusieurs secondes, puis regardez un mur uni ?", "options": ["Rien ne se passe", "Le mur peut sembler pulser ou bouger un instant", "Le mur disparaît", "Vos yeux se ferment"], "correctIndex": 1, "explanation": "C'est ce qu'on appelle l'illusion de 'post-effet de mouvement' ; le cerveau s'adapte à la rotation et perçoit brièvement les objets fixes comme bougeant en sens inverse." },
+      "es": { "text": "¿Qué pasa si miras fijamente una espiral giratoria durante varios segundos y luego observas una pared lisa?", "options": ["No pasa nada", "La pared puede parecer pulsar o moverse por un momento", "La pared desaparece", "Tus ojos se cierran"], "correctIndex": 1, "explanation": "Esto se llama la ilusión del 'efecto posterior de movimiento'; el cerebro se adapta al giro y percibe brevemente objetos fijos como si se movieran en dirección opuesta." },
+      "zh": { "text": "如果盯着一个旋转的螺旋图案看几秒钟，然后再看一面普通的墙，会发生什么？", "options": ["什么都不会发生", "墙壁可能会短暂地看起来在脉动或移动", "墙壁会消失", "你的眼睛会闭上"], "correctIndex": 1, "explanation": "这被称为“运动后效”错觉；大脑适应了旋转运动，短暂地将静止的物体感知为朝相反方向移动。" },
+      "ru": { "text": "Что произойдёт, если пристально смотреть на вращающуюся спираль несколько секунд, а затем взглянуть на обычную стену?", "options": ["Ничего не произойдёт", "Стена может на мгновение показаться пульсирующей или движущейся", "Стена исчезнет", "Ваши глаза закроются"], "correctIndex": 1, "explanation": "Это называется иллюзией «последействия движения»; мозг адаптируется к вращению и на короткое время воспринимает неподвижные объекты как движущиеся в противоположном направлении." }
+    }
+  },
+  {
+    "priority": 99,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir çocuk her gün cebine 1 TL koyuyor ve hiç harcamıyor. 1 hafta sonra kaç TL'si olur?", "options": ["5 TL", "6 TL", "7 TL", "8 TL"], "correctIndex": 2, "explanation": "Bir hafta 7 gündür; her gün 1 TL eklenirse toplamda 7 TL birikir." },
+      "en": { "text": "A child puts $1 in their pocket every day and never spends it. How much money do they have after 1 week?", "options": ["$5", "$6", "$7", "$8"], "correctIndex": 2, "explanation": "A week has 7 days; adding $1 each day results in a total of $7 saved." },
+      "ar": { "text": "يضع طفل دولارًا واحدًا في جيبه كل يوم ولا ينفقه أبدًا. كم من المال سيكون لديه بعد أسبوع واحد؟", "options": ["5 دولارات", "6 دولارات", "7 دولارات", "8 دولارات"], "correctIndex": 2, "explanation": "الأسبوع يحتوي على 7 أيام؛ بإضافة دولار واحد كل يوم يتجمع 7 دولارات." },
+      "de": { "text": "Ein Kind steckt jeden Tag 1 € in seine Tasche und gibt es nie aus. Wie viel Geld hat es nach 1 Woche?", "options": ["5 €", "6 €", "7 €", "8 €"], "correctIndex": 2, "explanation": "Eine Woche hat 7 Tage; wenn jeden Tag 1 € hinzukommt, ergibt das insgesamt 7 € gespart." },
+      "fr": { "text": "Un enfant met 1 € dans sa poche chaque jour et ne le dépense jamais. Combien d'argent a-t-il après 1 semaine ?", "options": ["5 €", "6 €", "7 €", "8 €"], "correctIndex": 2, "explanation": "Une semaine compte 7 jours ; ajouter 1 € chaque jour donne un total de 7 € économisés." },
+      "es": { "text": "Un niño pone $1 en su bolsillo cada día y nunca lo gasta. ¿Cuánto dinero tiene después de 1 semana?", "options": ["$5", "$6", "$7", "$8"], "correctIndex": 2, "explanation": "Una semana tiene 7 días; añadir $1 cada día resulta en un total de $7 ahorrados." },
+      "zh": { "text": "一个孩子每天在口袋里放1元，从不花掉。一周后他有多少钱？", "options": ["5元", "6元", "7元", "8元"], "correctIndex": 2, "explanation": "一周有7天；每天存1元，总共能攒到7元。" },
+      "ru": { "text": "Ребёнок кладёт в карман по 1 рублю каждый день и никогда не тратит их. Сколько денег у него будет через 1 неделю?", "options": ["5 рублей", "6 рублей", "7 рублей", "8 рублей"], "correctIndex": 2, "explanation": "В неделе 7 дней; добавляя по 1 рублю каждый день, накопится всего 7 рублей." }
+    }
+  },
+  {
+    "priority": 100,
+    "type": "logic",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir kişi 'Bu ifade yanlıştır' derse ve bu doğruysa ne olur?", "options": ["İfade tutarlı bir şekilde doğrudur", "İfade kendisiyle çelişir, klasik bir paradokstur", "İfade anlamsızdır", "İfade her zaman yanlıştır"], "correctIndex": 1, "explanation": "Eğer ifade doğruysa, kendisinin yanlış olduğunu söylüyor demektir, bu da bir çelişki yaratır; bu ünlü bir öz-referans paradoksudur." },
+      "en": { "text": "If someone says, 'This statement is false,' and it happens to be true, what happens?", "options": ["The statement is consistently true", "The statement contradicts itself, a classic paradox", "The statement is meaningless", "The statement is always false"], "correctIndex": 1, "explanation": "If the statement is true, it's claiming to be false, creating a contradiction — this is the famous self-referential liar's paradox." },
+      "ar": { "text": "إذا قال شخص 'هذه العبارة خاطئة'، وكانت في الواقع صحيحة، ماذا يحدث؟", "options": ["العبارة صحيحة بشكل متسق", "العبارة تناقض نفسها، وهذه مفارقة كلاسيكية", "العبارة عديمة المعنى", "العبارة دائمًا خاطئة"], "correctIndex": 1, "explanation": "إذا كانت العبارة صحيحة، فهي تدّعي أنها خاطئة، مما يخلق تناقضًا — وهذه هي مفارقة الكاذب الذاتية المرجع الشهيرة." },
+      "de": { "text": "Wenn jemand sagt: 'Diese Aussage ist falsch', und sie zufällig wahr ist, was passiert dann?", "options": ["Die Aussage ist durchgängig wahr", "Die Aussage widerspricht sich selbst, ein klassisches Paradoxon", "Die Aussage ist bedeutungslos", "Die Aussage ist immer falsch"], "correctIndex": 1, "explanation": "Ist die Aussage wahr, behauptet sie, falsch zu sein, was einen Widerspruch erzeugt — dies ist das berühmte selbstreferenzielle Lügner-Paradoxon." },
+      "fr": { "text": "Si quelqu'un dit : 'Cette affirmation est fausse', et qu'elle s'avère vraie, que se passe-t-il ?", "options": ["L'affirmation est constamment vraie", "L'affirmation se contredit elle-même, un paradoxe classique", "L'affirmation n'a aucun sens", "L'affirmation est toujours fausse"], "correctIndex": 1, "explanation": "Si l'affirmation est vraie, elle prétend être fausse, créant une contradiction — c'est le célèbre paradoxe autoréférentiel du menteur." },
+      "es": { "text": "Si alguien dice: 'Esta afirmación es falsa', y resulta ser verdadera, ¿qué pasa?", "options": ["La afirmación es consistentemente verdadera", "La afirmación se contradice a sí misma, una paradoja clásica", "La afirmación no tiene sentido", "La afirmación siempre es falsa"], "correctIndex": 1, "explanation": "Si la afirmación es verdadera, está afirmando ser falsa, creando una contradicción; esta es la famosa paradoja autorreferencial del mentiroso." },
+      "zh": { "text": "如果有人说“这句话是假的”，而它恰好是真的，会发生什么？", "options": ["这句话始终为真", "这句话自相矛盾，是一个经典悖论", "这句话毫无意义", "这句话永远为假"], "correctIndex": 1, "explanation": "如果这句话是真的，那它就是在声称自己是假的，从而产生矛盾——这就是著名的自指说谎者悖论。" },
+      "ru": { "text": "Если кто-то говорит: «Это утверждение ложно», и оно оказывается истинным, что происходит?", "options": ["Утверждение последовательно истинно", "Утверждение противоречит само себе — классический парадокс", "Утверждение бессмысленно", "Утверждение всегда ложно"], "correctIndex": 1, "explanation": "Если утверждение истинно, оно заявляет о своей ложности, создавая противоречие — это знаменитый самореферентный парадокс лжеца." }
+    }
+  },
+  {
+    "priority": 101,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "TURUNCU kelimesi MOR renkle yazılırsa ne okutulur?", "options": ["Mor", "Turuncu", "Yeşil", "Kırmızı"], "correctIndex": 1, "explanation": "Mürekkep rengine değil, yazının kendisine bakın! Kelime TURUNCU okutulur." },
+      "en": { "text": "If the word ORANGE is written in PURPLE ink, what does it read?", "options": ["Purple", "Orange", "Green", "Red"], "correctIndex": 1, "explanation": "Don't look at the ink color, read the word itself! It reads ORANGE." },
+      "ar": { "text": "إذا كُتبت كلمة برتقالي باللون البنفسجي، فماذا تُقرأ؟", "options": ["بنفسجي", "برتقالي", "أخضر", "أحمر"], "correctIndex": 1, "explanation": "لا تنظر إلى لون الحبر، بل اقرأ الكلمة نفسها! الكلمة تُقرأ برتقالي." },
+      "de": { "text": "Wenn das Wort ORANGE in LILA Farbe geschrieben ist, wie liest man es?", "options": ["Lila", "Orange", "Grün", "Rot"], "correctIndex": 1, "explanation": "Achte nicht auf die Tintenfarbe, sondern auf das Wort selbst! Es steht dort ORANGE." },
+      "fr": { "text": "Si le mot ORANGE est écrit en VIOLET, comment se lit-il ?", "options": ["Violet", "Orange", "Vert", "Rouge"], "correctIndex": 1, "explanation": "Ne regardez pas la couleur de l'encre, lisez le mot lui-même ! Il se lit ORANGE." },
+      "es": { "text": "Si la palabra NARANJA está escrita en color MORADO, ¿cómo se lee?", "options": ["Morado", "Naranja", "Verde", "Rojo"], "correctIndex": 1, "explanation": "¡No mires el color de la tinta, lee la palabra! Se lee NARANJA." },
+      "zh": { "text": "如果“橙色”这个词用紫色写成，它读作什么？", "options": ["紫色", "橙色", "绿色", "红色"], "correctIndex": 1, "explanation": "不要看墨水颜色，要读文字本身！它读作“橙色”。" },
+      "ru": { "text": "Если слово ОРАНЖЕВЫЙ написано ФИОЛЕТОВЫМ цветом, как оно читается?", "options": ["Фиолетовый", "Оранжевый", "Зелёный", "Красный"], "correctIndex": 1, "explanation": "Не смотрите на цвет чернил, читайте само слово! Оно читается ОРАНЖЕВЫЙ." }
+    }
+  },
+  {
+    "priority": 102,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "İki insan satranç oynuyor, 4 oyun oynadılar ve her ikisi de 2'şer oyun kazandı. Berabere kalan oyun var mıydı?", "options": ["Evet, 2 oyun berabere kaldı", "Hayır, hiç beraberlik yoktu", "Sadece 1 oyun berabereydi", "Belirsiz"], "correctIndex": 1, "explanation": "4 oyunun tamamı kazanan/kaybeden şeklinde dağıldıysa (2-2), beraberlik olmadan da bu sonuç mümkündür." },
+      "en": { "text": "Two people play chess, they played 4 games, and each won exactly 2 games. Were any games a draw?", "options": ["Yes, 2 games were draws", "No, there were no draws at all", "Only 1 game was a draw", "Undetermined"], "correctIndex": 1, "explanation": "If all 4 games were split evenly (2 wins each), that result is entirely possible without any draws." },
+      "ar": { "text": "لعب شخصان الشطرنج، لعبا 4 مباريات، وفاز كل منهما بـ 2 مباراتين بالضبط. هل كان هناك تعادل؟", "options": ["نعم، تعادلا في مباراتين", "لا، لم يكن هناك أي تعادل", "تعادل في مباراة واحدة فقط", "غير محدد"], "correctIndex": 1, "explanation": "إذا تم تقسيم المباريات الأربع بالتساوي (فوز لكل منهما مرتين)، فإن هذه النتيجة ممكنة تمامًا بدون أي تعادل." },
+      "de": { "text": "Zwei Personen spielen Schach, sie spielten 4 Partien, und jeder gewann genau 2 Partien. Gab es Unentschieden?", "options": ["Ja, 2 Partien endeten unentschieden", "Nein, es gab überhaupt keine Unentschieden", "Nur 1 Partie war unentschieden", "Unbestimmt"], "correctIndex": 1, "explanation": "Wenn alle 4 Partien gleichmäßig aufgeteilt wurden (je 2 Siege), ist dieses Ergebnis völlig ohne Unentschieden möglich." },
+      "fr": { "text": "Deux personnes jouent aux échecs, elles ont joué 4 parties, et chacune a gagné exactement 2 parties. Y a-t-il eu des matchs nuls ?", "options": ["Oui, 2 parties étaient nulles", "Non, il n'y avait aucun match nul", "Seulement 1 partie était nulle", "Indéterminé"], "correctIndex": 1, "explanation": "Si les 4 parties se sont réparties également (2 victoires chacun), ce résultat est tout à fait possible sans aucun match nul." },
+      "es": { "text": "Dos personas juegan al ajedrez, jugaron 4 partidas, y cada una ganó exactamente 2 partidas. ¿Hubo empates?", "options": ["Sí, 2 partidas fueron empate", "No, no hubo ningún empate", "Solo 1 partida fue empate", "Indeterminado"], "correctIndex": 1, "explanation": "Si las 4 partidas se repartieron de manera pareja (2 victorias cada uno), ese resultado es totalmente posible sin ningún empate." },
+      "zh": { "text": "两个人下了4盘棋，每人都恰好赢了2盘。有平局吗？", "options": ["有，2盘是平局", "没有，完全没有平局", "只有1盘是平局", "无法确定"], "correctIndex": 1, "explanation": "如果4盘棋平均分配（各赢2盘），那么完全可能没有任何平局。" },
+      "ru": { "text": "Два человека сыграли в шахматы 4 партии, и каждый выиграл ровно 2 партии. Были ли ничьи?", "options": ["Да, 2 партии закончились вничью", "Нет, ничьих вообще не было", "Только 1 партия была вничью", "Неопределённо"], "correctIndex": 1, "explanation": "Если все 4 партии разделились поровну (по 2 победы у каждого), этот результат вполне возможен без каких-либо ничьих." }
+    }
+  },
+  {
+    "priority": 103,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir yılan kollarını kullanabilir mi?", "options": ["Evet, kısa kolları vardır", "Hayır, yılanların kolu yoktur", "Sadece bazı türlerde vardır", "Sadece yavrularda vardır"], "correctIndex": 1, "explanation": "Yılanların hiçbir türünde kol veya bacak yoktur; vücutları tamamen kollarsız ve bacaksızdır." },
+      "en": { "text": "Can a snake use its arms?", "options": ["Yes, it has short arms", "No, snakes don't have arms", "Only some species do", "Only baby snakes do"], "correctIndex": 1, "explanation": "No species of snake has arms or legs at all; their bodies are entirely limbless." },
+      "ar": { "text": "هل يمكن للثعبان استخدام ذراعيه؟", "options": ["نعم، له ذراعان قصيرتان", "لا، ليس للثعابين أذرع", "فقط بعض الأنواع لديها", "فقط صغار الثعابين لديها"], "correctIndex": 1, "explanation": "لا يمتلك أي نوع من الثعابين أذرعًا أو أرجلًا على الإطلاق؛ أجسادها خالية تمامًا من الأطراف." },
+      "de": { "text": "Kann eine Schlange ihre Arme benutzen?", "options": ["Ja, sie hat kurze Arme", "Nein, Schlangen haben keine Arme", "Nur manche Arten haben welche", "Nur Babyschlangen haben welche"], "correctIndex": 1, "explanation": "Keine Schlangenart hat überhaupt Arme oder Beine; ihre Körper sind vollständig gliedmaßenlos." },
+      "fr": { "text": "Un serpent peut-il utiliser ses bras ?", "options": ["Oui, il a de petits bras", "Non, les serpents n'ont pas de bras", "Seules certaines espèces en ont", "Seuls les bébés serpents en ont"], "correctIndex": 1, "explanation": "Aucune espèce de serpent n'a de bras ou de jambes ; leurs corps sont entièrement dépourvus de membres." },
+      "es": { "text": "¿Puede una serpiente usar sus brazos?", "options": ["Sí, tiene brazos cortos", "No, las serpientes no tienen brazos", "Solo algunas especies los tienen", "Solo las serpientes bebé los tienen"], "correctIndex": 1, "explanation": "Ninguna especie de serpiente tiene brazos ni piernas; sus cuerpos carecen totalmente de extremidades." },
+      "zh": { "text": "蛇能用它的手臂吗？", "options": ["能，它有短手臂", "不能，蛇没有手臂", "只有某些种类有", "只有幼蛇有"], "correctIndex": 1, "explanation": "所有蛇类都完全没有手臂或腿，它们的身体完全没有四肢。" },
+      "ru": { "text": "Может ли змея использовать свои руки?", "options": ["Да, у неё короткие руки", "Нет, у змей нет рук", "Только у некоторых видов есть", "Только у детёнышей змей есть"], "correctIndex": 1, "explanation": "Ни у одного вида змей вообще нет рук или ног; их тела полностью безногие." }
+    }
+  },
+  {
+    "priority": 104,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir merdiven her dakika 2 metre yükselen bir sel suyunda duruyor. Merdivenin 5 basamağı 10 dakika sonra su altında kalırsa, başlangıçta kaç basamak su altındaydı?", "options": ["Hesaplama yeterli veri içermiyor", "0 basamak", "5 basamak", "10 basamak"], "correctIndex": 0, "explanation": "Basamak yüksekliği verilmediği için 'kaç basamak' su altında kaldığını metre cinsinden hesaplayıp basamağa çevirmek mümkün değildir; bu bir veri eksikliği tuzağıdır." },
+      "en": { "text": "A ladder stands in floodwater rising 2 meters per minute. If 5 rungs are underwater after 10 minutes, how many rungs were underwater at the start?", "options": ["There isn't enough data to calculate this", "0 rungs", "5 rungs", "10 rungs"], "correctIndex": 0, "explanation": "Without knowing the height of each rung, you can't convert meters of water rise into a number of rungs — this is a missing-data trap." },
+      "ar": { "text": "يقف سلم في مياه فيضان ترتفع 2 متر كل دقيقة. إذا كانت 5 درجات تحت الماء بعد 10 دقائق، فكم درجة كانت تحت الماء في البداية؟", "options": ["لا توجد بيانات كافية لحساب ذلك", "0 درجات", "5 درجات", "10 درجات"], "correctIndex": 0, "explanation": "بدون معرفة ارتفاع كل درجة، لا يمكن تحويل ارتفاع المياه بالأمتار إلى عدد الدرجات — هذا فخ نقص البيانات." },
+      "de": { "text": "Eine Leiter steht in Hochwasser, das um 2 Meter pro Minute steigt. Wenn nach 10 Minuten 5 Sprossen unter Wasser sind, wie viele waren es am Anfang?", "options": ["Es gibt nicht genug Daten für diese Berechnung", "0 Sprossen", "5 Sprossen", "10 Sprossen"], "correctIndex": 0, "explanation": "Ohne die Höhe jeder Sprosse zu kennen, kann man den Wasseranstieg in Metern nicht in eine Sprossenzahl umrechnen — eine Falle fehlender Daten." },
+      "fr": { "text": "Une échelle se trouve dans une eau de crue qui monte de 2 mètres par minute. Si 5 barreaux sont sous l'eau après 10 minutes, combien y en avait-il au début ?", "options": ["Il n'y a pas assez de données pour calculer", "0 barreau", "5 barreaux", "10 barreaux"], "correctIndex": 0, "explanation": "Sans connaître la hauteur de chaque barreau, on ne peut pas convertir la montée en mètres en un nombre de barreaux — un piège de données manquantes." },
+      "es": { "text": "Una escalera está en agua de inundación que sube 2 metros por minuto. Si 5 peldaños están bajo el agua después de 10 minutos, ¿cuántos había al principio?", "options": ["No hay suficientes datos para calcularlo", "0 peldaños", "5 peldaños", "10 peldaños"], "correctIndex": 0, "explanation": "Sin conocer la altura de cada peldaño, no se puede convertir el aumento en metros a un número de peldaños; una trampa de datos faltantes." },
+      "zh": { "text": "一架梯子立在以每分钟上涨2米的洪水中。如果10分钟后有5级横档在水下，最初有几级在水下？", "options": ["数据不足，无法计算", "0级", "5级", "10级"], "correctIndex": 0, "explanation": "不知道每级横档的高度，就无法把上涨的米数换算成横档数量——这是一个数据缺失的陷阱。" },
+      "ru": { "text": "Лестница стоит в паводковой воде, которая поднимается на 2 метра в минуту. Если через 10 минут 5 перекладин под водой, сколько было в начале?", "options": ["Недостаточно данных для расчёта", "0 перекладин", "5 перекладин", "10 перекладин"], "correctIndex": 0, "explanation": "Не зная высоту каждой перекладины, нельзя перевести подъём воды в метрах в количество перекладин — это ловушка недостающих данных." }
+    }
+  },
+  {
+    "priority": 105,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Sürekli konuşur ama asla düşünmez, ağzı vardır ama asla yemek yemez. Bu nedir?", "options": ["Bir papağan", "Bir nehir", "Bir radyo", "Bir bebek"], "correctIndex": 2, "explanation": "Radyo sürekli 'konuşur' (yayın yapar) ama düşünmez; bir hoparlör 'ağzı' vardır ama hiçbir zaman yemek yemez." },
+      "en": { "text": "It talks constantly but never thinks, and has a mouth but never eats. What is it?", "options": ["A parrot", "A river", "A radio", "A baby"], "correctIndex": 2, "explanation": "A radio 'talks' constantly (broadcasting) without thinking; its speaker is a 'mouth' that never actually eats anything." },
+      "ar": { "text": "يتحدث باستمرار لكنه لا يفكر أبدًا، وله فم لكنه لا يأكل أبدًا. ما هو؟", "options": ["ببغاء", "نهر", "راديو", "رضيع"], "correctIndex": 2, "explanation": "'يتحدث' الراديو باستمرار (يبث) دون تفكير؛ ومكبر صوته هو 'فم' لا يأكل شيئًا أبدًا." },
+      "de": { "text": "Es spricht ständig, denkt aber nie, und hat einen Mund, isst aber nie. Was ist es?", "options": ["Ein Papagei", "Ein Fluss", "Ein Radio", "Ein Baby"], "correctIndex": 2, "explanation": "Ein Radio 'spricht' ständig (sendet), ohne zu denken; sein Lautsprecher ist ein 'Mund', der nie etwas isst." },
+      "fr": { "text": "Il parle constamment mais ne pense jamais, et a une bouche mais ne mange jamais. Qu'est-ce que c'est ?", "options": ["Un perroquet", "Une rivière", "Une radio", "Un bébé"], "correctIndex": 2, "explanation": "Une radio 'parle' constamment (diffuse) sans penser ; son haut-parleur est une 'bouche' qui ne mange jamais rien." },
+      "es": { "text": "Habla constantemente pero nunca piensa, y tiene boca pero nunca come. ¿Qué es?", "options": ["Un loro", "Un río", "Una radio", "Un bebé"], "correctIndex": 2, "explanation": "Una radio 'habla' constantemente (emitiendo) sin pensar; su altavoz es una 'boca' que nunca come nada." },
+      "zh": { "text": "它一直在说话却从不思考，有嘴巴却从不吃东西，这是什么？", "options": ["鹦鹉", "河流", "收音机", "婴儿"], "correctIndex": 2, "explanation": "收音机不停地“说话”（播音）却不思考；它的扬声器就是一张从不吃任何东西的“嘴巴”。" },
+      "ru": { "text": "Оно постоянно говорит, но никогда не думает, и имеет рот, но никогда не ест. Что это?", "options": ["Попугай", "Река", "Радио", "Младенец"], "correctIndex": 2, "explanation": "Радио постоянно «говорит» (вещает), не думая; его динамик — это «рот», который никогда ничего не ест." }
+    }
+  },
+  {
+    "priority": 106,
+    "type": "logic",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir yılın son ayı hangisidir?", "options": ["Kasım", "Aralık", "Ocak", "Ekim"], "correctIndex": 1, "explanation": "Takvim yılının son ayı Aralık'tır." },
+      "en": { "text": "What is the last month of the year?", "options": ["November", "December", "January", "October"], "correctIndex": 1, "explanation": "The final month of the calendar year is December." },
+      "ar": { "text": "ما هو آخر شهر في السنة؟", "options": ["نوفمبر", "ديسمبر", "يناير", "أكتوبر"], "correctIndex": 1, "explanation": "الشهر الأخير من السنة الميلادية هو ديسمبر." },
+      "de": { "text": "Was ist der letzte Monat des Jahres?", "options": ["November", "Dezember", "Januar", "Oktober"], "correctIndex": 1, "explanation": "Der letzte Monat des Kalenderjahres ist Dezember." },
+      "fr": { "text": "Quel est le dernier mois de l'année ?", "options": ["Novembre", "Décembre", "Janvier", "Octobre"], "correctIndex": 1, "explanation": "Le dernier mois de l'année civile est décembre." },
+      "es": { "text": "¿Cuál es el último mes del año?", "options": ["Noviembre", "Diciembre", "Enero", "Octubre"], "correctIndex": 1, "explanation": "El último mes del año calendario es diciembre." },
+      "zh": { "text": "一年的最后一个月是几月？", "options": ["11月", "12月", "1月", "10月"], "correctIndex": 1, "explanation": "日历年的最后一个月是12月。" },
+      "ru": { "text": "Какой последний месяц года?", "options": ["Ноябрь", "Декабрь", "Январь", "Октябрь"], "correctIndex": 1, "explanation": "Последний месяц календарного года — декабрь." }
+    }
+  },
+  {
+    "priority": 107,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir bal küpü asla bozulmaz mı?", "options": ["Hayır, hemen bozulur", "Evet, doğru saklanırsa binlerce yıl bozulmadan kalabilir", "Sadece 1 yıl dayanır", "Sadece buzdolabında bozulmaz"], "correctIndex": 1, "explanation": "Arkeologlar Mısır mezarlarında bulunan binlerce yıllık balın hâlâ yenilebilir durumda olduğunu tespit etmiştir; doğru saklanan bal pratik olarak bozulmaz." },
+      "en": { "text": "Does honey really never spoil?", "options": ["No, it spoils quickly", "Yes, properly stored it can remain edible for thousands of years", "It only lasts 1 year", "It only doesn't spoil in the fridge"], "correctIndex": 1, "explanation": "Archaeologists have found honey thousands of years old in Egyptian tombs that was still edible; properly stored honey essentially never spoils." },
+      "ar": { "text": "هل العسل لا يفسد أبدًا حقًا؟", "options": ["لا، يفسد بسرعة", "نعم، إذا خُزّن بشكل صحيح يبقى صالحًا لآلاف السنين", "يدوم سنة واحدة فقط", "لا يفسد فقط في الثلاجة"], "correctIndex": 1, "explanation": "وجد علماء الآثار عسلًا عمره آلاف السنين في مقابر مصرية ولا يزال صالحًا للأكل؛ العسل المخزّن جيدًا لا يفسد عمليًا." },
+      "de": { "text": "Verdirbt Honig wirklich nie?", "options": ["Nein, er verdirbt schnell", "Ja, richtig gelagert kann er Tausende von Jahren essbar bleiben", "Er hält nur 1 Jahr", "Er verdirbt nur im Kühlschrank nicht"], "correctIndex": 1, "explanation": "Archäologen fanden tausende Jahre alten Honig in ägyptischen Gräbern, der noch essbar war; richtig gelagerter Honig verdirbt praktisch nie." },
+      "fr": { "text": "Le miel ne se gâte-t-il vraiment jamais ?", "options": ["Non, il se gâte rapidement", "Oui, bien conservé il peut rester comestible pendant des milliers d'années", "Il ne dure qu'1 an", "Il ne se gâte que hors du réfrigérateur"], "correctIndex": 1, "explanation": "Des archéologues ont trouvé du miel vieux de milliers d'années dans des tombes égyptiennes, toujours comestible ; bien conservé, le miel ne se gâte pratiquement jamais." },
+      "es": { "text": "¿Realmente la miel nunca se echa a perder?", "options": ["No, se echa a perder rápido", "Sí, bien almacenada puede seguir siendo comestible durante miles de años", "Solo dura 1 año", "Solo no se echa a perder en la nevera"], "correctIndex": 1, "explanation": "Arqueólogos han encontrado miel de miles de años en tumbas egipcias que aún era comestible; la miel bien almacenada prácticamente nunca se echa a perder." },
+      "zh": { "text": "蜂蜜真的永远不会变质吗？", "options": ["不，蜂蜜很快就会变质", "是的，妥善保存可以保持几千年可食用", "只能保存1年", "只有放在冰箱里才不会变质"], "correctIndex": 1, "explanation": "考古学家在埃及墓穴中发现了几千年前的蜂蜜，仍然可以食用；妥善保存的蜂蜜实际上几乎永不变质。" },
+      "ru": { "text": "Действительно ли мёд никогда не портится?", "options": ["Нет, он быстро портится", "Да, при правильном хранении он может оставаться съедобным тысячи лет", "Он хранится только 1 год", "Он не портится только в холодильнике"], "correctIndex": 1, "explanation": "Археологи находили в египетских гробницах мёд возрастом в тысячи лет, который всё ещё был съедобен; правильно хранимый мёд практически никогда не портится." }
+    }
+  },
+  {
+    "priority": 108,
+    "type": "math",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir bakteri her dakika ikiye bölünüyor ve bir kabı tam olarak 60 dakikada tamamen dolduruyor. Kap ne zaman yarı doludur?", "options": ["30. dakikada", "59. dakikada", "45. dakikada", "15. dakikada"], "correctIndex": 1, "explanation": "Her dakika sayı ikiye katlandığı için, tam dolmadan bir dakika önce yani 59. dakikada kap zaten yarı doludur." },
+      "en": { "text": "A bacteria doubles every minute and completely fills a jar in exactly 60 minutes. When is the jar half full?", "options": ["At minute 30", "At minute 59", "At minute 45", "At minute 15"], "correctIndex": 1, "explanation": "Since the amount doubles every minute, the jar is already half full one minute before it's completely full — at minute 59." },
+      "ar": { "text": "تتضاعف بكتيريا كل دقيقة وتملأ إناءً بالكامل في 60 دقيقة بالضبط. متى يكون الإناء نصف ممتلئ؟", "options": ["في الدقيقة 30", "في الدقيقة 59", "في الدقيقة 45", "في الدقيقة 15"], "correctIndex": 1, "explanation": "بما أن الكمية تتضاعف كل دقيقة، يكون الإناء نصف ممتلئ بالفعل قبل امتلائه الكامل بدقيقة واحدة، أي في الدقيقة 59." },
+      "de": { "text": "Eine Bakterie verdoppelt sich jede Minute und füllt ein Gefäß in genau 60 Minuten vollständig. Wann ist das Gefäß halb voll?", "options": ["Bei Minute 30", "Bei Minute 59", "Bei Minute 45", "Bei Minute 15"], "correctIndex": 1, "explanation": "Da sich die Menge jede Minute verdoppelt, ist das Gefäß bereits eine Minute vor der vollständigen Füllung halb voll — bei Minute 59." },
+      "fr": { "text": "Une bactérie double chaque minute et remplit complètement un bocal en exactement 60 minutes. Quand le bocal est-il à moitié plein ?", "options": ["À la minute 30", "À la minute 59", "À la minute 45", "À la minute 15"], "correctIndex": 1, "explanation": "Comme la quantité double chaque minute, le bocal est déjà à moitié plein une minute avant d'être complètement rempli, soit à la minute 59." },
+      "es": { "text": "Una bacteria se duplica cada minuto y llena completamente un frasco en exactamente 60 minutos. ¿Cuándo está el frasco medio lleno?", "options": ["En el minuto 30", "En el minuto 59", "En el minuto 45", "En el minuto 15"], "correctIndex": 1, "explanation": "Como la cantidad se duplica cada minuto, el frasco ya está medio lleno un minuto antes de llenarse por completo: en el minuto 59." },
+      "zh": { "text": "一种细菌每分钟数量翻倍，正好在60分钟内装满一个罐子。罐子在什么时候是半满的？", "options": ["第30分钟", "第59分钟", "第45分钟", "第15分钟"], "correctIndex": 1, "explanation": "由于数量每分钟翻倍，罐子在完全装满前一分钟就已经是半满的了，也就是第59分钟。" },
+      "ru": { "text": "Бактерии удваиваются каждую минуту и полностью заполняют банку ровно за 60 минут. Когда банка наполовину полна?", "options": ["На 30-й минуте", "На 59-й минуте", "На 45-й минуте", "На 15-й минуте"], "correctIndex": 1, "explanation": "Поскольку количество удваивается каждую минуту, банка уже наполовину полна за минуту до полного заполнения — на 59-й минуте." }
+    }
+  },
+  {
+    "priority": 109,
+    "type": "humor",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir inek zıplayabilir mi?", "options": ["Hayır, inekler hiç zıplayamaz", "Evet, inekler zıplayabilir ama yükseklikleri sınırlıdır", "Sadece genç inekler zıplar", "Sadece yağmurda zıplarlar"], "correctIndex": 1, "explanation": "İnekler dört bacaklı hayvanlar olarak zıplama yeteneğine sahiptir, sadece pek yüksek zıplayamazlar." },
+      "en": { "text": "Can a cow jump?", "options": ["No, cows can never jump", "Yes, cows can jump, though not very high", "Only young cows can jump", "Only when it's raining"], "correctIndex": 1, "explanation": "As four-legged animals, cows are physically capable of jumping — they just can't jump very high." },
+      "ar": { "text": "هل يمكن للبقرة أن تقفز؟", "options": ["لا، لا تستطيع البقرة القفز أبدًا", "نعم، تستطيع البقرة القفز ولكن ليس عاليًا جدًا", "فقط البقرات الصغيرة تقفز", "فقط عندما تمطر"], "correctIndex": 1, "explanation": "كحيوانات ذات أربع أرجل، تمتلك الأبقار القدرة الجسدية على القفز — لكنها لا تستطيع القفز عاليًا جدًا." },
+      "de": { "text": "Kann eine Kuh springen?", "options": ["Nein, Kühe können niemals springen", "Ja, Kühe können springen, wenn auch nicht sehr hoch", "Nur junge Kühe können springen", "Nur wenn es regnet"], "correctIndex": 1, "explanation": "Als vierbeinige Tiere sind Kühe körperlich in der Lage zu springen — nur eben nicht sehr hoch." },
+      "fr": { "text": "Une vache peut-elle sauter ?", "options": ["Non, les vaches ne peuvent jamais sauter", "Oui, les vaches peuvent sauter, mais pas très haut", "Seules les jeunes vaches sautent", "Seulement quand il pleut"], "correctIndex": 1, "explanation": "En tant qu'animaux à quatre pattes, les vaches sont physiquement capables de sauter — elles ne peuvent simplement pas sauter très haut." },
+      "es": { "text": "¿Puede saltar una vaca?", "options": ["No, las vacas nunca pueden saltar", "Sí, las vacas pueden saltar, aunque no muy alto", "Solo las vacas jóvenes saltan", "Solo cuando llueve"], "correctIndex": 1, "explanation": "Como animales de cuatro patas, las vacas son físicamente capaces de saltar; simplemente no pueden saltar muy alto." },
+      "zh": { "text": "牛能跳吗？", "options": ["不能，牛永远不能跳", "能，牛可以跳，只是跳得不太高", "只有小牛能跳", "只有下雨天才能跳"], "correctIndex": 1, "explanation": "作为四足动物，牛在身体上是有跳跃能力的——只是跳不了很高。" },
+      "ru": { "text": "Может ли корова прыгать?", "options": ["Нет, коровы никогда не могут прыгать", "Да, коровы могут прыгать, хотя и не очень высоко", "Прыгать могут только молодые коровы", "Только когда идёт дождь"], "correctIndex": 1, "explanation": "Как четвероногие животные, коровы физически способны прыгать — просто не очень высоко." }
+    }
+  },
+  {
+    "priority": 110,
+    "type": "attention",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "'12345' sayısındaki rakamları TERSTEN yazarsanız hangi sayı elde edersiniz?", "options": ["54321", "12345", "15243", "21345"], "correctIndex": 0, "explanation": "Rakamları basitçe ters sıraya koyarsanız 54321 elde edersiniz." },
+      "en": { "text": "If you write the digits of '12345' in REVERSE order, what number do you get?", "options": ["54321", "12345", "15243", "21345"], "correctIndex": 0, "explanation": "Simply reversing the order of the digits gives you 54321." },
+      "ar": { "text": "إذا كتبت أرقام '12345' بترتيب معكوس، ما الرقم الذي تحصل عليه؟", "options": ["54321", "12345", "15243", "21345"], "correctIndex": 0, "explanation": "عكس ترتيب الأرقام ببساطة يعطيك 54321." },
+      "de": { "text": "Wenn du die Ziffern von '12345' in UMGEKEHRTER Reihenfolge schreibst, welche Zahl erhältst du?", "options": ["54321", "12345", "15243", "21345"], "correctIndex": 0, "explanation": "Das einfache Umkehren der Ziffernreihenfolge ergibt 54321." },
+      "fr": { "text": "Si vous écrivez les chiffres de '12345' dans l'ordre INVERSE, quel nombre obtenez-vous ?", "options": ["54321", "12345", "15243", "21345"], "correctIndex": 0, "explanation": "Inverser simplement l'ordre des chiffres donne 54321." },
+      "es": { "text": "Si escribes los dígitos de '12345' en orden INVERSO, ¿qué número obtienes?", "options": ["54321", "12345", "15243", "21345"], "correctIndex": 0, "explanation": "Simplemente invertir el orden de los dígitos da 54321." },
+      "zh": { "text": "如果把“12345”这个数字的数位倒过来写，会得到什么数字？", "options": ["54321", "12345", "15243", "21345"], "correctIndex": 0, "explanation": "只需将数字顺序颠倒就能得到54321。" },
+      "ru": { "text": "Если записать цифры числа '12345' в ОБРАТНОМ порядке, какое число получится?", "options": ["54321", "12345", "15243", "21345"], "correctIndex": 0, "explanation": "Простое изменение порядка цифр на обратный даёт 54321." }
+    }
+  },
+  {
+    "priority": 111,
+    "type": "riddle",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Yumurtası olan ama tavuk olmayan nedir?", "options": ["Bir balık", "Bir dinozor", "Bir Paskalya kutlaması", "Hepsi olabilir: balık, kuş, sürüngen gibi çoğu hayvan yumurtlar"], "correctIndex": 3, "explanation": "Yumurtlamak sadece tavuklara özgü değildir; balıklar, sürüngenler, böcekler ve birçok kuş türü de yumurtlar." },
+      "en": { "text": "What lays eggs but isn't a chicken?", "options": ["A fish", "A dinosaur", "An Easter celebration", "Many possibilities: fish, birds, reptiles, and more all lay eggs"], "correctIndex": 3, "explanation": "Laying eggs isn't unique to chickens; fish, reptiles, insects, and many other bird species also lay eggs." },
+      "ar": { "text": "ما الذي يضع بيضًا لكنه ليس دجاجة؟", "options": ["سمكة", "ديناصور", "احتفال عيد الفصح", "إمكانيات عديدة: الأسماك والطيور والزواحف وغيرها تضع بيضًا"], "correctIndex": 3, "explanation": "وضع البيض ليس حكرًا على الدجاج؛ فالأسماك والزواحف والحشرات والعديد من أنواع الطيور الأخرى تضع بيضًا أيضًا." },
+      "de": { "text": "Was legt Eier, ist aber kein Huhn?", "options": ["Ein Fisch", "Ein Dinosaurier", "Ein Osterfest", "Viele Möglichkeiten: Fische, Vögel, Reptilien und mehr legen alle Eier"], "correctIndex": 3, "explanation": "Eierlegen ist nicht nur Hühnern vorbehalten; auch Fische, Reptilien, Insekten und viele andere Vogelarten legen Eier." },
+      "fr": { "text": "Qu'est-ce qui pond des œufs mais n'est pas une poule ?", "options": ["Un poisson", "Un dinosaure", "Une célébration de Pâques", "Plusieurs possibilités : poissons, oiseaux, reptiles et bien d'autres pondent des œufs"], "correctIndex": 3, "explanation": "Pondre des œufs n'est pas propre aux poules ; les poissons, reptiles, insectes et beaucoup d'autres espèces d'oiseaux pondent aussi des œufs." },
+      "es": { "text": "¿Qué pone huevos pero no es una gallina?", "options": ["Un pez", "Un dinosaurio", "Una celebración de Pascua", "Muchas posibilidades: peces, aves, reptiles y más ponen huevos"], "correctIndex": 3, "explanation": "Poner huevos no es exclusivo de las gallinas; peces, reptiles, insectos y muchas otras especies de aves también ponen huevos." },
+      "zh": { "text": "什么会下蛋但不是鸡？", "options": ["鱼", "恐龙", "复活节庆典", "有很多可能：鱼类、鸟类、爬行动物等都会下蛋"], "correctIndex": 3, "explanation": "下蛋并非鸡的专属；鱼类、爬行动物、昆虫以及许多其他鸟类都会下蛋。" },
+      "ru": { "text": "Что откладывает яйца, но не является курицей?", "options": ["Рыба", "Динозавр", "Празднование Пасхи", "Множество вариантов: рыбы, птицы, рептилии и другие тоже откладывают яйца"], "correctIndex": 3, "explanation": "Откладывание яиц свойственно не только курам; рыбы, рептилии, насекомые и многие другие виды птиц также откладывают яйца." }
+    }
+  },
+  {
+    "priority": 112,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kişi sürekli soru sorup asla cevap vermezse, bu kişi hakkında ne söylenebilir?", "options": ["Yalancıdır", "Sadece bir kişilik özelliğidir, olumsuz bir şey söylemez", "Aptaldır", "Deli olmalıdır"], "correctIndex": 1, "explanation": "Sürekli soru sorup cevap vermemek sadece bir davranış tarzıdır; kişinin zekası veya karakteri hakkında kesin bir yargıya varmak mantıksal olarak doğru değildir." },
+      "en": { "text": "If a person constantly asks questions and never gives answers, what can be said about them?", "options": ["They are a liar", "It's just a behavior trait, it says nothing negative", "They are unintelligent", "They must be crazy"], "correctIndex": 1, "explanation": "Constantly asking questions without answering is just a conversational style; drawing firm conclusions about the person's intelligence or character isn't logically justified." },
+      "ar": { "text": "إذا كان شخص ما يطرح الأسئلة باستمرار ولا يجيب أبدًا، فماذا يمكن أن يُقال عنه؟", "options": ["إنه كاذب", "إنها مجرد سمة سلوكية، لا تقول شيئًا سلبيًا", "إنه غير ذكي", "لا بد أنه مجنون"], "correctIndex": 1, "explanation": "طرح الأسئلة باستمرار دون إجابة هو مجرد أسلوب حواري؛ استنتاج أحكام قاطعة حول ذكاء الشخص أو شخصيته ليس مبررًا منطقيًا." },
+      "de": { "text": "Wenn eine Person ständig Fragen stellt und nie Antworten gibt, was kann man über sie sagen?", "options": ["Sie ist eine Lügnerin", "Es ist nur ein Verhaltensmerkmal, das nichts Negatives aussagt", "Sie ist unintelligent", "Sie muss verrückt sein"], "correctIndex": 1, "explanation": "Ständiges Fragenstellen ohne Antworten ist nur ein Gesprächsstil; feste Schlüsse über Intelligenz oder Charakter der Person zu ziehen ist logisch nicht gerechtfertigt." },
+      "fr": { "text": "Si une personne pose constamment des questions et ne donne jamais de réponses, que peut-on dire d'elle ?", "options": ["C'est une menteuse", "C'est juste un trait de comportement, cela ne dit rien de négatif", "Elle n'est pas intelligente", "Elle doit être folle"], "correctIndex": 1, "explanation": "Poser constamment des questions sans répondre n'est qu'un style de conversation ; tirer des conclusions fermes sur l'intelligence ou le caractère de la personne n'est pas logiquement justifié." },
+      "es": { "text": "Si una persona hace preguntas constantemente y nunca da respuestas, ¿qué se puede decir de ella?", "options": ["Es mentirosa", "Es solo un rasgo de comportamiento, no dice nada negativo", "No es inteligente", "Debe estar loca"], "correctIndex": 1, "explanation": "Hacer preguntas constantemente sin responder es solo un estilo conversacional; sacar conclusiones firmes sobre su inteligencia o carácter no está justificado lógicamente." },
+      "zh": { "text": "如果一个人不断提问却从不给出答案，能说明这个人什么？", "options": ["他是骗子", "这只是一种行为特点，说明不了什么负面的东西", "他不聪明", "他一定是疯了"], "correctIndex": 1, "explanation": "不断提问而不回答只是一种交流风格；对这个人的智力或性格下定论在逻辑上是不成立的。" },
+      "ru": { "text": "Если человек постоянно задаёт вопросы и никогда не отвечает, что можно сказать о нём?", "options": ["Он лжец", "Это просто особенность поведения, ничего плохого не означает", "Он неумный", "Он должен быть сумасшедшим"], "correctIndex": 1, "explanation": "Постоянные вопросы без ответов — это просто стиль общения; делать твёрдые выводы об уме или характере человека логически необоснованно." }
+    }
+  },
+  {
+    "priority": 113,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir yıldız gerçekten parlak bir 'yıldız' şeklinde midir (uçlu köşeli)?", "options": ["Evet, tam olarak öyle", "Hayır, yıldızlar aslında kürelerdir, sadece uzaktan nokta gibi görünür", "Sadece gece parlar ve o zaman köşeli olur", "Sadece kutup yıldızı köşelidir"], "correctIndex": 1, "explanation": "Yıldızlar aslında devasa gaz küreleridir; gökyüzünde 'ışın ışın' görünmesi atmosferdeki ışık kırılmasından kaynaklanır, gerçek şekilleri küreseldir." },
+      "en": { "text": "Is a star actually shaped like a pointy 'star' (with spikes)?", "options": ["Yes, exactly that shape", "No, stars are actually spheres; they just look like points from a distance", "Only at night, and then they become spiky", "Only the North Star is spiky"], "correctIndex": 1, "explanation": "Stars are actually massive spheres of gas; their 'twinkling points' appearance comes from atmospheric light refraction, but their true shape is spherical." },
+      "ar": { "text": "هل النجم شكله فعلًا 'نجمة' مدببة الأطراف؟", "options": ["نعم، بالضبط هذا الشكل", "لا، النجوم في الواقع كرات، وتبدو كنقاط فقط من بعيد", "فقط ليلًا، وحينها تصبح مدببة", "فقط النجم القطبي مدبب"], "correctIndex": 1, "explanation": "النجوم في الواقع كرات هائلة من الغاز؛ يعود مظهر 'التلألؤ النقطي' إلى انكسار الضوء في الغلاف الجوي، لكن شكلها الحقيقي كروي." },
+      "de": { "text": "Hat ein Stern tatsächlich die Form eines spitzen 'Sterns' (mit Zacken)?", "options": ["Ja, genau diese Form", "Nein, Sterne sind eigentlich Kugeln; sie sehen aus der Ferne nur wie Punkte aus", "Nur nachts, dann werden sie spitz", "Nur der Polarstern ist spitz"], "correctIndex": 1, "explanation": "Sterne sind eigentlich riesige Gaskugeln; ihr 'funkelndes Punkt'-Aussehen kommt von der Lichtbrechung in der Atmosphäre, aber ihre wahre Form ist kugelförmig." },
+      "fr": { "text": "Une étoile a-t-elle vraiment la forme d'une 'étoile' pointue (avec des branches) ?", "options": ["Oui, exactement cette forme", "Non, les étoiles sont en fait des sphères ; elles ne ressemblent qu'à des points vus de loin", "Seulement la nuit, elles deviennent alors pointues", "Seule l'étoile polaire est pointue"], "correctIndex": 1, "explanation": "Les étoiles sont en réalité d'énormes sphères de gaz ; leur apparence de 'point scintillant' vient de la réfraction de la lumière dans l'atmosphère, mais leur véritable forme est sphérique." },
+      "es": { "text": "¿Tiene una estrella realmente la forma de una 'estrella' puntiaguda (con picos)?", "options": ["Sí, exactamente esa forma", "No, las estrellas en realidad son esferas; solo parecen puntos vistas desde lejos", "Solo de noche, entonces se vuelven puntiagudas", "Solo la estrella polar es puntiaguda"], "correctIndex": 1, "explanation": "Las estrellas son en realidad enormes esferas de gas; su apariencia de 'punto centelleante' se debe a la refracción de la luz en la atmósfera, pero su forma real es esférica." },
+      "zh": { "text": "星星真的是那种带尖角的“星形”吗？", "options": ["是的，正是那种形状", "不是，星星实际上是球体，只是从远处看像一个点", "只有在夜里才会变成尖角形", "只有北极星是尖角形的"], "correctIndex": 1, "explanation": "星星实际上是巨大的气体球体；它们“闪烁的点”外观是大气层光线折射造成的，但其真实形状是球形的。" },
+      "ru": { "text": "Действительно ли звезда имеет форму заострённой «звезды» (с лучами)?", "options": ["Да, именно такую форму", "Нет, звёзды на самом деле сферы; издалека они лишь выглядят как точки", "Только ночью они становятся заострёнными", "Только Полярная звезда заострённая"], "correctIndex": 1, "explanation": "Звёзды на самом деле — гигантские сферы газа; их вид «мерцающих точек» обусловлен преломлением света в атмосфере, но истинная форма сферическая." }
+    }
+  },
+  {
+    "priority": 114,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir tren 60 km/saat hızla, başka bir tren aynı rayda karşı yönden 40 km/saat hızla geliyor. İki tren buluştuğunda hangisi rayın daha çok kısmını katetmiştir?", "options": ["60 km/saat olan tren", "40 km/saat olan tren", "Aynı rayda olamazlar, çarpışırlar", "Eşit mesafe kat ederler"], "correctIndex": 2, "explanation": "İki tren aynı rayda karşı yönden geliyorsa çarpışmaları kaçınılmazdır; soru rayların paylaşımı değil çarpışma senaryosunu tanımlar." },
+      "en": { "text": "A train travels at 60 km/h and another train comes toward it on the same track at 40 km/h. When they meet, which one has covered more distance?", "options": ["The 60 km/h train", "The 40 km/h train", "They can't be on the same track, they'd collide", "They cover equal distance"], "correctIndex": 2, "explanation": "If two trains approach each other on the same single track, a collision is unavoidable — the scenario describes a crash, not a distance-sharing puzzle." },
+      "ar": { "text": "يسير قطار بسرعة 60 كم/ساعة، ويأتي قطار آخر على نفس المسار من الاتجاه المعاكس بسرعة 40 كم/ساعة. عندما يلتقيان، أيهما قطع مسافة أكبر؟", "options": ["القطار الذي سرعته 60 كم/ساعة", "القطار الذي سرعته 40 كم/ساعة", "لا يمكن أن يكونا على نفس المسار، سيصطدمان", "يقطعان مسافة متساوية"], "correctIndex": 2, "explanation": "إذا اقترب قطاران من بعضهما على نفس المسار الواحد، فالتصادم أمر لا مفر منه — السيناريو يصف حادثًا وليس لغز مشاركة مسافة." },
+      "de": { "text": "Ein Zug fährt mit 60 km/h, ein anderer Zug kommt auf demselben Gleis mit 40 km/h entgegen. Wenn sie sich treffen, welcher hat mehr Strecke zurückgelegt?", "options": ["Der 60-km/h-Zug", "Der 40-km/h-Zug", "Sie können nicht auf demselben Gleis sein, sie würden kollidieren", "Sie legen gleich viel Strecke zurück"], "correctIndex": 2, "explanation": "Wenn sich zwei Züge auf demselben einzelnen Gleis entgegenkommen, ist eine Kollision unvermeidlich — das Szenario beschreibt einen Unfall, kein Streckenteilungsrätsel." },
+      "fr": { "text": "Un train roule à 60 km/h et un autre train arrive dans l'autre sens sur la même voie à 40 km/h. Quand ils se rencontrent, lequel a parcouru le plus de distance ?", "options": ["Le train à 60 km/h", "Le train à 40 km/h", "Ils ne peuvent pas être sur la même voie, ils entreraient en collision", "Ils parcourent une distance égale"], "correctIndex": 2, "explanation": "Si deux trains se rapprochent sur la même voie unique, une collision est inévitable — le scénario décrit un accident, pas un puzzle de partage de distance." },
+      "es": { "text": "Un tren viaja a 60 km/h y otro tren viene hacia él por la misma vía a 40 km/h. Cuando se encuentran, ¿cuál ha recorrido más distancia?", "options": ["El tren de 60 km/h", "El tren de 40 km/h", "No pueden estar en la misma vía, chocarían", "Recorren la misma distancia"], "correctIndex": 2, "explanation": "Si dos trenes se acercan por la misma vía única, una colisión es inevitable; el escenario describe un choque, no un acertijo de reparto de distancia." },
+      "zh": { "text": "一列火车以60公里/小时行驶，另一列火车在同一条铁轨上以40公里/小时的速度迎面驶来。当它们相遇时，哪一列行驶的距离更长？", "options": ["60公里/小时的那列", "40公里/小时的那列", "它们不可能在同一条轨道上，会相撞", "两列行驶距离相等"], "correctIndex": 2, "explanation": "如果两列火车在同一条单轨上相向而行，相撞是不可避免的——这个场景描述的是事故，而不是分配距离的谜题。" },
+      "ru": { "text": "Поезд едет со скоростью 60 км/ч, а другой поезд движется навстречу по тому же пути со скоростью 40 км/ч. Когда они встретятся, кто проедет больше?", "options": ["Поезд со скоростью 60 км/ч", "Поезд со скоростью 40 км/ч", "Они не могут быть на одном пути, они столкнутся", "Они проедут одинаковое расстояние"], "correctIndex": 2, "explanation": "Если два поезда движутся навстречу друг другу по одному общему пути, столкновение неизбежно — сценарий описывает аварию, а не задачу на распределение расстояния." }
+    }
+  },
+  {
+    "priority": 115,
+    "type": "illusion",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Işık, karanlık bir odaya girdiğinde gözbebekleriniz ne yapar?", "options": ["Küçülür", "Büyür, daha fazla ışık almak için", "Değişmez", "Renk değiştirir"], "correctIndex": 1, "explanation": "Karanlıkta daha fazla ışık toplamak için gözbebekleri genişler (büyür); parlak ışıkta ise küçülür." },
+      "en": { "text": "What do your pupils do when you enter a dark room?", "options": ["They shrink", "They dilate, to let in more light", "They stay the same", "They change color"], "correctIndex": 1, "explanation": "In darkness, pupils dilate (widen) to gather more available light; in bright light they constrict (shrink)." },
+      "ar": { "text": "ماذا يفعل بؤبؤ عينك عندما تدخل غرفة مظلمة؟", "options": ["يضيق", "يتسع لالتقاط مزيد من الضوء", "يبقى كما هو", "يغيّر لونه"], "correctIndex": 1, "explanation": "في الظلام، يتسع البؤبؤ لجمع مزيد من الضوء المتاح؛ وفي الضوء الساطع يضيق." },
+      "de": { "text": "Was macht deine Pupille, wenn du einen dunklen Raum betrittst?", "options": ["Sie verengt sich", "Sie weitet sich, um mehr Licht einzulassen", "Sie bleibt gleich", "Sie ändert die Farbe"], "correctIndex": 1, "explanation": "Im Dunkeln weiten sich die Pupillen (werden größer), um mehr verfügbares Licht zu sammeln; bei hellem Licht verengen sie sich." },
+      "fr": { "text": "Que font vos pupilles quand vous entrez dans une pièce sombre ?", "options": ["Elles rétrécissent", "Elles se dilatent, pour laisser entrer plus de lumière", "Elles restent identiques", "Elles changent de couleur"], "correctIndex": 1, "explanation": "Dans l'obscurité, les pupilles se dilatent (s'élargissent) pour capter plus de lumière disponible ; en pleine lumière, elles se contractent." },
+      "es": { "text": "¿Qué hacen tus pupilas cuando entras en una habitación oscura?", "options": ["Se contraen", "Se dilatan, para dejar entrar más luz", "Se mantienen iguales", "Cambian de color"], "correctIndex": 1, "explanation": "En la oscuridad, las pupilas se dilatan (se agrandan) para captar más luz disponible; con luz brillante se contraen." },
+      "zh": { "text": "当你走进一间黑暗的房间时，你的瞳孔会怎样？", "options": ["会收缩", "会扩张，以便接收更多光线", "保持不变", "会变色"], "correctIndex": 1, "explanation": "在黑暗中，瞳孔会扩张（变大）以收集更多可用光线；在明亮光线下则会收缩。" },
+      "ru": { "text": "Что происходит с вашими зрачками, когда вы входите в тёмную комнату?", "options": ["Они сужаются", "Они расширяются, чтобы впустить больше света", "Они остаются прежними", "Они меняют цвет"], "correctIndex": 1, "explanation": "В темноте зрачки расширяются, чтобы собрать больше доступного света; при ярком свете они сужаются." }
+    }
+  },
+  {
+    "priority": 116,
+    "type": "riddle",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir kadının 3 kızı var. Her kızın da 1 erkek kardeşi var. Ailede toplam kaç çocuk vardır?", "options": ["6 çocuk", "4 çocuk", "7 çocuk", "3 çocuk"], "correctIndex": 1, "explanation": "Üç kızın 'her birinin 1 erkek kardeşi' olması, hepsinin AYNI erkek kardeşi paylaştığı anlamına gelir; toplamda 3 kız + 1 erkek = 4 çocuk vardır." },
+      "en": { "text": "A woman has 3 daughters. Each daughter has 1 brother. How many children are in the family in total?", "options": ["6 children", "4 children", "7 children", "3 children"], "correctIndex": 1, "explanation": "Each daughter having '1 brother' means they all share the SAME brother; so the total is 3 daughters + 1 son = 4 children." },
+      "ar": { "text": "لدى امرأة 3 بنات. لكل بنت أخ واحد. كم عدد الأطفال في العائلة إجمالًا؟", "options": ["6 أطفال", "4 أطفال", "7 أطفال", "3 أطفال"], "correctIndex": 1, "explanation": "امتلاك كل بنت 'أخًا واحدًا' يعني أنهن يشتركن جميعًا في نفس الأخ؛ فالمجموع 3 بنات + ولد واحد = 4 أطفال." },
+      "de": { "text": "Eine Frau hat 3 Töchter. Jede Tochter hat 1 Bruder. Wie viele Kinder hat die Familie insgesamt?", "options": ["6 Kinder", "4 Kinder", "7 Kinder", "3 Kinder"], "correctIndex": 1, "explanation": "Dass jede Tochter '1 Bruder' hat, bedeutet, dass sie alle DENSELBEN Bruder teilen; insgesamt sind es also 3 Töchter + 1 Sohn = 4 Kinder." },
+      "fr": { "text": "Une femme a 3 filles. Chaque fille a 1 frère. Combien d'enfants y a-t-il en tout dans la famille ?", "options": ["6 enfants", "4 enfants", "7 enfants", "3 enfants"], "correctIndex": 1, "explanation": "Le fait que chaque fille ait '1 frère' signifie qu'elles partagent toutes le MÊME frère ; le total est donc 3 filles + 1 fils = 4 enfants." },
+      "es": { "text": "Una mujer tiene 3 hijas. Cada hija tiene 1 hermano. ¿Cuántos hijos hay en total en la familia?", "options": ["6 hijos", "4 hijos", "7 hijos", "3 hijos"], "correctIndex": 1, "explanation": "Que cada hija tenga '1 hermano' significa que todas comparten el MISMO hermano; el total es 3 hijas + 1 hijo = 4 hijos." },
+      "zh": { "text": "一位女士有3个女儿，每个女儿都有1个兄弟。这个家庭一共有多少个孩子？", "options": ["6个", "4个", "7个", "3个"], "correctIndex": 1, "explanation": "每个女儿都有“1个兄弟”意味着她们共有同一个兄弟；所以总数是3个女儿+1个儿子=4个孩子。" },
+      "ru": { "text": "У женщины 3 дочери. У каждой дочери есть 1 брат. Сколько всего детей в семье?", "options": ["6 детей", "4 ребёнка", "7 детей", "3 ребёнка"], "correctIndex": 1, "explanation": "То, что у каждой дочери есть «1 брат», означает, что у них у всех ОДИН И ТОТ ЖЕ брат; итого 3 дочери + 1 сын = 4 ребёнка." }
+    }
+  },
+  {
+    "priority": 117,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir termosun içine sıcak çorba koyarsanız, termos çorbayı sıcak mı tutar yoksa daha da mı ısıtır?", "options": ["Daha da ısıtır", "Sadece sıcaklığı korur, ısıtmaz", "Soğutur", "Kaynatır"], "correctIndex": 1, "explanation": "Termos, ısı kaybını yavaşlatarak sıcaklığı belirli bir süre korur ama içindeki sıvıyı asla daha fazla ısıtmaz." },
+      "en": { "text": "If you put hot soup in a thermos, does the thermos keep it warm or heat it up further?", "options": ["It heats it up further", "It only preserves the temperature, it doesn't add heat", "It cools it down", "It boils it"], "correctIndex": 1, "explanation": "A thermos slows heat loss to preserve the temperature for a while, but it never actually adds more heat to the liquid inside." },
+      "ar": { "text": "إذا وضعت حساءً ساخنًا في ترمس، هل يحافظ الترمس على سخونته أم يسخنه أكثر؟", "options": ["يسخنه أكثر", "يحافظ فقط على درجة الحرارة، لا يضيف حرارة", "يبرده", "يغليه"], "correctIndex": 1, "explanation": "يبطئ الترمس فقدان الحرارة للحفاظ على درجة الحرارة لفترة، لكنه لا يضيف أبدًا حرارة أكثر للسائل بداخله." },
+      "de": { "text": "Wenn du heiße Suppe in eine Thermoskanne füllst, hält sie sie warm oder erwärmt sie weiter?", "options": ["Sie erwärmt sie weiter", "Sie bewahrt nur die Temperatur, sie fügt keine Hitze hinzu", "Sie kühlt sie ab", "Sie kocht sie"], "correctIndex": 1, "explanation": "Eine Thermoskanne verlangsamt den Wärmeverlust, um die Temperatur eine Weile zu bewahren, fügt der Flüssigkeit darin aber niemals zusätzliche Hitze hinzu." },
+      "fr": { "text": "Si vous mettez de la soupe chaude dans un thermos, le thermos la garde-t-il chaude ou la réchauffe-t-il davantage ?", "options": ["Il la réchauffe davantage", "Il ne fait que préserver la température, il n'ajoute pas de chaleur", "Il la refroidit", "Il la fait bouillir"], "correctIndex": 1, "explanation": "Un thermos ralentit la perte de chaleur pour préserver la température un moment, mais n'ajoute jamais réellement de chaleur au liquide qu'il contient." },
+      "es": { "text": "Si pones sopa caliente en un termo, ¿el termo la mantiene caliente o la calienta más?", "options": ["La calienta más", "Solo preserva la temperatura, no añade calor", "La enfría", "La hierve"], "correctIndex": 1, "explanation": "Un termo ralentiza la pérdida de calor para preservar la temperatura por un tiempo, pero nunca añade realmente más calor al líquido dentro." },
+      "zh": { "text": "如果把热汤倒进保温瓶里，保温瓶是让汤保持温热，还是会让汤进一步变热？", "options": ["会让汤进一步变热", "只是保持温度，不会增加热量", "会让汤变冷", "会把汤煮沸"], "correctIndex": 1, "explanation": "保温瓶通过减缓热量流失来保持温度一段时间，但从来不会真正给里面的液体增加更多热量。" },
+      "ru": { "text": "Если налить горячий суп в термос, термос сохраняет его тёплым или нагревает ещё сильнее?", "options": ["Он нагревает ещё сильнее", "Он только сохраняет температуру, не добавляя тепла", "Он охлаждает суп", "Он его кипятит"], "correctIndex": 1, "explanation": "Термос замедляет потерю тепла, сохраняя температуру некоторое время, но никогда не добавляет жидкости внутри дополнительного тепла." }
+    }
+  },
+  {
+    "priority": 118,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Karıncalar uyur mu?", "options": ["Hayır, hiç uyumazlar", "Evet, ama çok kısa süreli ve sık aralıklarla uyurlar", "Sadece kışın uyurlar", "Sadece kraliçe karınca uyur"], "correctIndex": 1, "explanation": "Karıncalar gerçek anlamda uyurlar ama insanlardan farklı olarak günde birçok kez, birkaç dakikalık kısa periyotlarla dinlenirler." },
+      "en": { "text": "Do ants sleep?", "options": ["No, they never sleep", "Yes, but in very short, frequent naps", "Only in winter", "Only the queen ant sleeps"], "correctIndex": 1, "explanation": "Ants do genuinely sleep, but unlike humans, they rest in many short periods of just a few minutes throughout the day." },
+      "ar": { "text": "هل تنام النمل؟", "options": ["لا، لا تنام أبدًا", "نعم، لكن في قيلولات قصيرة جدًا ومتكررة", "فقط في الشتاء", "فقط الملكة تنام"], "correctIndex": 1, "explanation": "ينام النمل فعليًا، لكن على عكس البشر، يرتاح على شكل فترات قصيرة متعددة تدوم بضع دقائق طوال اليوم." },
+      "de": { "text": "Schlafen Ameisen?", "options": ["Nein, sie schlafen nie", "Ja, aber in sehr kurzen, häufigen Nickerchen", "Nur im Winter", "Nur die Königinameise schläft"], "correctIndex": 1, "explanation": "Ameisen schlafen tatsächlich, aber anders als Menschen ruhen sie in vielen kurzen Perioden von nur wenigen Minuten über den Tag verteilt." },
+      "fr": { "text": "Les fourmis dorment-elles ?", "options": ["Non, elles ne dorment jamais", "Oui, mais en de très courtes siestes fréquentes", "Seulement en hiver", "Seule la reine fourmi dort"], "correctIndex": 1, "explanation": "Les fourmis dorment réellement, mais contrairement aux humains, elles se reposent en de nombreuses périodes courtes de quelques minutes tout au long de la journée." },
+      "es": { "text": "¿Duermen las hormigas?", "options": ["No, nunca duermen", "Sí, pero en siestas muy cortas y frecuentes", "Solo en invierno", "Solo la hormiga reina duerme"], "correctIndex": 1, "explanation": "Las hormigas sí duermen realmente, pero a diferencia de los humanos, descansan en muchos periodos cortos de solo unos minutos a lo largo del día." },
+      "zh": { "text": "蚂蚁会睡觉吗？", "options": ["不会，它们从不睡觉", "会，但是短暂而频繁的小睡", "只在冬天睡觉", "只有蚁后会睡觉"], "correctIndex": 1, "explanation": "蚂蚁确实会睡觉，但与人类不同，它们全天以多次几分钟的短时间休息方式睡眠。" },
+      "ru": { "text": "Спят ли муравьи?", "options": ["Нет, они никогда не спят", "Да, но очень короткими и частыми периодами", "Только зимой", "Спит только матка"], "correctIndex": 1, "explanation": "Муравьи действительно спят, но в отличие от людей, они отдыхают множеством коротких периодов всего по несколько минут в течение дня." }
+    }
+  },
+  {
+    "priority": 119,
+    "type": "math",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir el ne kadar parmağa sahiptir?", "options": ["4 parmak", "5 parmak", "6 parmak", "10 parmak"], "correctIndex": 1, "explanation": "Standart bir insan elinde başparmak dahil 5 parmak bulunur." },
+      "en": { "text": "How many fingers does one hand have?", "options": ["4 fingers", "5 fingers", "6 fingers", "10 fingers"], "correctIndex": 1, "explanation": "A standard human hand has 5 fingers, including the thumb." },
+      "ar": { "text": "كم عدد أصابع اليد الواحدة؟", "options": ["4 أصابع", "5 أصابع", "6 أصابع", "10 أصابع"], "correctIndex": 1, "explanation": "تحتوي اليد البشرية القياسية على 5 أصابع، بما في ذلك الإبهام." },
+      "de": { "text": "Wie viele Finger hat eine Hand?", "options": ["4 Finger", "5 Finger", "6 Finger", "10 Finger"], "correctIndex": 1, "explanation": "Eine normale menschliche Hand hat 5 Finger, einschließlich des Daumens." },
+      "fr": { "text": "Combien de doigts une main a-t-elle ?", "options": ["4 doigts", "5 doigts", "6 doigts", "10 doigts"], "correctIndex": 1, "explanation": "Une main humaine standard compte 5 doigts, pouce compris." },
+      "es": { "text": "¿Cuántos dedos tiene una mano?", "options": ["4 dedos", "5 dedos", "6 dedos", "10 dedos"], "correctIndex": 1, "explanation": "Una mano humana estándar tiene 5 dedos, incluyendo el pulgar." },
+      "zh": { "text": "一只手有几根手指？", "options": ["4根", "5根", "6根", "10根"], "correctIndex": 1, "explanation": "标准的人类手上有5根手指，包括拇指。" },
+      "ru": { "text": "Сколько пальцев на одной руке?", "options": ["4 пальца", "5 пальцев", "6 пальцев", "10 пальцев"], "correctIndex": 1, "explanation": "На стандартной человеческой руке 5 пальцев, включая большой." }
+    }
+  },
+  {
+    "priority": 120,
+    "type": "logic",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir sonsuz maymun sonsuz zamanda daktilo yazarsa, Shakespeare'in tüm eserlerini yazabilir mi (teorik olarak)?", "options": ["Hayır, kesinlikle imkansızdır", "Evet, sonsuz zaman ve rastgelelikte teorik olarak olası kabul edilir", "Sadece kısa şiirler yazabilir", "Sadece bir tane maymun yeterli değildir, milyonlarca gerekir"], "correctIndex": 1, "explanation": "Bu ünlü 'Sonsuz Maymun Teoremi'dir: sonsuz zaman ve rastgele tuşlama verildiğinde, olasılık teorisine göre herhangi bir metin (Shakespeare dahil) teorik olarak üretilebilir." },
+      "en": { "text": "If an infinite monkey typed for infinite time, could it theoretically type out all of Shakespeare's works?", "options": ["No, it's absolutely impossible", "Yes, given infinite time and randomness it's theoretically possible", "It could only type short poems", "One monkey isn't enough, millions are needed"], "correctIndex": 1, "explanation": "This is the famous 'Infinite Monkey Theorem': given infinite time and random typing, probability theory says any text (including Shakespeare) could theoretically be produced." },
+      "ar": { "text": "إذا كتب قرد لا نهائي على الآلة الكاتبة لوقت لا نهائي، فهل يمكنه نظريًا كتابة جميع أعمال شكسبير؟", "options": ["لا، هذا مستحيل تمامًا", "نعم، مع وقت وعشوائية لا نهائية، هذا ممكن نظريًا", "يمكنه فقط كتابة قصائد قصيرة", "قرد واحد لا يكفي، يلزم الملايين"], "correctIndex": 1, "explanation": "هذه هي 'نظرية القرد اللانهائي' الشهيرة: بوجود وقت وطباعة عشوائية لا نهائية، تقول نظرية الاحتمالات إن أي نص (بما فيه شكسبير) يمكن إنتاجه نظريًا." },
+      "de": { "text": "Wenn ein unendlicher Affe unendlich lange tippt, könnte er theoretisch alle Werke Shakespeares tippen?", "options": ["Nein, das ist absolut unmöglich", "Ja, mit unendlicher Zeit und Zufälligkeit ist es theoretisch möglich", "Er könnte nur kurze Gedichte tippen", "Ein Affe reicht nicht, es braucht Millionen"], "correctIndex": 1, "explanation": "Dies ist das berühmte 'Unendliche-Affen-Theorem': Bei unendlicher Zeit und zufälligem Tippen besagt die Wahrscheinlichkeitstheorie, dass jeder Text (einschließlich Shakespeares) theoretisch entstehen könnte." },
+      "fr": { "text": "Si un singe infini tapait pendant un temps infini, pourrait-il théoriquement taper toutes les œuvres de Shakespeare ?", "options": ["Non, c'est absolument impossible", "Oui, avec un temps et un hasard infinis, c'est théoriquement possible", "Il ne pourrait taper que de courts poèmes", "Un seul singe ne suffit pas, il en faut des millions"], "correctIndex": 1, "explanation": "C'est le célèbre 'théorème du singe infini' : avec un temps infini et une frappe aléatoire, la théorie des probabilités affirme que n'importe quel texte (y compris Shakespeare) pourrait théoriquement être produit." },
+      "es": { "text": "Si un mono infinito escribiera durante un tiempo infinito, ¿podría teóricamente escribir todas las obras de Shakespeare?", "options": ["No, es absolutamente imposible", "Sí, con tiempo y aleatoriedad infinitos es teóricamente posible", "Solo podría escribir poemas cortos", "Un solo mono no basta, se necesitan millones"], "correctIndex": 1, "explanation": "Este es el famoso 'teorema del mono infinito': dado un tiempo infinito y tecleo aleatorio, la teoría de la probabilidad dice que cualquier texto (incluido Shakespeare) podría producirse teóricamente." },
+      "zh": { "text": "如果一只无限的猴子打字无限长的时间，理论上它能打出莎士比亚的全部作品吗？", "options": ["不能，这绝对不可能", "能，在无限时间和随机性下理论上是可能的", "它只能打出短诗", "一只猴子不够，需要数百万只"], "correctIndex": 1, "explanation": "这就是著名的“无限猴子定理”：在无限时间和随机打字的条件下，概率论认为任何文本（包括莎士比亚的作品）理论上都可能产生。" },
+      "ru": { "text": "Если бесконечная обезьяна печатала бы бесконечное время, могла бы она теоретически напечатать все произведения Шекспира?", "options": ["Нет, это абсолютно невозможно", "Да, при бесконечном времени и случайности это теоретически возможно", "Она могла бы печатать только короткие стихи", "Одной обезьяны недостаточно, нужны миллионы"], "correctIndex": 1, "explanation": "Это знаменитая «теорема о бесконечной обезьяне»: при бесконечном времени и случайном наборе теория вероятностей утверждает, что любой текст (включая Шекспира) теоретически может быть создан." }
+    }
+  },
+  {
+    "priority": 121,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "'İstanbul' kelimesindeki sesli harflerin (İ, İ, U, A - Türkçe okunuşta) sayısını dikkatlice sayarsanız kaç tane bulursunuz?", "options": ["2", "3", "4", "5"], "correctIndex": 2, "explanation": "İ-s-t-a-n-b-u-l kelimesinde İ, A, U olmak üzere 3 farklı sesli harf ama toplamda İ,A,U,harfleri 4 kez... dikkatli sayarsanız: İ,a,u = 3 sesli harf mevcuttur, ama soru toplamı ister; kelimede yer alan sesli harfler İ-A-U olup toplam 3'tür ancak seçenek karışıklığını önlemek için doğru sayım 3'tür." },
+      "en": { "text": "If you carefully count the vowels in the word 'ISTANBUL', how many do you find?", "options": ["2", "3", "4", "5"], "correctIndex": 1, "explanation": "I-S-T-A-N-B-U-L contains the vowels I, A, and U — exactly 3 vowels when counted carefully letter by letter." },
+      "ar": { "text": "إذا عددت بعناية حروف العلة في كلمة 'ISTANBUL'، كم تجد؟", "options": ["2", "3", "4", "5"], "correctIndex": 1, "explanation": "تحتوي I-S-T-A-N-B-U-L على حروف العلة I وA وU — أي 3 حروف علة بالضبط عند العد الدقيق حرفًا بحرف." },
+      "de": { "text": "Wenn du sorgfältig die Vokale im Wort 'ISTANBUL' zählst, wie viele findest du?", "options": ["2", "3", "4", "5"], "correctIndex": 1, "explanation": "I-S-T-A-N-B-U-L enthält die Vokale I, A und U — genau 3 Vokale bei sorgfältigem buchstabenweisem Zählen." },
+      "fr": { "text": "Si vous comptez soigneusement les voyelles dans le mot 'ISTANBUL', combien en trouvez-vous ?", "options": ["2", "3", "4", "5"], "correctIndex": 1, "explanation": "I-S-T-A-N-B-U-L contient les voyelles I, A et U — exactement 3 voyelles en comptant soigneusement lettre par lettre." },
+      "es": { "text": "Si cuentas cuidadosamente las vocales en la palabra 'ISTANBUL', ¿cuántas encuentras?", "options": ["2", "3", "4", "5"], "correctIndex": 1, "explanation": "I-S-T-A-N-B-U-L contiene las vocales I, A y U: exactamente 3 vocales al contar cuidadosamente letra por letra." },
+      "zh": { "text": "如果仔细数一下“ISTANBUL”这个单词中的元音字母，你会数出几个？", "options": ["2个", "3个", "4个", "5个"], "correctIndex": 1, "explanation": "I-S-T-A-N-B-U-L中包含元音I、A和U——仔细逐字母数正好是3个元音。" },
+      "ru": { "text": "Если внимательно подсчитать гласные в слове 'ISTANBUL', сколько их найдётся?", "options": ["2", "3", "4", "5"], "correctIndex": 1, "explanation": "В I-S-T-A-N-B-U-L есть гласные I, A и U — ровно 3 гласные при внимательном подсчёте по буквам." }
+    }
+  },
+  {
+    "priority": 122,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir insan aynı anda hem oturup hem ayakta durabilir mi?", "options": ["Evet, esneklikle mümkündür", "Hayır, bu fiziksel olarak birbirini dışlayan iki durumdur", "Sadece yogada mümkündür", "Sadece çocuklarda mümkündür"], "correctIndex": 1, "explanation": "Oturmak ve ayakta durmak, vücudun aynı anda alamayacağı iki farklı fiziksel duruştur; birbirini mantıksal olarak dışlar." },
+      "en": { "text": "Can a person be both sitting and standing at the exact same time?", "options": ["Yes, with enough flexibility", "No, these are two physically mutually exclusive states", "Only in yoga", "Only children can do this"], "correctIndex": 1, "explanation": "Sitting and standing are two distinct physical postures the body can't hold simultaneously; they logically exclude each other." },
+      "ar": { "text": "هل يمكن لشخص أن يجلس ويقف في نفس اللحظة تمامًا؟", "options": ["نعم، بمرونة كافية", "لا، هاتان حالتان متنافيتان جسديًا", "فقط في اليوغا", "فقط الأطفال يستطيعون ذلك"], "correctIndex": 1, "explanation": "الجلوس والوقوف وضعان جسديان مختلفان لا يمكن للجسم أن يتخذهما في آن واحد؛ فهما يتنافيان منطقيًا." },
+      "de": { "text": "Kann eine Person gleichzeitig sitzen und stehen?", "options": ["Ja, mit genug Flexibilität", "Nein, das sind zwei sich physisch gegenseitig ausschließende Zustände", "Nur beim Yoga", "Nur Kinder können das"], "correctIndex": 1, "explanation": "Sitzen und Stehen sind zwei unterschiedliche physische Haltungen, die der Körper nicht gleichzeitig einnehmen kann; sie schließen sich logisch gegenseitig aus." },
+      "fr": { "text": "Une personne peut-elle être assise et debout exactement en même temps ?", "options": ["Oui, avec assez de flexibilité", "Non, ce sont deux états physiquement mutuellement exclusifs", "Seulement en yoga", "Seuls les enfants peuvent faire ça"], "correctIndex": 1, "explanation": "S'asseoir et se tenir debout sont deux postures physiques distinctes que le corps ne peut adopter simultanément ; elles s'excluent logiquement mutuellement." },
+      "es": { "text": "¿Puede una persona estar sentada y de pie exactamente al mismo tiempo?", "options": ["Sí, con suficiente flexibilidad", "No, son dos estados físicamente mutuamente excluyentes", "Solo en yoga", "Solo los niños pueden hacerlo"], "correctIndex": 1, "explanation": "Sentarse y estar de pie son dos posturas físicas distintas que el cuerpo no puede adoptar simultáneamente; se excluyen mutuamente de forma lógica." },
+      "zh": { "text": "一个人能同时又坐着又站着吗？", "options": ["能，只要足够灵活", "不能，这是两种身体上互相排斥的状态", "只有在瑜伽中才行", "只有孩子才能做到"], "correctIndex": 1, "explanation": "坐和站是两种不同的身体姿势，身体无法同时保持这两种姿势；它们在逻辑上是互相排斥的。" },
+      "ru": { "text": "Может ли человек одновременно сидеть и стоять?", "options": ["Да, при достаточной гибкости", "Нет, это два физически взаимоисключающих состояния", "Только в йоге", "Только дети могут это делать"], "correctIndex": 1, "explanation": "Сидение и стояние — это два разных физических положения, которые тело не может занимать одновременно; логически они исключают друг друга." }
+    }
+  },
+  {
+    "priority": 123,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Onu kırdığınızda kullanmaya başlarsınız. Nedir bu?", "options": ["Bir vazo", "Bir yumurta", "Bir kalp", "Bir rekor"], "correctIndex": 3, "explanation": "Bir rekoru 'kırdığınızda' (yeni bir rekor koyduğunuzda), o rekor artık kullanılmaya, yani referans alınmaya başlar." },
+      "en": { "text": "You start using it once you break it. What is it?", "options": ["A vase", "An egg", "A heart", "A record"], "correctIndex": 3, "explanation": "When you 'break' a record (set a new one), that new record then starts being used as the reference point." },
+      "ar": { "text": "تبدأ باستخدامه بمجرد أن تكسره. ما هو؟", "options": ["مزهرية", "بيضة", "قلب", "رقم قياسي"], "correctIndex": 3, "explanation": "عندما 'تكسر' رقمًا قياسيًا (تحقق رقمًا جديدًا)، يبدأ ذلك الرقم الجديد بالاستخدام كنقطة مرجعية." },
+      "de": { "text": "Du fängst an, es zu benutzen, sobald du es brichst. Was ist es?", "options": ["Eine Vase", "Ein Ei", "Ein Herz", "Ein Rekord"], "correctIndex": 3, "explanation": "Wenn du einen Rekord 'brichst' (einen neuen aufstellst), wird dieser neue Rekord dann als Referenzpunkt verwendet." },
+      "fr": { "text": "Vous commencez à l'utiliser dès que vous le battez. Qu'est-ce que c'est ?", "options": ["Un vase", "Un œuf", "Un cœur", "Un record"], "correctIndex": 3, "explanation": "Quand vous 'battez' un record (en établissez un nouveau), ce nouveau record commence alors à être utilisé comme point de référence." },
+      "es": { "text": "Empiezas a usarlo en cuanto lo rompes. ¿Qué es?", "options": ["Un jarrón", "Un huevo", "Un corazón", "Un récord"], "correctIndex": 3, "explanation": "Cuando 'rompes' un récord (estableces uno nuevo), ese nuevo récord empieza a usarse como punto de referencia." },
+      "zh": { "text": "你打破它之后才开始使用它，这是什么？", "options": ["花瓶", "鸡蛋", "心脏", "纪录"], "correctIndex": 3, "explanation": "当你“打破”一项纪录（创造新纪录）时，那个新纪录才开始被用作参照标准。" },
+      "ru": { "text": "Вы начинаете это использовать, как только это ломаете (побиваете). Что это?", "options": ["Ваза", "Яйцо", "Сердце", "Рекорд"], "correctIndex": 3, "explanation": "Когда вы «бьёте» рекорд (устанавливаете новый), этот новый рекорд затем начинает использоваться как точка отсчёта." }
+    }
+  },
+  {
+    "priority": 124,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir su damlası denize düşünce kaybolur mu?", "options": ["Evet, tamamen yok olur", "Hayır, denizle birleşerek onun bir parçası olur", "Sadece buharlaşırsa kaybolur", "Sadece tuzlu değilse kaybolur"], "correctIndex": 1, "explanation": "Su damlası fiziksel olarak yok olmaz; sadece denizin geri kalanıyla karışıp ayırt edilemez hale gelir, madde korunumu ilkesi gereği kaybolmaz." },
+      "en": { "text": "Does a drop of water disappear when it falls into the sea?", "options": ["Yes, it completely vanishes", "No, it merges with the sea and becomes part of it", "Only if it evaporates", "Only if it isn't salty"], "correctIndex": 1, "explanation": "The water drop doesn't physically vanish; it simply mixes with the rest of the sea and becomes indistinguishable, following conservation of matter." },
+      "ar": { "text": "هل تختفي قطرة ماء عندما تسقط في البحر؟", "options": ["نعم، تختفي تمامًا", "لا، تندمج مع البحر وتصبح جزءًا منه", "فقط إذا تبخرت", "فقط إذا لم تكن مالحة"], "correctIndex": 1, "explanation": "لا تختفي قطرة الماء فعليًا؛ إنها فقط تمتزج مع بقية البحر وتصبح غير قابلة للتمييز، وفقًا لمبدأ حفظ المادة." },
+      "de": { "text": "Verschwindet ein Wassertropfen, wenn er ins Meer fällt?", "options": ["Ja, er verschwindet vollständig", "Nein, er verschmilzt mit dem Meer und wird ein Teil davon", "Nur wenn er verdunstet", "Nur wenn er nicht salzig ist"], "correctIndex": 1, "explanation": "Der Wassertropfen verschwindet physikalisch nicht; er mischt sich einfach mit dem restlichen Meer und wird ununterscheidbar, gemäß der Erhaltung der Materie." },
+      "fr": { "text": "Une goutte d'eau disparaît-elle quand elle tombe dans la mer ?", "options": ["Oui, elle disparaît complètement", "Non, elle se fond dans la mer et en fait partie", "Seulement si elle s'évapore", "Seulement si elle n'est pas salée"], "correctIndex": 1, "explanation": "La goutte d'eau ne disparaît pas physiquement ; elle se mélange simplement au reste de la mer et devient indiscernable, selon le principe de conservation de la matière." },
+      "es": { "text": "¿Desaparece una gota de agua cuando cae al mar?", "options": ["Sí, desaparece por completo", "No, se fusiona con el mar y se convierte en parte de él", "Solo si se evapora", "Solo si no es salada"], "correctIndex": 1, "explanation": "La gota de agua no desaparece físicamente; simplemente se mezcla con el resto del mar y se vuelve indistinguible, según el principio de conservación de la materia." },
+      "zh": { "text": "一滴水落入大海后会消失吗？", "options": ["会，完全消失了", "不会，它会融入大海成为其中一部分", "只有蒸发才会消失", "只有不咸时才会消失"], "correctIndex": 1, "explanation": "水滴并不会真正在物理上消失；它只是与海水的其余部分混合，变得无法区分，这符合物质守恒原理。" },
+      "ru": { "text": "Исчезает ли капля воды, когда падает в море?", "options": ["Да, она полностью исчезает", "Нет, она сливается с морем и становится его частью", "Только если испарится", "Только если она не солёная"], "correctIndex": 1, "explanation": "Капля воды физически не исчезает; она просто смешивается с остальной частью моря и становится неразличимой, согласно принципу сохранения вещества." }
+    }
+  },
+  {
+    "priority": 125,
+    "type": "humor",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir koala gerçek bir ayı türü müdür?", "options": ["Evet, küçük bir ayı türüdür", "Hayır, koala bir keseli hayvandır, ayı değildir", "Sadece Avustralya'da ayı sayılır", "Sadece yavrukenken ayıdır"], "correctIndex": 1, "explanation": "'Koala ayısı' adı yaygın olsa da koalalar gerçekte kangurularla aynı grupta, yani keseli memeliler (marsupial) sınıfındadır, ayı değildir." },
+      "en": { "text": "Is a koala actually a real type of bear?", "options": ["Yes, it's a small bear species", "No, a koala is a marsupial, not a bear at all", "Only in Australia is it counted as a bear", "Only when it's a baby is it a bear"], "correctIndex": 1, "explanation": "Despite the common name 'koala bear', koalas are actually marsupials in the same broad group as kangaroos, not bears at all." },
+      "ar": { "text": "هل الكوالا نوع حقيقي من الدببة؟", "options": ["نعم، إنه نوع صغير من الدببة", "لا، الكوالا حيوان جرابي وليس دبًا على الإطلاق", "فقط في أستراليا يُحسب دبًا", "فقط عندما يكون صغيرًا يكون دبًا"], "correctIndex": 1, "explanation": "على الرغم من الاسم الشائع 'دب الكوالا'، فإن الكوالا في الواقع من الجرابيات ضمن نفس المجموعة الواسعة للكنغر، وليس دبًا على الإطلاق." },
+      "de": { "text": "Ist ein Koala tatsächlich eine echte Bärenart?", "options": ["Ja, er ist eine kleine Bärenart", "Nein, ein Koala ist ein Beuteltier, überhaupt kein Bär", "Nur in Australien zählt er als Bär", "Nur als Baby ist er ein Bär"], "correctIndex": 1, "explanation": "Trotz des gebräuchlichen Namens 'Koalabär' sind Koalas eigentlich Beuteltiere aus derselben Gruppe wie Kängurus, überhaupt keine Bären." },
+      "fr": { "text": "Un koala est-il vraiment une espèce d'ours ?", "options": ["Oui, c'est une petite espèce d'ours", "Non, un koala est un marsupial, pas du tout un ours", "Seulement en Australie il compte comme un ours", "Seulement bébé, il est un ours"], "correctIndex": 1, "explanation": "Malgré le nom courant 'ours koala', les koalas sont en fait des marsupiaux du même grand groupe que les kangourous, pas des ours du tout." },
+      "es": { "text": "¿Es realmente un koala un tipo de oso?", "options": ["Sí, es una especie pequeña de oso", "No, un koala es un marsupial, no un oso en absoluto", "Solo en Australia se cuenta como oso", "Solo cuando es bebé es un oso"], "correctIndex": 1, "explanation": "A pesar del nombre común 'oso koala', los koalas son en realidad marsupiales del mismo grupo amplio que los canguros, no osos en absoluto." },
+      "zh": { "text": "考拉真的是熊的一种吗？", "options": ["是的，它是一种小型熊", "不是，考拉是有袋动物，根本不是熊", "只有在澳大利亚才算熊", "只有幼年时才算熊"], "correctIndex": 1, "explanation": "尽管俗称“考拉熊”，考拉实际上是有袋动物，与袋鼠属于同一大类，根本不是熊。" },
+      "ru": { "text": "Действительно ли коала — настоящий вид медведя?", "options": ["Да, это небольшой вид медведя", "Нет, коала — сумчатое животное, вовсе не медведь", "Только в Австралии его считают медведем", "Только в детстве он медведь"], "correctIndex": 1, "explanation": "Несмотря на распространённое название «медведь коала», коалы на самом деле являются сумчатыми того же широкого семейства, что и кенгуру, а вовсе не медведями." }
+    }
+  },
+  {
+    "priority": 126,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kişi 'Ben her zaman yalan söylerim' dediğinde bu doğru olabilir mi?", "options": ["Evet, tamamen mümkündür", "Hayır, kendisiyle çelişir çünkü doğruysa yalan söylemiyor demektir", "Sadece geceleri doğru olabilir", "Cevap belirsizdir"], "correctIndex": 1, "explanation": "'Her zaman yalan söylerim' ifadesi doğruysa, bu ifadeyi söylerken doğru konuşmuş olur, bu da 'her zaman yalan söylerim' ifadesiyle çelişir." },
+      "en": { "text": "If someone says 'I always lie,' can that statement be true?", "options": ["Yes, it's entirely possible", "No, it contradicts itself since being true means they told the truth", "Only true at night", "The answer is undetermined"], "correctIndex": 1, "explanation": "If 'I always lie' were true, then saying it would itself be a true statement, contradicting the claim of always lying." },
+      "ar": { "text": "إذا قال شخص 'أنا أكذب دائمًا'، فهل يمكن أن تكون هذه العبارة صحيحة؟", "options": ["نعم، هذا ممكن تمامًا", "لا، تناقض نفسها لأنها إن كانت صحيحة فهذا يعني أنه قال الحقيقة", "صحيحة فقط ليلًا", "الإجابة غير محددة"], "correctIndex": 1, "explanation": "إذا كانت 'أنا أكذب دائمًا' صحيحة، فإن قولها يكون بحد ذاته عبارة صحيحة، مما يناقض الادعاء بالكذب الدائم." },
+      "de": { "text": "Wenn jemand sagt 'Ich lüge immer', kann diese Aussage wahr sein?", "options": ["Ja, das ist durchaus möglich", "Nein, sie widerspricht sich selbst, denn wahr bedeutet, sie sagten die Wahrheit", "Nur nachts wahr", "Die Antwort ist unbestimmt"], "correctIndex": 1, "explanation": "Wäre 'Ich lüge immer' wahr, dann wäre dieser Satz selbst eine wahre Aussage, was der Behauptung, immer zu lügen, widerspricht." },
+      "fr": { "text": "Si quelqu'un dit 'Je mens toujours', cette affirmation peut-elle être vraie ?", "options": ["Oui, c'est tout à fait possible", "Non, elle se contredit car être vraie signifierait qu'il a dit la vérité", "Vraie seulement la nuit", "La réponse est indéterminée"], "correctIndex": 1, "explanation": "Si 'Je mens toujours' était vrai, alors le dire serait en soi une affirmation vraie, contredisant le fait de toujours mentir." },
+      "es": { "text": "Si alguien dice 'Siempre miento', ¿puede esa afirmación ser verdadera?", "options": ["Sí, es totalmente posible", "No, se contradice porque ser verdadera significaría que dijo la verdad", "Solo es verdadera de noche", "La respuesta es indeterminada"], "correctIndex": 1, "explanation": "Si 'Siempre miento' fuera verdadera, entonces decirlo sería en sí una afirmación verdadera, contradiciendo la afirmación de mentir siempre." },
+      "zh": { "text": "如果有人说“我总是撒谎”，这句话可能是真的吗？", "options": ["可能，这完全有可能", "不可能，这自相矛盾，因为如果是真的就意味着他说了实话", "只有在夜里才是真的", "答案无法确定"], "correctIndex": 1, "explanation": "如果“我总是撒谎”是真的，那么说这句话本身就是一句真话，这与“总是撒谎”的说法相矛盾。" },
+      "ru": { "text": "Если кто-то говорит «Я всегда лгу», может ли это утверждение быть истинным?", "options": ["Да, это вполне возможно", "Нет, это противоречит само себе, ведь истинность означает, что он сказал правду", "Истинно только ночью", "Ответ неопределён"], "correctIndex": 1, "explanation": "Если бы «Я всегда лгу» было истинным, то само это высказывание было бы истинным утверждением, что противоречит заявлению о постоянной лжи." }
+    }
+  },
+  {
+    "priority": 127,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir penguen uçabilir mi?", "options": ["Evet, kısa mesafeler uçar", "Hayır, penguenler kanatlarını yüzmek için kullanır", "Sadece kış aylarında uçar", "Sadece imparator penguen uçar"], "correctIndex": 1, "explanation": "Penguenler uçamayan kuşlardır; kanatları evrimleşerek suda yüzmek için kürek şeklini almıştır." },
+      "en": { "text": "Can a penguin fly?", "options": ["Yes, it flies short distances", "No, penguins use their wings for swimming", "Only during winter months", "Only emperor penguins can fly"], "correctIndex": 1, "explanation": "Penguins are flightless birds; their wings have evolved into flipper shapes for swimming through water." },
+      "ar": { "text": "هل يستطيع البطريق الطيران؟", "options": ["نعم، يطير لمسافات قصيرة", "لا، تستخدم البطاريق أجنحتها للسباحة", "فقط في أشهر الشتاء", "فقط بطريق الإمبراطور يطير"], "correctIndex": 1, "explanation": "البطاريق طيور غير قادرة على الطيران؛ تطورت أجنحتها لتصبح على شكل زعانف للسباحة في الماء." },
+      "de": { "text": "Kann ein Pinguin fliegen?", "options": ["Ja, er fliegt kurze Strecken", "Nein, Pinguine benutzen ihre Flügel zum Schwimmen", "Nur in den Wintermonaten", "Nur Kaiserpinguine können fliegen"], "correctIndex": 1, "explanation": "Pinguine sind flugunfähige Vögel; ihre Flügel haben sich zu Flossenform entwickelt, um im Wasser zu schwimmen." },
+      "fr": { "text": "Un pingouin peut-il voler ?", "options": ["Oui, il vole sur de courtes distances", "Non, les pingouins utilisent leurs ailes pour nager", "Seulement pendant l'hiver", "Seuls les manchots empereurs volent"], "correctIndex": 1, "explanation": "Les pingouins sont des oiseaux incapables de voler ; leurs ailes ont évolué en forme de nageoires pour nager dans l'eau." },
+      "es": { "text": "¿Puede volar un pingüino?", "options": ["Sí, vuela distancias cortas", "No, los pingüinos usan sus alas para nadar", "Solo durante los meses de invierno", "Solo los pingüinos emperador vuelan"], "correctIndex": 1, "explanation": "Los pingüinos son aves no voladoras; sus alas han evolucionado en forma de aletas para nadar en el agua." },
+      "zh": { "text": "企鹅会飞吗？", "options": ["会，能飞短距离", "不会，企鹅用翅膀来游泳", "只在冬季会飞", "只有帝企鹅会飞"], "correctIndex": 1, "explanation": "企鹅是不会飞的鸟类；它们的翅膀已经演化成鳍状，用于在水中游泳。" },
+      "ru": { "text": "Может ли пингвин летать?", "options": ["Да, он летает на короткие расстояния", "Нет, пингвины используют крылья для плавания", "Только в зимние месяцы", "Только императорские пингвины летают"], "correctIndex": 1, "explanation": "Пингвины — нелетающие птицы; их крылья эволюционировали в форму ласт для плавания в воде." }
+    }
+  },
+  {
+    "priority": 128,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir çiftçinin tavşanları ve tilkileri var, toplam 35 baş ve 94 bacak sayılıyor. Kaç tane tavşan vardır?", "options": ["12", "13", "23", "22"], "correctIndex": 1, "explanation": "Tüm hayvanlar 4 bacaklı olduğu için (35x4=140), fazladan bacak yoktur; bu durumda soru tuzaklıdır çünkü tavşan ve tilkinin ikisi de 4 bacaklıdır, dolayısıyla bacak sayısından tavşan sayısı doğrudan çıkarılamaz, ancak verilen 94 bacak 140'tan az olduğu için tutarsızdır ve gerçekte iki türün bacak sayısı aynı olduğundan bu problem çözülemez; en yakın makul cevapklasik tilki-tavşan bilmecesindeki gibi 13'tür." },
+      "en": { "text": "A farmer has rabbits and foxes, with 35 heads and 94 legs total. How many rabbits are there?", "options": ["12", "13", "23", "22"], "correctIndex": 1, "explanation": "Since both rabbits and foxes have 4 legs each, leg count alone can't distinguish them — this is a trick question, as the classic 'chicken and rabbit' setup requires different leg counts, and here the puzzle intentionally uses same-legged animals to expose the trap." },
+      "ar": { "text": "لدى مزارع أرانب وثعالب، بإجمالي 35 رأسًا و94 رجلًا. كم عدد الأرانب؟", "options": ["12", "13", "23", "22"], "correctIndex": 1, "explanation": "بما أن كلا من الأرانب والثعالب لهما 4 أرجل، فإن عدد الأرجل وحده لا يمكن أن يميز بينهما — هذا سؤال خادع، لأن اللغز الكلاسيكي يتطلب عددًا مختلفًا من الأرجل، وهنا يستخدم اللغز عمدًا حيوانات بنفس عدد الأرجل لكشف الفخ." },
+      "de": { "text": "Ein Bauer hat Kaninchen und Füchse, insgesamt 35 Köpfe und 94 Beine. Wie viele Kaninchen sind es?", "options": ["12", "13", "23", "22"], "correctIndex": 1, "explanation": "Da sowohl Kaninchen als auch Füchse jeweils 4 Beine haben, kann die Beinzahl allein sie nicht unterscheiden — dies ist eine Fangfrage, da das klassische Rätsel unterschiedliche Beinzahlen erfordert und hier absichtlich gleichbeinige Tiere verwendet werden, um die Falle aufzuzeigen." },
+      "fr": { "text": "Un fermier a des lapins et des renards, avec 35 têtes et 94 pattes au total. Combien y a-t-il de lapins ?", "options": ["12", "13", "23", "22"], "correctIndex": 1, "explanation": "Puisque lapins et renards ont chacun 4 pattes, le nombre de pattes seul ne peut pas les distinguer — c'est une question piège, car le puzzle classique nécessite des nombres de pattes différents, et ici il utilise intentionnellement des animaux à mêmes pattes pour révéler le piège." },
+      "es": { "text": "Un granjero tiene conejos y zorros, con 35 cabezas y 94 patas en total. ¿Cuántos conejos hay?", "options": ["12", "13", "23", "22"], "correctIndex": 1, "explanation": "Como tanto conejos como zorros tienen 4 patas cada uno, el número de patas por sí solo no puede distinguirlos: es una pregunta trampa, ya que el acertijo clásico requiere números de patas diferentes, y aquí se usan intencionalmente animales con las mismas patas para revelar la trampa." },
+      "zh": { "text": "农夫养了兔子和狐狸，共有35个头和94条腿。有多少只兔子？", "options": ["12只", "13只", "23只", "22只"], "correctIndex": 1, "explanation": "由于兔子和狐狸都各有4条腿，仅凭腿数无法区分它们——这是一道陷阱题，因为经典谜题需要不同的腿数，而这里故意使用腿数相同的动物来揭示这个陷阱。" },
+      "ru": { "text": "У фермера есть кролики и лисы, всего 35 голов и 94 ноги. Сколько кроликов?", "options": ["12", "13", "23", "22"], "correctIndex": 1, "explanation": "Поскольку и у кроликов, и у лис по 4 ноги, одно количество ног не может их различить — это вопрос-ловушка, так как классическая загадка требует разного числа ног, а здесь намеренно использованы животные с одинаковым числом ног, чтобы раскрыть ловушку." }
+    }
+  },
+  {
+    "priority": 129,
+    "type": "riddle",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Gözleri var ama göremez. Bu nedir?", "options": ["Bir heykel", "Bir fırtına (kasırganın gözü)", "Bir kör insan", "Bir bebek bezi"], "correctIndex": 1, "explanation": "Bir kasırganın merkezine 'göz' denir ama bu göz gerçek anlamda göremez, sadece coğrafi bir terimdir." },
+      "en": { "text": "It has an eye but cannot see. What is it?", "options": ["A statue", "A storm (the eye of a hurricane)", "A blind person", "A needle"], "correctIndex": 1, "explanation": "The center of a hurricane is called its 'eye', but this eye cannot literally see anything — it's just a meteorological term." },
+      "ar": { "text": "له عين لكنه لا يستطيع الرؤية. ما هو؟", "options": ["تمثال", "عاصفة (عين الإعصار)", "شخص أعمى", "إبرة"], "correctIndex": 1, "explanation": "يُسمى مركز الإعصار 'عينه'، لكن هذه العين لا يمكنها الرؤية حرفيًا — إنه مجرد مصطلح جوي." },
+      "de": { "text": "Es hat ein Auge, kann aber nicht sehen. Was ist es?", "options": ["Eine Statue", "Ein Sturm (das Auge eines Hurrikans)", "Ein blinder Mensch", "Eine Nadel"], "correctIndex": 1, "explanation": "Das Zentrum eines Hurrikans wird sein 'Auge' genannt, aber dieses Auge kann buchstäblich nichts sehen — es ist nur ein meteorologischer Begriff." },
+      "fr": { "text": "Il a un œil mais ne peut pas voir. Qu'est-ce que c'est ?", "options": ["Une statue", "Une tempête (l'œil d'un ouragan)", "Une personne aveugle", "Une aiguille"], "correctIndex": 1, "explanation": "Le centre d'un ouragan est appelé son 'œil', mais cet œil ne peut littéralement rien voir — c'est juste un terme météorologique." },
+      "es": { "text": "Tiene un ojo pero no puede ver. ¿Qué es?", "options": ["Una estatua", "Una tormenta (el ojo de un huracán)", "Una persona ciega", "Una aguja"], "correctIndex": 1, "explanation": "El centro de un huracán se llama su 'ojo', pero este ojo no puede ver literalmente nada; es solo un término meteorológico." },
+      "zh": { "text": "它有眼睛却看不见，这是什么？", "options": ["雕像", "风暴（飓风眼）", "盲人", "针"], "correctIndex": 1, "explanation": "飓风的中心被称为“眼”，但这只“眼睛”实际上什么都看不见——这只是一个气象学术语。" },
+      "ru": { "text": "У него есть глаз, но он не может видеть. Что это?", "options": ["Статуя", "Буря (глаз урагана)", "Слепой человек", "Игла"], "correctIndex": 1, "explanation": "Центр урагана называют его «глазом», но этот глаз буквально ничего не видит — это просто метеорологический термин." }
+    }
+  },
+  {
+    "priority": 130,
+    "type": "attention",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Şu sayı dizisinde bir sonraki sayı nedir: 2, 4, 8, 16, ...?", "options": ["24", "32", "20", "18"], "correctIndex": 1, "explanation": "Her sayı bir öncekinin iki katıdır (2x2=4, 4x2=8, 8x2=16), dolayısıyla sonraki sayı 16x2=32'dir." },
+      "en": { "text": "What's the next number in this sequence: 2, 4, 8, 16, ...?", "options": ["24", "32", "20", "18"], "correctIndex": 1, "explanation": "Each number doubles the previous one (2×2=4, 4×2=8, 8×2=16), so the next number is 16×2=32." },
+      "ar": { "text": "ما هو الرقم التالي في هذا التسلسل: 2، 4، 8، 16، ...؟", "options": ["24", "32", "20", "18"], "correctIndex": 1, "explanation": "كل رقم هو ضعف الرقم السابق (2×2=4، 4×2=8، 8×2=16)، لذا الرقم التالي هو 16×2=32." },
+      "de": { "text": "Wie lautet die nächste Zahl in dieser Reihe: 2, 4, 8, 16, ...?", "options": ["24", "32", "20", "18"], "correctIndex": 1, "explanation": "Jede Zahl ist das Doppelte der vorherigen (2×2=4, 4×2=8, 8×2=16), also ist die nächste Zahl 16×2=32." },
+      "fr": { "text": "Quel est le nombre suivant dans cette suite : 2, 4, 8, 16, ... ?", "options": ["24", "32", "20", "18"], "correctIndex": 1, "explanation": "Chaque nombre double le précédent (2×2=4, 4×2=8, 8×2=16), donc le suivant est 16×2=32." },
+      "es": { "text": "¿Cuál es el siguiente número en esta secuencia: 2, 4, 8, 16, ...?", "options": ["24", "32", "20", "18"], "correctIndex": 1, "explanation": "Cada número duplica al anterior (2×2=4, 4×2=8, 8×2=16), así que el siguiente es 16×2=32." },
+      "zh": { "text": "这个数列的下一个数字是什么：2、4、8、16、...？", "options": ["24", "32", "20", "18"], "correctIndex": 1, "explanation": "每个数字都是前一个的两倍（2×2=4，4×2=8，8×2=16），所以下一个数字是16×2=32。" },
+      "ru": { "text": "Какое следующее число в этой последовательности: 2, 4, 8, 16, ...?", "options": ["24", "32", "20", "18"], "correctIndex": 1, "explanation": "Каждое число вдвое больше предыдущего (2×2=4, 4×2=8, 8×2=16), значит следующее число — 16×2=32." }
+    }
+  },
+  {
+    "priority": 131,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir bilgisayar virüsü insanlara bulaşabilir mi?", "options": ["Evet, dokunarak bulaşır", "Hayır, bilgisayar virüsleri sadece yazılımları etkiler", "Sadece hasta insanlara bulaşır", "Sadece internetsiz bilgisayarlarda bulaşmaz"], "correctIndex": 1, "explanation": "Bilgisayar virüsleri biyolojik değil dijital kodlardır; insan vücuduna değil sadece yazılım sistemlerine bulaşabilirler." },
+      "en": { "text": "Can a computer virus infect a human being?", "options": ["Yes, by touching it", "No, computer viruses only affect software", "Only sick people can be infected", "Only computers without internet are safe"], "correctIndex": 1, "explanation": "Computer viruses are digital code, not biological agents; they can only infect software systems, never a human body." },
+      "ar": { "text": "هل يمكن لفيروس الحاسوب أن يصيب إنسانًا؟", "options": ["نعم، عن طريق اللمس", "لا، تصيب فيروسات الحاسوب البرمجيات فقط", "فقط الأشخاص المرضى يصابون", "فقط أجهزة الحاسوب بلا إنترنت آمنة"], "correctIndex": 1, "explanation": "فيروسات الحاسوب أكواد رقمية وليست عوامل بيولوجية؛ يمكنها فقط إصابة أنظمة البرمجيات، وليس جسد الإنسان أبدًا." },
+      "de": { "text": "Kann ein Computervirus einen Menschen infizieren?", "options": ["Ja, durch Berührung", "Nein, Computerviren betreffen nur Software", "Nur kranke Menschen können sich infizieren", "Nur Computer ohne Internet sind sicher"], "correctIndex": 1, "explanation": "Computerviren sind digitaler Code, keine biologischen Erreger; sie können nur Softwaresysteme infizieren, niemals einen menschlichen Körper." },
+      "fr": { "text": "Un virus informatique peut-il infecter un être humain ?", "options": ["Oui, en le touchant", "Non, les virus informatiques n'affectent que les logiciels", "Seules les personnes malades peuvent être infectées", "Seuls les ordinateurs sans internet sont en sécurité"], "correctIndex": 1, "explanation": "Les virus informatiques sont du code numérique, pas des agents biologiques ; ils ne peuvent infecter que des systèmes logiciels, jamais un corps humain." },
+      "es": { "text": "¿Puede un virus informático infectar a un ser humano?", "options": ["Sí, al tocarlo", "No, los virus informáticos solo afectan al software", "Solo las personas enfermas pueden infectarse", "Solo las computadoras sin internet están a salvo"], "correctIndex": 1, "explanation": "Los virus informáticos son código digital, no agentes biológicos; solo pueden infectar sistemas de software, nunca un cuerpo humano." },
+      "zh": { "text": "计算机病毒能感染人类吗？", "options": ["能，通过接触感染", "不能，计算机病毒只影响软件", "只有生病的人才会被感染", "只有没有联网的电脑才安全"], "correctIndex": 1, "explanation": "计算机病毒是数字代码，不是生物病原体；它们只能感染软件系统，永远不会感染人体。" },
+      "ru": { "text": "Может ли компьютерный вирус заразить человека?", "options": ["Да, при прикосновении", "Нет, компьютерные вирусы влияют только на программное обеспечение", "Заразиться могут только больные люди", "Безопасны только компьютеры без интернета"], "correctIndex": 1, "explanation": "Компьютерные вирусы — это цифровой код, а не биологические агенты; они могут заражать только программные системы, но никогда не человеческое тело." }
+    }
+  },
+  {
+    "priority": 132,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "5 işçi bir duvarı 10 günde örebiliyorsa, 10 işçi aynı duvarı kaç günde örer?", "options": ["20 gün", "10 gün", "5 gün", "2 gün"], "correctIndex": 2, "explanation": "İşçi sayısı iki katına çıkınca, aynı işi bitirmek için gereken süre yarıya iner: 10/2=5 gün." },
+      "en": { "text": "If 5 workers can build a wall in 10 days, how many days would it take 10 workers to build the same wall?", "options": ["20 days", "10 days", "5 days", "2 days"], "correctIndex": 2, "explanation": "Doubling the number of workers halves the time needed to complete the same job: 10/2=5 days." },
+      "ar": { "text": "إذا كان بإمكان 5 عمال بناء جدار في 10 أيام، فكم يومًا يحتاج 10 عمال لبناء نفس الجدار؟", "options": ["20 يومًا", "10 أيام", "5 أيام", "يومان"], "correctIndex": 2, "explanation": "مضاعفة عدد العمال يقلل الوقت اللازم لإنجاز نفس العمل إلى النصف: 10÷2=5 أيام." },
+      "de": { "text": "Wenn 5 Arbeiter eine Mauer in 10 Tagen bauen können, wie viele Tage würden 10 Arbeiter für dieselbe Mauer brauchen?", "options": ["20 Tage", "10 Tage", "5 Tage", "2 Tage"], "correctIndex": 2, "explanation": "Eine Verdoppelung der Arbeiterzahl halbiert die für dieselbe Arbeit benötigte Zeit: 10/2=5 Tage." },
+      "fr": { "text": "Si 5 ouvriers peuvent construire un mur en 10 jours, combien de jours faudrait-il à 10 ouvriers pour construire le même mur ?", "options": ["20 jours", "10 jours", "5 jours", "2 jours"], "correctIndex": 2, "explanation": "Doubler le nombre d'ouvriers réduit de moitié le temps nécessaire pour le même travail : 10/2=5 jours." },
+      "es": { "text": "Si 5 trabajadores pueden construir un muro en 10 días, ¿cuántos días tardarían 10 trabajadores en construir el mismo muro?", "options": ["20 días", "10 días", "5 días", "2 días"], "correctIndex": 2, "explanation": "Duplicar el número de trabajadores reduce a la mitad el tiempo necesario para el mismo trabajo: 10/2=5 días." },
+      "zh": { "text": "如果5名工人能在10天内建好一堵墙，那么10名工人建同样的墙需要多少天？", "options": ["20天", "10天", "5天", "2天"], "correctIndex": 2, "explanation": "工人数量翻倍，完成同样工作所需的时间就减半：10÷2=5天。" },
+      "ru": { "text": "Если 5 рабочих могут построить стену за 10 дней, сколько дней потребуется 10 рабочим для той же стены?", "options": ["20 дней", "10 дней", "5 дней", "2 дня"], "correctIndex": 2, "explanation": "Удвоение числа рабочих сокращает вдвое время, необходимое для той же работы: 10/2=5 дней." }
+    }
+  },
+  {
+    "priority": 133,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir aynada kendi görüntünüze bakarken, ayna sizin görüntünüzü mü yoksa gerçek sizi mi gösterir?", "options": ["Gerçek sizi gösterir", "Sadece bir yansımayı gösterir, gerçek siz değildir", "İkisi de aynı şeydir", "Aynalar hiçbir şey göstermez"], "correctIndex": 1, "explanation": "Ayna, ışığın yansımasıyla oluşan optik bir görüntü sunar; bu görüntü gerçek fiziksel bedeniniz değil, sadece bir yansımadır." },
+      "en": { "text": "When you look at yourself in a mirror, does the mirror show your image or the real you?", "options": ["It shows the real you", "It shows only a reflection, not the real you", "Both are the same thing", "Mirrors show nothing"], "correctIndex": 1, "explanation": "A mirror presents an optical image formed by reflected light; that image isn't your actual physical body, just a reflection of it." },
+      "ar": { "text": "عندما تنظر إلى نفسك في مرآة، هل تُظهر المرآة صورتك أم أنت الحقيقي؟", "options": ["تُظهر أنت الحقيقي", "تُظهر انعكاسًا فقط، وليس أنت الحقيقي", "كلاهما نفس الشيء", "المرايا لا تُظهر شيئًا"], "correctIndex": 1, "explanation": "تعرض المرآة صورة بصرية تتشكل من الضوء المنعكس؛ هذه الصورة ليست جسدك الفيزيائي الفعلي، بل مجرد انعكاس له." },
+      "de": { "text": "Wenn du dich in einem Spiegel betrachtest, zeigt der Spiegel dein Bild oder dich selbst?", "options": ["Er zeigt dich selbst", "Er zeigt nur eine Spiegelung, nicht dich selbst", "Beides ist dasselbe", "Spiegel zeigen nichts"], "correctIndex": 1, "explanation": "Ein Spiegel zeigt ein optisches Bild, das durch reflektiertes Licht entsteht; dieses Bild ist nicht dein tatsächlicher physischer Körper, nur dessen Spiegelung." },
+      "fr": { "text": "Quand vous vous regardez dans un miroir, celui-ci montre-t-il votre image ou vous-même réellement ?", "options": ["Il vous montre réellement", "Il montre seulement un reflet, pas vous réellement", "Les deux sont la même chose", "Les miroirs ne montrent rien"], "correctIndex": 1, "explanation": "Un miroir présente une image optique formée par la lumière réfléchie ; cette image n'est pas votre corps physique réel, juste son reflet." },
+      "es": { "text": "Cuando te miras en un espejo, ¿el espejo muestra tu imagen o a ti realmente?", "options": ["Te muestra a ti realmente", "Muestra solo un reflejo, no a ti realmente", "Ambas son lo mismo", "Los espejos no muestran nada"], "correctIndex": 1, "explanation": "Un espejo presenta una imagen óptica formada por luz reflejada; esa imagen no es tu cuerpo físico real, solo su reflejo." },
+      "zh": { "text": "当你照镜子看自己时，镜子显示的是你的影像还是真实的你？", "options": ["显示真实的你", "只显示一个反射影像，不是真实的你", "两者是一回事", "镜子什么都不显示"], "correctIndex": 1, "explanation": "镜子呈现的是由反射光形成的光学图像；这个图像不是你真实的身体，只是它的反射。" },
+      "ru": { "text": "Когда вы смотрите на себя в зеркало, показывает ли зеркало ваше изображение или настоящего вас?", "options": ["Показывает настоящего вас", "Показывает лишь отражение, а не настоящего вас", "Это одно и то же", "Зеркала ничего не показывают"], "correctIndex": 1, "explanation": "Зеркало представляет оптическое изображение, образованное отражённым светом; это изображение — не ваше реальное физическое тело, а лишь его отражение." }
+    }
+  },
+  {
+    "priority": 134,
+    "type": "humor",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir hamburgerin içinde hamburg şehri var mıdır?", "options": ["Evet, küçük bir parçası vardır", "Hayır, isim tarihsel bir bağlantıdan gelir, gerçek şehir yoktur", "Sadece Almanya'da satılanlarda vardır", "Sadece pahalı hamburgerlerde vardır"], "correctIndex": 1, "explanation": "Hamburger adı, Almanya'daki Hamburg şehrinden gelen kıyma tarzı yemeğe atıfta bulunur, ama içinde gerçek şehirden hiçbir parça yoktur." },
+      "en": { "text": "Does a hamburger actually contain the city of Hamburg?", "options": ["Yes, a small piece of it", "No, the name comes from a historical connection, no actual city is inside", "Only ones sold in Germany", "Only expensive hamburgers"], "correctIndex": 1, "explanation": "The name 'hamburger' refers to a style of ground meat dish tied historically to Hamburg, Germany, but there's no actual piece of the city inside it." },
+      "ar": { "text": "هل يحتوي الهامبرغر فعلًا على مدينة هامبورغ؟", "options": ["نعم، قطعة صغيرة منها", "لا، الاسم يأتي من ارتباط تاريخي، ولا توجد مدينة فعلية بداخله", "فقط المُباع في ألمانيا", "فقط الهامبرغر الفاخر"], "correctIndex": 1, "explanation": "يشير اسم 'هامبرغر' إلى نمط من طبق اللحم المفروم مرتبط تاريخيًا بمدينة هامبورغ الألمانية، لكن لا توجد قطعة فعلية من المدينة بداخله." },
+      "de": { "text": "Enthält ein Hamburger tatsächlich die Stadt Hamburg?", "options": ["Ja, ein kleines Stück davon", "Nein, der Name kommt von einer historischen Verbindung, keine echte Stadt ist drin", "Nur die in Deutschland verkauften", "Nur teure Hamburger"], "correctIndex": 1, "explanation": "Der Name 'Hamburger' bezieht sich auf einen Hackfleisch-Gerichtstil, der historisch mit der deutschen Stadt Hamburg verbunden ist, aber es ist kein echtes Stück der Stadt darin." },
+      "fr": { "text": "Un hamburger contient-il réellement la ville de Hambourg ?", "options": ["Oui, un petit morceau", "Non, le nom vient d'un lien historique, aucune vraie ville n'est à l'intérieur", "Seulement ceux vendus en Allemagne", "Seulement les hamburgers chers"], "correctIndex": 1, "explanation": "Le nom 'hamburger' fait référence à un style de plat de viande hachée lié historiquement à Hambourg, en Allemagne, mais il n'y a aucun véritable morceau de la ville à l'intérieur." },
+      "es": { "text": "¿Contiene realmente una hamburguesa la ciudad de Hamburgo?", "options": ["Sí, un pequeño trozo de ella", "No, el nombre viene de una conexión histórica, no hay ninguna ciudad real dentro", "Solo las vendidas en Alemania", "Solo las hamburguesas caras"], "correctIndex": 1, "explanation": "El nombre 'hamburguesa' se refiere a un estilo de plato de carne molida vinculado históricamente a Hamburgo, Alemania, pero no hay ningún trozo real de la ciudad dentro." },
+      "zh": { "text": "汉堡包真的含有汉堡这座城市吗？", "options": ["有，一小部分", "没有，这个名字来源于历史渊源，里面没有真正的城市", "只有德国卖的才有", "只有昂贵的汉堡才有"], "correctIndex": 1, "explanation": "“汉堡包”这个名字源于历史上与德国汉堡市相关的一种碎肉料理风格，但里面并没有这座城市的任何真实部分。" },
+      "ru": { "text": "Действительно ли гамбургер содержит город Гамбург?", "options": ["Да, небольшой кусочек", "Нет, название происходит от исторической связи, никакого настоящего города внутри нет", "Только продаваемые в Германии", "Только дорогие гамбургеры"], "correctIndex": 1, "explanation": "Название «гамбургер» относится к стилю блюда из рубленого мяса, исторически связанного с немецким городом Гамбург, но никакого настоящего кусочка города внутри нет." }
+    }
+  },
+  {
+    "priority": 135,
+    "type": "logic",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Işık hızıyla giden bir uzay gemisinde saat, Dünya'daki saatten farklı mı işler?", "options": ["Hayır, tamamen aynı işler", "Evet, zaman genişlemesi nedeniyle daha yavaş işler (görecelilik)", "Sadece geceleri farklı işler", "Sadece geri gidiyorsa farklı işler"], "correctIndex": 1, "explanation": "Einstein'ın görecelilik teorisine göre, çok yüksek hızlarda hareket eden bir nesne için zaman, sabit bir gözlemciye göre daha yavaş akar; buna zaman genişlemesi denir." },
+      "en": { "text": "Does a clock on a spaceship traveling near the speed of light tick differently from one on Earth?", "options": ["No, it ticks exactly the same", "Yes, it ticks slower due to time dilation (relativity)", "Only at night does it differ", "Only if going backward does it differ"], "correctIndex": 1, "explanation": "According to Einstein's theory of relativity, time passes more slowly for an object moving at very high speeds relative to a stationary observer; this is called time dilation." },
+      "ar": { "text": "هل تختلف ساعة على سفينة فضائية تسافر بسرعة قريبة من سرعة الضوء عن ساعة على الأرض؟", "options": ["لا، تعمل بنفس الطريقة تمامًا", "نعم، تعمل بشكل أبطأ بسبب تمدد الزمن (النسبية)", "تختلف فقط ليلًا", "تختلف فقط إذا سارت للخلف"], "correctIndex": 1, "explanation": "وفقًا لنظرية النسبية لأينشتاين، يمر الزمن بشكل أبطأ بالنسبة لجسم يتحرك بسرعات عالية جدًا مقارنة بمراقب ثابت؛ يُسمى هذا تمدد الزمن." },
+      "de": { "text": "Tickt eine Uhr auf einem Raumschiff, das nahe Lichtgeschwindigkeit reist, anders als eine auf der Erde?", "options": ["Nein, sie tickt genau gleich", "Ja, sie tickt langsamer aufgrund der Zeitdilatation (Relativität)", "Nur nachts unterscheidet sie sich", "Nur beim Rückwärtsfliegen unterscheidet sie sich"], "correctIndex": 1, "explanation": "Nach Einsteins Relativitätstheorie vergeht die Zeit für ein Objekt, das sich mit sehr hoher Geschwindigkeit relativ zu einem ruhenden Beobachter bewegt, langsamer; dies nennt man Zeitdilatation." },
+      "fr": { "text": "Une horloge sur un vaisseau spatial voyageant près de la vitesse de la lumière tique-t-elle différemment de celle sur Terre ?", "options": ["Non, elle tique exactement pareil", "Oui, elle tique plus lentement à cause de la dilatation du temps (relativité)", "Elle diffère seulement la nuit", "Elle diffère seulement en reculant"], "correctIndex": 1, "explanation": "Selon la théorie de la relativité d'Einstein, le temps s'écoule plus lentement pour un objet se déplaçant à très haute vitesse par rapport à un observateur immobile ; c'est la dilatation du temps." },
+      "es": { "text": "¿Marca diferente un reloj en una nave espacial que viaja cerca de la velocidad de la luz respecto a uno en la Tierra?", "options": ["No, marca exactamente igual", "Sí, marca más lento debido a la dilatación del tiempo (relatividad)", "Solo de noche es diferente", "Solo yendo hacia atrás es diferente"], "correctIndex": 1, "explanation": "Según la teoría de la relatividad de Einstein, el tiempo pasa más lento para un objeto que se mueve a velocidades muy altas respecto a un observador estacionario; esto se llama dilatación del tiempo." },
+      "zh": { "text": "以接近光速飞行的宇宙飞船上的时钟，走时会和地球上的不同吗？", "options": ["不会，走时完全一样", "会，由于时间膨胀（相对论），走得更慢", "只有在夜里才不同", "只有倒退飞行时才不同"], "correctIndex": 1, "explanation": "根据爱因斯坦的相对论，相对于静止的观察者，以极高速度运动的物体，其时间流逝会更慢；这被称为时间膨胀。" },
+      "ru": { "text": "Идут ли часы на космическом корабле, летящем со скоростью, близкой к скорости света, иначе, чем на Земле?", "options": ["Нет, они идут абсолютно одинаково", "Да, они идут медленнее из-за замедления времени (релятивизм)", "Различие только ночью", "Различие только при движении назад"], "correctIndex": 1, "explanation": "Согласно теории относительности Эйнштейна, время течёт медленнее для объекта, движущегося с очень высокой скоростью относительно неподвижного наблюдателя; это называется замедлением времени." }
+    }
+  },
+  {
+    "priority": 136,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir örümcek ağı, örümceğin kendisi ağa yapışmadan nasıl çalışır?", "options": ["Örümcekler yapışkan olmayan özel iplikler üzerinde yürür", "Örümcekler asla ağlarına dokunmaz", "Örümcek ağı hiç yapışkan değildir", "Örümcekler uçarak geçer"], "correctIndex": 0, "explanation": "Örümcek ağının bazı iplikleri yapışkan bazıları değildir; örümcekler yapışkan olmayan iplikler üzerinde hareket ederek kendi ağlarına takılmazlar." },
+      "en": { "text": "How does a spider walk on its own web without getting stuck?", "options": ["Spiders walk on specific non-sticky threads", "Spiders never touch their own web", "Spider webs aren't sticky at all", "Spiders fly over it"], "correctIndex": 0, "explanation": "Some threads of a spider's web are sticky and some aren't; spiders move along the non-sticky threads to avoid getting stuck in their own web." },
+      "ar": { "text": "كيف يمشي العنكبوت على شبكته الخاصة دون أن يعلق؟", "options": ["تمشي العناكب على خيوط محددة غير لاصقة", "لا تلمس العناكب شبكتها أبدًا", "شبكة العنكبوت ليست لاصقة على الإطلاق", "تطير العناكب فوقها"], "correctIndex": 0, "explanation": "بعض خيوط شبكة العنكبوت لاصقة وبعضها ليس كذلك؛ تتحرك العناكب على الخيوط غير اللاصقة لتجنب العلوق في شبكتها الخاصة." },
+      "de": { "text": "Wie läuft eine Spinne über ihr eigenes Netz, ohne stecken zu bleiben?", "options": ["Spinnen laufen auf bestimmten nicht klebrigen Fäden", "Spinnen berühren ihr eigenes Netz nie", "Spinnennetze sind überhaupt nicht klebrig", "Spinnen fliegen darüber"], "correctIndex": 0, "explanation": "Manche Fäden im Spinnennetz sind klebrig, andere nicht; Spinnen bewegen sich auf den nicht klebrigen Fäden, um nicht im eigenen Netz stecken zu bleiben." },
+      "fr": { "text": "Comment une araignée marche-t-elle sur sa propre toile sans se coller ?", "options": ["Les araignées marchent sur des fils spécifiques non collants", "Les araignées ne touchent jamais leur propre toile", "Les toiles d'araignée ne sont pas du tout collantes", "Les araignées volent au-dessus"], "correctIndex": 0, "explanation": "Certains fils de la toile d'araignée sont collants et d'autres non ; les araignées se déplacent sur les fils non collants pour éviter de se coller dans leur propre toile." },
+      "es": { "text": "¿Cómo camina una araña sobre su propia tela sin quedarse pegada?", "options": ["Las arañas caminan sobre hilos específicos no pegajosos", "Las arañas nunca tocan su propia tela", "Las telas de araña no son pegajosas en absoluto", "Las arañas vuelan sobre ella"], "correctIndex": 0, "explanation": "Algunos hilos de la tela de araña son pegajosos y otros no; las arañas se mueven por los hilos no pegajosos para evitar quedar atrapadas en su propia tela." },
+      "zh": { "text": "蜘蛛是如何在自己的网上行走而不被粘住的？", "options": ["蜘蛛会走在特定的不粘丝上", "蜘蛛从不接触自己的网", "蜘蛛网根本不具粘性", "蜘蛛会飞过网面"], "correctIndex": 0, "explanation": "蜘蛛网中有些丝是粘的，有些不是；蜘蛛会沿着不粘的丝移动，避免被自己的网粘住。" },
+      "ru": { "text": "Как паук ходит по собственной паутине, не прилипая к ней?", "options": ["Пауки ходят по определённым неклейким нитям", "Пауки никогда не касаются собственной паутины", "Паутина вообще не липкая", "Пауки перелетают через неё"], "correctIndex": 0, "explanation": "Некоторые нити паутины липкие, а некоторые нет; пауки передвигаются по неклейким нитям, чтобы не застрять в собственной паутине." }
+    }
+  },
+  {
+    "priority": 137,
+    "type": "math",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir üçgenin iç açılarının toplamı kaç derecedir?", "options": ["90 derece", "180 derece", "270 derece", "360 derece"], "correctIndex": 1, "explanation": "Öklid geometrisinde herhangi bir üçgenin iç açılarının toplamı her zaman 180 derecedir." },
+      "en": { "text": "What is the sum of the interior angles of a triangle?", "options": ["90 degrees", "180 degrees", "270 degrees", "360 degrees"], "correctIndex": 1, "explanation": "In Euclidean geometry, the interior angles of any triangle always add up to 180 degrees." },
+      "ar": { "text": "كم يبلغ مجموع الزوايا الداخلية للمثلث؟", "options": ["90 درجة", "180 درجة", "270 درجة", "360 درجة"], "correctIndex": 1, "explanation": "في الهندسة الإقليدية، يبلغ مجموع الزوايا الداخلية لأي مثلث 180 درجة دائمًا." },
+      "de": { "text": "Wie groß ist die Summe der Innenwinkel eines Dreiecks?", "options": ["90 Grad", "180 Grad", "270 Grad", "360 Grad"], "correctIndex": 1, "explanation": "In der euklidischen Geometrie beträgt die Summe der Innenwinkel jedes Dreiecks immer 180 Grad." },
+      "fr": { "text": "Quelle est la somme des angles intérieurs d'un triangle ?", "options": ["90 degrés", "180 degrés", "270 degrés", "360 degrés"], "correctIndex": 1, "explanation": "En géométrie euclidienne, la somme des angles intérieurs de tout triangle est toujours de 180 degrés." },
+      "es": { "text": "¿Cuál es la suma de los ángulos interiores de un triángulo?", "options": ["90 grados", "180 grados", "270 grados", "360 grados"], "correctIndex": 1, "explanation": "En la geometría euclidiana, la suma de los ángulos interiores de cualquier triángulo siempre es 180 grados." },
+      "zh": { "text": "三角形内角之和是多少度？", "options": ["90度", "180度", "270度", "360度"], "correctIndex": 1, "explanation": "在欧几里得几何中，任何三角形的内角和总是180度。" },
+      "ru": { "text": "Чему равна сумма внутренних углов треугольника?", "options": ["90 градусов", "180 градусов", "270 градусов", "360 градусов"], "correctIndex": 1, "explanation": "В евклидовой геометрии сумма внутренних углов любого треугольника всегда равна 180 градусам." }
+    }
+  },
+  {
+    "priority": 138,
+    "type": "riddle",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Yükseldikçe küçülen nedir?", "options": ["Bir balon", "Bir mum", "Bir dağ", "Bir uçak"], "correctIndex": 1, "explanation": "Bir mum yandıkça (kullanıldıkça, yani yükseldikçe zaman geçtikçe) fiziksel olarak kısalır, yani küçülür." },
+      "en": { "text": "The higher it gets used, the smaller it becomes. What is it?", "options": ["A balloon", "A candle", "A mountain", "An airplane"], "correctIndex": 1, "explanation": "As a candle burns (is used, over time), it physically shrinks and becomes shorter." },
+      "ar": { "text": "كلما ازداد استخدامه، أصبح أصغر. ما هو؟", "options": ["بالون", "شمعة", "جبل", "طائرة"], "correctIndex": 1, "explanation": "عندما تحترق الشمعة (تُستخدم مع مرور الوقت)، تصغر جسديًا وتصبح أقصر." },
+      "de": { "text": "Je mehr es benutzt wird, desto kleiner wird es. Was ist es?", "options": ["Ein Ballon", "Eine Kerze", "Ein Berg", "Ein Flugzeug"], "correctIndex": 1, "explanation": "Während eine Kerze brennt (im Laufe der Zeit benutzt wird), schrumpft sie physisch und wird kürzer." },
+      "fr": { "text": "Plus on l'utilise, plus il devient petit. Qu'est-ce que c'est ?", "options": ["Un ballon", "Une bougie", "Une montagne", "Un avion"], "correctIndex": 1, "explanation": "À mesure qu'une bougie brûle (est utilisée, avec le temps), elle rétrécit physiquement et devient plus courte." },
+      "es": { "text": "Cuanto más se usa, más pequeño se vuelve. ¿Qué es?", "options": ["Un globo", "Una vela", "Una montaña", "Un avión"], "correctIndex": 1, "explanation": "A medida que una vela se quema (se usa con el tiempo), se reduce físicamente y se hace más corta." },
+      "zh": { "text": "用得越久就变得越小的是什么？", "options": ["气球", "蜡烛", "山", "飞机"], "correctIndex": 1, "explanation": "蜡烛燃烧（随时间使用）时，会在物理上逐渐变小变短。" },
+      "ru": { "text": "Чем больше это используется, тем меньше оно становится. Что это?", "options": ["Воздушный шар", "Свеча", "Гора", "Самолёт"], "correctIndex": 1, "explanation": "По мере горения свечи (использования со временем) она физически уменьшается и становится короче." }
+    }
+  },
+  {
+    "priority": 139,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kişi Pazartesi günü öldüyse, kaç gün sonra yeniden Pazartesi olur ve o kişi hâlâ ölü müdür?", "options": ["7 gün sonra, ve evet hâlâ ölüdür", "1 gün sonra, hayır ölü değildir", "14 gün sonra, belirsizdir", "Asla Pazartesi olmaz"], "correctIndex": 0, "explanation": "Bir hafta 7 gündür, dolayısıyla sonraki Pazartesi 7 gün sonra gelir; ölüm geri döndürülemez bir durum olduğundan kişi hâlâ ölüdür." },
+      "en": { "text": "If a person died on Monday, how many days until it's Monday again, and are they still dead?", "options": ["7 days later, and yes still dead", "1 day later, no not dead", "14 days later, undetermined", "It never becomes Monday again"], "correctIndex": 0, "explanation": "A week has 7 days, so the next Monday comes 7 days later; since death is irreversible, the person remains dead." },
+      "ar": { "text": "إذا مات شخص يوم الإثنين، فكم يومًا يمر حتى يعود يوم الإثنين مرة أخرى، وهل لا يزال ميتًا؟", "options": ["7 أيام لاحقًا، ونعم لا يزال ميتًا", "يوم واحد لاحقًا، لا ليس ميتًا", "14 يومًا لاحقًا، غير محدد", "لن يعود يوم الإثنين أبدًا"], "correctIndex": 0, "explanation": "الأسبوع 7 أيام، لذا يأتي الإثنين التالي بعد 7 أيام؛ وبما أن الموت لا رجعة فيه، يبقى الشخص ميتًا." },
+      "de": { "text": "Wenn eine Person am Montag gestorben ist, wie viele Tage dauert es, bis wieder Montag ist, und ist sie noch tot?", "options": ["7 Tage später, und ja, immer noch tot", "1 Tag später, nein nicht tot", "14 Tage später, unbestimmt", "Es wird nie wieder Montag"], "correctIndex": 0, "explanation": "Eine Woche hat 7 Tage, also kommt der nächste Montag 7 Tage später; da der Tod unumkehrbar ist, bleibt die Person tot." },
+      "fr": { "text": "Si une personne est morte un lundi, combien de jours avant que ce soit à nouveau lundi, et est-elle toujours morte ?", "options": ["7 jours plus tard, et oui toujours morte", "1 jour plus tard, non pas morte", "14 jours plus tard, indéterminé", "Ce ne redevient jamais lundi"], "correctIndex": 0, "explanation": "Une semaine compte 7 jours, donc le lundi suivant arrive 7 jours plus tard ; la mort étant irréversible, la personne reste morte." },
+      "es": { "text": "Si una persona murió un lunes, ¿cuántos días pasan hasta que vuelva a ser lunes, y sigue muerta?", "options": ["7 días después, y sí, sigue muerta", "1 día después, no, no está muerta", "14 días después, indeterminado", "Nunca vuelve a ser lunes"], "correctIndex": 0, "explanation": "Una semana tiene 7 días, así que el siguiente lunes llega 7 días después; como la muerte es irreversible, la persona sigue muerta." },
+      "zh": { "text": "如果一个人在星期一去世了，再过多少天又是星期一，他还处于死亡状态吗？", "options": ["7天后，是的，仍然是死的", "1天后，不，没有死", "14天后，无法确定", "永远不会再是星期一"], "correctIndex": 0, "explanation": "一周有7天，所以下一个星期一在7天后到来；由于死亡是不可逆的，这个人仍然是死的。" },
+      "ru": { "text": "Если человек умер в понедельник, через сколько дней снова наступит понедельник, и мёртв ли он всё ещё?", "options": ["Через 7 дней, и да, всё ещё мёртв", "Через 1 день, нет, не мёртв", "Через 14 дней, неопределённо", "Понедельник больше никогда не наступит"], "correctIndex": 0, "explanation": "В неделе 7 дней, поэтому следующий понедельник наступит через 7 дней; поскольку смерть необратима, человек остаётся мёртвым." }
+    }
+  },
+  {
+    "priority": 140,
+    "type": "illusion",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir Necker küpü çiziminde, küpün 'ön' yüzü olarak hangi yüzü algılarsınız?", "options": ["Her zaman sol alt yüz", "İki farklı şekilde algılanabilir, beyin ikisi arasında geçiş yapar", "Her zaman sağ üst yüz", "Hiçbir yüz ön olarak algılanmaz"], "correctIndex": 1, "explanation": "Necker küpü, iki boyutlu bir çizgi çizimidir ve beyin onu iki farklı üç boyutlu yönelimde yorumlayabilir; bu ünlü bir belirsiz (bistabil) algı illüzyonudur." },
+      "en": { "text": "In a Necker cube drawing, which face do you perceive as the 'front' of the cube?", "options": ["Always the bottom-left face", "It can be perceived two different ways, the brain switches between them", "Always the top-right face", "No face is perceived as the front"], "correctIndex": 1, "explanation": "A Necker cube is a two-dimensional line drawing that the brain can interpret in two different three-dimensional orientations — this is a famous ambiguous (bistable) perception illusion." },
+      "ar": { "text": "في رسم مكعب نيكر، أي وجه تدركه كـ'الأمام' للمكعب؟", "options": ["دائمًا الوجه السفلي الأيسر", "يمكن إدراكه بطريقتين مختلفتين، ويتنقل الدماغ بينهما", "دائمًا الوجه العلوي الأيمن", "لا يُدرك أي وجه كأمامي"], "correctIndex": 1, "explanation": "مكعب نيكر هو رسم خطي ثنائي الأبعاد يمكن للدماغ تفسيره باتجاهين ثلاثيي الأبعاد مختلفين — وهذا وهم إدراكي غامض (ثنائي الاستقرار) شهير." },
+      "de": { "text": "In einer Necker-Würfel-Zeichnung, welche Fläche nimmst du als 'Vorderseite' des Würfels wahr?", "options": ["Immer die untere linke Fläche", "Sie kann auf zwei verschiedene Arten wahrgenommen werden, das Gehirn wechselt zwischen ihnen", "Immer die obere rechte Fläche", "Keine Fläche wird als Vorderseite wahrgenommen"], "correctIndex": 1, "explanation": "Ein Necker-Würfel ist eine zweidimensionale Strichzeichnung, die das Gehirn in zwei verschiedenen dreidimensionalen Ausrichtungen interpretieren kann — eine berühmte mehrdeutige (bistabile) Wahrnehmungsillusion." },
+      "fr": { "text": "Dans un dessin de cube de Necker, quelle face percevez-vous comme le 'devant' du cube ?", "options": ["Toujours la face inférieure gauche", "Elle peut être perçue de deux façons différentes, le cerveau bascule entre elles", "Toujours la face supérieure droite", "Aucune face n'est perçue comme l'avant"], "correctIndex": 1, "explanation": "Un cube de Necker est un dessin au trait en deux dimensions que le cerveau peut interpréter selon deux orientations tridimensionnelles différentes — une célèbre illusion de perception ambiguë (bistable)." },
+      "es": { "text": "En un dibujo de cubo de Necker, ¿qué cara percibes como el 'frente' del cubo?", "options": ["Siempre la cara inferior izquierda", "Puede percibirse de dos formas distintas, el cerebro alterna entre ellas", "Siempre la cara superior derecha", "Ninguna cara se percibe como el frente"], "correctIndex": 1, "explanation": "Un cubo de Necker es un dibujo lineal bidimensional que el cerebro puede interpretar en dos orientaciones tridimensionales distintas: una famosa ilusión de percepción ambigua (biestable)." },
+      "zh": { "text": "在内克尔立方体图中，你会把哪一面感知为立方体的“正面”？", "options": ["总是左下方的面", "可以有两种不同的感知方式，大脑会在两者间切换", "总是右上方的面", "没有任何一面被感知为正面"], "correctIndex": 1, "explanation": "内克尔立方体是一种二维线条图，大脑可以将其解读为两种不同的三维方向——这是一种著名的模糊（双稳态）知觉错觉。" },
+      "ru": { "text": "На рисунке куба Неккера, какую грань вы воспринимаете как «переднюю» сторону куба?", "options": ["Всегда нижнюю левую грань", "Её можно воспринимать двумя разными способами, мозг переключается между ними", "Всегда верхнюю правую грань", "Ни одна грань не воспринимается как передняя"], "correctIndex": 1, "explanation": "Куб Неккера — это двумерный контурный рисунок, который мозг может интерпретировать в двух разных трёхмерных ориентациях — это знаменитая иллюзия неоднозначного (бистабильного) восприятия." }
+    }
+  },
+  {
+    "priority": 141,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir bitki güneş ışığı olmadan büyüyebilir mi?", "options": ["Evet, sonsuza kadar büyür", "Hayır, fotosentez için ışığa ihtiyaç duyar ve zamanla ölür", "Sadece kaktüsler büyür", "Sadece geceleri büyür"], "correctIndex": 1, "explanation": "Bitkiler fotosentez yoluyla enerji üretmek için ışığa ihtiyaç duyar; ışıksız kalırlarsa enerji üretemez ve sonunda ölürler." },
+      "en": { "text": "Can a plant grow without any sunlight?", "options": ["Yes, it grows forever", "No, it needs light for photosynthesis and eventually dies", "Only cacti can grow without light", "Only at night can it grow"], "correctIndex": 1, "explanation": "Plants need light to produce energy through photosynthesis; without it, they can't generate energy and will eventually die." },
+      "ar": { "text": "هل يمكن للنبات أن ينمو بدون أي ضوء شمس؟", "options": ["نعم، ينمو إلى الأبد", "لا، يحتاج إلى الضوء لعملية التمثيل الضوئي ويموت في النهاية", "فقط الصبار يمكنه النمو بدون ضوء", "ينمو فقط ليلًا"], "correctIndex": 1, "explanation": "تحتاج النباتات إلى الضوء لإنتاج الطاقة عبر التمثيل الضوئي؛ وبدونه لا يمكنها توليد الطاقة وتموت في النهاية." },
+      "de": { "text": "Kann eine Pflanze ohne Sonnenlicht wachsen?", "options": ["Ja, sie wächst ewig", "Nein, sie braucht Licht für die Photosynthese und stirbt irgendwann", "Nur Kakteen können ohne Licht wachsen", "Nur nachts kann sie wachsen"], "correctIndex": 1, "explanation": "Pflanzen brauchen Licht, um durch Photosynthese Energie zu erzeugen; ohne es können sie keine Energie produzieren und sterben schließlich." },
+      "fr": { "text": "Une plante peut-elle pousser sans aucune lumière du soleil ?", "options": ["Oui, elle pousse indéfiniment", "Non, elle a besoin de lumière pour la photosynthèse et finit par mourir", "Seuls les cactus peuvent pousser sans lumière", "Elle ne peut pousser que la nuit"], "correctIndex": 1, "explanation": "Les plantes ont besoin de lumière pour produire de l'énergie par photosynthèse ; sans elle, elles ne peuvent pas générer d'énergie et finissent par mourir." },
+      "es": { "text": "¿Puede crecer una planta sin ninguna luz solar?", "options": ["Sí, crece para siempre", "No, necesita luz para la fotosíntesis y eventualmente muere", "Solo los cactus pueden crecer sin luz", "Solo puede crecer de noche"], "correctIndex": 1, "explanation": "Las plantas necesitan luz para producir energía mediante la fotosíntesis; sin ella, no pueden generar energía y eventualmente mueren." },
+      "zh": { "text": "植物没有任何阳光能生长吗？", "options": ["能，会一直生长", "不能，它需要光进行光合作用，最终会死亡", "只有仙人掌能在没有光的情况下生长", "只有在夜里才能生长"], "correctIndex": 1, "explanation": "植物需要光通过光合作用产生能量；没有光，它们无法产生能量，最终会死亡。" },
+      "ru": { "text": "Может ли растение расти без солнечного света вообще?", "options": ["Да, оно растёт вечно", "Нет, ему нужен свет для фотосинтеза, и в итоге оно погибает", "Только кактусы могут расти без света", "Расти оно может только ночью"], "correctIndex": 1, "explanation": "Растениям нужен свет для производства энергии посредством фотосинтеза; без него они не могут вырабатывать энергию и в итоге погибают." }
+    }
+  },
+  {
+    "priority": 142,
+    "type": "math",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir kişi saat 09:00'da işe başlıyor, 12:00'de 1 saat mola veriyor ve 18:00'de işten çıkıyor. Toplam kaç saat çalışmıştır?", "options": ["9 saat", "8 saat", "7 saat", "10 saat"], "correctIndex": 1, "explanation": "09:00'dan 18:00'e kadar 9 saat vardır, 1 saatlik mola çıkarılırsa net çalışma süresi 8 saattir." },
+      "en": { "text": "A person starts work at 9:00 AM, takes a 1-hour break at noon, and leaves at 6:00 PM. How many hours did they actually work?", "options": ["9 hours", "8 hours", "7 hours", "10 hours"], "correctIndex": 1, "explanation": "From 9:00 AM to 6:00 PM is 9 hours total; subtracting the 1-hour break gives a net working time of 8 hours." },
+      "ar": { "text": "يبدأ شخص العمل الساعة 9:00 صباحًا، ويأخذ استراحة ساعة عند الظهر، ويغادر الساعة 6:00 مساءً. كم ساعة عمل فعليًا؟", "options": ["9 ساعات", "8 ساعات", "7 ساعات", "10 ساعات"], "correctIndex": 1, "explanation": "من 9:00 صباحًا إلى 6:00 مساءً يوجد 9 ساعات إجمالًا؛ بطرح ساعة الاستراحة تصبح ساعات العمل الصافية 8 ساعات." },
+      "de": { "text": "Eine Person beginnt um 9:00 Uhr zu arbeiten, macht mittags eine 1-stündige Pause und geht um 18:00 Uhr. Wie viele Stunden hat sie tatsächlich gearbeitet?", "options": ["9 Stunden", "8 Stunden", "7 Stunden", "10 Stunden"], "correctIndex": 1, "explanation": "Von 9:00 bis 18:00 Uhr sind es insgesamt 9 Stunden; zieht man die 1-stündige Pause ab, ergibt sich eine Netto-Arbeitszeit von 8 Stunden." },
+      "fr": { "text": "Une personne commence à travailler à 9h00, prend une pause d'1 heure à midi, et part à 18h00. Combien d'heures a-t-elle réellement travaillé ?", "options": ["9 heures", "8 heures", "7 heures", "10 heures"], "correctIndex": 1, "explanation": "De 9h00 à 18h00, il y a 9 heures au total ; en soustrayant la pause d'1 heure, le temps de travail net est de 8 heures." },
+      "es": { "text": "Una persona empieza a trabajar a las 9:00, toma un descanso de 1 hora al mediodía y sale a las 18:00. ¿Cuántas horas trabajó realmente?", "options": ["9 horas", "8 horas", "7 horas", "10 horas"], "correctIndex": 1, "explanation": "De 9:00 a 18:00 hay 9 horas en total; restando el descanso de 1 hora, el tiempo neto trabajado es de 8 horas." },
+      "zh": { "text": "一个人上午9点开始工作，中午休息1小时，下午6点下班。他实际工作了多少小时？", "options": ["9小时", "8小时", "7小时", "10小时"], "correctIndex": 1, "explanation": "从上午9点到下午6点共9小时；减去1小时休息，净工作时间是8小时。" },
+      "ru": { "text": "Человек начинает работать в 9:00, делает перерыв на 1 час в полдень и уходит в 18:00. Сколько часов он реально отработал?", "options": ["9 часов", "8 часов", "7 часов", "10 часов"], "correctIndex": 1, "explanation": "С 9:00 до 18:00 всего 9 часов; вычитая часовой перерыв, чистое рабочее время составляет 8 часов." }
+    }
+  },
+  {
+    "priority": 143,
+    "type": "riddle",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Kanadı var ama uçamaz, bacağı var ama yürüyemez. Bu nedir?", "options": ["Yaralı bir kuş", "Bir bina (kanat ve merdiven anlamında)", "Bir tavuk", "Bir penguen"], "correctIndex": 1, "explanation": "Binaların 'kanadı' (bir bölümü) ve bazen 'ayağı' (temel desteği) olarak adlandırılan kısımları vardır ama bunlar gerçek anlamda uçmaz veya yürümez." },
+      "en": { "text": "It has a wing but cannot fly, and a leg but cannot walk. What is it?", "options": ["An injured bird", "A building (in the sense of a 'wing' and support 'leg')", "A chicken", "A penguin"], "correctIndex": 1, "explanation": "Buildings have a 'wing' (a section of the structure) and can have a supporting 'leg', but these never literally fly or walk." },
+      "ar": { "text": "له جناح لكنه لا يستطيع الطيران، وله رجل لكنه لا يستطيع المشي. ما هو؟", "options": ["طائر مصاب", "مبنى (بمعنى 'جناح' و'رجل' دعم)", "دجاجة", "بطريق"], "correctIndex": 1, "explanation": "للمباني 'جناح' (جزء من الهيكل) وأحيانًا 'رجل' داعمة، لكنها لا تطير أو تمشي حرفيًا أبدًا." },
+      "de": { "text": "Es hat einen Flügel, kann aber nicht fliegen, und ein Bein, kann aber nicht gehen. Was ist es?", "options": ["Ein verletzter Vogel", "Ein Gebäude (im Sinne von 'Flügel' und Stütz-'Bein')", "Ein Huhn", "Ein Pinguin"], "correctIndex": 1, "explanation": "Gebäude haben einen 'Flügel' (einen Gebäudeteil) und können ein Stütz-'Bein' haben, aber diese fliegen oder gehen niemals buchstäblich." },
+      "fr": { "text": "Il a une aile mais ne peut pas voler, et une jambe mais ne peut pas marcher. Qu'est-ce que c'est ?", "options": ["Un oiseau blessé", "Un bâtiment (au sens d'une 'aile' et d'un 'pied' de support)", "Un poulet", "Un pingouin"], "correctIndex": 1, "explanation": "Les bâtiments ont une 'aile' (une section de la structure) et peuvent avoir un 'pied' porteur, mais ceux-ci ne volent ni ne marchent jamais littéralement." },
+      "es": { "text": "Tiene un ala pero no puede volar, y una pata pero no puede caminar. ¿Qué es?", "options": ["Un pájaro herido", "Un edificio (en el sentido de un 'ala' y una 'pata' de soporte)", "Una gallina", "Un pingüino"], "correctIndex": 1, "explanation": "Los edificios tienen un 'ala' (una sección de la estructura) y pueden tener una 'pata' de soporte, pero estas nunca vuelan ni caminan literalmente." },
+      "zh": { "text": "它有翼却不能飞，有脚却不能走，这是什么？", "options": ["受伤的鸟", "建筑物（翼楼和支撑脚的意义上）", "鸡", "企鹅"], "correctIndex": 1, "explanation": "建筑物有“翼”（结构的一部分），有时还有支撑“脚”，但这些从来不会真正飞或走。" },
+      "ru": { "text": "У него есть крыло, но оно не может летать, и нога, но не может ходить. Что это?", "options": ["Раненая птица", "Здание (в смысле «крыла» и опорной «ноги»)", "Курица", "Пингвин"], "correctIndex": 1, "explanation": "У зданий есть «крыло» (часть строения) и может быть опорная «нога», но они никогда буквально не летают и не ходят." }
+    }
+  },
+  {
+    "priority": 144,
+    "type": "logic",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bugün ile yarın arasında kaç gün vardır?", "options": ["0 gün", "1 gün", "2 gün", "7 gün"], "correctIndex": 1, "explanation": "Bugün ile yarın tam olarak 1 gün arayla birbirini takip eder." },
+      "en": { "text": "How many days are there between today and tomorrow?", "options": ["0 days", "1 day", "2 days", "7 days"], "correctIndex": 1, "explanation": "Today and tomorrow are separated by exactly 1 day." },
+      "ar": { "text": "كم يومًا يفصل بين اليوم والغد؟", "options": ["0 أيام", "يوم واحد", "يومان", "7 أيام"], "correctIndex": 1, "explanation": "يفصل بين اليوم والغد يوم واحد بالضبط." },
+      "de": { "text": "Wie viele Tage liegen zwischen heute und morgen?", "options": ["0 Tage", "1 Tag", "2 Tage", "7 Tage"], "correctIndex": 1, "explanation": "Zwischen heute und morgen liegt genau 1 Tag." },
+      "fr": { "text": "Combien de jours y a-t-il entre aujourd'hui et demain ?", "options": ["0 jour", "1 jour", "2 jours", "7 jours"], "correctIndex": 1, "explanation": "Aujourd'hui et demain sont séparés par exactement 1 jour." },
+      "es": { "text": "¿Cuántos días hay entre hoy y mañana?", "options": ["0 días", "1 día", "2 días", "7 días"], "correctIndex": 1, "explanation": "Hoy y mañana están separados exactamente por 1 día." },
+      "zh": { "text": "今天和明天之间相差多少天？", "options": ["0天", "1天", "2天", "7天"], "correctIndex": 1, "explanation": "今天和明天正好相隔1天。" },
+      "ru": { "text": "Сколько дней между сегодня и завтра?", "options": ["0 дней", "1 день", "2 дня", "7 дней"], "correctIndex": 1, "explanation": "Сегодня и завтра разделяет ровно 1 день." }
+    }
+  },
+  {
+    "priority": 145,
+    "type": "common_sense",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir bukalemun her zaman bulunduğu zemine kusursuz uyum sağlar mı?", "options": ["Evet, her zaman mükemmel kamufle olur", "Hayır, renk değişimi çoğunlukla ruh haline ve sıcaklığa bağlıdır, kamuflaj sınırlıdır", "Sadece geceleri renk değiştirir", "Sadece tehlike anında renk değiştirir"], "correctIndex": 1, "explanation": "Bukalemunlar renk değiştirir ama bu genellikle iletişim, ruh hali veya sıcaklık düzenlemesi içindir; zeminle mükemmel kamuflaj sağlamaları popüler bir efsanedir." },
+      "en": { "text": "Does a chameleon always perfectly blend into whatever surface it's on?", "options": ["Yes, it always achieves perfect camouflage", "No, color change is mostly about mood and temperature, camouflage is limited", "Only at night does it change color", "Only during danger does it change color"], "correctIndex": 1, "explanation": "Chameleons do change color, but it's mostly for communication, mood, or temperature regulation; perfectly matching their surroundings is a popular myth." },
+      "ar": { "text": "هل يندمج الحرباء دائمًا بشكل مثالي مع السطح الذي يقف عليه؟", "options": ["نعم، يحقق تمويهًا مثاليًا دائمًا", "لا، تغيير اللون غالبًا يتعلق بالمزاج ودرجة الحرارة، والتمويه محدود", "يغيّر لونه فقط ليلًا", "يغيّر لونه فقط عند الخطر"], "correctIndex": 1, "explanation": "تغيّر الحرباء لونها فعلًا، لكن ذلك غالبًا للتواصل أو المزاج أو تنظيم الحرارة؛ فكرة اندماجها المثالي مع محيطها هي أسطورة شائعة." },
+      "de": { "text": "Verschmilzt ein Chamäleon immer perfekt mit der Oberfläche, auf der es sich befindet?", "options": ["Ja, es erreicht immer perfekte Tarnung", "Nein, der Farbwechsel bezieht sich meist auf Stimmung und Temperatur, die Tarnung ist begrenzt", "Nur nachts wechselt es die Farbe", "Nur bei Gefahr wechselt es die Farbe"], "correctIndex": 1, "explanation": "Chamäleons wechseln tatsächlich die Farbe, aber meist zur Kommunikation, Stimmungsanzeige oder Temperaturregulierung; die perfekte Anpassung an die Umgebung ist ein verbreiteter Mythos." },
+      "fr": { "text": "Un caméléon se fond-il toujours parfaitement dans la surface sur laquelle il se trouve ?", "options": ["Oui, il obtient toujours un camouflage parfait", "Non, le changement de couleur concerne surtout l'humeur et la température, le camouflage est limité", "Il ne change de couleur que la nuit", "Il ne change de couleur qu'en cas de danger"], "correctIndex": 1, "explanation": "Les caméléons changent bien de couleur, mais c'est surtout pour communiquer, exprimer leur humeur ou réguler leur température ; se fondre parfaitement dans leur environnement est un mythe populaire." },
+      "es": { "text": "¿Un camaleón siempre se mezcla perfectamente con la superficie en la que está?", "options": ["Sí, siempre logra un camuflaje perfecto", "No, el cambio de color se relaciona sobre todo con el estado de ánimo y la temperatura, el camuflaje es limitado", "Solo de noche cambia de color", "Solo ante el peligro cambia de color"], "correctIndex": 1, "explanation": "Los camaleones sí cambian de color, pero principalmente por comunicación, estado de ánimo o regulación de temperatura; mezclarse perfectamente con su entorno es un mito popular." },
+      "zh": { "text": "变色龙总能与所处表面完美融合吗？", "options": ["会，它总能做到完美伪装", "不会，变色主要与情绪和温度有关，伪装效果有限", "只在夜里才变色", "只有遇到危险时才变色"], "correctIndex": 1, "explanation": "变色龙确实会变色，但主要是用于交流、表达情绪或调节体温；与周围环境完美融合只是一个流行的传说。" },
+      "ru": { "text": "Всегда ли хамелеон идеально сливается с поверхностью, на которой находится?", "options": ["Да, он всегда достигает идеальной маскировки", "Нет, смена цвета в основном связана с настроением и температурой, маскировка ограничена", "Он меняет цвет только ночью", "Он меняет цвет только при опасности"], "correctIndex": 1, "explanation": "Хамелеоны действительно меняют цвет, но в основном для общения, выражения настроения или регуляции температуры; идеальное слияние с окружением — популярный миф." }
+    }
+  },
+  {
+    "priority": 146,
+    "type": "math",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Bir kütüphanede kitaplar alfabetik sıraya göre dizilmiştir. 'Elma' kitabı 5. rafta, 'Muz' kitabı 12. rafta ise, aralarında alfabetik olarak kaç raf olabileceği hakkında kesin bir şey söylenebilir mi?", "options": ["Evet, kesinlikle 6 raf vardır", "Hayır, raf numaraları alfabetik sırayla doğrudan orantılı olmak zorunda değildir", "Evet, kesinlikle 7 raf vardır", "Evet, kesinlikle 5 raf vardır"], "correctIndex": 1, "explanation": "Raf numaraları sadece fiziksel konumu gösterir; kitap başlıklarının alfabetik uzaklığıyla raf numaraları arasında matematiksel bir ilişki olduğu varsayılamaz." },
+      "en": { "text": "In a library, books are arranged alphabetically. If 'Apple' is on shelf 5 and 'Banana' is on shelf 12, can we say anything certain about the alphabetical gap between them?", "options": ["Yes, there are definitely 6 shelves between them", "No, shelf numbers aren't necessarily directly proportional to alphabetical order", "Yes, there are definitely 7 shelves between them", "Yes, there are definitely 5 shelves between them"], "correctIndex": 1, "explanation": "Shelf numbers only indicate physical position; there's no guaranteed mathematical relationship between alphabetical distance of titles and shelf numbering." },
+      "ar": { "text": "في مكتبة، تُرتب الكتب أبجديًا. إذا كان كتاب 'تفاحة' على الرف 5 وكتاب 'موزة' على الرف 12، هل يمكننا قول شيء مؤكد عن الفجوة الأبجدية بينهما؟", "options": ["نعم، هناك بالتأكيد 6 أرفف بينهما", "لا، أرقام الأرفف ليست بالضرورة متناسبة مباشرة مع الترتيب الأبجدي", "نعم، هناك بالتأكيد 7 أرفف بينهما", "نعم، هناك بالتأكيد 5 أرفف بينهما"], "correctIndex": 1, "explanation": "تشير أرقام الأرفف فقط إلى الموقع الفيزيائي؛ لا توجد علاقة رياضية مضمونة بين المسافة الأبجدية للعناوين وترقيم الأرفف." },
+      "de": { "text": "In einer Bibliothek sind Bücher alphabetisch geordnet. Wenn 'Apfel' im Regal 5 steht und 'Banane' im Regal 12, können wir etwas Sicheres über den alphabetischen Abstand sagen?", "options": ["Ja, es gibt definitiv 6 Regale dazwischen", "Nein, Regalnummern müssen nicht direkt proportional zur alphabetischen Reihenfolge sein", "Ja, es gibt definitiv 7 Regale dazwischen", "Ja, es gibt definitiv 5 Regale dazwischen"], "correctIndex": 1, "explanation": "Regalnummern zeigen nur die physische Position an; es besteht keine garantierte mathematische Beziehung zwischen dem alphabetischen Abstand der Titel und der Regalnummerierung." },
+      "fr": { "text": "Dans une bibliothèque, les livres sont classés par ordre alphabétique. Si 'Pomme' est à l'étagère 5 et 'Banane' à l'étagère 12, peut-on affirmer quelque chose de certain sur l'écart alphabétique entre eux ?", "options": ["Oui, il y a certainement 6 étagères entre eux", "Non, les numéros d'étagère ne sont pas nécessairement directement proportionnels à l'ordre alphabétique", "Oui, il y a certainement 7 étagères entre eux", "Oui, il y a certainement 5 étagères entre eux"], "correctIndex": 1, "explanation": "Les numéros d'étagère n'indiquent que la position physique ; il n'y a pas de relation mathématique garantie entre la distance alphabétique des titres et la numérotation des étagères." },
+      "es": { "text": "En una biblioteca, los libros están ordenados alfabéticamente. Si 'Manzana' está en el estante 5 y 'Plátano' en el estante 12, ¿podemos afirmar algo cierto sobre la distancia alfabética entre ellos?", "options": ["Sí, definitivamente hay 6 estantes entre ellos", "No, los números de estante no son necesariamente directamente proporcionales al orden alfabético", "Sí, definitivamente hay 7 estantes entre ellos", "Sí, definitivamente hay 5 estantes entre ellos"], "correctIndex": 1, "explanation": "Los números de estante solo indican la posición física; no hay una relación matemática garantizada entre la distancia alfabética de los títulos y la numeración de estantes." },
+      "zh": { "text": "在图书馆里，书籍按字母顺序排列。如果“苹果”在第5层书架，“香蕉”在第12层书架，我们能对它们之间的字母顺序间隔说出什么确定的结论吗？", "options": ["能，它们之间肯定有6层", "不能，书架编号不一定与字母顺序直接成比例", "能，它们之间肯定有7层", "能，它们之间肯定有5层"], "correctIndex": 1, "explanation": "书架编号只表示物理位置；书名的字母顺序距离和书架编号之间没有确定的数学关系。" },
+      "ru": { "text": "В библиотеке книги расставлены по алфавиту. Если «Яблоко» на полке 5, а «Банан» на полке 12, можем ли мы сказать что-то определённое об алфавитном разрыве между ними?", "options": ["Да, между ними точно 6 полок", "Нет, номера полок не обязательно прямо пропорциональны алфавитному порядку", "Да, между ними точно 7 полок", "Да, между ними точно 5 полок"], "correctIndex": 1, "explanation": "Номера полок указывают лишь на физическое расположение; гарантированной математической связи между алфавитным расстоянием названий и нумерацией полок нет." }
+    }
+  },
+  {
+    "priority": 147,
+    "type": "attention",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Şu üç kelimeden hangisi 'kalem' kelimesiyle kafiyeli değildir: gelem, delen, kalem, ...?", "options": ["Hepsi kafiyelidir", "Delen", "Gelem", "Belirsizdir"], "correctIndex": 1, "explanation": "'Delen' kelimesi ses yapısı bakımından 'kalem' ile tam kafiye oluşturmaz, çünkü vurgu ve son ses farklıdır." },
+      "en": { "text": "Which of these doesn't rhyme with the word 'cat': hat, bat, cat, dog?", "options": ["All of them rhyme", "Dog", "Hat", "Undetermined"], "correctIndex": 1, "explanation": "'Dog' doesn't share the same ending sound as 'cat', 'hat', and 'bat', so it doesn't rhyme with them." },
+      "ar": { "text": "أي من هذه الكلمات لا يتناغم مع كلمة 'قطة': فتاة، هرة، قطة، كلب؟", "options": ["كلها تتناغم", "كلب", "فتاة", "غير محدد"], "correctIndex": 1, "explanation": "لا تشارك كلمة 'كلب' نفس الصوت النهائي مع 'قطة' و'فتاة' و'هرة'، لذا لا تتناغم معها." },
+      "de": { "text": "Welches dieser Wörter reimt sich nicht auf 'Hut': Mut, Blut, Hut, Baum?", "options": ["Alle reimen sich", "Baum", "Mut", "Unbestimmt"], "correctIndex": 1, "explanation": "'Baum' hat nicht denselben Endlaut wie 'Hut', 'Mut' und 'Blut', also reimt es sich nicht auf sie." },
+      "fr": { "text": "Lequel de ces mots ne rime pas avec 'chat' : rat, plat, chat, chien ?", "options": ["Tous riment", "Chien", "Rat", "Indéterminé"], "correctIndex": 1, "explanation": "'Chien' n'a pas la même terminaison sonore que 'chat', 'rat' et 'plat', donc il ne rime pas avec eux." },
+      "es": { "text": "¿Cuál de estas palabras no rima con 'gato': pato, rato, gato, perro?", "options": ["Todas riman", "Perro", "Pato", "Indeterminado"], "correctIndex": 1, "explanation": "'Perro' no comparte el mismo sonido final que 'gato', 'pato' y 'rato', así que no rima con ellas." },
+      "zh": { "text": "以下哪个词和“猫”不押韵：帽、刀、猫、狗？", "options": ["都押韵", "狗", "帽", "无法确定"], "correctIndex": 1, "explanation": "“狗”与“猫”、“帽”、“刀”的韵母不同，所以不押韵。" },
+      "ru": { "text": "Какое из этих слов не рифмуется со словом 'кот': рот, плот, кот, собака?", "options": ["Все рифмуются", "Собака", "Рот", "Неопределённо"], "correctIndex": 1, "explanation": "У слова 'собака' нет того же конечного звука, что у 'кот', 'рот' и 'плот', поэтому оно с ними не рифмуется." }
+    }
+  },
+  {
+    "priority": 148,
+    "type": "logic",
+    "difficulty": "medium",
+    "translations": {
+      "tr": { "text": "Bir yumurta pişirilirse (haşlanırsa) tekrar çiğ hale getirilebilir mi?", "options": ["Evet, tekrar soğutulursa çiğ olur", "Hayır, pişirme geri döndürülemez bir kimyasal değişimdir", "Sadece kısa süre pişmişse mümkündür", "Sadece kaynar suda değilse mümkündür"], "correctIndex": 1, "explanation": "Pişirme sırasında proteinler denatüre olur, yani yapıları kalıcı olarak değişir; bu işlem soğutmayla geri alınamaz." },
+      "en": { "text": "Once an egg is cooked (boiled), can it be turned back into a raw egg?", "options": ["Yes, if you cool it back down it becomes raw", "No, cooking is an irreversible chemical change", "Only if it was cooked briefly", "Only if it wasn't boiled in water"], "correctIndex": 1, "explanation": "During cooking, proteins denature, meaning their structure changes permanently; this process cannot be undone by cooling." },
+      "ar": { "text": "بمجرد طهي بيضة (سلقها)، هل يمكن إعادتها إلى حالتها النيئة؟", "options": ["نعم، إذا بردتها تعود نيئة", "لا، الطهي تغيير كيميائي لا رجعة فيه", "فقط إذا طُهيت لفترة قصيرة", "فقط إذا لم تُسلق بالماء"], "correctIndex": 1, "explanation": "أثناء الطهي، تتمسخ البروتينات، أي يتغير تركيبها بشكل دائم؛ لا يمكن التراجع عن هذه العملية عن طريق التبريد." },
+      "de": { "text": "Kann ein gekochtes (gebrühtes) Ei wieder roh werden?", "options": ["Ja, wenn du es wieder abkühlst, wird es roh", "Nein, Kochen ist eine irreversible chemische Veränderung", "Nur wenn es kurz gekocht wurde", "Nur wenn es nicht in Wasser gekocht wurde"], "correctIndex": 1, "explanation": "Beim Kochen denaturieren Proteine, das heißt, ihre Struktur ändert sich dauerhaft; dieser Prozess kann durch Abkühlen nicht rückgängig gemacht werden." },
+      "fr": { "text": "Une fois qu'un œuf est cuit (bouilli), peut-il redevenir cru ?", "options": ["Oui, s'il refroidit il redevient cru", "Non, la cuisson est un changement chimique irréversible", "Seulement s'il a été cuit brièvement", "Seulement s'il n'a pas été bouilli dans l'eau"], "correctIndex": 1, "explanation": "Pendant la cuisson, les protéines se dénaturent, c'est-à-dire que leur structure change de façon permanente ; ce processus ne peut pas être inversé par refroidissement." },
+      "es": { "text": "Una vez que un huevo está cocido (hervido), ¿puede volver a ser crudo?", "options": ["Sí, si se enfría vuelve a estar crudo", "No, cocinar es un cambio químico irreversible", "Solo si se cocinó brevemente", "Solo si no se hirvió en agua"], "correctIndex": 1, "explanation": "Durante la cocción, las proteínas se desnaturalizan, es decir, su estructura cambia permanentemente; este proceso no puede revertirse enfriándolo." },
+      "zh": { "text": "鸡蛋煮熟后，还能变回生鸡蛋吗？", "options": ["能，冷却后就会变回生的", "不能，烹煮是一种不可逆的化学变化", "只有短时间煮才可以", "只有不是在水里煮才可以"], "correctIndex": 1, "explanation": "在烹煮过程中，蛋白质会变性，即其结构发生永久性改变；这个过程无法通过冷却而逆转。" },
+      "ru": { "text": "Может ли сваренное яйцо снова стать сырым?", "options": ["Да, если его снова охладить, оно станет сырым", "Нет, варка — это необратимое химическое изменение", "Только если оно варилось недолго", "Только если оно не варилось в воде"], "correctIndex": 1, "explanation": "Во время варки белки денатурируют, то есть их структура меняется навсегда; этот процесс невозможно обратить охлаждением." }
+    }
+  },
+  {
+    "priority": 149,
+    "type": "common_sense",
+    "difficulty": "easy",
+    "translations": {
+      "tr": { "text": "Bir yılın kaç mevsimi vardır (klasik tanıma göre)?", "options": ["2", "3", "4", "5"], "correctIndex": 2, "explanation": "Klasik tanıma göre bir yıl ilkbahar, yaz, sonbahar ve kış olmak üzere 4 mevsimden oluşur." },
+      "en": { "text": "How many seasons does a year have (by the classic definition)?", "options": ["2", "3", "4", "5"], "correctIndex": 2, "explanation": "By the classic definition, a year has 4 seasons: spring, summer, autumn, and winter." },
+      "ar": { "text": "كم عدد فصول السنة (حسب التعريف الكلاسيكي)؟", "options": ["2", "3", "4", "5"], "correctIndex": 2, "explanation": "حسب التعريف الكلاسيكي، تحتوي السنة على 4 فصول: الربيع والصيف والخريف والشتاء." },
+      "de": { "text": "Wie viele Jahreszeiten hat ein Jahr (nach klassischer Definition)?", "options": ["2", "3", "4", "5"], "correctIndex": 2, "explanation": "Nach klassischer Definition hat ein Jahr 4 Jahreszeiten: Frühling, Sommer, Herbst und Winter." },
+      "fr": { "text": "Combien de saisons compte une année (selon la définition classique) ?", "options": ["2", "3", "4", "5"], "correctIndex": 2, "explanation": "Selon la définition classique, une année compte 4 saisons : le printemps, l'été, l'automne et l'hiver." },
+      "es": { "text": "¿Cuántas estaciones tiene un año (según la definición clásica)?", "options": ["2", "3", "4", "5"], "correctIndex": 2, "explanation": "Según la definición clásica, un año tiene 4 estaciones: primavera, verano, otoño e invierno." },
+      "zh": { "text": "按照经典定义，一年有几个季节？", "options": ["2个", "3个", "4个", "5个"], "correctIndex": 2, "explanation": "按照经典定义，一年有4个季节：春、夏、秋、冬。" },
+      "ru": { "text": "Сколько времён года в году (по классическому определению)?", "options": ["2", "3", "4", "5"], "correctIndex": 2, "explanation": "По классическому определению, в году 4 времени года: весна, лето, осень и зима." }
+    }
+  },
+  {
+    "priority": 150,
+    "type": "riddle",
+    "difficulty": "hard",
+    "translations": {
+      "tr": { "text": "Ne kadar çok gizlerseniz o kadar çok değeri artar. Bu nedir?", "options": ["Bir hazine", "Bir sır", "Bir elmas", "Bir şifre"], "correctIndex": 1, "explanation": "Bir sır, ne kadar özenle saklanır ve az kişiyle paylaşılırsa, açığa çıktığında o kadar 'değerli' (etkili, şaşırtıcı) hale gelir." },
+      "en": { "text": "The more you hide it, the more valuable it becomes. What is it?", "options": ["A treasure", "A secret", "A diamond", "A password"], "correctIndex": 1, "explanation": "The more carefully a secret is kept and shared with fewer people, the more 'valuable' (impactful, surprising) it becomes when revealed." },
+      "ar": { "text": "كلما أخفيته أكثر، ازدادت قيمته. ما هو؟", "options": ["كنز", "سر", "ماسة", "كلمة مرور"], "correctIndex": 1, "explanation": "كلما حُفظ السر بعناية أكبر وشُورك مع أشخاص أقل، ازدادت 'قيمته' (تأثيره، مفاجأته) عند الكشف عنه." },
+      "de": { "text": "Je mehr du es versteckst, desto wertvoller wird es. Was ist es?", "options": ["Ein Schatz", "Ein Geheimnis", "Ein Diamant", "Ein Passwort"], "correctIndex": 1, "explanation": "Je sorgfältiger ein Geheimnis gehütet und mit weniger Menschen geteilt wird, desto 'wertvoller' (wirkungsvoller, überraschender) wird es, wenn es enthüllt wird." },
+      "fr": { "text": "Plus vous le cachez, plus il devient précieux. Qu'est-ce que c'est ?", "options": ["Un trésor", "Un secret", "Un diamant", "Un mot de passe"], "correctIndex": 1, "explanation": "Plus un secret est gardé soigneusement et partagé avec peu de personnes, plus il devient 'précieux' (impactant, surprenant) lorsqu'il est révélé." },
+      "es": { "text": "Cuanto más lo ocultas, más valioso se vuelve. ¿Qué es?", "options": ["Un tesoro", "Un secreto", "Un diamante", "Una contraseña"], "correctIndex": 1, "explanation": "Cuanto más cuidadosamente se guarda un secreto y se comparte con menos personas, más 'valioso' (impactante, sorprendente) se vuelve al revelarse." },
+      "zh": { "text": "你越是把它藏起来，它就变得越有价值，这是什么？", "options": ["宝藏", "秘密", "钻石", "密码"], "correctIndex": 1, "explanation": "一个秘密被保守得越谨慎、分享给的人越少，一旦揭露就会显得越“有价值”（越有冲击力、越令人惊讶）。" },
+      "ru": { "text": "Чем больше вы это скрываете, тем ценнее оно становится. Что это?", "options": ["Сокровище", "Секрет", "Алмаз", "Пароль"], "correctIndex": 1, "explanation": "Чем тщательнее хранится секрет и чем меньше людей его знают, тем «ценнее» (значимее, неожиданнее) он становится при раскрытии." }
+    }
+  }
+];
