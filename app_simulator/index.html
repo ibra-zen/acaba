@@ -29,14 +29,13 @@
     html, body {
       height: 100%;
       overflow: hidden;
-      /* Status bar alanını sıfırla - siyah bar kaybolur */
-      padding-top: env(safe-area-inset-top);
-      padding-bottom: env(safe-area-inset-bottom);
+      margin: 0;
+      padding: 0;
     }
 
     body {
       font-family: var(--font);
-      background: var(--bg-outer);
+      background: #E4E8CE;
       min-height: 100vh;
       min-height: -webkit-fill-available;
       display: flex;
@@ -52,7 +51,7 @@
       width: 100%;
       height: 100%;
       height: -webkit-fill-available;
-      background: #000;
+      background: #E4E8CE;
       overflow: hidden;
       position: relative;
       display: flex;
@@ -94,25 +93,31 @@
       background: #E4E8CE;
       align-items: center;
       justify-content: flex-start;
-      padding: 16px 16px 20px;
+      padding: 16px 16px 80px 16px;
       text-align: center;
       overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      position: relative;
     }
 
-    /* Kullanıcı Profil Barı (Rumuz & Puan & Sıralama Butonu) */
+    /* Alt Sabit Bar (Kullanıcı Adı, Dil, Puan, Sıralama) */
     .user-profile-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
       width: 100%;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(8px);
-      border-radius: 18px;
-      padding: 10px 14px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(14px);
+      border-radius: 20px 20px 0 0;
+      padding: 12px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      border: 1px solid rgba(0,0,0,0.08);
-      flex-shrink: 0;
+      box-shadow: 0 -4px 18px rgba(0,0,0,0.12);
+      border-top: 1px solid rgba(0,0,0,0.08);
+      z-index: 100;
     }
     .user-nick-box {
       display: flex;
@@ -483,21 +488,6 @@
 
     <!-- ===== ANA EKRAN (HOME) ===== -->
     <div id="screen-home" class="screen active">
-      <!-- User Profile Header (Nickname, Score, Language & Leaderboard) -->
-      <div class="user-profile-bar">
-        <div class="user-nick-box" onclick="openNickModal()">
-          <span>👤</span>
-          <span id="user-display-name">Oyuncu</span>
-          <span style="font-size: 11px; color: #757575;">✏️</span>
-        </div>
-        <button class="leaderboard-icon-btn" onclick="openLangModal()" style="background: #EFF6FF; color: #1D4ED8;">
-          🌐 <span id="current-lang-flag">🇹🇷 TR</span>
-        </button>
-        <div class="user-score-box" id="user-score-display">0 Puan</div>
-        <button class="leaderboard-icon-btn" onclick="openLeaderboardModal()">
-          🏆 Sıralama
-        </button>
-      </div>
 
       <!-- Üst Maskot İkonu -->
       <div class="mascot-icon-box">👓</div>
@@ -514,6 +504,22 @@
       <div class="groups-container" id="groups-container">
         <!-- JS ile dolacak -->
       </div>
+
+      <!-- Alt Bar: Kullanıcı Adı, Dil, Puan, Sıralama -->
+      <div class="user-profile-bar">
+        <div class="user-nick-box" onclick="openNickModal()">
+          <span>👤</span>
+          <span id="user-display-name">Oyuncu</span>
+          <span style="font-size: 11px; color: #757575;">✏️</span>
+        </div>
+        <button class="leaderboard-icon-btn" onclick="openLangModal()" style="background: #EFF6FF; color: #1D4ED8;">
+          🌐 <span id="current-lang-flag">🇹🇷 TR</span>
+        </button>
+        <div class="user-score-box" id="user-score-display">0 Puan</div>
+        <button class="leaderboard-icon-btn" onclick="openLeaderboardModal()">
+          🏆 Sıralama
+        </button>
+      </div>
     </div>
 
     <!-- ===== OYUN EKRANI ===== -->
@@ -522,7 +528,6 @@
         <div class="game-nav-bar">
           <button class="home-back-btn" onclick="showHome()">🏠 Ana Sayfa</button>
           <div class="question-tag" id="q-tag">👀 Dikkat (LEVEL 1)</div>
-          <button class="report-q-btn" onclick="openReportModal()">🚨 Bildir</button>
         </div>
         <div class="question-text" id="q-text">Soru yükleniyor...</div>
       </div>
@@ -571,28 +576,6 @@
       </div>
     </div>
 
-    <!-- ===== HATALI SORU BİLDİR MODALI ===== -->
-    <div class="custom-modal" id="report-modal">
-      <div class="modal-card">
-        <div style="font-size: 20px; font-weight: 900; color: #DC2626; margin-bottom: 6px;">🚨 Hatalı Soru Bildir</div>
-        <p style="font-size: 13px; color: #64748B; margin-bottom: 14px;" id="report-q-summary">Soru #1 için bildirim oluşturuluyor.</p>
-        
-        <label style="font-size: 13px; font-weight: 800; color: #1E293B; display: block; text-align: left; margin-bottom: 6px;">Bildirim Nedeni:</label>
-        <select id="report-reason-select" class="nick-input" style="padding: 10px; text-align: left; font-size: 14px; margin: 0 0 12px 0;">
-          <option value="Hatalı Cevap Şıkkı">❌ Hatalı Cevap Şıkkı</option>
-          <option value="Yazım / İmla Hatası">✍️ Yazım / İmla Hatası</option>
-          <option value="Soru Anlaşılmıyor / Bozuk">❓ Soru Anlaşılmıyor / Bozuk</option>
-          <option value="Diğer">💬 Diğer</option>
-        </select>
-
-        <textarea id="report-comment-input" class="nick-input" rows="3" placeholder="Açıklama (opsiyonel)..." style="text-align: left; font-size: 13px; margin: 0 0 16px 0; resize: none;"></textarea>
-
-        <div style="display: flex; gap: 8px;">
-          <button class="modal-btn" style="background: #94A3B8; flex: 1;" onclick="closeReportModal()">İPTAL</button>
-          <button class="modal-btn" style="background: #DC2626; flex: 1.5;" onclick="submitQuestionReport()">GÖNDER 🚀</button>
-        </div>
-      </div>
-    </div>
 
     <!-- ===== SIRALAMA MODALI (LEADERBOARD) ===== -->
     <div class="custom-modal" id="lb-modal">
@@ -770,6 +753,116 @@
           { q: 'أي شهر فيه 28 يوماً؟', opts: ['فبراير فقط', 'لا يوجد', 'جميع الأشهر', 'يناير ومارس'], c: 2, exp: 'جميع الأشهر تحتوي على 28 يوماً!' },
           { q: 'في أي درجة يغلي الماء؟', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'يغلي الماء عند 100 درجة مئوية.' },
           { q: 'ماذا يشبه نصف التفاحة؟', opts: ['النصف الآخر', 'كمثرى', 'فراولة', 'برتقال'], c: 0, exp: 'يشبه النصف الآخر من التفاحة!' }
+        ],
+        de: [
+          { q: 'Spielst du diesen Test gerade auf deinem Bildschirm?', opts: ['Ja', 'Nein', 'Ich schlafe', 'Weiß nicht'], c: 0, exp: 'Da du spielst, lautet die Antwort Ja!' },
+          { q: 'Welche Taste drückt man im Aufzug, um nach unten zu fahren?', opts: ['Oben ↑', 'Unten ↓', 'Rechts →', 'Links ←'], c: 1, exp: 'Unten drücken, um nach unten zu fahren!' },
+          { q: 'Wenn das Wort ROT in BLAUER Farbe steht, was liest man?', opts: ['Rot', 'Blau', 'Grün', 'Gelb'], c: 0, exp: 'Lies das Wort, nicht die Farbe! Es heißt ROT.' },
+          { q: 'Wie viele Bananen wachsen auf einem Apfelbaum?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Bananen wachsen nicht auf Apfelbäumen!' },
+          { q: 'Was davon kann man nicht essen?', opts: ['Apfel', 'Birne', 'Tisch', 'Erdbeere'], c: 2, exp: 'Ein Tisch ist ein Möbelstück, kein Essen!' },
+          { q: 'Was ist schwerer: 1 kg Eisen oder 1 kg Baumwolle?', opts: ['Eisen', 'Baumwolle', 'Beide gleich', 'Muss wiegen'], c: 2, exp: 'Beide wiegen 1 kg! Das Gewicht ist gleich.' },
+          { q: 'Wähle die falsche Rechnung:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8, 9 ist falsch!' },
+          { q: 'Passwort: 1453. Welches ist das richtige Passwort?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'Das Passwort lautete 1453.' },
+          { q: 'Alex\' Vater ist der Sohn von John. Was ist John für Alex?', opts: ['Vater', 'Onkel', 'Großvater', 'Bruder'], c: 2, exp: 'John ist der Großvater von Alex!' },
+          { q: 'Januar hat 28 Tage. Wie viele Tage haben andere Monate?', opts: ['Keiner', 'Alle mindestens 28', 'Nur 30 & 31', 'Weiß nicht'], c: 1, exp: 'Jeder Monat hat mindestens 28 Tage!' },
+          { q: 'Miauen Hunde?', opts: ['Ja', 'Nein', 'Quaken', 'Singen'], c: 1, exp: 'Hunde bellen, sie miauen nicht!' },
+          { q: 'GIB MIR EINE FALSCHE ANTWORT: Was ist 2+2?', opts: ['4', '5', 'Zwei', 'Vier'], c: 1, exp: 'Eine FALSCHE Antwort war gefragt, 5 ist richtig!' },
+          { q: 'Ein Elektrozug fährt nach Süden. Wohin weht der Rauch?', opts: ['Süden', 'Norden', 'Kein Rauch', 'Osten'], c: 2, exp: 'Ein Elektrozug erzeugt keinen Rauch!' },
+          { q: 'Überholst du den Zweitplatzierten, welcher bist du?', opts: ['1.', '2.', '3.', 'Letzter'], c: 1, exp: 'Du überholst den Zweiten, also bist du Zweiter!' },
+          { q: 'Der Arzt gibt 3 Pillen alle 30 Min. Wie lange dauert es?', opts: ['1.5 Std', '1 Std', '2 Std', '3 Std'], c: 1, exp: '0 min, 30 min, 60 min. Genau 1 Stunde!' },
+          { q: 'Es regnet um Mitternacht. Kann in 72 Std die Sonne scheinen?', opts: ['Ja', 'Nein', 'Nachts keine Sonne', '50%'], c: 1, exp: '72 Stunden = 3 Tage. Es ist wieder Mitternacht!' },
+          { q: 'Wie viele Äpfel passen in einen leeren Sack?', opts: ['1', 'Unendlich', 'Bis er voll ist', '10'], c: 0, exp: 'Nach einem Apfel ist der Sack nicht mehr leer!' },
+          { q: 'Welcher Monat hat 28 Tage?', opts: ['Nur Februar', 'Keiner', 'Alle Monate', 'Jan & Mär'], c: 2, exp: 'Alle Monate haben 28 Tage!' },
+          { q: 'Bei welcher Temperatur kocht Wasser?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'Wasser kocht bei 100 °C.' },
+          { q: 'Wem ähnelt die Hälfte eines Apfels?', opts: ['Der anderen Hälfte', 'Birne', 'Erdbeere', 'Orange'], c: 0, exp: 'Die Apfelhälfte ähnelt der anderen Hälfte!' }
+        ],
+        fr: [
+          { q: 'Jouez-vous à ce test sur votre écran en ce moment ?', opts: ['Oui', 'Non', 'Endormi', 'Je ne sais pas'], c: 0, exp: 'Puisque vous jouez, la réponse est Oui !' },
+          { q: 'Quel bouton appuyez-vous pour descendre en ascenseur ?', opts: ['Haut ↑', 'Bas ↓', 'Droite →', 'Gauche ←'], c: 1, exp: 'Appuyez sur Bas pour descendre !' },
+          { q: 'Si le mot ROUGE est écrit en BLEU, que lit-on ?', opts: ['Rouge', 'Bleu', 'Vert', 'Jaune'], c: 0, exp: 'Ne regardez pas la couleur ! Le mot est ROUGE.' },
+          { q: 'Combien de bananes poussent sur un pommier ?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Les bananes ne poussent pas sur les pommiers !' },
+          { q: 'Lequel de ces éléments n\'est pas comestible ?', opts: ['Pomme', 'Poire', 'Table', 'Fraise'], c: 2, exp: 'Une table est un meuble, pas de la nourriture !' },
+          { q: 'Qu\'est-ce qui est le plus lourd : 1 kg de fer ou 1 kg de coton ?', opts: ['Fer', 'Coton', 'Égaux', 'Faut peser'], c: 2, exp: 'Tous les deux font 1 kg ! Même poids.' },
+          { q: 'Choisissez le calcul faux :', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8, donc 9 est faux !' },
+          { q: 'Mot de passe : 1453. Quel est le bon mot de passe ?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'Le mot de passe était 1453.' },
+          { q: 'Le père d\'Alex est le fils de John. Qui est John pour Alex ?', opts: ['Père', 'Oncle', 'Grand-père', 'Frère'], c: 2, exp: 'John est le grand-père d\'Alex !' },
+          { q: 'Janvier a 28 jours. Combien de jours ont les autres mois ?', opts: ['Aucun', 'Tous ont au moins 28', 'Seulement 30 & 31', 'Je ne sais pas'], c: 1, exp: 'Tous les mois ont au moins 28 jours !' },
+          { q: 'Les chiens miaulent-ils ?', opts: ['Oui', 'Non', 'Coin-coin', 'Chantent'], c: 1, exp: 'Les chiens aboient, ils ne miaulent pas !' },
+          { q: 'DONNEZ UNE MAUVAISE RÉPONSE : Combien font 2+2 ?', opts: ['4', '5', 'Deux', 'Quatre'], c: 1, exp: 'La question demandait une MAUVAISE réponse, 5 est correct !' },
+          { q: 'Un train électrique va au sud. Où va la fumée ?', opts: ['Sud', 'Nord', 'Pas de fumée', 'Est'], c: 2, exp: 'Un train électrique ne produit pas de fumée !' },
+          { q: 'Si vous doublez le 2ème dans une course, à quelle place êtes-vous ?', opts: ['1er', '2ème', '3ème', 'Dernier'], c: 1, exp: 'Doubler le 2ème vous place à la 2ème place !' },
+          { q: 'Un médecin prescrit 3 pilules toutes les 30 min. Combien de temps ?', opts: ['1.5 heure', '1 heure', '2 heures', '3 heures'], c: 1, exp: '0 min, 30 min, 60 min. Total 1 heure !' },
+          { q: 'Il pleut à minuit. Le soleil peut-il briller dans 72h ?', opts: ['Oui', 'Non', 'Pas de soleil la nuit', '50%'], c: 1, exp: '72 heures = 3 jours. Ce sera encore minuit !' },
+          { q: 'Combien de pommes peut-on mettre dans un sac vide ?', opts: ['1', 'Infini', 'Jusqu\'à ce qu\'il soit plein', '10'], c: 0, exp: 'Après 1 pomme, le sac n\'est plus vide !' },
+          { q: 'Quel mois compte 28 jours ?', opts: ['Février seulement', 'Aucun', 'Tous les mois', 'Jan & Mar'], c: 2, exp: 'Tous les mois contiennent au moins 28 jours !' },
+          { q: 'À quelle température l\'eau bout-elle ?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'L\'eau bout à 100 °C.' },
+          { q: 'À quoi ressemble une demi-pomme ?', opts: ['À l\'autre moitié', 'À une poire', 'À une fraise', 'À une orange'], c: 0, exp: 'Une demi-pomme ressemble à son autre moitié !' }
+        ],
+        es: [
+          { q: '¿Estás jugando a este test en tu pantalla ahora mismo?', opts: ['Sí', 'No', 'Dormido', 'No sé'], c: 0, exp: '¡Como estás jugando, la respuesta es Sí!' },
+          { q: '¿Qué botón pulsas en el ascensor para bajar?', opts: ['Arriba ↑', 'Abajo ↓', 'Derecha →', 'Izquierda ←'], c: 1, exp: '¡Pulsa Abajo para bajar!' },
+          { q: 'Si la palabra ROJO está escrita en color AZUL, ¿qué se lee?', opts: ['Rojo', 'Azul', 'Verde', 'Amarillo'], c: 0, exp: '¡No mires el color! La palabra dice ROJO.' },
+          { q: '¿Cuántos plátanos crecen en un manzano?', opts: ['0', '10', '100', '1'], c: 0, exp: '¡Los plátanos no crecen en manzanos!' },
+          { q: '¿Cuál de los siguientes no es comestible?', opts: ['Manzana', 'Pera', 'Mesa', 'Fresa'], c: 2, exp: '¡Una mesa es un mueble, no comida!' },
+          { q: '¿Qué pesa más: 1 kg de hierro o 1 kg de algodón?', opts: ['Hierro', 'Algodón', 'Ambos igual', 'Hay que pesar'], c: 2, exp: '¡Ambos pesan 1 kg! El peso es igual.' },
+          { q: 'Elige la operación matemática incorrecta:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8, ¡el 9 es incorrecto!' },
+          { q: 'Contraseña: 1453. ¿Cuál es la contraseña correcta?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'La contraseña era 1453.' },
+          { q: 'El padre de Alex es hijo de John. ¿Qué es John de Alex?', opts: ['Padre', 'Tío', 'Abuelo', 'Hermano'], c: 2, exp: '¡John es el abuelo de Alex!' },
+          { q: 'Enero tiene 28 días. ¿Cuántos días tienen los demás meses?', opts: ['Ninguno', 'Todos tienen al menos 28', 'Solo 30 y 31', 'No sé'], c: 1, exp: '¡Todos los meses tienen al menos 28 días!' },
+          { q: '¿Los perros maúllan?', opts: ['Sí', 'No', 'Graznan', 'Cantan'], c: 1, exp: '¡Los perros ladran, no maúllan!' },
+          { q: 'DAME UNA RESPUESTA INCORRECTA: ¿Cuánto es 2+2?', opts: ['4', '5', 'Dos', 'Cuatro'], c: 1, exp: '¡Se pidió una respuesta INCORRECTA, por tanto 5 es la adecuada!' },
+          { q: 'Un tren eléctrico va hacia el sur. ¿Hacia dónde va el humo?', opts: ['Sur', 'Norte', 'Sin humo', 'Este'], c: 2, exp: '¡Un tren eléctrico no produce humo!' },
+          { q: 'Si adelantas al 2.º en una carrera, ¿en qué puesto quedas?', opts: ['1.º', '2.º', '3.º', 'Último'], c: 1, exp: '¡Adelantas al 2.º, así que quedas 2.º!' },
+          { q: 'Un médico receta 3 pastillas, una cada 30 min. ¿Cuánto dura?', opts: ['1.5 horas', '1 hora', '2 horas', '3 horas'], c: 1, exp: '0 min, 30 min, 60 min. ¡Total 1 hora!' },
+          { q: 'Llueve a medianoche. ¿Puede brillar el sol en 72 horas?', opts: ['Sí', 'No', 'No hay sol de noche', '50%'], c: 1, exp: '72 horas = 3 días. ¡Volverá a ser medianoche!' },
+          { q: '¿Cuántas manzanas caben en un saco vacío?', opts: ['1', 'Infinito', 'Hasta llenarlo', '10'], c: 0, exp: '¡Tras poner 1 manzana el saco ya no está vacío!' },
+          { q: '¿Qué mes tiene 28 días?', opts: ['Solo febrero', 'Ninguno', 'Todos los meses', 'Ene y Mar'], c: 2, exp: '¡Todos los meses tienen 28 días!' },
+          { q: '¿A qué temperatura hierve el agua?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'El agua hierve a 100 °C.' },
+          { q: '¿A qué se parece media manzana?', opts: ['A la otra mitad', 'A una pera', 'A una fresa', 'A una naranja'], c: 0, exp: '¡Media manzana se parece a la otra mitad!' }
+        ],
+        zh: [
+          { q: '你现在是否正在屏幕上玩这个测试？', opts: ['是', '否', '我在睡觉', '不知道'], c: 0, exp: '既然你正在玩，答案当然是“是”！' },
+          { q: '乘电梯下楼应该按哪个按钮？', opts: ['向上 ↑', '向下 ↓', '向右 →', '向左 ←'], c: 1, exp: '按向下按钮下楼！' },
+          { q: '如果用蓝色书写“红色”二字，读作什么？', opts: ['红色', '蓝色', '绿色', '黄色'], c: 0, exp: '不要看颜色！文字读作“红色”。' },
+          { q: '一棵苹果树上能长出多少根香蕉？', opts: ['0', '10', '100', '1'], c: 0, exp: '苹果树上不长香蕉！' },
+          { q: '以下哪项是不可食用的？', opts: ['苹果', '梨', '桌子', '草莓'], c: 2, exp: '桌子是家具，不能吃！' },
+          { q: '1公斤铁和1公斤棉花哪个更重？', opts: ['铁', '棉花', '一样重', '需要称量'], c: 2, exp: '两者都是1公斤，重量完全一样！' },
+          { q: '找出错误的算式：', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8，所以9是错的！' },
+          { q: '密码是1453。哪一个是正确密码？', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: '正确密码就是1453。' },
+          { q: '阿历克斯的父亲是约翰的儿子。约翰是阿历克斯的什么人？', opts: ['父亲', '叔叔', '爷爷', '兄弟'], c: 2, exp: '约翰是阿历克斯的爷爷！' },
+          { q: '一月份有28天。其他月份有多少天？', opts: ['没有', '都有至少28天', '只有30和31', '不知道'], c: 1, exp: '所有月份都有至少28天！' },
+          { q: '狗会喵喵叫吗？', opts: ['会', '不会', '嘎嘎叫', '唱歌'], c: 1, exp: '狗汪汪叫，不会喵喵叫！' },
+          { q: '故意给我一个错误答案：2+2等于几？', opts: ['4', '5', '二', '四'], c: 1, exp: '题目要求给错误答案，所以5正确！' },
+          { q: '一列电力火车向南行驶，烟往哪边飘？', opts: ['南', '北', '没有烟', '东'], c: 2, exp: '电力火车不产生烟！' },
+          { q: '在赛跑中你超过了第二名，你现在是第几名？', opts: ['第一', '第二', '第三', '最后'], c: 1, exp: '超过第二名，你就是第二名！' },
+          { q: '医生给了3片药，每半小时吃一片。一共需要多久？', opts: ['1.5小时', '1小时', '2小时', '3小时'], c: 1, exp: '0分钟、30分钟、60分钟。刚好1小时！' },
+          { q: '午夜12点下雨。72小时后太阳会出来吗？', opts: ['会', '不会', '晚上没有太阳', '50%'], c: 1, exp: '72小时=3天。到时候又是半夜！' },
+          { q: '一个空袋子里能放多少个苹果？', opts: ['1个', '无数个', '直到装满', '10个'], c: 0, exp: '放进1个后，袋子就不再是空的了！' },
+          { q: '哪个月份有28天？', opts: ['只有二月', '没有', '所有月份', '一月和三月'], c: 2, exp: '每个月份都包含28天！' },
+          { q: '水在多少摄氏度沸腾？', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: '水在100摄氏度沸腾。' },
+          { q: '半个苹果看起来像什么？', opts: ['另一半苹果', '梨', '草莓', '橘子'], c: 0, exp: '半个苹果最像它的另一半！' }
+        ],
+        ru: [
+          { q: 'Вы сейчас играете в этот тест на своем экране?', opts: ['Да', 'Нет', 'Я сплю', 'Не знаю'], c: 0, exp: 'Раз вы играете, ответ: Да!' },
+          { q: 'Какую кнопку нажать в лифте, чтобы спуститься вниз?', opts: ['Вверх ↑', 'Вниз ↓', 'Вправо →', 'Влево ←'], c: 1, exp: 'Нажмите кнопку Вниз!' },
+          { q: 'Если слово КРАСНЫЙ написано СИНИМ цветом, что читается?', opts: ['Красный', 'Синий', 'Зеленый', 'Желтый'], c: 0, exp: 'Не смотрите на цвет! Слово читается КРАСНЫЙ.' },
+          { q: 'Сколько бананов растет на яблоне?', opts: ['0', '10', '100', '1'], c: 0, exp: 'Бананы не растут на яблонях!' },
+          { q: 'Что из этого несъедобно?', opts: ['Яблоко', 'Груша', 'Стол', 'Клубника'], c: 2, exp: 'Стол — это мебель, а не еда!' },
+          { q: 'Что тяжелее: 1 кг железа или 1 кг ваты?', opts: ['Железо', 'Вата', 'Одинаково', 'Надо взвесить'], c: 2, exp: 'Оба весят 1 кг! Вес одинаков.' },
+          { q: 'Выберите неверное математическое выражение:', opts: ['2+2=4', '3+3=6', '4+4=9', '5+5=10'], c: 2, exp: '4+4=8, значит 9 — ошибка!' },
+          { q: 'Пароль: 1453. Какой пароль верный?', opts: ['1543', '1453', '1345', '1435'], c: 1, exp: 'Правильный пароль был 1453.' },
+          { q: 'Отец Алекса — сын Джона. Кем Джон приходится Алексу?', opts: ['Отец', 'Дядя', 'Дедушка', 'Брат'], c: 2, exp: 'Джон — дедушка Алекса!' },
+          { q: 'В январе 28 дней. Сколько дней в остальных месяцах?', opts: ['Ни одного', 'Во всех есть 28', 'Только 30 и 31', 'Не знаю'], c: 1, exp: 'В каждом месяце есть как минимум 28 дней!' },
+          { q: 'Собаки мяукают?', opts: ['Да', 'Нет', 'Крякают', 'Поют'], c: 1, exp: 'Собаки лают, а не мяукают!' },
+          { q: 'ДАЙ МНЕ НЕПРАВИЛЬНЫЙ ОТВЕТ: Сколько будет 2+2?', opts: ['4', '5', 'Два', 'Четыре'], c: 1, exp: 'Вопрос требовал НЕВЕРНЫЙ ответ, поэтому 5 верно!' },
+          { q: 'Электропоезд едет на юг. Куда дует дым?', opts: ['На юг', 'На север', 'Нет дыма', 'На восток'], c: 2, exp: 'У электропоезда нет дыма!' },
+          { q: 'Если вы обогнали 2-го бегуна, на каком вы месте?', opts: ['1-е', '2-е', '3-е', 'Последнее'], c: 1, exp: 'Вы заняли место второго, значит вы 2-й!' },
+          { q: 'Врач дал 3 таблетки, пить каждые 30 минут. На сколько хватит?', opts: ['1.5 часа', '1 час', '2 часа', '3 часа'], c: 1, exp: '0 мин, 30 мин, 60 мин. Ровно 1 час!' },
+          { q: 'В полночь идет дождь. Может ли светить солнце через 72 часа?', opts: ['Да', 'Нет', 'Ночью нет солнца', '50%'], c: 1, exp: '72 часа = 3 суток. Снова будет полночь!' },
+          { q: 'Сколько яблок можно положить в пустой мешок?', opts: ['1', 'Бесконечно', 'Пока не наполнится', '10'], c: 0, exp: 'После 1 яблока мешок уже не пустой!' },
+          { q: 'В каком месяце 28 дней?', opts: ['Только февраль', 'Ни в каком', 'Во всех месяцах', 'Янв и Мар'], c: 2, exp: 'Во всех месяцах есть 28 дней!' },
+          { q: 'При какой температуре закипает вода?', opts: ['100 °C', '0 °C', '50 °C', '200 °C'], c: 0, exp: 'Вода кипит при 100 °C.' },
+          { q: 'На что похожа половина яблока?', opts: ['На вторую половину', 'На грушу', 'На клубнику', 'На апельсин'], c: 0, exp: 'Половина яблока похожа на вторую половину!' }
         ]
       };
 
@@ -857,7 +950,8 @@
 
     let state = {
       nickname: localStorage.getItem('bsm_nickname') || '',
-      unlockedLevel: Number(localStorage.getItem('bsm_unlocked_level') || 1),
+      language: localStorage.getItem('bsm_lang') || 'tr',
+      unlockedLevel: 100, // Tüm 100 level açık
       score: Number(localStorage.getItem('bsm_score') || 0),
       currentLevel: 1,
       idx: 0,
@@ -871,6 +965,17 @@
       if (!state.nickname) {
         state.nickname = 'Oyuncu_' + Math.floor(1000 + Math.random() * 9000);
         localStorage.setItem('bsm_nickname', state.nickname);
+      }
+      state.unlockedLevel = 100;
+      localStorage.setItem('bsm_unlocked_level', '100');
+
+      const langLabels = {
+        tr: '🇹🇷 TR', en: '🇺🇸 EN', ar: '🇸🇦 AR', de: '🇩🇪 DE',
+        fr: '🇫🇷 FR', es: '🇪🇸 ES', zh: '🇨🇳 ZH', ru: '🇷🇺 RU'
+      };
+      const curFlag = document.getElementById('current-lang-flag');
+      if (curFlag) {
+        curFlag.textContent = langLabels[state.language] || '🇹🇷 TR';
       }
       updateUserHeader();
     }
@@ -912,26 +1017,15 @@
       if (flagEl) flagEl.textContent = label;
       closeLangModal();
       showToast(`🌐 Oyun dili değiştirildi: ${label}`);
-    }
 
-    function openReportModal() {
-      const qNum = (state.currentLevel - 1) * 10 + state.idx + 1;
-      document.getElementById('report-q-summary').textContent = `Level ${state.currentLevel} - Soru ${state.idx + 1} (#${qNum}) için bildirim oluşturuluyor.`;
-      document.getElementById('report-comment-input').value = '';
-      document.getElementById('report-modal').classList.add('active');
-    }
+      // Ana sayfadaki grup listesini güncelle
+      renderHomeGroups();
 
-    function closeReportModal() {
-      document.getElementById('report-modal').classList.remove('active');
-    }
-
-    function submitQuestionReport() {
-      const reason = document.getElementById('report-reason-select').value;
-      const comment = document.getElementById('report-comment-input').value.trim();
-      const qNum = (state.currentLevel - 1) * 10 + state.idx + 1;
-
-      closeReportModal();
-      showToast('🚨 Hatalı soru bildirimi gönderildi. İnceleme için teşekkürler!');
+      // Oyun ekranındaysa soruyu yeni dilde derhal yeniden çiz
+      const gameScreen = document.getElementById('screen-game');
+      if (gameScreen && gameScreen.classList.contains('active')) {
+        renderQuestion();
+      }
     }
 
     function openLeaderboardModal() {
@@ -980,13 +1074,11 @@
         const card = document.createElement('div');
         card.className = `group-card grp-${grp.id}`;
 
-        const isGroupOpen = state.unlockedLevel >= grp.start;
-
         const header = document.createElement('div');
         header.className = 'group-header';
         header.innerHTML = `
           <span>${grp.name}</span>
-          <span style="font-size: 12px;">${isGroupOpen ? '▼' : '🔒'}</span>
+          <span style="font-size: 12px;">▼</span>
         `;
         header.onclick = () => {
           card.classList.toggle('open');
@@ -996,17 +1088,12 @@
         grid.className = 'group-levels-grid';
 
         for (let lvl = grp.start; lvl <= grp.end; lvl++) {
-          const isUnlocked = lvl <= state.unlockedLevel;
           const btn = document.createElement('button');
-          btn.className = `level-bar-btn lvl-btn-color ${isUnlocked ? '' : 'locked'}`;
-          btn.innerHTML = `<span>${isUnlocked ? '' : '🔒 '}L${lvl}</span> <span>${isUnlocked ? '▶' : 'Kilitli'}</span>`;
+          btn.className = 'level-bar-btn lvl-btn-color';
+          btn.innerHTML = `<span>L${lvl}</span> <span>▶</span>`;
           btn.onclick = (e) => {
             e.stopPropagation();
-            if (isUnlocked) {
-              startSpecificLevel(lvl);
-            } else {
-              showToast(`🔒 Önce LEVEL ${lvl - 1}'i tamamlamalısın!`);
-            }
+            startSpecificLevel(lvl);
           };
           grid.appendChild(btn);
         }
@@ -1014,8 +1101,8 @@
         card.appendChild(header);
         card.appendChild(grid);
 
-        // İlk açık grubu varsayılan açık yap
-        if (state.unlockedLevel >= grp.start && state.unlockedLevel <= grp.end) {
+        // İlk grubu varsayılan olarak açık göster
+        if (grp.id === 1) {
           card.classList.add('open');
         }
 
