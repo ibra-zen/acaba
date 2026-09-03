@@ -609,35 +609,37 @@
 
 
     <!-- ===== SIRALAMA MODALI (LEADERBOARD) ===== -->
+    <!-- ===== ZEKA VE SALAKLIK SEVİYESİ MODALI ===== -->
     <div class="custom-modal" id="lb-modal">
-      <div class="modal-card">
+      <div class="modal-card" style="max-height: 90vh; overflow-y: auto;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <div style="font-size: 18px; font-weight: 900; color: #0F172A;">🏆 En İyiler Sıralaması</div>
+          <div style="font-size: 18px; font-weight: 900; color: #0F172A;">📊 Zeka & Salaklık Durumu</div>
           <button onclick="closeLeaderboardModal()" style="background: none; border: none; font-size: 18px; cursor: pointer;">❌</button>
         </div>
 
         <!-- Zaman Sekmeleri (Toplam / Son 30 Gün) -->
-        <div class="lb-tabs" style="margin-bottom: 8px;">
-          <button class="lb-tab active" id="btn-tab-time-all" onclick="switchLbTime('all')">🌍 Toplam</button>
+        <div class="lb-tabs" style="margin-bottom: 12px;">
+          <button class="lb-tab active" id="btn-tab-time-all" onclick="switchLbTime('all')">🌍 Toplam Performans</button>
           <button class="lb-tab" id="btn-tab-time-month" onclick="switchLbTime('month')">📅 Son 30 Gün</button>
         </div>
 
-        <!-- Kategori Butonları: En Zekiler vs En Salaklar -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px;">
-          <button class="lb-category-btn active" id="btn-cat-smart" onclick="switchLbCategory('smart')">
-            🧠 En Zekiler
-          </button>
-          <button class="lb-category-btn" id="btn-cat-idiot" onclick="switchLbCategory('idiot')">
-            🥔 En Salaklar
-          </button>
+        <!-- Kullanıcının Mevcut Seviye Rozeti -->
+        <div id="user-current-tier-badge" style="padding: 14px; border-radius: 16px; margin-bottom: 16px; text-align: center; border: 2px solid #E2E8F0;">
+          <!-- JS ile doldurulacak -->
         </div>
 
-        <div class="lb-list" id="lb-list-container">
-          <!-- JS ile dolacak -->
+        <div style="font-size: 14px; font-weight: 900; color: #334155; margin-bottom: 8px; text-align: left;">
+          🏆 Puanlama & 5 Kademe Sistemi:
         </div>
 
-        <div class="lb-item user-highlight" id="user-rank-highlight" style="display: flex; justify-content: space-between; padding: 10px; background: #FFF7ED; border: 2px solid #FF9800; border-radius: 12px; font-size: 13px; font-weight: 900;">
-          <!-- Kullanıcının kendi sırası -->
+        <!-- 5 Kategori Listesi -->
+        <div class="lb-list" id="lb-list-container" style="gap: 8px;">
+          <!-- JS ile doldurulacak -->
+        </div>
+
+        <!-- Detaylı Puan Özeti -->
+        <div id="user-rank-highlight" style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 14px; font-size: 13px; font-weight: 800; margin-top: 10px;">
+          <!-- JS ile doldurulacak -->
         </div>
       </div>
     </div>
@@ -675,59 +677,71 @@
       { id: 10, name: '🏆 91-100: Şampiyonlar', start: 91, end: 100 }
     ];
 
-    // En Zekiler (Puanı En Yüksek 10 Kişi - Genel ve Son 30 Gün)
-    const TOP_SMART_ALL = [
-      { rank: 1, name: 'ZekaKralı99', score: 9850, level: 99 },
-      { rank: 2, name: 'EinsteinTR', score: 8720, level: 88 },
-      { rank: 3, name: 'DahiBeyin', score: 7650, level: 77 },
-      { rank: 4, name: 'ŞaşırtmacaUzmanı', score: 6540, level: 66 },
-      { rank: 5, name: 'TuzakAvcısı', score: 5490, level: 55 },
-      { rank: 6, name: 'AkılKüpü34', score: 4380, level: 44 },
-      { rank: 7, name: 'OyuncuMehmet', score: 3250, level: 33 },
-      { rank: 8, name: 'ZekiAyşe', score: 2180, level: 22 },
-      { rank: 9, name: 'Stratejist', score: 1650, level: 17 },
-      { rank: 10, name: 'BilgeTilki', score: 1120, level: 12 }
+    // 5 ZEKA VE SALAKLIK KADEMESİ SİSTEMİ
+    const INTELLIGENCE_TIERS = [
+      {
+        id: 'genius',
+        level: 5,
+        minScore: 1000,
+        title: '🧠 ZEKİ (Dahi Mertebesi)',
+        desc: 'Tuzakları anında fark eden, üstün zekalı ve dikkatli oyuncu.',
+        badge: '👑 ZEKİ',
+        color: '#10B981',
+        bg: '#ECFDF5',
+        border: '#059669'
+      },
+      {
+        id: 'clever',
+        level: 4,
+        minScore: 500,
+        title: '⚡ UYANIK (Cin Gibi)',
+        desc: 'Kolay kolay tongaya düşmeyen, kurnaz ve çevik zekalı.',
+        badge: '⚡ UYANIK',
+        color: '#0284C7',
+        bg: '#F0F9FF',
+        border: '#0284C7'
+      },
+      {
+        id: 'normal',
+        level: 3,
+        minScore: 250,
+        title: '😐 NORMAL (Ortalama İnsan)',
+        desc: 'Bazen dikkatli bazen dalgın, standart fani performansı.',
+        badge: '😐 NORMAL',
+        color: '#F59E0B',
+        bg: '#FFFBEB',
+        border: '#D97706'
+      },
+      {
+        id: 'distracted',
+        level: 2,
+        minScore: 100,
+        title: '🤔 DALGIN (Aklı Havada)',
+        desc: 'Basit şaşırtmacalara kanan, dikkati çabuk dağılan profil.',
+        badge: '🤔 DALGIN',
+        color: '#F97316',
+        bg: '#FFF7ED',
+        border: '#EA580C'
+      },
+      {
+        id: 'idiot',
+        level: 1,
+        minScore: -9999,
+        title: '🥔 SALAK (Tuzak Mıknatısı)',
+        desc: 'Her tuzağa balıklama atlayan, saf ve temiz salaklık modu.',
+        badge: '🥔 SALAK',
+        color: '#EF4444',
+        bg: '#FEF2F2',
+        border: '#DC2626'
+      }
     ];
 
-    const TOP_SMART_MONTH = [
-      { rank: 1, name: 'DahiBeyin', score: 7650, level: 77 },
-      { rank: 2, name: 'EinsteinTR', score: 7120, level: 72 },
-      { rank: 3, name: 'TuzakAvcısı', score: 5490, level: 55 },
-      { rank: 4, name: 'OyuncuMehmet', score: 3250, level: 33 },
-      { rank: 5, name: 'SoruBüken', score: 2900, level: 29 },
-      { rank: 6, name: 'ZekiAyşe', score: 2180, level: 22 },
-      { rank: 7, name: 'GeceOyuncusu', score: 1850, level: 19 },
-      { rank: 8, name: 'TestCanavarı', score: 1120, level: 12 },
-      { rank: 9, name: 'Fatih34', score: 890, level: 9 },
-      { rank: 10, name: 'HızlıZeka', score: 620, level: 7 }
-    ];
-
-    // En Salaklar (Puanı En Düşük 10 Kişi - Genel ve Son 30 Gün)
-    const TOP_IDIOT_ALL = [
-      { rank: 1, name: 'SafKemal', score: -450, level: 1 },
-      { rank: 2, name: 'DalgınAhmet', score: -380, level: 1 },
-      { rank: 3, name: 'TuzakKurbanı', score: -290, level: 1 },
-      { rank: 4, name: 'Uyurgezer', score: -180, level: 1 },
-      { rank: 5, name: 'ÇaylakZeka', score: 10, level: 1 },
-      { rank: 6, name: 'AcemiBalık', score: 30, level: 1 },
-      { rank: 7, name: 'HepYanlış', score: 50, level: 1 },
-      { rank: 8, name: 'TersKöşe', score: 70, level: 1 },
-      { rank: 9, name: 'ŞaşkınÖrdek', score: 90, level: 1 },
-      { rank: 10, name: 'DikkatsizAli', score: 110, level: 2 }
-    ];
-
-    const TOP_IDIOT_MONTH = [
-      { rank: 1, name: 'SonKurban', score: -320, level: 1 },
-      { rank: 2, name: 'HızlıTıklayan', score: -250, level: 1 },
-      { rank: 3, name: 'ŞaşkınPanda', score: -190, level: 1 },
-      { rank: 4, name: 'DalgınKedi', score: -120, level: 1 },
-      { rank: 5, name: 'UnutkanDayı', score: 20, level: 1 },
-      { rank: 6, name: 'AcemiKuş', score: 40, level: 1 },
-      { rank: 7, name: 'SakarPrens', score: 60, level: 1 },
-      { rank: 8, name: 'Sabırsız', score: 80, level: 1 },
-      { rank: 9, name: 'DikkatSıfır', score: 100, level: 1 },
-      { rank: 10, name: 'Çaylak10', score: 120, level: 2 }
-    ];
+    function getTierForScore(score) {
+      for (const tier of INTELLIGENCE_TIERS) {
+        if (score >= tier.minScore) return tier;
+      }
+      return INTELLIGENCE_TIERS[INTELLIGENCE_TIERS.length - 1];
+    }
 
     const TYPE_LABELS = {
       tr: { attention: '👀 Dikkat', logic: '🧩 Mantık', memory: '🧠 Hafıza', reflex: '⚡ Refleks', patience: '⏳ Sabır', general: '🌟 Genel' },
@@ -818,8 +832,9 @@
 
     function updateUserHeader() {
       document.getElementById('user-display-name').textContent = state.nickname;
-      const scoreCalculated = (state.unlockedLevel - 1) * 100 + (state.score || 0);
-      document.getElementById('user-score-display').textContent = `${scoreCalculated} Puan`;
+      const actualScore = Number(state.score || 0);
+      const tier = getTierForScore(actualScore);
+      document.getElementById('user-score-display').textContent = `${actualScore} Puan`;
       const curLvlBtn = document.getElementById('current-unlocked-btn-lvl');
       if (curLvlBtn) curLvlBtn.textContent = state.unlockedLevel;
     }
@@ -842,7 +857,6 @@
 
     function openLeaderboardModal() {
       state.currentLbTime = state.currentLbTime || 'all';
-      state.currentLbCategory = state.currentLbCategory || 'smart';
       renderLeaderboard();
       document.getElementById('lb-modal').classList.add('active');
     }
@@ -856,72 +870,85 @@
       renderLeaderboard();
     }
 
-    function switchLbCategory(cat) {
-      state.currentLbCategory = cat;
-      renderLeaderboard();
-    }
-
     function renderLeaderboard() {
       const time = state.currentLbTime || 'all';
-      const cat = state.currentLbCategory || 'smart';
 
       const btnAll = document.getElementById('btn-tab-time-all');
       const btnMonth = document.getElementById('btn-tab-time-month');
       if (btnAll) btnAll.className = 'lb-tab ' + (time === 'all' ? 'active' : '');
       if (btnMonth) btnMonth.className = 'lb-tab ' + (time === 'month' ? 'active' : '');
 
-      const btnSmart = document.getElementById('btn-cat-smart');
-      const btnIdiot = document.getElementById('btn-cat-idiot');
-      if (btnSmart) btnSmart.className = 'lb-category-btn ' + (cat === 'smart' ? 'active' : '');
-      if (btnIdiot) btnIdiot.className = 'lb-category-btn ' + (cat === 'idiot' ? 'active' : '');
+      // Kullanıcının puanı (Toplam veya Son 30 gün simülasyonu)
+      const userTotalScore = Number(state.score || 0);
+      const userScore = (time === 'all') ? userTotalScore : Math.round(userTotalScore * 0.7);
 
-      let list = [];
-      if (cat === 'smart') {
-        list = (time === 'all') ? TOP_SMART_ALL : TOP_SMART_MONTH;
-      } else {
-        list = (time === 'all') ? TOP_IDIOT_ALL : TOP_IDIOT_MONTH;
+      const userTier = getTierForScore(userScore);
+
+      // Üst Rozet Kutusu
+      const badgeBox = document.getElementById('user-current-tier-badge');
+      if (badgeBox) {
+        badgeBox.style.background = userTier.bg;
+        badgeBox.style.borderColor = userTier.border;
+        badgeBox.innerHTML = `
+          <div style="font-size: 13px; font-weight: 800; color: #64748B; text-transform: uppercase;">
+            ${time === 'all' ? '🌍 Toplam Performansınız' : '📅 Son 30 Günlük Durumunuz'}
+          </div>
+          <div style="font-size: 24px; font-weight: 900; color: ${userTier.color}; margin: 6px 0;">
+            ${userTier.title}
+          </div>
+          <div style="font-size: 13px; color: #475569; font-weight: 700;">
+            ${userTier.desc}
+          </div>
+        `;
       }
 
+      // 5 Kategori Listesi
       const container = document.getElementById('lb-list-container');
       container.innerHTML = '';
 
-      list.forEach((p, idx) => {
+      INTELLIGENCE_TIERS.forEach(tier => {
+        const isUserCurrent = (tier.id === userTier.id);
         const item = document.createElement('div');
         item.className = 'lb-item';
-        let badge = '';
-        if (cat === 'smart') {
-          badge = idx === 0 ? '🥇 ' : idx === 1 ? '🥈 ' : idx === 2 ? '🥉 ' : `#${p.rank} `;
-        } else {
-          badge = idx === 0 ? '🥔 1. ' : idx === 1 ? '🥔 2. ' : idx === 2 ? '🥔 3. ' : `🥔 #${p.rank} `;
-        }
+        item.style.padding = '12px 14px';
+        item.style.borderRadius = '14px';
+        item.style.background = isUserCurrent ? tier.bg : '#F8FAFC';
+        item.style.border = isUserCurrent ? `2px solid ${tier.border}` : '1px solid #E2E8F0';
+        item.style.display = 'flex';
+        item.style.justifyContent = 'space-between';
+        item.style.alignItems = 'center';
 
-        const scoreColor = cat === 'smart' ? '#15803D' : '#C2410C';
+        const reqText = tier.minScore > -9000 ? `${tier.minScore}+ Puan` : '0 Puan Altı';
+
         item.innerHTML = `
-          <div>${badge}<strong>${p.name}</strong> <span style="font-size: 11px; color: #64748B;">(Level ${p.level})</span></div>
-          <div style="color: ${scoreColor}; font-weight: 800;">${p.score} Puan</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 900; color: ${tier.color};">
+              ${tier.title} ${isUserCurrent ? '<span style="font-size: 11px; background: #FF3366; color: white; padding: 2px 8px; border-radius: 8px; margin-left: 6px;">ŞU ANKİ YERİNİZ</span>' : ''}
+            </div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 2px; font-weight: 700;">
+              ${tier.desc}
+            </div>
+          </div>
+          <div style="text-align: right; min-width: 80px;">
+            <div style="font-size: 13px; font-weight: 900; color: #0F172A;">${reqText}</div>
+            <div style="font-size: 11px; color: #64748B; font-weight: 700;">Kademe ${tier.level}/5</div>
+          </div>
         `;
         container.appendChild(item);
       });
 
-      // Kullanıcının kendi durumunu hesapla ve göster
-      const userScore = (state.unlockedLevel - 1) * 100 + (state.score || 0);
+      // Detaylı Kullanıcı Özeti
       const userBox = document.getElementById('user-rank-highlight');
       if (userBox) {
-        if (cat === 'smart') {
-          userBox.style.background = '#F0FDF4';
-          userBox.style.borderColor = '#22C55E';
-          userBox.innerHTML = `
-            <div>📍 <strong>Siz (${state.nickname})</strong> <span style="font-size: 11px; color: #64748B;">(Level ${state.unlockedLevel})</span></div>
-            <div style="color: #15803D;">#${userScore > 500 ? 11 : 45} Sırada — ${userScore} Puan</div>
-          `;
-        } else {
-          userBox.style.background = '#FFF7ED';
-          userBox.style.borderColor = '#F97316';
-          userBox.innerHTML = `
-            <div>📍 <strong>Siz (${state.nickname})</strong> <span style="font-size: 11px; color: #64748B;">(Level ${state.unlockedLevel})</span></div>
-            <div style="color: #C2410C;">${userScore < 200 ? '🥔 Tehlike! Salaklar Listesindesiniz' : '🛡️ Tebrikler, Salaklar Listesinde Değilsiniz!'}</div>
-          `;
-        }
+        userBox.innerHTML = `
+          <div>
+            <span>👤 <strong>${state.nickname}</strong></span>
+            <span style="font-size: 12px; color: #64748B; margin-left: 6px;">(Level ${state.unlockedLevel})</span>
+          </div>
+          <div style="color: ${userTier.color}; font-size: 15px;">
+            <strong>${userScore} Puan</strong>
+          </div>
+        `;
       }
     }
 
@@ -1054,10 +1081,12 @@
       if (isCorrect) {
         state.correct++;
         state.score += 10;
-        localStorage.setItem('bsm_score', state.score);
       } else {
         state.wrong++;
+        state.score = Math.max(-1000, (state.score || 0) - 5);
       }
+      localStorage.setItem('bsm_score_v2', state.score.toString());
+      updateUserHeader();
 
       setTimeout(() => showFeedback(isCorrect, expText), 400);
     }
@@ -1095,21 +1124,17 @@
         localStorage.setItem('bsm_unlocked_level_v2', state.unlockedLevel.toString());
       }
 
-      state.score = (state.score || 0) + (state.correct * 10);
+      // Seviye bitirme bonusu: az hata yapanlara ekstra bonus puan
+      const bonusScore = Math.max(0, (10 - state.wrong) * 5);
+      state.score = (state.score || 0) + bonusScore;
       localStorage.setItem('bsm_score_v2', state.score.toString());
+      updateUserHeader();
 
-      let icon = '😎';
-      let levelName = 'Normal İnsan';
+      const userTier = getTierForScore(state.score);
 
-      if (wrongPct <= 10) { icon = '🧠'; levelName = 'Dahi Seviyesi'; }
-      else if (wrongPct <= 30) { icon = '😎'; levelName = 'Normal İnsan'; }
-      else if (wrongPct <= 60) { icon = '🤔'; levelName = 'Bazen Dalıyorsun'; }
-      else if (wrongPct <= 80) { icon = '🥔'; levelName = 'Patates Modu'; }
-      else { icon = '🚨'; levelName = 'Tehlikeli Bölge!'; }
-
-      document.getElementById('res-emoji').textContent = icon;
+      document.getElementById('res-emoji').textContent = userTier.badge.split(' ')[0] || '🧠';
       document.getElementById('res-title').textContent = `LEVEL ${state.currentLevel} Tamamlandı!`;
-      document.getElementById('res-level').textContent = levelName;
+      document.getElementById('res-level').textContent = `${userTier.title}`;
       document.getElementById('res-pct').textContent = `%${wrongPct}`;
 
       const nextLevelBtn = document.getElementById('btn-next-level');
