@@ -256,7 +256,17 @@
       transition: transform 0.1s ease, filter 0.15s ease;
     }
     .level-bar-btn:active { transform: scale(0.97); }
-    .level-bar-btn.locked { opacity: 0.85; filter: brightness(0.9); }
+    .level-bar-btn.locked {
+      background: #E2E8F0 !important;
+      color: #94A3B8 !important;
+      opacity: 0.65;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+    .level-bar-btn.current {
+      border: 2px solid #FF3366 !important;
+      box-shadow: 0 0 0 3px rgba(255, 51, 102, 0.4) !important;
+    }
 
     /* Grup Renk Temaları (10 Grup) */
     .grp-1 .group-header { background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); } /* 🌱 1-10 Kolay */
@@ -706,7 +716,7 @@
     let state = {
       nickname: localStorage.getItem('bsm_nickname') || '',
       language: detectDeviceLanguage(),
-      unlockedLevel: 100, // Tüm 100 level açık
+      unlockedLevel: Math.max(1, parseInt(localStorage.getItem('bsm_unlocked_level') || '1', 10)),
       score: Number(localStorage.getItem('bsm_score') || 0),
       currentLevel: 1,
       idx: 0,
@@ -721,8 +731,7 @@
         state.nickname = 'Oyuncu_' + Math.floor(1000 + Math.random() * 9000);
         localStorage.setItem('bsm_nickname', state.nickname);
       }
-      state.unlockedLevel = 100;
-      localStorage.setItem('bsm_unlocked_level', '100');
+      state.unlockedLevel = Math.max(1, parseInt(localStorage.getItem('bsm_unlocked_level') || '1', 10));
       state.language = detectDeviceLanguage();
       updateUserHeader();
     }
@@ -731,6 +740,8 @@
       document.getElementById('user-display-name').textContent = state.nickname;
       const scoreCalculated = (state.unlockedLevel - 1) * 100 + (state.score || 0);
       document.getElementById('user-score-display').textContent = `${scoreCalculated} Puan`;
+      const curLvlBtn = document.getElementById('current-unlocked-btn-lvl');
+      if (curLvlBtn) curLvlBtn.textContent = state.unlockedLevel;
     }
 
     function openNickModal() {
@@ -817,11 +828,17 @@
         grid.className = 'group-levels-grid';
 
         for (let lvl = grp.start; lvl <= grp.end; lvl++) {
+          const isUnlocked = lvl <= state.unlockedLevel;
+          const isCurrent = lvl === state.unlockedLevel;
           const btn = document.createElement('button');
-          btn.className = 'level-bar-btn lvl-btn-color';
-          btn.innerHTML = `<span>L${lvl}</span> <span>▶</span>`;
+          btn.className = 'level-bar-btn ' + (isUnlocked ? 'lvl-btn-color' : 'locked') + (isCurrent ? ' current' : '');
+          btn.innerHTML = `<span>L${lvl}</span> <span>${isUnlocked ? '▶' : '🔒'}</span>`;
           btn.onclick = (e) => {
             e.stopPropagation();
+            if (!isUnlocked) {
+              showToast(`🔒 Level ${lvl} kilitli! Önce Level ${lvl - 1}'i geçmelisin.`);
+              return;
+            }
             startSpecificLevel(lvl);
           };
           grid.appendChild(btn);
@@ -830,8 +847,9 @@
         card.appendChild(header);
         card.appendChild(grid);
 
-        // İlk grubu varsayılan olarak açık göster
-        if (grp.id === 1) {
+        // Kullanıcının bulunduğu aktif seviyenin grubunu açık göster
+        const isUserGroup = state.unlockedLevel >= grp.start && state.unlockedLevel <= grp.end;
+        if (isUserGroup || (grp.id === 1 && state.unlockedLevel === 1)) {
           card.classList.add('open');
         }
 
@@ -949,6 +967,9 @@
         state.unlockedLevel = state.currentLevel + 1;
         localStorage.setItem('bsm_unlocked_level', state.unlockedLevel);
       }
+
+      state.score = (state.score || 0) + (state.correct * 10);
+      localStorage.setItem('bsm_score', state.score.toString());
 
       let icon = '😎';
       let levelName = 'Normal İnsan';
