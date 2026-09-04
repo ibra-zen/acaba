@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - Am I Stupid? (Acaba Salak Mıyım?)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #7C3AED;
+      --primary-dark: #6D28D9;
+      --bg: #0A0A0F;
+      --card: #13131A;
+      --border: #1E1E2E;
+      --text: #E2E8F0;
+      --text-muted: #94A3B8;
+      --accent-green: #10B981;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(124, 58, 237, 0.15);
+      color: #A78BFA;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      border: 1px solid rgba(124, 58, 237, 0.3);
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+    .meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-switcher {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .lang-btn {
+      background: #1E1E2E;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #F1F5F9;
+      margin: 24px 0 10px 0;
+    }
+    p, ul {
+      margin-bottom: 14px;
+      color: #CBD5E1;
+      font-size: 14px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .highlight-box {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 4px solid var(--accent-green);
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: #E2E8F0;
+    }
+    a {
+      color: #A78BFA;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #C4B5FD;
+    }
+    .footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="badge">Official Policy</span>
+    <h1>Privacy Policy</h1>
+    <div class="meta">
+      <strong>Application:</strong> Am I Stupid? (Acaba Salak Mıyım?) &bull;
+      <strong>Package:</strong> <code>com.dh3games.acabasalakmiyim</code> &bull;
+      <strong>Last Updated:</strong> September 5, 2026
+    </div>
+
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
+      <button class="lang-btn" id="btn-tr" onclick="setLang('tr')">Türkçe</button>
+    </div>
+
+    <!-- ENGLISH -->
+    <div id="content-en">
+      <div class="highlight-box">
+        <strong>Summary:</strong> Am I Stupid? is an offline game. We do not collect, store, sell, or transmit any personal data. All game progress is kept strictly on your local device.
+      </div>
+
+      <h2>1. Introduction</h2>
+      <p>Welcome to <strong>Am I Stupid?</strong> ("the Application"). We are dedicated to respecting and safeguarding your privacy. This policy details our handling of user data.</p>
+
+      <h2>2. Information Collection & Usage</h2>
+      <p>We do not collect any personal data:</p>
+      <ul>
+        <li><strong>No Personal Identifiers:</strong> We do not ask for or collect names, email addresses, phone numbers, or account registrations.</li>
+        <li><strong>No Device Permissions:</strong> We do not access camera, microphone, GPS location, contacts, or storage files.</li>
+        <li><strong>Local Storage Only:</strong> Your score, current level, and nickname are stored purely on your device (`localStorage`) and never leave it.</li>
+      </ul>
+
+      <h2>3. Third-Party Services</h2>
+      <p>The Application contains no third-party tracking tools, analytics SDKs, or advertising networks.</p>
+
+      <h2>4. Children's Privacy (COPPA)</h2>
+      <p>The Application is family-friendly and does not collect information from anyone, including children under the age of 13.</p>
+
+      <h2>5. Data Control & Deletion</h2>
+      <p>You can delete your data at any time by resetting your progress in the game or clearing the app cache in Android Settings.</p>
+
+      <h2>6. Contact</h2>
+      <p>If you have any questions, please open an issue on our GitHub repository: <a href="https://github.com/ibra-zen/acaba" target="_blank">github.com/ibra-zen/acaba</a>.</p>
+    </div>
+
+    <!-- TURKISH -->
+    <div id="content-tr" class="hidden">
+      <div class="highlight-box">
+        <strong>Özet:</strong> Am I Stupid? (Acaba Salak Mıyım?) tamamen çevrimdışı çalışır. Kişisel veri toplamaz, saklamaz veya iletmez. Tüm ilerleme yalnızca cihazınızda tutulur.
+      </div>
+
+      <h2>1. Giriş</h2>
+      <p><strong>Am I Stupid?</strong> (*Acaba Salak Mıyım?*) uygulamasına hoş geldiniz. Gizliliğinizi korumak bizim için esastır.</p>
+
+      <h2>2. Bilgi Toplama ve Kullanım</h2>
+      <p>Hiçbir kişisel veri toplamıyoruz:</p>
+      <ul>
+        <li><strong>Kişisel Bilgi İstenmez:</strong> Üyelik, ad, soyad, e-posta, telefon ve konum bilgisi istenmez ve toplanmaz.</li>
+        <li><strong>Hassas İzinler Yoktur:</strong> Kamera, mikrofon, rehber, GPS veya dosya erişim izni gerekmez.</li>
+        <li><strong>Sadece Yerel Hafıza:</strong> Puanınız ve seviyeniz yalnızca cihazınızın kendi hafızasında tutulur (`localStorage`).</li>
+      </ul>
+
+      <h2>3. Üçüncü Taraf Hizmetleri</h2>
+      <p>Uygulamada hiçbir üçüncü taraf takip aracı (SDK), analitik veya reklam platformu yer almaz.</p>
+
+      <h2>4. Çocukların Gizliliği</h2>
+      <p>Uygulama her yaştan kullanıcı için güvenlidir ve 13 yaş altı dahil kimseden veri toplamaz.</p>
+
+      <h2>5. Veri Silme</h2>
+      <p>Dilediğiniz zaman oyun içi sıfırlama butonundan veya cihaz ayarlarından verileri temizleyebilirsiniz.</p>
+
+      <h2>6. İletişim</h2>
+      <p>Sorularınız için GitHub üzerinden bizimle iletişime geçebilirsiniz: <a href="https://github.com/ibra-zen/acaba" target="_blank">github.com/ibra-zen/acaba</a>.</p>
+    </div>
+
+    <div class="footer">
+      &copy; 2026 DH3 Games / ibra-zen. All rights reserved.
+    </div>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.getElementById('content-en').classList.toggle('hidden', lang !== 'en');
+      document.getElementById('content-tr').classList.toggle('hidden', lang !== 'tr');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
+    }
+  </script>
+</body>
+</html>
