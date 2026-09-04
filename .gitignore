@@ -1,26 +1,28 @@
-# Node dependencies
+﻿# Node dependencies
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Build outputs
+# Build outputs & Binaries
 dist/
 build/
 *.apk
 *.aab
+*.png
+*.jpg
+*.jpeg
 
 # Environment variables
 .env
 .env.local
 
-# Android & IDE files
-android_app/android/.gradle/
-android_app/android/app/build/
-android_app/android/.idea/
-android_app/android/captures/
-android_app/android/local.properties
-android_app/www/
+# Source code (preserved locally & in backup branch, kept off public GitHub)
+android_app/
+app_simulator/
+admin/
+backend/
+questions.json
 
 # OS / Logs
 .DS_Store
