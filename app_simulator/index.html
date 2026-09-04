@@ -546,16 +546,23 @@
         <div class="mascot-icon-box">👓</div>
         
         <!-- Ana Başlık -->
-        <div class="home-main-title">ACABA SALAK MIYIM?</div>
+        <div class="home-main-title" id="home-main-title">AM I STUPID?</div>
 
         <!-- Dev Hızlı Başla Butonu -->
-        <button class="modal-btn" style="background: linear-gradient(135deg, #FF3366 0%, #FF6B00 100%); font-size: 20px; font-weight: 900; padding: 18px; margin: 15px 0 25px 0; width: 100%; box-shadow: 0 8px 20px rgba(255, 51, 102, 0.4); border-radius: 18px;" onclick="startSpecificLevel(state.unlockedLevel || 1)">
-          🚀 OYUNA BAŞLA (LEVEL <span id="current-unlocked-btn-lvl">1</span>)
+        <button class="modal-btn" id="home-start-btn" style="background: linear-gradient(135deg, #FF3366 0%, #FF6B00 100%); font-size: 20px; font-weight: 900; padding: 18px; margin: 15px 0 25px 0; width: 100%; box-shadow: 0 8px 20px rgba(255, 51, 102, 0.4); border-radius: 18px;" onclick="startSpecificLevel(state.unlockedLevel || 1)">
+          🚀 START GAME (LEVEL <span id="current-unlocked-btn-lvl">1</span>)
         </button>
         
         <!-- 10'lu Gruplar halinde 100 Level Listesi -->
         <div class="groups-container" id="groups-container">
           <!-- JS ile dolacak -->
+        </div>
+
+        <!-- Gizlilik Politikası & Bilgi Bağlantısı (Play Store Uyumlu) -->
+        <div style="margin: 20px 0 10px 0; text-align: center;">
+          <button onclick="openPrivacyModal()" style="background: none; border: none; font-size: 12px; font-weight: 800; color: #64748B; text-decoration: underline; cursor: pointer; padding: 6px 12px;">
+            🔒 <span id="lbl-privacy-btn">Privacy Policy</span>
+          </button>
         </div>
       </div>
 
@@ -563,12 +570,12 @@
       <div class="user-profile-bar">
         <div class="user-nick-box" onclick="openNickModal()">
           <span>👤</span>
-          <span id="user-display-name">Oyuncu</span>
+          <span id="user-display-name">Player</span>
           <span style="font-size: 11px; color: #757575;">✏️</span>
         </div>
-        <div class="user-score-box" id="user-score-display">0 Puan</div>
-        <button class="leaderboard-icon-btn" onclick="openLeaderboardModal()">
-          🏆 Sıralama
+        <div class="user-score-box" id="user-score-display">0 Score</div>
+        <button class="leaderboard-icon-btn" id="btn-open-lb" onclick="openLeaderboardModal()">
+          🏆 IQ Rank
         </button>
       </div>
     </div>
@@ -577,10 +584,10 @@
     <div id="screen-game" class="screen">
       <div class="question-box">
         <div class="game-nav-bar">
-          <button class="home-back-btn" onclick="showHome()">🏠 Ana Sayfa</button>
-          <div class="question-tag" id="q-tag">👀 Dikkat (LEVEL 1)</div>
+          <button class="home-back-btn" id="btn-game-home" onclick="showHome()">🏠 Home</button>
+          <div class="question-tag" id="q-tag">👀 Attention (LEVEL 1)</div>
         </div>
-        <div class="question-text" id="q-text">Soru yükleniyor...</div>
+        <div class="question-text" id="q-text">Loading question...</div>
       </div>
 
       <div class="options-container" id="opts-container"></div>
@@ -589,9 +596,9 @@
       <!-- Soru Açıklama Modalı -->
       <div class="custom-modal" id="fb-modal">
         <div class="modal-card">
-          <div style="font-size: 22px; font-weight: 900; margin-bottom: 10px;" id="fb-title">✅ Doğru!</div>
-          <div style="font-size: 14px; color: #424242; font-weight: 700; margin-bottom: 20px;" id="fb-exp">Açıklama</div>
-          <button class="modal-btn" id="fb-next-btn" onclick="nextQuestion()">DEVAM ET →</button>
+          <div style="font-size: 22px; font-weight: 900; margin-bottom: 10px;" id="fb-title">✅ Correct!</div>
+          <div style="font-size: 14px; color: #424242; font-weight: 700; margin-bottom: 20px;" id="fb-exp">Explanation</div>
+          <button class="modal-btn" id="fb-next-btn" onclick="nextQuestion()">CONTINUE →</button>
         </div>
       </div>
     </div>
@@ -599,10 +606,10 @@
     <!-- ===== NICKNAME GİRİŞ MODALI ===== -->
     <div class="custom-modal" id="nick-modal">
       <div class="modal-card">
-        <div style="font-size: 20px; font-weight: 900; color: #1E293B;">👤 Rumuzunu Gir</div>
-        <p style="font-size: 13px; color: #64748B; margin-top: 4px;">Sıralamada görünecek adını seç:</p>
-        <input type="text" id="nick-input" class="nick-input" placeholder="Örn: ZekaKralı" maxlength="15" />
-        <button class="modal-btn" onclick="saveNickname()">KAYDET VE BAŞLA 🚀</button>
+        <div style="font-size: 20px; font-weight: 900; color: #1E293B;" id="nick-modal-title">👤 Choose Nickname</div>
+        <p style="font-size: 13px; color: #64748B; margin-top: 4px;" id="nick-modal-desc">Enter your name for rankings:</p>
+        <input type="text" id="nick-input" class="nick-input" placeholder="e.g. BrainMaster" maxlength="15" />
+        <button class="modal-btn" id="nick-save-btn" onclick="saveNickname()">SAVE & START 🚀</button>
       </div>
     </div>
 
@@ -613,14 +620,14 @@
     <div class="custom-modal" id="lb-modal">
       <div class="modal-card" style="max-height: 90vh; overflow-y: auto;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <div style="font-size: 18px; font-weight: 900; color: #0F172A;">📊 Zeka & Salaklık Durumu</div>
+          <div style="font-size: 18px; font-weight: 900; color: #0F172A;" id="lb-modal-title">📊 IQ & Status Evaluation</div>
           <button onclick="closeLeaderboardModal()" style="background: none; border: none; font-size: 18px; cursor: pointer;">❌</button>
         </div>
 
         <!-- Zaman Sekmeleri (Toplam / Son 30 Gün) -->
         <div class="lb-tabs" style="margin-bottom: 12px;">
-          <button class="lb-tab active" id="btn-tab-time-all" onclick="switchLbTime('all')">🌍 Toplam Performans</button>
-          <button class="lb-tab" id="btn-tab-time-month" onclick="switchLbTime('month')">📅 Son 30 Gün</button>
+          <button class="lb-tab active" id="btn-tab-time-all" onclick="switchLbTime('all')">🌍 All Time</button>
+          <button class="lb-tab" id="btn-tab-time-month" onclick="switchLbTime('month')">📅 Last 30 Days</button>
         </div>
 
         <!-- Kullanıcının Mevcut Seviye Rozeti -->
@@ -628,8 +635,8 @@
           <!-- JS ile doldurulacak -->
         </div>
 
-        <div style="font-size: 14px; font-weight: 900; color: #334155; margin-bottom: 8px; text-align: left;">
-          🏆 Puanlama & 5 Kademe Sistemi:
+        <div style="font-size: 14px; font-weight: 900; color: #334155; margin-bottom: 8px; text-align: left;" id="lb-tiers-heading">
+          🏆 5 Tier Rating System:
         </div>
 
         <!-- 5 Kategori Listesi -->
@@ -644,103 +651,400 @@
       </div>
     </div>
 
+    <!-- ===== GİZLİLİK POLİTİKASI (PRIVACY POLICY) MODALI ===== -->
+    <div class="custom-modal" id="privacy-modal">
+      <div class="modal-card" style="max-height: 85vh; overflow-y: auto; text-align: left;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <div style="font-size: 18px; font-weight: 900; color: #0F172A;" id="privacy-modal-title">🔒 Privacy Policy</div>
+          <button onclick="closePrivacyModal()" style="background: none; border: none; font-size: 18px; cursor: pointer;">❌</button>
+        </div>
+        <div id="privacy-modal-body" style="font-size: 13px; color: #475569; line-height: 1.6;">
+          <!-- JS ile doldurulacak -->
+        </div>
+        <button class="modal-btn" id="privacy-ok-btn" onclick="closePrivacyModal()" style="margin-top: 16px;">OK / CLOSE</button>
+      </div>
+    </div>
+
     <!-- ===== SONUÇ EKRANI ===== -->
     <div id="screen-result" class="screen">
       <div class="res-emoji" id="res-emoji">😎</div>
-      <div class="res-title" id="res-title">LEVEL 1 Tamamlandı!</div>
-      <div class="res-sub" id="res-level">Normal İnsan</div>
+      <div class="res-title" id="res-title">LEVEL 1 Completed!</div>
+      <div class="res-sub" id="res-level">Normal Human</div>
 
       <div class="res-box">
         <div class="res-pct" id="res-pct">%20</div>
-        <div class="res-lbl">Salaklık Oranınız</div>
+        <div class="res-lbl" id="res-lbl-ratio">Stupidity Ratio</div>
       </div>
 
-      <button class="res-btn" id="btn-next-level" onclick="startNextLevel()">SONRAKİ LEVEL ➡️</button>
-      <button class="res-btn res-btn-sec" onclick="showHome()">ANA MENÜ 🏠</button>
+      <button class="res-btn" id="btn-next-level" onclick="startNextLevel()">NEXT LEVEL ➡️</button>
+      <button class="res-btn res-btn-sec" id="btn-result-home" onclick="showHome()">MAIN MENU 🏠</button>
     </div>
   </div>
 
   <script>
-    /* ==================================================
-       10 GRUP (100 LEVEL) VERİ TABANI & OYUN MOTORU
-    ================================================== */
-    const LEVEL_GROUPS = [
-      { id: 1, name: '🌱 1-10: Kolay Başlangıç', start: 1, end: 10 },
-      { id: 2, name: '🌿 11-20: Isınma Turları', start: 11, end: 20 },
-      { id: 3, name: '⭐ 21-30: Orta Zorluk', start: 21, end: 30 },
-      { id: 4, name: '🔥 31-40: Şaşırtmacalar', start: 31, end: 40 },
-      { id: 5, name: '⚡ 41-50: Ters Mantık', start: 41, end: 50 },
-      { id: 6, name: '💜 51-60: İleri Zeka', start: 51, end: 60 },
-      { id: 7, name: '🌀 61-70: Dikkat Avcıları', start: 61, end: 70 },
-      { id: 8, name: '🎓 71-80: Uzman Testi', start: 71, end: 80 },
-      { id: 9, name: '👑 81-90: Üstat Zekası', start: 81, end: 90 },
-      { id: 10, name: '🏆 91-100: Şampiyonlar', start: 91, end: 100 }
-    ];
+    // DİL ÇEVİRİLERİ (İngilizce Ana Dil, Türkçe, Almanca, Fransızca, İspanyolca, Rusça, Çince, Arapça)
+    const UI_STRINGS = {
+      en: {
+        appTitle: "AM I STUPID?",
+        startGame: "START GAME",
+        privacyBtn: "Privacy Policy",
+        privacyTitle: "🔒 Privacy Policy",
+        privacyContent: `
+          <p><strong>Effective Date:</strong> September 2026</p>
+          <p><strong>1. Introduction</strong><br>Thank you for playing <strong>Am I Stupid?</strong>. Your privacy is paramount to us. This game is designed as a standalone, client-side offline brain-testing and riddle application.</p>
+          <p><strong>2. Information Collection & Usage</strong><br>We do not collect, store, transmit, or share any personally identifiable information (PII). No registration, email address, phone number, location, or sensitive device permissions are requested or accessed.</p>
+          <p><strong>3. Local Data Storage</strong><br>All your progress—including current level, total game score, and nickname—is stored purely locally on your device using local storage. You may reset this data at any time by clearing the application cache.</p>
+          <p><strong>4. Third-Party Services & Ads</strong><br>This application contains no third-party trackers, no analytics SDKs, and no hidden background data collectors.</p>
+          <p><strong>5. Contact Us</strong><br>If you have any questions or feedback regarding our privacy practices, please contact us via our developer portal.</p>
+        `,
+        privacyOk: "OK / CLOSE",
+        player: "Player",
+        scoreSuffix: "Points",
+        lbBtn: "🏆 IQ Rank",
+        homeBtn: "🏠 Home",
+        correct: "✅ Correct!",
+        wrong: "❌ Wrong!",
+        continue: "CONTINUE →",
+        finishLevel: "FINISH LEVEL 🏁",
+        nickTitle: "👤 Choose Nickname",
+        nickDesc: "Enter your name for rankings:",
+        nickPlaceholder: "e.g. BrainMaster",
+        nickSave: "SAVE & START 🚀",
+        lbTitle: "📊 IQ & Status Evaluation",
+        allTime: "🌍 All Time",
+        last30Days: "📅 Last 30 Days",
+        lbHeading: "🏆 5 Tier Rating System:",
+        yourRank: "CURRENT TIER",
+        levelComplete: "Level Completed!",
+        stupidityRatio: "Stupidity Ratio",
+        nextLevel: "NEXT LEVEL ➡️",
+        mainMenu: "MAIN MENU 🏠",
+        lockedToast: "🔒 Level {lvl} is locked! Clear Level {prev} first.",
+        groups: [
+          '🌱 1-10: Easy Start', '🌿 11-20: Warm-Up Rounds', '⭐ 21-30: Medium Challenge',
+          '🔥 31-40: Trick Questions', '⚡ 41-50: Reverse Logic', '💜 51-60: High Intelligence',
+          '🌀 61-70: Focus Traps', '🎓 71-80: Expert Test', '👑 81-90: Master Mind', '🏆 91-100: Champions'
+        ],
+        tiers: {
+          genius: { title: '🧠 GENIUS (Mastermind)', desc: 'Instantly spots every trick, sharp mind and superior reflexes.', badge: '👑 GENIUS' },
+          clever: { title: '⚡ CLEVER (Quick Witted)', desc: 'Hard to fool, alert and cunning problem solver.', badge: '⚡ CLEVER' },
+          normal: { title: '😐 NORMAL (Average Human)', desc: 'Sometimes sharp, sometimes distracted. Typical mortal.', badge: '😐 NORMAL' },
+          distracted: { title: '🤔 DISTRACTED (Head in Clouds)', desc: 'Easily tricked by simple illusions and traps.', badge: '🤔 DISTRACTED' },
+          idiot: { title: '🥔 STUPID (Trap Magnet)', desc: 'Dives headfirst into every trick question. Pure fun mode.', badge: '🥔 STUPID' }
+        }
+      },
+      tr: {
+        appTitle: "ACABA SALAK MIYIM?",
+        startGame: "OYUNA BAŞLA",
+        privacyBtn: "Gizlilik Politikası",
+        privacyTitle: "🔒 Gizlilik Politikası",
+        privacyContent: `
+          <p><strong>Yürürlük Tarihi:</strong> Eylül 2026</p>
+          <p><strong>1. Giriş</strong><br><strong>Acaba Salak Mıyım?</strong> oyununu tercih ettiğiniz için teşekkür ederiz. Gizliliğiniz bizim için son derece önemlidir. Bu uygulama tamamen çevrimdışı (offline) çalışan bir zeka ve mantık oyunudur.</p>
+          <p><strong>2. Bilgi Toplama ve Kullanımı</strong><br>Uygulamamız hiçbir kişisel veriyi (ad, e-posta, konum, telefon numarası, kamera veya rehber bilgisi vb.) toplamaz, saklamaz ve üçüncü taraflarla paylaşmaz.</p>
+          <p><strong>3. Yerel Veri Saklama</strong><br>Ulaştığınız seviye, oyun puanınız ve seçtiğiniz rumuz sadece cihazınızın yerel hafızasında saklanır. İstediğiniz zaman uygulama verilerini temizleyerek sıfırlayabilirsiniz.</p>
+          <p><strong>4. Üçüncü Taraf Hizmetleri</strong><br>Bu uygulamada kullanıcıyı izleyen herhangi bir gizli takip kodu veya analiz aracı bulunmamaktadır.</p>
+          <p><strong>5. İletişim</strong><br>Gizlilik politikamızla ilgili soru ve önerileriniz için geliştirici hesabımız üzerinden bizimle iletişime geçebilirsiniz.</p>
+        `,
+        privacyOk: "KAPAT / ANLADIM",
+        player: "Oyuncu",
+        scoreSuffix: "Puan",
+        lbBtn: "🏆 Sıralama",
+        homeBtn: "🏠 Ana Sayfa",
+        correct: "✅ Doğru!",
+        wrong: "❌ Yanlış!",
+        continue: "DEVAM ET →",
+        finishLevel: "LEVELİ TAMAMLA 🏁",
+        nickTitle: "👤 Rumuzunu Gir",
+        nickDesc: "Sıralamada görünecek adını seç:",
+        nickPlaceholder: "Örn: ZekaKralı",
+        nickSave: "KAYDET VE BAŞLA 🚀",
+        lbTitle: "📊 Zeka & Salaklık Durumu",
+        allTime: "🌍 Toplam Performans",
+        last30Days: "📅 Son 30 Gün",
+        lbHeading: "🏆 Puanlama & 5 Kademe Sistemi:",
+        yourRank: "ŞU ANKİ YERİNİZ",
+        levelComplete: "Tamamlandı!",
+        stupidityRatio: "Salaklık Oranınız",
+        nextLevel: "SONRAKİ LEVEL ➡️",
+        mainMenu: "ANA MENÜ 🏠",
+        lockedToast: "🔒 Level {lvl} kilitli! Önce Level {prev}'i geçmelisin.",
+        groups: [
+          '🌱 1-10: Kolay Başlangıç', '🌿 11-20: Isınma Turları', '⭐ 21-30: Orta Zorluk',
+          '🔥 31-40: Şaşırtmacalar', '⚡ 41-50: Ters Mantık', '💜 51-60: İleri Zeka',
+          '🌀 61-70: Dikkat Avcıları', '🎓 71-80: Uzman Testi', '👑 81-90: Üstat Zekası', '🏆 91-100: Şampiyonlar'
+        ],
+        tiers: {
+          genius: { title: '🧠 ZEKİ (Dahi Mertebesi)', desc: 'Tuzakları anında fark eden, üstün zekalı ve dikkatli oyuncu.', badge: '👑 ZEKİ' },
+          clever: { title: '⚡ UYANIK (Cin Gibi)', desc: 'Kolay kolay tongaya düşmeyen, kurnaz ve çevik zekalı.', badge: '⚡ UYANIK' },
+          normal: { title: '😐 NORMAL (Ortalama İnsan)', desc: 'Bazen dikkatli bazen dalgın, standart fani performansı.', badge: '😐 NORMAL' },
+          distracted: { title: '🤔 DALGIN (Aklı Havada)', desc: 'Basit şaşırtmacalara kanan, dikkati çabuk dağılan profil.', badge: '🤔 DALGIN' },
+          idiot: { title: '🥔 SALAK (Tuzak Mıknatısı)', desc: 'Her tuzağa balıklama atlayan, saf ve temiz salaklık modu.', badge: '🥔 SALAK' }
+        }
+      },
+      de: {
+        appTitle: "BIN ICH DUMM?",
+        startGame: "SPIEL STARTEN",
+        privacyBtn: "Datenschutzerklärung",
+        privacyTitle: "🔒 Datenschutzerklärung",
+        privacyContent: "<p>Diese Anwendung sammelt keine persönlichen Daten. Alle Spielstände werden nur lokal auf Ihrem Gerät gespeichert.</p>",
+        privacyOk: "SCHLIESSEN",
+        player: "Spieler",
+        scoreSuffix: "Punkte",
+        lbBtn: "🏆 IQ Rang",
+        homeBtn: "🏠 Start",
+        correct: "✅ Richtig!",
+        wrong: "❌ Falsch!",
+        continue: "WEITER →",
+        finishLevel: "LEVEL BEENDEN 🏁",
+        nickTitle: "👤 Spitzname wählen",
+        nickDesc: "Gib deinen Namen ein:",
+        nickPlaceholder: "z.B. DenkMeister",
+        nickSave: "SPEICHERN 🚀",
+        lbTitle: "📊 IQ & Status",
+        allTime: "🌍 Gesamt",
+        last30Days: "📅 Letzte 30 Tage",
+        lbHeading: "🏆 5 Stufen Bewertung:",
+        yourRank: "DEINE STUFE",
+        levelComplete: "Level Abgeschlossen!",
+        stupidityRatio: "Dummheitsquote",
+        nextLevel: "NÄCHSTES LEVEL ➡️",
+        mainMenu: "HAUPTMENÜ 🏠",
+        lockedToast: "🔒 Level {lvl} ist gesperrt!",
+        groups: ['🌱 1-10: Start', '🌿 11-20: Aufwärmen', '⭐ 21-30: Mittel', '🔥 31-40: Tricks', '⚡ 41-50: Logik', '💜 51-60: Scharf', '🌀 61-70: Fokus', '🎓 71-80: Experte', '👑 81-90: Meister', '🏆 91-100: Champion'],
+        tiers: {
+          genius: { title: '🧠 GENIAL', desc: 'Erkennt jede Falle sofort.', badge: '👑 GENIAL' },
+          clever: { title: '⚡ SCHLAU', desc: 'Kaum zu täuschen, wachsam.', badge: '⚡ SCHLAU' },
+          normal: { title: '😐 NORMAL', desc: 'Durchschnittliche Leistung.', badge: '😐 NORMAL' },
+          distracted: { title: '🤔 ZERSTREUT', desc: 'Leicht abzulenken.', badge: '🤔 ZERSTREUT' },
+          idiot: { title: '🥔 DUMM', desc: 'Fällt auf jeden Trick herein.', badge: '🥔 DUMM' }
+        }
+      },
+      fr: {
+        appTitle: "SUIS-JE BÊTE?",
+        startGame: "COMMENCER",
+        privacyBtn: "Politique de Confidentialité",
+        privacyTitle: "🔒 Politique de Confidentialité",
+        privacyContent: "<p>Cette application ne collecte aucune donnée personnelle. Toutes les données restent locales sur votre appareil.</p>",
+        privacyOk: "FERMER",
+        player: "Joueur",
+        scoreSuffix: "Points",
+        lbBtn: "🏆 Rang QI",
+        homeBtn: "🏠 Accueil",
+        correct: "✅ Correct!",
+        wrong: "❌ Faux!",
+        continue: "CONTINUER →",
+        finishLevel: "TERMINER 🏁",
+        nickTitle: "👤 Choisir un pseudo",
+        nickDesc: "Entrez votre pseudo:",
+        nickPlaceholder: "ex. Maître",
+        nickSave: "ENREGISTRER 🚀",
+        lbTitle: "📊 Évaluation QI",
+        allTime: "🌍 Tout le temps",
+        last30Days: "📅 30 derniers jours",
+        lbHeading: "🏆 Système à 5 niveaux:",
+        yourRank: "VOTRE NIVEAU",
+        levelComplete: "Niveau Terminé!",
+        stupidityRatio: "Ratio de Bêtise",
+        nextLevel: "NIVEAU SUIVANT ➡️",
+        mainMenu: "MENU PRINCIPAL 🏠",
+        lockedToast: "🔒 Niveau {lvl} est verrouillé!",
+        groups: ['🌱 1-10: Début', '🌿 11-20: Échauffement', '⭐ 21-30: Moyen', '🔥 31-40: Pièges', '⚡ 41-50: Logique', '💜 51-60: Avancé', '🌀 61-70: Attention', '🎓 71-80: Expert', '👑 81-90: Maître', '🏆 91-100: Champion'],
+        tiers: {
+          genius: { title: '🧠 GÉNIE', desc: 'Repère tous les pièges immédiatement.', badge: '👑 GÉNIE' },
+          clever: { title: '⚡ MALIN', desc: 'Difficile à berner, esprit vif.', badge: '⚡ MALIN' },
+          normal: { title: '😐 NORMAL', desc: 'Performance humaine standard.', badge: '😐 NORMAL' },
+          distracted: { title: '🤔 DISTRAIT', desc: 'Tombe dans les pièges évidents.', badge: '🤔 DISTRAIT' },
+          idiot: { title: '🥔 BÊTE', desc: 'Aimant à pièges absolu.', badge: '🥔 BÊTE' }
+        }
+      },
+      es: {
+        appTitle: "¿SOY ESTÚPIDO?",
+        startGame: "JUGAR AHORA",
+        privacyBtn: "Política de Privacidad",
+        privacyTitle: "🔒 Política de Privacidad",
+        privacyContent: "<p>Esta aplicación no recopila información personal. Los datos se guardan únicamente en el dispositivo local.</p>",
+        privacyOk: "CERRAR",
+        player: "Jugador",
+        scoreSuffix: "Puntos",
+        lbBtn: "🏆 Rango CI",
+        homeBtn: "🏠 Inicio",
+        correct: "✅ ¡Correcto!",
+        wrong: "❌ ¡Incorrecto!",
+        continue: "CONTINUAR →",
+        finishLevel: "TERMINAR 🏁",
+        nickTitle: "👤 Elegir Apodo",
+        nickDesc: "Tu nombre en el juego:",
+        nickPlaceholder: "ej. MenteMaestra",
+        nickSave: "GUARDAR 🚀",
+        lbTitle: "📊 Evaluación de CI",
+        allTime: "🌍 Histórico",
+        last30Days: "📅 Últimos 30 días",
+        lbHeading: "🏆 Sistema de 5 Niveles:",
+        yourRank: "TU NIVEL",
+        levelComplete: "¡Nivel Completado!",
+        stupidityRatio: "Ratio de Estupidez",
+        nextLevel: "SIGUIENTE NIVEL ➡️",
+        mainMenu: "MENÚ PRINCIPAL 🏠",
+        lockedToast: "🔒 ¡Nivel {lvl} bloqueado!",
+        groups: ['🌱 1-10: Inicio', '🌿 11-20: Calentamiento', '⭐ 21-30: Desafío', '🔥 31-40: Trampas', '⚡ 41-50: Lógica', '💜 51-60: Alto CI', '🌀 61-70: Enfoque', '🎓 71-80: Experto', '👑 81-90: Maestro', '🏆 91-100: Campeón'],
+        tiers: {
+          genius: { title: '🧠 GENIO', desc: 'Detecta trampas al instante.', badge: '👑 GENIO' },
+          clever: { title: '⚡ ASTUTO', desc: 'Rápido y perspicaz.', badge: '⚡ ASTUTO' },
+          normal: { title: '😐 NORMAL', desc: 'Rendimiento estándar.', badge: '😐 NORMAL' },
+          distracted: { title: '🤔 DISTRAÍDO', desc: 'Cae en trucos fáciles.', badge: '🤔 DISTRAÍDO' },
+          idiot: { title: '🥔 ESTÚPIDO', desc: 'Imán para trampas.', badge: '🥔 ESTÚPIDO' }
+        }
+      },
+      ru: {
+        appTitle: "Я ГЛУПЫЙ?",
+        startGame: "НАЧАТЬ ИГРУ",
+        privacyBtn: "Политика конфиденциальности",
+        privacyTitle: "🔒 Политика конфиденциальности",
+        privacyContent: "<p>Это приложение не собирает персональные данные. Все данные хранятся локально на вашем устройстве.</p>",
+        privacyOk: "ЗАКРЫТЬ",
+        player: "Игрок",
+        scoreSuffix: "Очков",
+        lbBtn: "🏆 IQ Ранг",
+        homeBtn: "🏠 Главная",
+        correct: "✅ Верно!",
+        wrong: "❌ Неверно!",
+        continue: "ДАЛЕЕ →",
+        finishLevel: "ЗАВЕРШИТЬ 🏁",
+        nickTitle: "👤 Имя игрока",
+        nickDesc: "Введите ваше имя:",
+        nickPlaceholder: "напр. Гений",
+        nickSave: "СОХРАНИТЬ 🚀",
+        lbTitle: "📊 Оценка интеллекта",
+        allTime: "🌍 За все время",
+        last30Days: "📅 За 30 дней",
+        lbHeading: "🏆 Система 5 уровней:",
+        yourRank: "ВАШ УРОВЕНЬ",
+        levelComplete: "Уровень пройден!",
+        stupidityRatio: "Уровень глупости",
+        nextLevel: "СЛЕДУЮЩИЙ УРОВЕНЬ ➡️",
+        mainMenu: "ГЛАВНОЕ МЕНЮ 🏠",
+        lockedToast: "🔒 Уровень {lvl} заблокирован!",
+        groups: ['🌱 1-10: Старт', '🌿 11-20: Разминка', '⭐ 21-30: Средний', '🔥 31-40: Ловушки', '⚡ 41-50: Логика', '💜 51-60: Высокий IQ', '🌀 61-70: Внимание', '🎓 71-80: Эксперт', '👑 81-90: Мастер', '🏆 91-100: Чемпион'],
+        tiers: {
+          genius: { title: '🧠 ГЕНИЙ', desc: 'Видит все ловушки мгновенно.', badge: '👑 ГЕНИЙ' },
+          clever: { title: '⚡ УМНИК', desc: 'Острый ум и реакция.', badge: '⚡ УМНИК' },
+          normal: { title: '😐 ОБЫЧНЫЙ', desc: 'Нормальный человек.', badge: '😐 ОБЫЧНЫЙ' },
+          distracted: { title: '🤔 РАССЕЯННЫЙ', desc: 'Часто отвлекается.', badge: '🤔 РАССЕЯННЫЙ' },
+          idiot: { title: '🥔 ГЛУПЫЙ', desc: 'Попадает во все ловушки.', badge: '🥔 ГЛУПЫЙ' }
+        }
+      },
+      zh: {
+        appTitle: "我是笨蛋吗？",
+        startGame: "开始游戏",
+        privacyBtn: "隐私政策",
+        privacyTitle: "🔒 隐私政策",
+        privacyContent: "<p>此应用程序不收集任何个人数据。所有游戏进度均仅保存在您的本地设备上。</p>",
+        privacyOk: "确定",
+        player: "玩家",
+        scoreSuffix: "分",
+        lbBtn: "🏆 智商排名",
+        homeBtn: "🏠 首页",
+        correct: "✅ 正确！",
+        wrong: "❌ 错误！",
+        continue: "继续 →",
+        finishLevel: "完成关卡 🏁",
+        nickTitle: "👤 输入昵称",
+        nickDesc: "设置您的名称：",
+        nickPlaceholder: "例如：智多星",
+        nickSave: "保存并开始 🚀",
+        lbTitle: "📊 智商评估",
+        allTime: "🌍 总榜",
+        last30Days: "📅 近30天",
+        lbHeading: "🏆 5级智商评级：",
+        yourRank: "当前级别",
+        levelComplete: "关卡完成！",
+        stupidityRatio: "笨蛋率",
+        nextLevel: "下一关 ➡️",
+        mainMenu: "主菜单 🏠",
+        lockedToast: "🔒 第 {lvl} 关已锁定！",
+        groups: ['🌱 1-10: 新手', '🌿 11-20: 热身', '⭐ 21-30: 中等', '🔥 31-40: 陷阱', '⚡ 41-50: 逆向逻辑', '💜 51-60: 高智商', '🌀 61-70: 观察力', '🎓 71-80: 专家', '👑 81-90: 大师', '🏆 91-100: 冠军'],
+        tiers: {
+          genius: { title: '🧠 天才', desc: '一眼识破所有陷阱。', badge: '👑 天才' },
+          clever: { title: '⚡ 聪明', desc: '机智敏锐，反应迅速。', badge: '⚡ 聪明' },
+          normal: { title: '😐 普通', desc: '标准人类水平。', badge: '😐 普通' },
+          distracted: { title: '🤔 走神', desc: '容易被简单陷阱误导。', badge: '🤔 走神' },
+          idiot: { title: '🥔 笨蛋', desc: '百分百踩坑体质。', badge: '🥔 笨蛋' }
+        }
+      },
+      ar: {
+        appTitle: "هل أنا غبي؟",
+        startGame: "ابدأ اللعبة",
+        privacyBtn: "سياسة الخصوصية",
+        privacyTitle: "🔒 سياسة الخصوصية",
+        privacyContent: "<p>هذا التطبيق لا يجمع أي بيانات شخصية. يتم حفظ جميع البيانات محلياً على جهازك.</p>",
+        privacyOk: "إغلاق",
+        player: "لاعب",
+        scoreSuffix: "نقطة",
+        lbBtn: "🏆 التقييم",
+        homeBtn: "🏠 الرئيسية",
+        correct: "✅ صحيح!",
+        wrong: "❌ خطأ!",
+        continue: "متابعة →",
+        finishLevel: "إنهاء المستوى 🏁",
+        nickTitle: "👤 اختر اسمك",
+        nickDesc: "اسمك في اللعبة:",
+        nickPlaceholder: "مثال: عبقري",
+        nickSave: "حفظ 🚀",
+        lbTitle: "📊 تقييم الذكاء",
+        allTime: "🌍 الإجمالي",
+        last30Days: "📅 آخر 30 يوماً",
+        lbHeading: "🏆 نظام التقييم 5 مستويات:",
+        yourRank: "مستواك الحالي",
+        levelComplete: "اكتمل المستوى!",
+        stupidityRatio: "نسبة الغباء",
+        nextLevel: "المستوى التالي ➡️",
+        mainMenu: "القائمة الرئيسية 🏠",
+        lockedToast: "🔒 المستوى {lvl} مقفل!",
+        groups: ['🌱 1-10: البداية', '🌿 11-20: الإحماء', '⭐ 21-30: التحدي', '🔥 31-40: الخدع', '⚡ 41-50: المنطق', '💜 51-60: ذكاء عال', '🌀 61-70: التركيز', '🎓 71-80: خبير', '👑 81-90: أستاذ', '🏆 91-100: البطل'],
+        tiers: {
+          genius: { title: '🧠 عبقري', desc: 'يكتشف الفخاخ فوراً.', badge: '👑 عبقري' },
+          clever: { title: '⚡ ذكي', desc: 'سريع البديهة والتركيز.', badge: '⚡ ذكي' },
+          normal: { title: '😐 طبيعي', desc: 'مستوى إنساني معتاد.', badge: '😐 طبيعي' },
+          distracted: { title: '🤔 شارد', desc: 'يقع في الخدع البسيطة.', badge: '🤔 شارد' },
+          idiot: { title: '🥔 غبي', desc: 'يقع في جميع الفخاخ.', badge: '🥔 غبي' }
+        }
+      }
+    };
+
+    function getUIString() {
+      const lang = state.language || 'en';
+      return UI_STRINGS[lang] || UI_STRINGS.en;
+    }
 
     // 5 ZEKA VE SALAKLIK KADEMESİ SİSTEMİ
-    const INTELLIGENCE_TIERS = [
-      {
-        id: 'genius',
-        level: 5,
-        minScore: 1000,
-        title: '🧠 ZEKİ (Dahi Mertebesi)',
-        desc: 'Tuzakları anında fark eden, üstün zekalı ve dikkatli oyuncu.',
-        badge: '👑 ZEKİ',
-        color: '#10B981',
-        bg: '#ECFDF5',
-        border: '#059669'
-      },
-      {
-        id: 'clever',
-        level: 4,
-        minScore: 500,
-        title: '⚡ UYANIK (Cin Gibi)',
-        desc: 'Kolay kolay tongaya düşmeyen, kurnaz ve çevik zekalı.',
-        badge: '⚡ UYANIK',
-        color: '#0284C7',
-        bg: '#F0F9FF',
-        border: '#0284C7'
-      },
-      {
-        id: 'normal',
-        level: 3,
-        minScore: 250,
-        title: '😐 NORMAL (Ortalama İnsan)',
-        desc: 'Bazen dikkatli bazen dalgın, standart fani performansı.',
-        badge: '😐 NORMAL',
-        color: '#F59E0B',
-        bg: '#FFFBEB',
-        border: '#D97706'
-      },
-      {
-        id: 'distracted',
-        level: 2,
-        minScore: 100,
-        title: '🤔 DALGIN (Aklı Havada)',
-        desc: 'Basit şaşırtmacalara kanan, dikkati çabuk dağılan profil.',
-        badge: '🤔 DALGIN',
-        color: '#F97316',
-        bg: '#FFF7ED',
-        border: '#EA580C'
-      },
-      {
-        id: 'idiot',
-        level: 1,
-        minScore: -9999,
-        title: '🥔 SALAK (Tuzak Mıknatısı)',
-        desc: 'Her tuzağa balıklama atlayan, saf ve temiz salaklık modu.',
-        badge: '🥔 SALAK',
-        color: '#EF4444',
-        bg: '#FEF2F2',
-        border: '#DC2626'
-      }
+    const INTELLIGENCE_TIER_CONFIGS = [
+      { id: 'genius', level: 5, minScore: 1000, color: '#10B981', bg: '#ECFDF5', border: '#059669' },
+      { id: 'clever', level: 4, minScore: 500, color: '#0284C7', bg: '#F0F9FF', border: '#0284C7' },
+      { id: 'normal', level: 3, minScore: 250, color: '#F59E0B', bg: '#FFFBEB', border: '#D97706' },
+      { id: 'distracted', level: 2, minScore: 100, color: '#F97316', bg: '#FFF7ED', border: '#EA580C' },
+      { id: 'idiot', level: 1, minScore: -9999, color: '#EF4444', bg: '#FEF2F2', border: '#DC2626' }
     ];
 
+    function getTiersList() {
+      const u = getUIString();
+      return INTELLIGENCE_TIER_CONFIGS.map(c => {
+        const trData = (u.tiers && u.tiers[c.id]) || UI_STRINGS.en.tiers[c.id];
+        return {
+          ...c,
+          title: trData.title,
+          desc: trData.desc,
+          badge: trData.badge
+        };
+      });
+    }
+
     function getTierForScore(score) {
-      for (const tier of INTELLIGENCE_TIERS) {
+      const list = getTiersList();
+      for (const tier of list) {
         if (score >= tier.minScore) return tier;
       }
-      return INTELLIGENCE_TIERS[INTELLIGENCE_TIERS.length - 1];
+      return list[list.length - 1];
     }
 
     const TYPE_LABELS = {
@@ -830,13 +1134,80 @@
       updateUserHeader();
     }
 
+    function applyLanguageStrings() {
+      const u = getUIString();
+
+      const titleEl = document.getElementById('home-main-title');
+      if (titleEl) titleEl.textContent = u.appTitle;
+
+      const startBtn = document.getElementById('home-start-btn');
+      if (startBtn) startBtn.innerHTML = `🚀 ${u.startGame} (LEVEL <span id="current-unlocked-btn-lvl">${state.unlockedLevel}</span>)`;
+
+      const privBtn = document.getElementById('lbl-privacy-btn');
+      if (privBtn) privBtn.textContent = u.privacyBtn;
+
+      const lbBtn = document.getElementById('btn-open-lb');
+      if (lbBtn) lbBtn.textContent = u.lbBtn;
+
+      const homeBackBtn = document.getElementById('btn-game-home');
+      if (homeBackBtn) homeBackBtn.textContent = u.homeBtn;
+
+      const nickTitle = document.getElementById('nick-modal-title');
+      if (nickTitle) nickTitle.textContent = u.nickTitle;
+
+      const nickDesc = document.getElementById('nick-modal-desc');
+      if (nickDesc) nickDesc.textContent = u.nickDesc;
+
+      const nickInput = document.getElementById('nick-input');
+      if (nickInput) nickInput.placeholder = u.nickPlaceholder;
+
+      const nickSaveBtn = document.getElementById('nick-save-btn');
+      if (nickSaveBtn) nickSaveBtn.textContent = u.nickSave;
+
+      const lbTitle = document.getElementById('lb-modal-title');
+      if (lbTitle) lbTitle.textContent = u.lbTitle;
+
+      const tabAll = document.getElementById('btn-tab-time-all');
+      if (tabAll) tabAll.textContent = u.allTime;
+
+      const tabMonth = document.getElementById('btn-tab-time-month');
+      if (tabMonth) tabMonth.textContent = u.last30Days;
+
+      const lbHead = document.getElementById('lb-tiers-heading');
+      if (lbHead) lbHead.textContent = u.lbHeading;
+
+      const privTitle = document.getElementById('privacy-modal-title');
+      if (privTitle) privTitle.textContent = u.privacyTitle;
+
+      const privOk = document.getElementById('privacy-ok-btn');
+      if (privOk) privOk.textContent = u.privacyOk;
+
+      const resRatio = document.getElementById('res-lbl-ratio');
+      if (resRatio) resRatio.textContent = u.stupidityRatio;
+
+      const resHome = document.getElementById('btn-result-home');
+      if (resHome) resHome.textContent = u.mainMenu;
+    }
+
     function updateUserHeader() {
-      document.getElementById('user-display-name').textContent = state.nickname;
+      applyLanguageStrings();
+      const u = getUIString();
+      document.getElementById('user-display-name').textContent = state.nickname || u.player;
       const actualScore = Number(state.score || 0);
-      const tier = getTierForScore(actualScore);
-      document.getElementById('user-score-display').textContent = `${actualScore} Puan`;
+      document.getElementById('user-score-display').textContent = `${actualScore} ${u.scoreSuffix}`;
       const curLvlBtn = document.getElementById('current-unlocked-btn-lvl');
       if (curLvlBtn) curLvlBtn.textContent = state.unlockedLevel;
+    }
+
+    function openPrivacyModal() {
+      const u = getUIString();
+      const body = document.getElementById('privacy-modal-body');
+      if (body) body.innerHTML = u.privacyContent;
+      document.getElementById('privacy-modal').classList.add('active');
+    }
+
+    function closePrivacyModal() {
+      document.getElementById('privacy-modal').classList.remove('active');
     }
 
     function openNickModal() {
@@ -884,6 +1255,8 @@
 
       const userTier = getTierForScore(userScore);
 
+      const u = getUIString();
+
       // Üst Rozet Kutusu
       const badgeBox = document.getElementById('user-current-tier-badge');
       if (badgeBox) {
@@ -891,7 +1264,7 @@
         badgeBox.style.borderColor = userTier.border;
         badgeBox.innerHTML = `
           <div style="font-size: 13px; font-weight: 800; color: #64748B; text-transform: uppercase;">
-            ${time === 'all' ? '🌍 Toplam Performansınız' : '📅 Son 30 Günlük Durumunuz'}
+            ${time === 'all' ? u.allTime : u.last30Days}
           </div>
           <div style="font-size: 24px; font-weight: 900; color: ${userTier.color}; margin: 6px 0;">
             ${userTier.title}
@@ -906,7 +1279,8 @@
       const container = document.getElementById('lb-list-container');
       container.innerHTML = '';
 
-      INTELLIGENCE_TIERS.forEach(tier => {
+      const allTiers = getTiersList();
+      allTiers.forEach(tier => {
         const isUserCurrent = (tier.id === userTier.id);
         const item = document.createElement('div');
         item.className = 'lb-item';
@@ -918,12 +1292,12 @@
         item.style.justifyContent = 'space-between';
         item.style.alignItems = 'center';
 
-        const reqText = tier.minScore > -9000 ? `${tier.minScore}+ Puan` : '0 Puan Altı';
+        const reqText = tier.minScore > -9000 ? `${tier.minScore}+ ${u.scoreSuffix}` : `0 ${u.scoreSuffix}`;
 
         item.innerHTML = `
           <div>
             <div style="font-size: 14px; font-weight: 900; color: ${tier.color};">
-              ${tier.title} ${isUserCurrent ? '<span style="font-size: 11px; background: #FF3366; color: white; padding: 2px 8px; border-radius: 8px; margin-left: 6px;">ŞU ANKİ YERİNİZ</span>' : ''}
+              ${tier.title} ${isUserCurrent ? `<span style="font-size: 11px; background: #FF3366; color: white; padding: 2px 8px; border-radius: 8px; margin-left: 6px;">${u.yourRank}</span>` : ''}
             </div>
             <div style="font-size: 11px; color: #64748B; margin-top: 2px; font-weight: 700;">
               ${tier.desc}
@@ -931,7 +1305,7 @@
           </div>
           <div style="text-align: right; min-width: 80px;">
             <div style="font-size: 13px; font-weight: 900; color: #0F172A;">${reqText}</div>
-            <div style="font-size: 11px; color: #64748B; font-weight: 700;">Kademe ${tier.level}/5</div>
+            <div style="font-size: 11px; color: #64748B; font-weight: 700;">${tier.level}/5</div>
           </div>
         `;
         container.appendChild(item);
@@ -946,7 +1320,7 @@
             <span style="font-size: 12px; color: #64748B; margin-left: 6px;">(Level ${state.unlockedLevel})</span>
           </div>
           <div style="color: ${userTier.color}; font-size: 15px;">
-            <strong>${userScore} Puan</strong>
+            <strong>${userScore} ${u.scoreSuffix}</strong>
           </div>
         `;
       }
@@ -955,24 +1329,26 @@
     function renderHomeGroups() {
       const container = document.getElementById('groups-container');
       container.innerHTML = '';
+      const u = getUIString();
 
-      LEVEL_GROUPS.forEach(grp => {
+      const groupNames = u.groups || UI_STRINGS.en.groups;
+
+      LEVEL_GROUPS.forEach((grp, idx) => {
         const card = document.createElement('div');
         card.className = `group-card grp-${grp.id}`;
 
         const header = document.createElement('div');
         header.className = 'group-header';
+        const gName = groupNames[idx] || grp.name;
         header.innerHTML = `
-          <span>${grp.name}</span>
+          <span>${gName}</span>
           <span style="font-size: 12px;">▼</span>
         `;
         header.onclick = () => {
           const wasOpen = card.classList.contains('open');
-          // Açık olan diğer tüm grupları kapat
           document.querySelectorAll('.group-card.open').forEach(c => {
             c.classList.remove('open');
           });
-          // Tıklanan grup kapalı idiyse aç
           if (!wasOpen) {
             card.classList.add('open');
           }
@@ -990,7 +1366,10 @@
           btn.onclick = (e) => {
             e.stopPropagation();
             if (!isUnlocked) {
-              showToast(`🔒 Level ${lvl} kilitli! Önce Level ${lvl - 1}'i geçmelisin.`);
+              const msg = (u.lockedToast || UI_STRINGS.en.lockedToast)
+                .replace('{lvl}', lvl.toString())
+                .replace('{prev}', (lvl - 1).toString());
+              showToast(msg);
               return;
             }
             startSpecificLevel(lvl);
@@ -1001,7 +1380,6 @@
         card.appendChild(header);
         card.appendChild(grid);
 
-        // Kullanıcının bulunduğu aktif seviyenin grubunu açık göster
         const isUserGroup = state.unlockedLevel >= grp.start && state.unlockedLevel <= grp.end;
         if (isUserGroup || (grp.id === 1 && state.unlockedLevel === 1)) {
           card.classList.add('open');
@@ -1096,13 +1474,14 @@
       const title = document.getElementById('fb-title');
       const exp = document.getElementById('fb-exp');
       const nextBtn = document.getElementById('fb-next-btn');
+      const u = getUIString();
 
-      title.textContent = isCorrect ? '✅ Doğru!' : '❌ Yanlış!';
+      title.textContent = isCorrect ? u.correct : u.wrong;
       title.style.color = isCorrect ? '#4CAF50' : '#F44336';
       exp.textContent = expText;
 
       const isLast = state.idx >= state.total - 1;
-      nextBtn.textContent = isLast ? 'LEVELİ TAMAMLA 🏁' : 'DEVAM ET →';
+      nextBtn.textContent = isLast ? u.finishLevel : u.continue;
 
       modal.classList.add('active');
     }
@@ -1118,6 +1497,7 @@
 
     function showResult() {
       const wrongPct = Math.round((state.wrong / state.total) * 100);
+      const u = getUIString();
       
       if (state.currentLevel >= state.unlockedLevel && state.currentLevel < 100) {
         state.unlockedLevel = state.currentLevel + 1;
@@ -1133,14 +1513,14 @@
       const userTier = getTierForScore(state.score);
 
       document.getElementById('res-emoji').textContent = userTier.badge.split(' ')[0] || '🧠';
-      document.getElementById('res-title').textContent = `LEVEL ${state.currentLevel} Tamamlandı!`;
+      document.getElementById('res-title').textContent = `LEVEL ${state.currentLevel} ${u.levelComplete}`;
       document.getElementById('res-level').textContent = `${userTier.title}`;
       document.getElementById('res-pct').textContent = `%${wrongPct}`;
 
       const nextLevelBtn = document.getElementById('btn-next-level');
       if (state.currentLevel < 100) {
         nextLevelBtn.style.display = 'block';
-        nextLevelBtn.textContent = `LEVEL ${state.currentLevel + 1}'E GEÇ 🔓`;
+        nextLevelBtn.textContent = `${u.nextLevel} (${state.currentLevel + 1}) 🔓`;
       } else {
         nextLevelBtn.style.display = 'none';
       }
@@ -1156,9 +1536,80 @@
       }
     }
 
+    // Android Fiziksel Geri Tuşu Yönetimi (Capacitor Back Button & Popstate)
+    let lastBackPressTime = 0;
+    function handleAndroidBack() {
+      // 1. Herhangi bir modal açıksa kapat
+      const activeModal = document.querySelector('.custom-modal.active');
+      if (activeModal) {
+        activeModal.classList.remove('active');
+        return true;
+      }
+
+      // 2. Oyun veya sonuç ekranındaysa ana menüye dön
+      const gameScreen = document.getElementById('screen-game');
+      const resultScreen = document.getElementById('screen-result');
+      if (gameScreen && gameScreen.classList.contains('active')) {
+        showHome();
+        return true;
+      }
+      if (resultScreen && resultScreen.classList.contains('active')) {
+        showHome();
+        return true;
+      }
+
+      // 3. Ana ekrandaysa: çift basışta çıkış veya Capacitor exit
+      const now = Date.now();
+      if (now - lastBackPressTime < 2000) {
+        if (window.AndroidNative && typeof window.AndroidNative.exitApp === 'function') {
+          window.AndroidNative.exitApp();
+        } else if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App) {
+          window.Capacitor.Plugins.App.exitApp();
+        }
+        return false;
+      } else {
+        lastBackPressTime = now;
+        const toast = document.createElement('div');
+        toast.textContent = state.language === 'tr' ? 'Çıkmak için tekrar basın' : 'Press again to exit';
+        toast.style.position = 'fixed';
+        toast.style.bottom = '40px';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.background = 'rgba(0,0,0,0.85)';
+        toast.style.color = '#fff';
+        toast.style.padding = '8px 18px';
+        toast.style.borderRadius = '20px';
+        toast.style.fontSize = '12px';
+        toast.style.zIndex = '999999';
+        toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 1800);
+        return true;
+      }
+    }
+
+    // Geri tuşu olay dinleyicileri
+    document.addEventListener('backbutton', function(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      handleAndroidBack();
+    }, false);
+
+    function initCapacitorBackButton() {
+      if (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App) {
+        window.Capacitor.Plugins.App.addListener('backButton', function() {
+          handleAndroidBack();
+        });
+      }
+    }
+
+    window.addEventListener('popstate', function() {
+      handleAndroidBack();
+    });
+
     // Başlangıç yüklemeleri
     initUser();
     renderHomeGroups();
+    initCapacitorBackButton();
   </script>
 </body>
 </html>
